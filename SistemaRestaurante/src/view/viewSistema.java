@@ -14,17 +14,24 @@ import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class viewSistema extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField txtAgua;
+	private JTextField txtCafe;
+	private JTextField txtCerveja;
+	private JTextField txtCoca;
+	private JTextField txtAguaCc;
+	private JTextField txtLaranja;
+	private JTextField txtMaracuja;
+	private JTextField txtValue;
 
 	/**
 	 * Launch the application.
@@ -64,72 +71,212 @@ public class viewSistema extends JFrame {
 		lblBebidas.setBounds(12, 12, 70, 15);
 		panel.add(lblBebidas);
 		
-		JCheckBox chckbxgua = new JCheckBox("Água");
-		chckbxgua.setBounds(8, 35, 129, 23);
-		panel.add(chckbxgua);
+		JCheckBox chckbxAgua = new JCheckBox("Água");
+		chckbxAgua.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxAgua.isSelected()) {
+					txtAgua.setEnabled(true);
+				}
+				else {
+					txtAgua.setEnabled(false);
+				}
+			}
+		});
+		chckbxAgua.setBounds(8, 35, 129, 23);
+		panel.add(chckbxAgua);
 		
 		JCheckBox chckbxCaf = new JCheckBox("Café");
+		chckbxCaf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxCaf.isSelected()) {
+					txtCafe.setEnabled(true);
+				}
+				else {
+					txtCafe.setEnabled(false);
+				}
+			}
+		});
 		chckbxCaf.setBounds(8, 62, 129, 23);
 		panel.add(chckbxCaf);
 		
-		JCheckBox chckbxcervej = new JCheckBox("Cerveja");
-		chckbxcervej.setBounds(8, 89, 129, 23);
-		panel.add(chckbxcervej);
+		JCheckBox chckbxCerveja = new JCheckBox("Cerveja");
+		chckbxCerveja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxCerveja.isSelected()) {
+					txtCerveja.setEnabled(true);
+				}
+				else {
+					txtCerveja.setEnabled(false);
+				}
+			}
+		});
+		chckbxCerveja.setBounds(8, 89, 129, 23);
+		panel.add(chckbxCerveja);
 		
-		JCheckBox chckbxcoca = new JCheckBox("Coca-Cola");
-		chckbxcoca.setBounds(8, 116, 129, 23);
-		panel.add(chckbxcoca);
+		JCheckBox chckbxCoca = new JCheckBox("Coca-Cola");
+		chckbxCoca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxCoca.isSelected()) {
+					txtCoca.setEnabled(true);
+				}
+				else {
+					txtCoca.setEnabled(false);
+				}
+			}
+		});
+		chckbxCoca.setBounds(8, 116, 129, 23);
+		panel.add(chckbxCoca);
 		
-		JCheckBox chckbxsularanja = new JCheckBox("Laranja");
-		chckbxsularanja.setBounds(12, 219, 107, 23);
-		panel.add(chckbxsularanja);
+		JCheckBox chckbxLaranja = new JCheckBox("Laranja");
+		chckbxLaranja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxLaranja.isSelected()) {
+					txtLaranja.setEnabled(true);
+				}
+				else {
+					txtLaranja.setEnabled(false);
+				}
+			}
+		});
+		chckbxLaranja.setBounds(12, 219, 107, 23);
+		panel.add(chckbxLaranja);
 		
-		JCheckBox chckbxsumaracuja = new JCheckBox("Maracujá");
-		chckbxsumaracuja.setBounds(12, 246, 107, 23);
-		panel.add(chckbxsumaracuja);
+		JCheckBox chckbxMaracuja = new JCheckBox("Maracujá");
+		chckbxMaracuja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxMaracuja.isSelected()) {
+					txtMaracuja.setEnabled(true);
+				}
+				else {
+					txtMaracuja.setEnabled(false);
+				}
+			}
+		});
+		chckbxMaracuja.setBounds(12, 246, 107, 23);
+		panel.add(chckbxMaracuja);
 		
-		JCheckBox chckbxguacc = new JCheckBox("Água de Côco");
-		chckbxguacc.setBounds(8, 143, 129, 23);
-		panel.add(chckbxguacc);
+		JCheckBox chckbxAguaCc = new JCheckBox("Água de Côco");
+		chckbxAguaCc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxAguaCc.isSelected()) {
+					txtAguaCc.setEnabled(true);
+				}
+				else {
+					txtAguaCc.setEnabled(false);
+				}
+			}
+		});
+		chckbxAguaCc.setBounds(8, 143, 129, 23);
+		panel.add(chckbxAguaCc);
 		
 		JLabel lblSucos = new JLabel("Sucos");
 		lblSucos.setBounds(12, 196, 70, 15);
 		panel.add(lblSucos);
 		
-		textField = new JTextField();
-		textField.setBounds(143, 39, 80, 19);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtAgua = new JTextField();
+		txtAgua.setEnabled(false);
+		txtAgua.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtAgua.setBounds(143, 39, 80, 19);
+		panel.add(txtAgua);
+		txtAgua.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(143, 64, 80, 19);
-		panel.add(textField_1);
+		txtCafe = new JTextField();
+		txtCafe.setEnabled(false);
+		txtCafe.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtCafe.setColumns(10);
+		txtCafe.setBounds(143, 64, 80, 19);
+		panel.add(txtCafe);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(143, 91, 80, 19);
-		panel.add(textField_2);
+		txtCerveja = new JTextField();
+		txtCerveja.setEnabled(false);
+		txtCerveja.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtCerveja.setColumns(10);
+		txtCerveja.setBounds(143, 91, 80, 19);
+		panel.add(txtCerveja);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(143, 118, 80, 19);
-		panel.add(textField_3);
+		txtCoca = new JTextField();
+		txtCoca.setEnabled(false);
+		txtCoca.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtCoca.setColumns(10);
+		txtCoca.setBounds(143, 118, 80, 19);
+		panel.add(txtCoca);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(143, 143, 80, 19);
-		panel.add(textField_4);
+		txtAguaCc = new JTextField();
+		txtAguaCc.setEnabled(false);
+		txtAguaCc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtAguaCc.setColumns(10);
+		txtAguaCc.setBounds(143, 143, 80, 19);
+		panel.add(txtAguaCc);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(143, 221, 80, 19);
-		panel.add(textField_5);
+		txtLaranja = new JTextField();
+		txtLaranja.setEnabled(false);
+		txtLaranja.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtLaranja.setColumns(10);
+		txtLaranja.setBounds(143, 221, 80, 19);
+		panel.add(txtLaranja);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(143, 248, 80, 19);
-		panel.add(textField_6);
+		txtMaracuja = new JTextField();
+		txtMaracuja.setEnabled(false);
+		txtMaracuja.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtMaracuja.setColumns(10);
+		txtMaracuja.setBounds(143, 248, 80, 19);
+		panel.add(txtMaracuja);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -158,7 +305,60 @@ public class viewSistema extends JFrame {
 		panel_3.add(lblPagamento);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dinheiro", "Débito", "Crédito"}));
 		comboBox.setBounds(12, 39, 91, 24);
 		panel_3.add(comboBox);
+		
+		JLabel lblValor = new JLabel("Valor");
+		lblValor.setBounds(12, 75, 70, 15);
+		panel_3.add(lblValor);
+		
+		txtValue = new JTextField();
+		txtValue.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtValue.setBounds(12, 101, 70, 15);
+		panel_3.add(txtValue);
+		txtValue.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Sair");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnNewButton.setBounds(164, 125, 70, 25);
+		panel_3.add(btnNewButton);
+		
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//limpa campos de texto
+				txtAgua.setText(null);
+				txtCafe.setText(null);
+				txtCerveja.setText(null);
+				txtCoca.setText(null);
+				txtLaranja.setText(null);
+				txtMaracuja.setText(null);
+				txtValue.setText(null);
+				
+				//limpa caixas de seleção
+				chckbxAgua.setSelected(false);
+				chckbxCaf.setSelected(false);
+				chckbxCerveja.setSelected(false);
+				chckbxCoca.setSelected(false);
+				chckbxAguaCc.setSelected(false);
+				chckbxLaranja.setSelected(false);
+				chckbxMaracuja.setSelected(false);
+			}
+		});
+		btnLimpar.setBounds(76, 125, 82, 25);
+		panel_3.add(btnLimpar);
 	}
 }
