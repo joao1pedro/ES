@@ -34,22 +34,6 @@ public class viewSistema extends JFrame {
 	private JTextField txtValue;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					viewSistema frame = new viewSistema();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public viewSistema() {
@@ -76,9 +60,11 @@ public class viewSistema extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxAgua.isSelected()) {
 					txtAgua.setEnabled(true);
+					txtAgua.setText("");
 				}
 				else {
 					txtAgua.setEnabled(false);
+					txtAgua.setText("0");
 				}
 			}
 		});
@@ -104,9 +90,11 @@ public class viewSistema extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxCerveja.isSelected()) {
 					txtCerveja.setEnabled(true);
+					txtCerveja.setText("");
 				}
 				else {
 					txtCerveja.setEnabled(false);
+					txtCerveja.setText("0");
 				}
 			}
 		});
@@ -118,9 +106,11 @@ public class viewSistema extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxCoca.isSelected()) {
 					txtCoca.setEnabled(true);
+					txtCoca.setText("");
 				}
 				else {
 					txtCoca.setEnabled(false);
+					txtCoca.setText("0");
 				}
 			}
 		});
@@ -132,9 +122,11 @@ public class viewSistema extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxLaranja.isSelected()) {
 					txtLaranja.setEnabled(true);
+					txtLaranja.setText("");
 				}
 				else {
 					txtLaranja.setEnabled(false);
+					txtLaranja.setText("0");
 				}
 			}
 		});
@@ -146,9 +138,11 @@ public class viewSistema extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxMaracuja.isSelected()) {
 					txtMaracuja.setEnabled(true);
+					txtMaracuja.setText("");
 				}
 				else {
 					txtMaracuja.setEnabled(false);
+					txtMaracuja.setText("0");
 				}
 			}
 		});
@@ -160,9 +154,11 @@ public class viewSistema extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxAguaCc.isSelected()) {
 					txtAguaCc.setEnabled(true);
+					txtAguaCc.setText("");
 				}
 				else {
 					txtAguaCc.setEnabled(false);
+					txtAguaCc.setText("0");
 				}
 			}
 		});
@@ -179,7 +175,8 @@ public class viewSistema extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char iNumber = e.getKeyChar();
-				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
 					e.consume();
 				}
 			}
@@ -194,7 +191,8 @@ public class viewSistema extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char iNumber = e.getKeyChar();
-				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
 					e.consume();
 				}
 			}
@@ -209,7 +207,8 @@ public class viewSistema extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char iNumber = e.getKeyChar();
-				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
 					e.consume();
 				}
 			}
@@ -224,7 +223,8 @@ public class viewSistema extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char iNumber = e.getKeyChar();
-				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
 					e.consume();
 				}
 			}
@@ -239,7 +239,8 @@ public class viewSistema extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char iNumber = e.getKeyChar();
-				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
 					e.consume();
 				}
 			}
@@ -254,7 +255,8 @@ public class viewSistema extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char iNumber = e.getKeyChar();
-				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
 					e.consume();
 				}
 			}
@@ -269,7 +271,8 @@ public class viewSistema extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char iNumber = e.getKeyChar();
-				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) || (iNumber == KeyEvent.VK_DELETE)) {
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
 					e.consume();
 				}
 			}
