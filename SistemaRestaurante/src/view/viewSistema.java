@@ -31,12 +31,32 @@ public class viewSistema extends JFrame {
 	private JTextField txtAguaCc;
 	private JTextField txtLaranja;
 	private JTextField txtMaracuja;
+	private JTextField txtSubT;
+	
+	/*
+	 * preço dos produtos
+	 * */
+	double priceAgua = 2.0;
+	double priceAguaCc = 3.0;
+	double priceCafe = 2.5;
+	double priceCerveja= 3.5;
+	double priceSucoLaranja = 2.5;
+	double priceSucoMaracuja = 2.5;
+	double priceCoca = 2.8;
+	
+	double taxa, valueTotal, subTotal, diferenca, custo, rateTaxa = 15.5;
+	
+	double itemcost[] = new double [8];
+	private JTextField txtTaxa;
 	private JTextField txtValue;
+	private JTextField txtTroco;
 
 	/**
 	 * Create the frame.
 	 */
 	public viewSistema() {
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 772, 471);
 		contentPane = new JPanel();
@@ -307,17 +327,17 @@ public class viewSistema extends JFrame {
 		lblPagamento.setBounds(12, 12, 91, 15);
 		panel_3.add(lblPagamento);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dinheiro", "Débito", "Crédito"}));
-		comboBox.setBounds(12, 39, 91, 24);
-		panel_3.add(comboBox);
+		JComboBox metodoPagamento = new JComboBox();
+		metodoPagamento.setModel(new DefaultComboBoxModel(new String[] {"Dinheiro", "Débito", "Crédito"}));
+		metodoPagamento.setBounds(12, 39, 91, 24);
+		panel_3.add(metodoPagamento);
 		
-		JLabel lblValor = new JLabel("Valor");
-		lblValor.setBounds(12, 75, 70, 15);
-		panel_3.add(lblValor);
+		JLabel lblSubT = new JLabel("Sub-Total");
+		lblSubT.setBounds(12, 70, 91, 24);
+		panel_3.add(lblSubT);
 		
-		txtValue = new JTextField();
-		txtValue.addKeyListener(new KeyAdapter() {
+		txtSubT = new JTextField();
+		txtSubT.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char iNumber = e.getKeyChar();
@@ -326,9 +346,9 @@ public class viewSistema extends JFrame {
 				}
 			}
 		});
-		txtValue.setBounds(12, 101, 70, 15);
-		panel_3.add(txtValue);
-		txtValue.setColumns(10);
+		txtSubT.setBounds(12, 98, 70, 15);
+		panel_3.add(txtSubT);
+		txtSubT.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Sair");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -336,7 +356,7 @@ public class viewSistema extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnNewButton.setBounds(164, 125, 70, 25);
+		btnNewButton.setBounds(157, 125, 77, 25);
 		panel_3.add(btnNewButton);
 		
 		JButton btnLimpar = new JButton("Limpar");
@@ -349,7 +369,7 @@ public class viewSistema extends JFrame {
 				txtCoca.setText(null);
 				txtLaranja.setText(null);
 				txtMaracuja.setText(null);
-				txtValue.setText(null);
+				txtSubT.setText(null);
 				
 				//limpa caixas de seleção
 				chckbxAgua.setSelected(false);
@@ -361,7 +381,95 @@ public class viewSistema extends JFrame {
 				chckbxMaracuja.setSelected(false);
 			}
 		});
-		btnLimpar.setBounds(76, 125, 82, 25);
+		btnLimpar.setBounds(78, 125, 82, 25);
 		panel_3.add(btnLimpar);
+		
+		JButton btnTotal = new JButton("Total");
+		btnTotal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!txtAgua.getText().isEmpty()){
+					itemcost[0] = Double.parseDouble(txtAgua.getText());
+				}
+				if(!txtCafe.getText().isEmpty()){
+					itemcost[1] = Double.parseDouble(txtCafe.getText());
+				}
+				if(!txtCerveja.getText().isEmpty()) {
+					itemcost[2] = Double.parseDouble(txtCerveja.getText());
+				}
+				if(!txtCoca.getText().isEmpty()) {
+					itemcost[3] = Double.parseDouble(txtCoca.getText());
+				}
+				if(!txtAguaCc.getText().isEmpty()) {
+					itemcost[4] = Double.parseDouble(txtAguaCc.getText());
+				}
+				if(!txtLaranja.getText().isEmpty()) {
+					itemcost[5] = Double.parseDouble(txtLaranja.getText());
+				}
+				if(!txtMaracuja.getText().isEmpty()) {
+					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
+				}
+				/*
+				try {
+					itemcost[0] = Double.parseDouble(txtAgua.getText());
+					itemcost[1] = Double.parseDouble(txtCafe.getText());
+					itemcost[2] = Double.parseDouble(txtCerveja.getText());
+					itemcost[3] = Double.parseDouble(txtCoca.getText());
+					itemcost[4] = Double.parseDouble(txtAguaCc.getText());
+					itemcost[5] = Double.parseDouble(txtLaranja.getText());
+					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
+				}catch(NumberFormatException nfe){
+					System.out.println("ERRO: " + nfe.getMessage());
+				}
+				*/
+				
+				/*String mPagamento = (String)metodoPagamento.getSelectedItem();
+				if(mPagamento == "Dinheiro") {
+					
+				}*/
+				
+				subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6]; 
+				
+				String quantidade = String.format("R$%.2f",subTotal);
+				txtSubT.setText(quantidade);
+				
+				taxa = ((subTotal * rateTaxa)/100);
+				
+				String vTaxa = String.format("R$%.2f", taxa);
+				txtTaxa.setText(vTaxa);
+				
+				valueTotal = (subTotal + taxa);
+				String vTotal = String.format("R$%.2f", valueTotal);
+				txtValue.setText(vTotal);
+			}
+		});
+		btnTotal.setBounds(12, 125, 70, 25);
+		panel_3.add(btnTotal);
+		
+		JLabel lblTaxa = new JLabel("Taxa");
+		lblTaxa.setBounds(115, 12, 44, 15);
+		panel_3.add(lblTaxa);
+		
+		txtTaxa = new JTextField();
+		txtTaxa.setColumns(10);
+		txtTaxa.setBounds(157, 12, 70, 15);
+		panel_3.add(txtTaxa);
+		
+		JLabel lblTotal = new JLabel("Total");
+		lblTotal.setBounds(115, 44, 44, 15);
+		panel_3.add(lblTotal);
+		
+		txtValue = new JTextField();
+		txtValue.setColumns(10);
+		txtValue.setBounds(157, 42, 70, 15);
+		panel_3.add(txtValue);
+		
+		JLabel lblTroco = new JLabel("Troco");
+		lblTroco.setBounds(115, 75, 44, 15);
+		panel_3.add(lblTroco);
+		
+		txtTroco = new JTextField();
+		txtTroco.setColumns(10);
+		txtTroco.setBounds(157, 73, 70, 15);
+		panel_3.add(txtTroco);
 	}
 }
