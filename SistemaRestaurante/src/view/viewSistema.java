@@ -11,6 +11,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -44,12 +45,13 @@ public class viewSistema extends JFrame {
 	double priceSucoMaracuja = 2.5;
 	double priceCoca = 2.8;
 	
-	double taxa, valueTotal, subTotal, diferenca, custo, rateTaxa = 15.5;
+	double taxa, valueTotal, subTotal, diferenca, custo, rateTaxa = 12;
 	
 	double itemcost[] = new double [8];
 	private JTextField txtTaxa;
 	private JTextField txtValue;
 	private JTextField txtTroco;
+	private JTextField txtInDinnheiro;
 
 	/**
 	 * Create the frame.
@@ -333,7 +335,7 @@ public class viewSistema extends JFrame {
 		panel_3.add(metodoPagamento);
 		
 		JLabel lblSubT = new JLabel("Sub-Total");
-		lblSubT.setBounds(12, 70, 91, 24);
+		lblSubT.setBounds(105, 16, 70, 24);
 		panel_3.add(lblSubT);
 		
 		txtSubT = new JTextField();
@@ -346,7 +348,7 @@ public class viewSistema extends JFrame {
 				}
 			}
 		});
-		txtSubT.setBounds(12, 98, 70, 15);
+		txtSubT.setBounds(178, 21, 56, 15);
 		panel_3.add(txtSubT);
 		txtSubT.setColumns(10);
 		
@@ -370,6 +372,10 @@ public class viewSistema extends JFrame {
 				txtLaranja.setText(null);
 				txtMaracuja.setText(null);
 				txtSubT.setText(null);
+				txtInDinnheiro.setText(null);
+				txtTroco.setText(null);
+				txtTaxa.setText(null);
+				txtValue.setText(null);
 				
 				//limpa caixas de seleção
 				chckbxAgua.setSelected(false);
@@ -409,6 +415,10 @@ public class viewSistema extends JFrame {
 					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
 				}
 				/*
+				 * Para utilizar banco de dados, pode ser necessário utilizar
+				 * try - catch
+				 * Portanto, forma alternativa do bloco de código acima
+				 * 
 				try {
 					itemcost[0] = Double.parseDouble(txtAgua.getText());
 					itemcost[1] = Double.parseDouble(txtCafe.getText());
@@ -422,54 +432,95 @@ public class viewSistema extends JFrame {
 				}
 				*/
 				
-				/*String mPagamento = (String)metodoPagamento.getSelectedItem();
+				
+				String mPagamento = (String)metodoPagamento.getSelectedItem();
+				
 				if(mPagamento == "Dinheiro") {
 					
-				}*/
+					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6]; 
+					
+					diferenca = Double.parseDouble(txtInDinnheiro.getText());
+					
+					if(diferenca >= subTotal) {
+						String quantidade = String.format("R$%.2f",subTotal);
+						txtSubT.setText(quantidade);
+						
+						taxa = ((subTotal * rateTaxa)/100);
+						
+						String vTaxa = String.format("R$%.2f", taxa);
+						txtTaxa.setText(vTaxa);
+						
+						valueTotal = (subTotal + taxa);
+						String vTotal = String.format("R$%.2f", valueTotal);
+						txtValue.setText(vTotal);
+						
+						String vTroco = String.format("R$%.2f", (diferenca - valueTotal));
+						txtTroco.setText(vTroco);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Lance o dinheiro suficiente", "Sistema Restaurante", JOptionPane.OK_OPTION);
+					}
+				}else if(mPagamento == "Débito" || mPagamento == "Crédito") {
+					
+					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6]; 
+					
+					String quantidade = String.format("R$%.2f",subTotal);
+					txtSubT.setText(quantidade);
+					
+					taxa = ((subTotal * rateTaxa)/100);
+					
+					String vTaxa = String.format("R$%.2f", taxa);
+					txtTaxa.setText(vTaxa);
+					
+					valueTotal = (subTotal + taxa);
+					String vTotal = String.format("R$%.2f", valueTotal);
+					txtValue.setText(vTotal);
+				}
 				
-				subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6]; 
 				
-				String quantidade = String.format("R$%.2f",subTotal);
-				txtSubT.setText(quantidade);
-				
-				taxa = ((subTotal * rateTaxa)/100);
-				
-				String vTaxa = String.format("R$%.2f", taxa);
-				txtTaxa.setText(vTaxa);
-				
-				valueTotal = (subTotal + taxa);
-				String vTotal = String.format("R$%.2f", valueTotal);
-				txtValue.setText(vTotal);
 			}
 		});
 		btnTotal.setBounds(12, 125, 70, 25);
 		panel_3.add(btnTotal);
 		
 		JLabel lblTaxa = new JLabel("Taxa");
-		lblTaxa.setBounds(115, 12, 44, 15);
+		lblTaxa.setBounds(131, 48, 44, 15);
 		panel_3.add(lblTaxa);
 		
 		txtTaxa = new JTextField();
 		txtTaxa.setColumns(10);
-		txtTaxa.setBounds(157, 12, 70, 15);
+		txtTaxa.setBounds(178, 48, 56, 15);
 		panel_3.add(txtTaxa);
 		
 		JLabel lblTotal = new JLabel("Total");
-		lblTotal.setBounds(115, 44, 44, 15);
+		lblTotal.setBounds(131, 75, 44, 15);
 		panel_3.add(lblTotal);
 		
 		txtValue = new JTextField();
 		txtValue.setColumns(10);
-		txtValue.setBounds(157, 42, 70, 15);
+		txtValue.setBounds(178, 75, 56, 15);
 		panel_3.add(txtValue);
 		
 		JLabel lblTroco = new JLabel("Troco");
-		lblTroco.setBounds(115, 75, 44, 15);
+		lblTroco.setBounds(131, 98, 44, 15);
 		panel_3.add(lblTroco);
 		
 		txtTroco = new JTextField();
 		txtTroco.setColumns(10);
-		txtTroco.setBounds(157, 73, 70, 15);
+		txtTroco.setBounds(178, 102, 56, 15);
 		panel_3.add(txtTroco);
+		
+		txtInDinnheiro = new JTextField("0");
+		txtInDinnheiro.setColumns(10);
+		txtInDinnheiro.setBounds(47, 98, 56, 15);
+		panel_3.add(txtInDinnheiro);
+		
+		JLabel lblEspcie = new JLabel("Espécie");
+		lblEspcie.setBounds(12, 75, 70, 15);
+		panel_3.add(lblEspcie);
+		
+		JLabel lblR = new JLabel("R$");
+		lblR.setBounds(22, 98, 22, 15);
+		panel_3.add(lblR);
 	}
 }
