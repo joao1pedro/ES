@@ -57,12 +57,14 @@ public class viewSistema extends JFrame {
 	 * Create the frame.
 	 */
 	public viewSistema() {
+		setPreferredSize(new Dimension(1366, 768));
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 772, 471);
 		contentPane = new JPanel();
-		contentPane.setPreferredSize(new Dimension(800, 600));
+		contentPane.setSize(new Dimension(1366, 768));
+		contentPane.setPreferredSize(new Dimension(1366, 768));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
