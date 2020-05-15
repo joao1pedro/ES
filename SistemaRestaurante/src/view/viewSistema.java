@@ -35,7 +35,7 @@ public class viewSistema extends JFrame {
 	private JTextField txtSubT;
 	
 	/*
-	 * pre√ßo dos produtos
+	 * preÁo dos produtos
 	 * */
 	double priceAgua = 2.0;
 	double priceAguaCc = 3.0;
@@ -57,29 +57,30 @@ public class viewSistema extends JFrame {
 	 * Create the frame.
 	 */
 	public viewSistema() {
-		setPreferredSize(new Dimension(1366, 768));
+		setPreferredSize(new Dimension(1024, 768));
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 772, 471);
+		setBounds(100, 100, 1366, 768);
 		contentPane = new JPanel();
-		contentPane.setSize(new Dimension(1366, 768));
-		contentPane.setPreferredSize(new Dimension(1366, 768));
+		contentPane.setSize(new Dimension(1024, 768));
+		contentPane.setPreferredSize(new Dimension(1024, 768));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(517, 84, 235, 341);
+		panel.setBounds(310, 84, 290, 600);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblBebidas = new JLabel("Bebidas");
-		lblBebidas.setBounds(12, 12, 70, 15);
+		JLabel lblBebidas = new JLabel("BEBIDAS");
+		lblBebidas.setBounds(115, 11, 70, 15);
 		panel.add(lblBebidas);
 		
-		JCheckBox chckbxAgua = new JCheckBox("√Ågua");
+		JCheckBox chckbxAgua = new JCheckBox("¡gua");
 		chckbxAgua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxAgua.isSelected()) {
@@ -95,7 +96,7 @@ public class viewSistema extends JFrame {
 		chckbxAgua.setBounds(8, 35, 129, 23);
 		panel.add(chckbxAgua);
 		
-		JCheckBox chckbxCaf = new JCheckBox("Caf√©");
+		JCheckBox chckbxCaf = new JCheckBox("CafÈ");
 		chckbxCaf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxCaf.isSelected()) {
@@ -157,7 +158,7 @@ public class viewSistema extends JFrame {
 		chckbxLaranja.setBounds(12, 219, 107, 23);
 		panel.add(chckbxLaranja);
 		
-		JCheckBox chckbxMaracuja = new JCheckBox("Maracuj√°");
+		JCheckBox chckbxMaracuja = new JCheckBox("Maracuj·");
 		chckbxMaracuja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxMaracuja.isSelected()) {
@@ -173,7 +174,7 @@ public class viewSistema extends JFrame {
 		chckbxMaracuja.setBounds(12, 246, 107, 23);
 		panel.add(chckbxMaracuja);
 		
-		JCheckBox chckbxAguaCc = new JCheckBox("√Ågua de C√¥co");
+		JCheckBox chckbxAguaCc = new JCheckBox("¡gua de CÙco");
 		chckbxAguaCc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxAguaCc.isSelected()) {
@@ -308,22 +309,26 @@ public class viewSistema extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(12, 0, 740, 72);
+		panel_1.setBounds(12, 0, 1328, 76);
 		contentPane.add(panel_1);
 		
 		JLabel lbTelaInfo = new JLabel("SISTEMA RESTAURANTE");
-		lbTelaInfo.setBounds(282, 24, 200, 24);
+		lbTelaInfo.setBounds(580, 28, 200, 24);
 		panel_1.add(lbTelaInfo);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(12, 84, 235, 341);
+		panel_2.setBounds(12, 84, 290, 600);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
+		JLabel lblPrato = new JLabel("PRATOS PRINCIPAIS");
+		lblPrato.setBounds(81, 11, 116, 14);
+		panel_2.add(lblPrato);
+		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(259, 263, 246, 162);
+		panel_3.setBounds(1050, 519, 290, 162);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -332,12 +337,12 @@ public class viewSistema extends JFrame {
 		panel_3.add(lblPagamento);
 		
 		JComboBox metodoPagamento = new JComboBox();
-		metodoPagamento.setModel(new DefaultComboBoxModel(new String[] {"Dinheiro", "D√©bito", "Cr√©dito"}));
+		metodoPagamento.setModel(new DefaultComboBoxModel(new String[] {"Dinheiro", "DÈbito", "CrÈdito"}));
 		metodoPagamento.setBounds(12, 39, 91, 24);
 		panel_3.add(metodoPagamento);
 		
 		JLabel lblSubT = new JLabel("Sub-Total");
-		lblSubT.setBounds(105, 16, 70, 24);
+		lblSubT.setBounds(167, 16, 56, 24);
 		panel_3.add(lblSubT);
 		
 		txtSubT = new JTextField();
@@ -350,7 +355,7 @@ public class viewSistema extends JFrame {
 				}
 			}
 		});
-		txtSubT.setBounds(178, 21, 56, 15);
+		txtSubT.setBounds(224, 20, 56, 15);
 		panel_3.add(txtSubT);
 		txtSubT.setColumns(10);
 		
@@ -379,7 +384,7 @@ public class viewSistema extends JFrame {
 				txtTaxa.setText(null);
 				txtValue.setText(null);
 				
-				//limpa caixas de sele√ß√£o
+				//limpa caixas de seleÁ„o
 				chckbxAgua.setSelected(false);
 				chckbxCaf.setSelected(false);
 				chckbxCerveja.setSelected(false);
@@ -417,9 +422,9 @@ public class viewSistema extends JFrame {
 					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
 				}
 				/*
-				 * Para utilizar banco de dados, pode ser necess√°rio utilizar
+				 * Para utilizar banco de dados, pode ser necess·rio utilizar
 				 * try - catch
-				 * Portanto, forma alternativa do bloco de c√≥digo acima
+				 * Portanto, forma alternativa do bloco de cÛdigo acima
 				 * 
 				try {
 					itemcost[0] = Double.parseDouble(txtAgua.getText());
@@ -462,7 +467,7 @@ public class viewSistema extends JFrame {
 					else {
 						JOptionPane.showMessageDialog(null, "Lance o dinheiro suficiente", "Sistema Restaurante", JOptionPane.OK_OPTION);
 					}
-				}else if(mPagamento == "D√©bito" || mPagamento == "Cr√©dito") {
+				}else if(mPagamento == "DÈbito" || mPagamento == "CrÈdito") {
 					
 					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6]; 
 					
@@ -486,30 +491,30 @@ public class viewSistema extends JFrame {
 		panel_3.add(btnTotal);
 		
 		JLabel lblTaxa = new JLabel("Taxa");
-		lblTaxa.setBounds(131, 48, 44, 15);
+		lblTaxa.setBounds(167, 44, 44, 15);
 		panel_3.add(lblTaxa);
 		
 		txtTaxa = new JTextField();
 		txtTaxa.setColumns(10);
-		txtTaxa.setBounds(178, 48, 56, 15);
+		txtTaxa.setBounds(224, 43, 56, 15);
 		panel_3.add(txtTaxa);
 		
 		JLabel lblTotal = new JLabel("Total");
-		lblTotal.setBounds(131, 75, 44, 15);
+		lblTotal.setBounds(167, 70, 44, 15);
 		panel_3.add(lblTotal);
 		
 		txtValue = new JTextField();
 		txtValue.setColumns(10);
-		txtValue.setBounds(178, 75, 56, 15);
+		txtValue.setBounds(224, 69, 56, 15);
 		panel_3.add(txtValue);
 		
 		JLabel lblTroco = new JLabel("Troco");
-		lblTroco.setBounds(131, 98, 44, 15);
+		lblTroco.setBounds(167, 99, 44, 15);
 		panel_3.add(lblTroco);
 		
 		txtTroco = new JTextField();
 		txtTroco.setColumns(10);
-		txtTroco.setBounds(178, 102, 56, 15);
+		txtTroco.setBounds(224, 95, 56, 15);
 		panel_3.add(txtTroco);
 		
 		txtInDinnheiro = new JTextField("0");
@@ -517,12 +522,20 @@ public class viewSistema extends JFrame {
 		txtInDinnheiro.setBounds(47, 98, 56, 15);
 		panel_3.add(txtInDinnheiro);
 		
-		JLabel lblEspcie = new JLabel("Esp√©cie");
+		JLabel lblEspcie = new JLabel("EspÈcie");
 		lblEspcie.setBounds(12, 75, 70, 15);
 		panel_3.add(lblEspcie);
 		
 		JLabel lblR = new JLabel("R$");
 		lblR.setBounds(22, 98, 22, 15);
 		panel_3.add(lblR);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_4.setBounds(610, 84, 290, 600);
+		contentPane.add(panel_4);
+		
+		JLabel lblSobremesas = new JLabel("SOBREMESAS");
+		panel_4.add(lblSobremesas);
 	}
 }
