@@ -35,7 +35,7 @@ public class viewSistema extends JFrame {
 	private JTextField txtSubT;
 	
 	/*
-	 * preÁo dos produtos
+	 * preco dos produtos
 	 * */
 	double priceAgua = 2.0;
 	double priceAguaCc = 3.0;
@@ -80,7 +80,7 @@ public class viewSistema extends JFrame {
 		lblBebidas.setBounds(115, 11, 70, 15);
 		panel.add(lblBebidas);
 		
-		JCheckBox chckbxAgua = new JCheckBox("¡gua");
+		JCheckBox chckbxAgua = new JCheckBox("√Ågua");
 		chckbxAgua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxAgua.isSelected()) {
@@ -96,7 +96,7 @@ public class viewSistema extends JFrame {
 		chckbxAgua.setBounds(8, 35, 129, 23);
 		panel.add(chckbxAgua);
 		
-		JCheckBox chckbxCaf = new JCheckBox("CafÈ");
+		JCheckBox chckbxCaf = new JCheckBox("Caf√©");
 		chckbxCaf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxCaf.isSelected()) {
@@ -158,7 +158,7 @@ public class viewSistema extends JFrame {
 		chckbxLaranja.setBounds(12, 219, 107, 23);
 		panel.add(chckbxLaranja);
 		
-		JCheckBox chckbxMaracuja = new JCheckBox("Maracuj·");
+		JCheckBox chckbxMaracuja = new JCheckBox("Maracuj√°");
 		chckbxMaracuja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxMaracuja.isSelected()) {
@@ -174,7 +174,7 @@ public class viewSistema extends JFrame {
 		chckbxMaracuja.setBounds(12, 246, 107, 23);
 		panel.add(chckbxMaracuja);
 		
-		JCheckBox chckbxAguaCc = new JCheckBox("¡gua de CÙco");
+		JCheckBox chckbxAguaCc = new JCheckBox("√Ågua de C√¥co");
 		chckbxAguaCc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxAguaCc.isSelected()) {
@@ -337,12 +337,12 @@ public class viewSistema extends JFrame {
 		panel_3.add(lblPagamento);
 		
 		JComboBox metodoPagamento = new JComboBox();
-		metodoPagamento.setModel(new DefaultComboBoxModel(new String[] {"Dinheiro", "DÈbito", "CrÈdito"}));
+		metodoPagamento.setModel(new DefaultComboBoxModel(new String[] {"Dinheiro", "D√©bito", "Cr√©dito"}));
 		metodoPagamento.setBounds(12, 39, 91, 24);
 		panel_3.add(metodoPagamento);
 		
 		JLabel lblSubT = new JLabel("Sub-Total");
-		lblSubT.setBounds(167, 16, 56, 24);
+		lblSubT.setBounds(145, 15, 77, 24);
 		panel_3.add(lblSubT);
 		
 		txtSubT = new JTextField();
@@ -384,7 +384,7 @@ public class viewSistema extends JFrame {
 				txtTaxa.setText(null);
 				txtValue.setText(null);
 				
-				//limpa caixas de seleÁ„o
+				//limpa caixas de seleÔøΩÔøΩo
 				chckbxAgua.setSelected(false);
 				chckbxCaf.setSelected(false);
 				chckbxCerveja.setSelected(false);
@@ -422,9 +422,9 @@ public class viewSistema extends JFrame {
 					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
 				}
 				/*
-				 * Para utilizar banco de dados, pode ser necess·rio utilizar
+				 * Para utilizar banco de dados, pode ser necessario utilizar
 				 * try - catch
-				 * Portanto, forma alternativa do bloco de cÛdigo acima
+				 * Portanto, forma alternativa do bloco de codigo acima
 				 * 
 				try {
 					itemcost[0] = Double.parseDouble(txtAgua.getText());
@@ -467,7 +467,7 @@ public class viewSistema extends JFrame {
 					else {
 						JOptionPane.showMessageDialog(null, "Lance o dinheiro suficiente", "Sistema Restaurante", JOptionPane.OK_OPTION);
 					}
-				}else if(mPagamento == "DÈbito" || mPagamento == "CrÈdito") {
+				}else if(mPagamento == "D√©bito" || mPagamento == "Cr√©dito") {
 					
 					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6]; 
 					
@@ -522,7 +522,7 @@ public class viewSistema extends JFrame {
 		txtInDinnheiro.setBounds(47, 98, 56, 15);
 		panel_3.add(txtInDinnheiro);
 		
-		JLabel lblEspcie = new JLabel("EspÈcie");
+		JLabel lblEspcie = new JLabel("Esp√©cie");
 		lblEspcie.setBounds(12, 75, 70, 15);
 		panel_3.add(lblEspcie);
 		
