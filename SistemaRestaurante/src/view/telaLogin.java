@@ -1,12 +1,13 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
+
+import control.LoginControl;
+import model.LoginModel;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,6 +21,9 @@ public class telaLogin extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtLogin;
 	private JTextField txtSenha;
+	
+	LoginModel modelLogin = new LoginModel();
+	LoginControl controlLogin = new LoginControl();
 
 	/**
 	 * Create the frame.
@@ -55,12 +59,23 @@ public class telaLogin extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(txtLogin.getText().equals("admin") && txtSenha.getText().equals("nasa12345")) {
+				String login;
+				String senha;
+				boolean autenticacao;
+				
+				login = txtLogin.getText();
+				senha = txtSenha.getText();
+				
+				modelLogin.setLogin(login);
+				modelLogin.setSenha(senha);
+				autenticacao = controlLogin.validLogin(modelLogin);
+				
+				if(autenticacao == true) {
 					viewSistema logou = new viewSistema();
 					dispose();
 					logou.setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(null, "Erro, usuário e/ou senha inválidos!");
+					JOptionPane.showMessageDialog(null, "Erro: Usuário e/ou senha inválidos!");
 				}
 			}
 		});
