@@ -61,11 +61,19 @@ public class RecuperaSenha extends JFrame {
 		JButton btnResponder = new JButton("Responder");
 		btnResponder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String senha;
-				modRestore.setResposta(txtRespostaSec.getSelectedText());
-				senha = ctrl.validResposta(modRestore);
-				JOptionPane.showMessageDialog(null, "Sua senha é " + senha);
+				modRestore.setResposta(txtRespostaSec.getText());
+				boolean validaResposta;
+				telaLogin frame = new telaLogin();
+				
+				validaResposta = ctrl.validResposta(modRestore);
+				if(validaResposta == false) {
+					JOptionPane.showMessageDialog(null, "Resposta secreta inválida");
+					dispose();
+					frame.setVisible(true); //retorna para tela de login
+				}
 				dispose();
+				/* retorna para fazer login*/
+				frame.setVisible(true);
 			}
 		});
 		btnResponder.setBounds(45, 164, 119, 25);

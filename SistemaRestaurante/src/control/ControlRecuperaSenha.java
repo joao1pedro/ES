@@ -41,7 +41,7 @@ public class ControlRecuperaSenha {
 	}
 
 
-	public String validResposta(ModelRecuperaSenha modSenha) {
+	public boolean validResposta(ModelRecuperaSenha modSenha) {
 		String senha;
 		String sql = "select * from usuarios where nickname = '" + modSenha.getUsuario() + "';";
 		
@@ -52,10 +52,17 @@ public class ControlRecuperaSenha {
 			while(rs.next()) {
 				if(rs.getString("resposta").equals(modSenha.getResposta())) {
 					senha = rs.getString("senha");
+					
+					/*
+					 * fecha conexão com o banco
+					 * 
+					*/
 					rs.close();
 				    stmt.close();
 				    con.close();
-					return senha;
+				    
+				    JOptionPane.showMessageDialog(null, "Sua senha é: " + senha);
+					return true;
 				}
 			}
 		} catch (SQLException e) {
@@ -63,6 +70,6 @@ public class ControlRecuperaSenha {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Erro " + e);
 		}
-		return "Resposta secreta incorreta!";
+		return false;
 	}
 }
