@@ -7,6 +7,7 @@ import java.sql.Connection;
 
 public class ConnectionFactory {
 
+	@SuppressWarnings("unused")
 	private String DRIVER = "org.mariadb.jdbc.Driver";
 	private String URL = "jdbc:mariadb://localhost:3306/login";
 	private String USER = "admin";

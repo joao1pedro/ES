@@ -1,9 +1,16 @@
 package model;
 
-public class LoginModel {
+public class ModelLogin {
 	String login;
 	String senha;
+	int nivelPermissao;
 	
+	public int getNivelPermissao() {
+		return nivelPermissao;
+	}
+	public void setNivelPermissao(int nivelPermissao) {
+		this.nivelPermissao = nivelPermissao;
+	}
 	public String getLogin() {
 		return login;
 	}

@@ -1,12 +1,8 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+@SuppressWarnings("serial")
 public class viewSistema extends JFrame {
 
 	private JPanel contentPane;
@@ -56,6 +53,7 @@ public class viewSistema extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public viewSistema() {
 		setPreferredSize(new Dimension(1024, 768));
 		
