@@ -2,15 +2,15 @@ package sistemaRestaurante;
 
 import java.awt.EventQueue;
 
-import view.telaLogin;
+import view.TelaLogin;
 
-public class sistemaRestaurant {
+public class SistemaRestaurante {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					telaLogin frame = new telaLogin();
+					TelaLogin frame = new TelaLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

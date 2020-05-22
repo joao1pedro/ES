@@ -19,7 +19,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 @SuppressWarnings("serial")
-public class viewSistema extends JFrame {
+public class ViewSistema extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtAgua;
@@ -49,12 +49,14 @@ public class viewSistema extends JFrame {
 	private JTextField txtValue;
 	private JTextField txtTroco;
 	private JTextField txtInDinnheiro;
+	private JTextField txtMesa;
 
 	/**
 	 * Create the frame.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public viewSistema() {
+	public ViewSistema() {
+		setTitle("Sistema de pedidos");
 		setPreferredSize(new Dimension(1024, 768));
 		
 		
@@ -321,12 +323,12 @@ public class viewSistema extends JFrame {
 		panel_2.setLayout(null);
 		
 		JLabel lblPrato = new JLabel("PRATOS PRINCIPAIS");
-		lblPrato.setBounds(81, 11, 116, 14);
+		lblPrato.setBounds(81, 11, 145, 14);
 		panel_2.add(lblPrato);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(1050, 519, 290, 162);
+		panel_3.setBounds(1050, 457, 290, 224);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -363,7 +365,7 @@ public class viewSistema extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnNewButton.setBounds(157, 125, 77, 25);
+		btnNewButton.setBounds(188, 187, 77, 25);
 		panel_3.add(btnNewButton);
 		
 		JButton btnLimpar = new JButton("Limpar");
@@ -392,7 +394,7 @@ public class viewSistema extends JFrame {
 				chckbxMaracuja.setSelected(false);
 			}
 		});
-		btnLimpar.setBounds(78, 125, 82, 25);
+		btnLimpar.setBounds(96, 187, 82, 25);
 		panel_3.add(btnLimpar);
 		
 		JButton btnTotal = new JButton("Total");
@@ -485,7 +487,7 @@ public class viewSistema extends JFrame {
 				
 			}
 		});
-		btnTotal.setBounds(12, 125, 70, 25);
+		btnTotal.setBounds(12, 187, 70, 25);
 		panel_3.add(btnTotal);
 		
 		JLabel lblTaxa = new JLabel("Taxa");
@@ -517,16 +519,25 @@ public class viewSistema extends JFrame {
 		
 		txtInDinnheiro = new JTextField("0");
 		txtInDinnheiro.setColumns(10);
-		txtInDinnheiro.setBounds(47, 98, 56, 15);
+		txtInDinnheiro.setBounds(37, 99, 56, 15);
 		panel_3.add(txtInDinnheiro);
 		
-		JLabel lblEspcie = new JLabel("Espécie");
+		JLabel lblEspcie = new JLabel("Espécie:");
 		lblEspcie.setBounds(12, 75, 70, 15);
 		panel_3.add(lblEspcie);
 		
 		JLabel lblR = new JLabel("R$");
-		lblR.setBounds(22, 98, 22, 15);
+		lblR.setBounds(12, 99, 22, 15);
 		panel_3.add(lblR);
+		
+		JLabel lblMesa = new JLabel("Mesa:");
+		lblMesa.setBounds(12, 134, 56, 15);
+		panel_3.add(lblMesa);
+		
+		txtMesa = new JTextField("0");
+		txtMesa.setColumns(10);
+		txtMesa.setBounds(12, 150, 56, 15);
+		panel_3.add(txtMesa);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));

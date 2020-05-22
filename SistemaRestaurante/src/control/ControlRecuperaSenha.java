@@ -34,7 +34,6 @@ public class ControlRecuperaSenha {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Usuário não encontrado!" + e);
 			
 		}
 		return null;
@@ -68,7 +67,6 @@ public class ControlRecuperaSenha {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro " + e);
 		}
 		return false;
 	}

@@ -26,6 +26,7 @@ public class RecuperaSenha extends JFrame {
 	ControlRecuperaSenha ctrl = new ControlRecuperaSenha();
 	
 	JLabel lblPergunta = new JLabel("");
+	TelaLogin frame = new TelaLogin();
 
 	/**
 	 * Create the frame.
@@ -46,7 +47,7 @@ public class RecuperaSenha extends JFrame {
 		
 		JLabel lblRecuperarSenha = new JLabel("Recuperar Senha");
 		lblRecuperarSenha.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblRecuperarSenha.setBounds(256, 12, 152, 18);
+		lblRecuperarSenha.setBounds(243, 12, 152, 18);
 		panel.add(lblRecuperarSenha);
 		
 		JLabel lblRespondaAPergunta = new JLabel("Responda a pergunta secreta");
@@ -63,7 +64,6 @@ public class RecuperaSenha extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				modRestore.setResposta(txtRespostaSec.getText());
 				boolean validaResposta;
-				telaLogin frame = new telaLogin();
 				
 				validaResposta = ctrl.validResposta(modRestore);
 				if(validaResposta == false) {
@@ -86,6 +86,13 @@ public class RecuperaSenha extends JFrame {
 	public void recuperaLogin(String username) {
 		modRestore.setUsuario(username);
 		String pergunta = ctrl.returnPergunta(modRestore);
-		lblPergunta.setText(pergunta);
+		if(pergunta!=null) {
+			lblPergunta.setText(pergunta);
+		}
+		else {
+			dispose();
+			JOptionPane.showMessageDialog(null, "Usuário inválido!");
+			frame.setVisible(true); //retorna para a tela de login
+		}
 	}
 }

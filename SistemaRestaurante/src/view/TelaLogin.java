@@ -14,12 +14,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
-public class telaLogin extends JFrame {
+public class TelaLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtLogin;
@@ -31,7 +32,8 @@ public class telaLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public telaLogin() {
+	public TelaLogin() {
+		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 391, 276);
 		contentPane = new JPanel();
@@ -74,7 +76,7 @@ public class telaLogin extends JFrame {
 				autenticacao = controlLogin.validLogin(modelLogin);
 				
 				if(autenticacao == false) {
-					viewSistema logou = new viewSistema();
+					ViewSistema logou = new ViewSistema();
 					dispose();
 					logou.setVisible(true);
 				}else {
@@ -85,8 +87,9 @@ public class telaLogin extends JFrame {
 		btnEntrar.setBounds(60, 100, 86, 25);
 		contentPane.add(btnEntrar);
 		
-		JLabel lblEsqueciSenha = new JLabel("Esqueci minha senha!");
-		lblEsqueciSenha.addMouseListener(new MouseAdapter() {
+		JLabel lblClickAqui = new JLabel("CLIQUE AQUI!");
+		lblClickAqui.setForeground(Color.red);
+		lblClickAqui.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				RecuperaSenha recSenha = new RecuperaSenha();
@@ -95,7 +98,11 @@ public class telaLogin extends JFrame {
 				recSenha.recuperaLogin(txtLogin.getText());
 			}
 		});
-		lblEsqueciSenha.setBounds(60, 203, 162, 15);
-		contentPane.add(lblEsqueciSenha);
+		lblClickAqui.setBounds(189, 205, 101, 15);
+		contentPane.add(lblClickAqui);
+		
+		JLabel lblRecuperarSenha = new JLabel("Recuperar senha ");
+		lblRecuperarSenha.setBounds(57, 205, 133, 15);
+		contentPane.add(lblRecuperarSenha);
 	}
 }
