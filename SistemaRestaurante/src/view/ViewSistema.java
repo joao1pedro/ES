@@ -17,6 +17,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public class ViewSistema extends JFrame {
@@ -61,7 +65,43 @@ public class ViewSistema extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1366, 768);
+		setBounds(100, 100, 1024, 768);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnCadastro = new JMenu("Cadastro");
+		menuBar.add(mnCadastro);
+		
+		JMenu mnFuncionrios = new JMenu("Funcionários");
+		mnFuncionrios.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				RegisterUser frame = new RegisterUser();
+				frame.setVisible(true);
+			}
+		});
+		mnCadastro.add(mnFuncionrios);
+		
+		JMenu mnProdutos = new JMenu("Produtos");
+		mnCadastro.add(mnProdutos);
+		
+		JMenu mnClientes = new JMenu("Clientes");
+		mnCadastro.add(mnClientes);
+		
+		JMenu mnAjuda = new JMenu("Ajuda");
+		menuBar.add(mnAjuda);
+		
+		JMenu mnSobre = new JMenu("Sobre");
+		mnSobre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Sobre frame = new Sobre();
+				frame.setVisible(true);
+			}
+		});
+		mnAjuda.add(mnSobre);
 		contentPane = new JPanel();
 		contentPane.setSize(new Dimension(1024, 768));
 		contentPane.setPreferredSize(new Dimension(1024, 768));
