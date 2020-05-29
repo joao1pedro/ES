@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 
@@ -21,7 +22,7 @@ public class RegisterUser extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNome;
 	private JTextField txtUsername;
-	private JTextField txtPassword;
+	private JPasswordField txtPassword;
 	private JTextField txtPergunta;
 	private JTextField txtResposta;
 	
@@ -78,7 +79,7 @@ public class RegisterUser extends JFrame {
 		txtUsername.setBounds(29, 116, 242, 15);
 		panel.add(txtUsername);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setColumns(10);
 		txtPassword.setBounds(29, 154, 242, 15);
 		panel.add(txtPassword);
@@ -105,7 +106,7 @@ public class RegisterUser extends JFrame {
 				
 				nome = txtNome.getText();
 				username = txtUsername.getText();
-				password = txtPassword.getText();
+				password = new String (txtPassword.getPassword());
 				pergunta = txtPergunta.getText();
 				resposta = txtResposta.getText();
 				
