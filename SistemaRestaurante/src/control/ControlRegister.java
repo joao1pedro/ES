@@ -14,16 +14,15 @@ public class ControlRegister {
 	ResultSet rs = null;
 	
 	public boolean validaRegistro(ModelRegister modelRegister){
-		if(modelRegister.getNome()!=null && 
-				modelRegister.getUsername() !=null && modelRegister.getPassword()!=null &&
-				modelRegister.getPergunta()!=null && modelRegister.getResposta()!= null &&
-				modelRegister.getNome()!="" && modelRegister.getUsername() !="" &&
-				modelRegister.getPassword()!="" && modelRegister.getPergunta()!="" &&
-			modelRegister.getResposta()!= null){
-			String sql = "insert into usuarios (nome_login, nickname, senha, pergunta, resposta, nivelpermissao) values ('"+
-				modelRegister.getNome() + "','" + modelRegister.getUsername() + "','" + modelRegister.getPassword() + 
-				"','" + modelRegister.getPergunta() +"','" + modelRegister.getResposta()+"','0');";
+		if(modelRegister.getNome().isEmpty() || modelRegister.getUsername().isEmpty() ||
+				modelRegister.getPassword().isEmpty() || modelRegister.getPergunta().isEmpty() ||
+				modelRegister.getResposta().isEmpty()){
+			return false;
 			
+		}else {
+			String sql = "insert into usuarios (nome_login, nickname, senha, pergunta, resposta, nivelpermissao) values ('"+
+					modelRegister.getNome() + "','" + modelRegister.getUsername() + "','" + modelRegister.getPassword() + 
+					"','" + modelRegister.getPergunta() +"','" + modelRegister.getResposta()+"','0');";
 			try {
 				stmt = con.prepareStatement(sql);
 				rs = stmt.executeQuery();
@@ -35,8 +34,6 @@ public class ControlRegister {
 				ConnectionFactory.closeConnection(con, stmt, rs);
 			}
 			return true;
-		}else {
-			return false;
 		}
 	}
 }

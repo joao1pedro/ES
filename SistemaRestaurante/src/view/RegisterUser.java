@@ -127,5 +127,18 @@ public class RegisterUser extends JFrame {
 		});
 		btnCadastrar.setBounds(27, 252, 117, 25);
 		panel.add(btnCadastrar);
+		
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtNome.setText(null);
+				txtUsername.setText(null);
+				//new String (txtPassword.getPassword());
+				txtPergunta.setText(null);
+				txtResposta.setText(null);
+			}
+		});
+		btnLimpar.setBounds(156, 252, 117, 25);
+		panel.add(btnLimpar);
 	}
 }
