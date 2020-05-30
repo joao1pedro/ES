@@ -10,6 +10,7 @@ import model.ModelLogin;
 
 public class ControlLogin {
 	//conectando
+	
 	Connection con = new ConnectionFactory().getConnection();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -26,9 +27,6 @@ public class ControlLogin {
 				while (rs.next()) {
 					if((rs.getString("nickname")==modelLogin.getLogin()) && 
 							(rs.getString("senha") == modelLogin.getSenha())) {
-						rs.close();
-					    stmt.close();
-					    con.close();
 						return true;
 					}
 					else {
@@ -38,6 +36,8 @@ public class ControlLogin {
 			} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}finally{
+					ConnectionFactory.closeConnection(con, stmt, rs);
 				}
 		}
 		return true;

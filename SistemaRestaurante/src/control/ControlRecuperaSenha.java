@@ -51,14 +51,6 @@ public class ControlRecuperaSenha {
 			while(rs.next()) {
 				if(rs.getString("resposta").equals(modSenha.getResposta())) {
 					senha = rs.getString("senha");
-					
-					/*
-					 * fecha conexão com o banco
-					 * 
-					*/
-					rs.close();
-				    stmt.close();
-				    con.close();
 				    
 				    JOptionPane.showMessageDialog(null, "Sua senha é: " + senha);
 					return true;
@@ -67,6 +59,8 @@ public class ControlRecuperaSenha {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			ConnectionFactory.closeConnection(con, stmt, rs);
 		}
 		return false;
 	}

@@ -1,6 +1,8 @@
 package connection;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
 
@@ -8,10 +10,10 @@ import java.sql.Connection;
 public class ConnectionFactory {
 
 	@SuppressWarnings("unused")
-	private String DRIVER = "org.mariadb.jdbc.Driver";
-	private String URL = "jdbc:mariadb://localhost:3306/login";
-	private String USER = "admin";
-	private String PASSWORD = "";
+	private static final String DRIVER = "org.mariadb.jdbc.Driver";
+	private static final String URL = "jdbc:mariadb://localhost:3306/login";
+	private static final String USER = "admin";
+	private static final String PASSWORD = "";
 	
 	public Connection getConnection() {
         try {
@@ -21,9 +23,27 @@ public class ConnectionFactory {
         }
     }
 	
-	public void closeConnection(Connection con) {
+	public static void closeConnection(Connection con) {
 		try {
 			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void closeConnection(Connection con, PreparedStatement stmt) {
+		try {
+			closeConnection(con);
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) {
+		try {
+			closeConnection(con, stmt);
+			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

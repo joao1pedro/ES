@@ -121,7 +121,7 @@ public class RegisterUser extends JFrame {
 				if(cadastra == true) {
 					JOptionPane.showMessageDialog(null, "Novo usuário cadastrado com sucesso!");
 				}else {
-					JOptionPane.showMessageDialog(null, "Falha ao adicionar novo usuários!");
+					JOptionPane.showMessageDialog(null, "Falha ao adicionar novo usuário!");
 				}
 			}
 		});
