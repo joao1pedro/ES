@@ -1,6 +1,6 @@
 package model;
 
-public class ModelRegister {
+public class ModelGerenciaFunc {
 	int id;
 	int permissao;
 	String nome;

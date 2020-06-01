@@ -78,7 +78,7 @@ public class ViewSistema extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				RegisterUser frame = new RegisterUser();
+				GerenciaFunc frame = new GerenciaFunc();
 				frame.setVisible(true);
 			}
 		});
