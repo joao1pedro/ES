@@ -38,7 +38,9 @@ public class GerenciaFunc extends JFrame {
 	ModelGerenciaFunc model = new ModelGerenciaFunc();
 	ControlGerenciaFunc control = new ControlGerenciaFunc();
 	private JTextField txtRmUser;
-	public JTable tableDados;
+	private JTable tableDados;
+	
+	private boolean swt;
 
 	/**
 	 * Create the frame.
@@ -81,62 +83,37 @@ public class GerenciaFunc extends JFrame {
 		panel.add(lblRespostaSecreta);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(29, 74, 242, 15);
+		txtNome.setBounds(29, 74, 287, 15);
 		panel.add(txtNome);
 		txtNome.setColumns(10);
 		
 		txtUsername = new JTextField();
 		txtUsername.setColumns(10);
-		txtUsername.setBounds(29, 116, 242, 15);
+		txtUsername.setBounds(29, 116, 287, 15);
 		panel.add(txtUsername);
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setColumns(10);
-		txtPassword.setBounds(29, 154, 242, 15);
+		txtPassword.setBounds(29, 154, 287, 15);
 		panel.add(txtPassword);
 		
 		txtPergunta = new JTextField();
 		txtPergunta.setColumns(10);
-		txtPergunta.setBounds(29, 187, 242, 15);
+		txtPergunta.setBounds(29, 187, 287, 15);
 		panel.add(txtPergunta);
 		
 		txtResposta = new JTextField();
 		txtResposta.setColumns(10);
-		txtResposta.setBounds(29, 225, 242, 15);
+		txtResposta.setBounds(29, 225, 287, 15);
 		panel.add(txtResposta);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String nome;
-				String username;
-				String password;
-				String pergunta;
-				String resposta;
-				boolean cadastra;
-				
-				nome = txtNome.getText();
-				username = txtUsername.getText();
-				password = new String (txtPassword.getPassword());
-				pergunta = txtPergunta.getText();
-				resposta = txtResposta.getText();
-				
-				model.setNome(nome);
-				model.setUsername(username);
-				model.setPassword(password);
-				model.setPergunta(pergunta);
-				model.setResposta(resposta);
-				
-				cadastra = control.validaRegistro(model);
-				
-				if(cadastra == true) {
-					JOptionPane.showMessageDialog(null, "Novo usuário cadastrado com sucesso!");
-				}else {
-					JOptionPane.showMessageDialog(null, "Falha ao adicionar novo usuário!");
-				}
+				swt = true;
 			}
 		});
-		btnCadastrar.setBounds(27, 252, 117, 25);
+		btnCadastrar.setBounds(29, 252, 105, 25);
 		panel.add(btnCadastrar);
 		
 		JButton btnLimpar = new JButton("Limpar");
@@ -149,15 +126,15 @@ public class GerenciaFunc extends JFrame {
 				txtResposta.setText(null);
 			}
 		});
-		btnLimpar.setBounds(156, 252, 117, 25);
+		btnLimpar.setBounds(234, 252, 82, 25);
 		panel.add(btnLimpar);
 		
 		JLabel lblRemoverUsurio = new JLabel("Remover usuário:");
-		lblRemoverUsurio.setBounds(27, 338, 131, 15);
+		lblRemoverUsurio.setBounds(29, 377, 131, 15);
 		panel.add(lblRemoverUsurio);
 		
 		txtRmUser = new JTextField();
-		txtRmUser.setBounds(29, 365, 242, 19);
+		txtRmUser.setBounds(31, 404, 287, 19);
 		panel.add(txtRmUser);
 		txtRmUser.setColumns(10);
 		
@@ -184,11 +161,11 @@ public class GerenciaFunc extends JFrame {
 				}	
 			}
 		});
-		btnRemover.setBounds(29, 398, 117, 25);
+		btnRemover.setBounds(31, 435, 117, 25);
 		panel.add(btnRemover);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(372, 66, 362, 357);
+		scrollPane.setBounds(372, 66, 390, 357);
 		panel.add(scrollPane);
 		
 		tableDados = new JTable();
@@ -241,5 +218,81 @@ public class GerenciaFunc extends JFrame {
 		});
 		btnListarDados.setBounds(372, 435, 147, 25);
 		panel.add(btnListarDados);
+		
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				swt = false;
+			}
+		});
+		btnEditar.setBounds(146, 252, 76, 25);
+		panel.add(btnEditar);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String nome;
+				String username;
+				String password;
+				String pergunta;
+				String resposta;
+				boolean cadastra;
+				boolean validaUpdate;
+				boolean verifica;
+				
+				/*modo de cadastro*/
+				if(swt == true) {
+					nome = txtNome.getText();
+					username = txtUsername.getText();
+					password = new String (txtPassword.getPassword());
+					pergunta = txtPergunta.getText();
+					resposta = txtResposta.getText();
+					
+					model.setNome(nome);
+					model.setUsername(username);
+					model.setPassword(password);
+					model.setPergunta(pergunta);
+					model.setResposta(resposta);
+					
+					cadastra = control.validaRegistro(model);
+					
+					if(cadastra == true) {
+						JOptionPane.showMessageDialog(null, "Novo usuário cadastrado com sucesso!");
+					}else {
+						JOptionPane.showMessageDialog(null, "Falha ao adicionar novo usuário!");
+					}
+				}else {
+					/*
+					 * modo editar**/
+					nome = txtNome.getText();
+					username = txtUsername.getText();
+					password = new String (txtPassword.getPassword());
+					pergunta = txtPergunta.getText();
+					resposta = txtResposta.getText();
+					
+					model.setNome(nome);
+					model.setUsername(username);
+					model.setPassword(password);
+					model.setPergunta(pergunta);
+					model.setResposta(resposta);
+					
+					verifica = control.verificaUsuario(model);
+					
+					if(verifica == true) {
+						validaUpdate = control.editarFunc(model);
+						model.getNome();
+						if(validaUpdate == true) {
+							JOptionPane.showMessageDialog(null, "Usuário " + username + " atualizado com sucesso!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Falha ao atualizar dados de usuário!");
+						}
+					}
+				}
+				
+				
+			}
+		});
+		btnSalvar.setBounds(29, 289, 82, 25);
+		panel.add(btnSalvar);
 	}
 }
