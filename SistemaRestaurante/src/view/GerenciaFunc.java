@@ -107,10 +107,21 @@ public class GerenciaFunc extends JFrame {
 		txtResposta.setBounds(29, 225, 287, 15);
 		panel.add(txtResposta);
 		
+		txtNome.setEnabled(false);
+		txtPassword.setEnabled(false);
+		txtPergunta.setEnabled(false);
+		txtResposta.setEnabled(false);
+		txtUsername.setEnabled(false);
+		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				swt = true;
+				txtNome.setEnabled(true);
+				txtPassword.setEnabled(true);
+				txtPergunta.setEnabled(true);
+				txtResposta.setEnabled(true);
+				txtUsername.setEnabled(true);
 			}
 		});
 		btnCadastrar.setBounds(29, 252, 105, 25);
@@ -124,6 +135,12 @@ public class GerenciaFunc extends JFrame {
 				//new String (txtPassword.getPassword());
 				txtPergunta.setText(null);
 				txtResposta.setText(null);
+				
+				txtNome.setEnabled(false);
+				txtPassword.setEnabled(false);
+				txtPergunta.setEnabled(false);
+				txtResposta.setEnabled(false);
+				txtUsername.setEnabled(false);
 			}
 		});
 		btnLimpar.setBounds(234, 252, 82, 25);
@@ -223,6 +240,11 @@ public class GerenciaFunc extends JFrame {
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				swt = false;
+				txtNome.setEnabled(true);
+				txtPassword.setEnabled(true);
+				txtPergunta.setEnabled(true);
+				txtResposta.setEnabled(true);
+				txtUsername.setEnabled(true);
 			}
 		});
 		btnEditar.setBounds(146, 252, 76, 25);
@@ -240,19 +262,20 @@ public class GerenciaFunc extends JFrame {
 				boolean validaUpdate;
 				boolean verifica;
 				
+				nome = txtNome.getText();
+				username = txtUsername.getText();
+				password = new String (txtPassword.getPassword());
+				pergunta = txtPergunta.getText();
+				resposta = txtResposta.getText();
+				
+				model.setNome(nome);
+				model.setUsername(username);
+				model.setPassword(password);
+				model.setPergunta(pergunta);
+				model.setResposta(resposta);
+				
 				/*modo de cadastro*/
 				if(swt == true) {
-					nome = txtNome.getText();
-					username = txtUsername.getText();
-					password = new String (txtPassword.getPassword());
-					pergunta = txtPergunta.getText();
-					resposta = txtResposta.getText();
-					
-					model.setNome(nome);
-					model.setUsername(username);
-					model.setPassword(password);
-					model.setPergunta(pergunta);
-					model.setResposta(resposta);
 					
 					cadastra = control.validaRegistro(model);
 					
@@ -264,17 +287,8 @@ public class GerenciaFunc extends JFrame {
 				}else {
 					/*
 					 * modo editar**/
-					nome = txtNome.getText();
-					username = txtUsername.getText();
-					password = new String (txtPassword.getPassword());
-					pergunta = txtPergunta.getText();
-					resposta = txtResposta.getText();
 					
-					model.setNome(nome);
-					model.setUsername(username);
-					model.setPassword(password);
-					model.setPergunta(pergunta);
-					model.setResposta(resposta);
+					
 					
 					verifica = control.verificaUsuario(model);
 					
