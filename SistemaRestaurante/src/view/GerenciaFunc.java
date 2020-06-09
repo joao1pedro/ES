@@ -37,7 +37,6 @@ public class GerenciaFunc extends JFrame {
 	
 	ModelGerenciaFunc model = new ModelGerenciaFunc();
 	ControlGerenciaFunc control = new ControlGerenciaFunc();
-	private JTextField txtRmUser;
 	private JTable tableDados;
 	
 	private boolean swt;
@@ -146,39 +145,34 @@ public class GerenciaFunc extends JFrame {
 		btnLimpar.setBounds(234, 252, 82, 25);
 		panel.add(btnLimpar);
 		
-		JLabel lblRemoverUsurio = new JLabel("Remover usuário:");
-		lblRemoverUsurio.setBounds(29, 377, 131, 15);
-		panel.add(lblRemoverUsurio);
-		
-		txtRmUser = new JTextField();
-		txtRmUser.setBounds(31, 404, 287, 19);
-		panel.add(txtRmUser);
-		txtRmUser.setColumns(10);
-		
 		JButton btnRemover = new JButton("Remover");
 		btnRemover.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String username;
-				boolean validaRemove;
-				boolean verifica;
+			public void actionPerformed(ActionEvent arg0){
+				Connection con = new ConnectionFactory().getConnection();
+				PreparedStatement stmt = null;
+				ResultSet rs = null;
 				
-				username = txtRmUser.getText();
-				model.setUsername(username);
+				DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();
 				
-				verifica = control.verificaUsuario(model);
-				
-				if(verifica == true) {
-					validaRemove = control.removeFunc(model);
-					model.getNome();
-					if(validaRemove == true) {
-						JOptionPane.showMessageDialog(null, "Usuário " + username + " removido com sucesso!");
-					} else {
-						JOptionPane.showMessageDialog(null, "Falha ao remover usuário!");
-					}
-				}	
+				int row = tableDados.getSelectedRow();
+				String selected = modelo.getValueAt(row, 2).toString();
+
+		        String sql = "delete from usuarios where nickname = '"+ selected + "';";
+		        
+		        try {
+					stmt = con.prepareStatement(sql);
+					rs = stmt.executeQuery();
+					JOptionPane.showMessageDialog(null, "Usuário " + selected + " removido com sucesso!");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					ConnectionFactory.closeConnection(con, stmt, rs);
+				}
+		        updateTable();
 			}
 		});
-		btnRemover.setBounds(31, 435, 117, 25);
+		btnRemover.setBounds(532, 435, 117, 25);
 		panel.add(btnRemover);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -206,31 +200,7 @@ public class GerenciaFunc extends JFrame {
 		JButton btnListarDados = new JButton("Listar Dados");
 		btnListarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Connection con = new ConnectionFactory().getConnection();
-				ResultSet rs = null;
-				PreparedStatement stmt = null;
-			    String sql = "select * from usuarios;";
-			    try{
-			        stmt = con.prepareStatement(sql);
-			        rs = stmt.executeQuery();
-				        
-			        DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();
-			        modelo.setNumRows(0);
-			        
-			        while(rs.next()) {
-			        	modelo.addRow(new Object[] {
-			        			rs.getInt("id_login"),
-			        			rs.getString("nome_login"),
-			        			rs.getString("nickname"),
-			        			rs.getInt("nivelpermissao")
-			        	});
-			        }
-			    } catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} finally {
-					ConnectionFactory.closeConnection(con, stmt, rs);
-				}
+				updateTable();
 			}
 		});
 		btnListarDados.setBounds(372, 435, 147, 25);
@@ -288,8 +258,6 @@ public class GerenciaFunc extends JFrame {
 					/*
 					 * modo editar**/
 					
-					
-					
 					verifica = control.verificaUsuario(model);
 					
 					if(verifica == true) {
@@ -302,11 +270,38 @@ public class GerenciaFunc extends JFrame {
 						}
 					}
 				}
-				
+				updateTable();
 				
 			}
 		});
 		btnSalvar.setBounds(29, 289, 82, 25);
 		panel.add(btnSalvar);
+	}
+	public void updateTable() {
+		Connection con = new ConnectionFactory().getConnection();
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
+	    String sql = "select * from usuarios;";
+	    try{
+	        stmt = con.prepareStatement(sql);
+	        rs = stmt.executeQuery();
+		        
+	        DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();
+	        modelo.setNumRows(0);
+	        
+	        while(rs.next()) {
+	        	modelo.addRow(new Object[] {
+	        			rs.getInt("id_login"),
+	        			rs.getString("nome_login"),
+	        			rs.getString("nickname"),
+	        			rs.getInt("nivelpermissao")
+	        	});
+	        }
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
 	}
 }
