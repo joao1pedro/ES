@@ -95,6 +95,7 @@ public class ViewSistema extends JFrame {
 				dispose();
 				GerenciaFunc frame = new GerenciaFunc();
 				frame.setVisible(true);
+				frame.updateTable();
 			}
 		});
 		mnCadastro.add(mnFuncionrios);
