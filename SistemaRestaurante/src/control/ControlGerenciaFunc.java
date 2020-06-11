@@ -118,4 +118,26 @@ public class ControlGerenciaFunc {
 		}
 		return false;
 	}
+	public boolean verificaPermissao(String usuario){
+		Connection con = new ConnectionFactory().getConnection();
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
+	    String sql = "select * from usuarios where nickname = '"+ usuario +"';";
+	    try{
+	        stmt = con.prepareStatement(sql);
+	        rs = stmt.executeQuery();
+	        
+	        while(rs.next()) {
+	        	if(rs.getInt("nivelpermissao") == 1){
+		        	return true;
+		        }
+	        }
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+		return false;
+	}
 }

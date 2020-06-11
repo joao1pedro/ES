@@ -25,6 +25,7 @@ public class TelaLogin extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtLogin;
 	private JTextField txtSenha;
+	static protected String login;
 	
 	ModelLogin modelLogin = new ModelLogin();
 	ControlLogin controlLogin = new ControlLogin();
@@ -64,7 +65,7 @@ public class TelaLogin extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String login;
+				
 				String senha;
 				boolean autenticacao;
 				

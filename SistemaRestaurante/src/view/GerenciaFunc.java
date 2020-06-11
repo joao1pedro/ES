@@ -35,6 +35,13 @@ public class GerenciaFunc extends JFrame {
 	private JTextField txtPergunta;
 	private JTextField txtResposta;
 	
+	private JButton btnCadastrar = new JButton("Cadastrar");
+	private JButton btnLimpar = new JButton("Limpar");
+	private JButton btnRemover = new JButton("Remover");
+	private JButton btnEditar = new JButton("Editar");
+	private JButton btnSalvar = new JButton("Salvar");
+	private JButton btnListarDados = new JButton("Listar Dados");
+	
 	ModelGerenciaFunc model = new ModelGerenciaFunc();
 	ControlGerenciaFunc control = new ControlGerenciaFunc();
 	private JTable tableDados;
@@ -112,7 +119,7 @@ public class GerenciaFunc extends JFrame {
 		txtResposta.setEnabled(false);
 		txtUsername.setEnabled(false);
 		
-		JButton btnCadastrar = new JButton("Cadastrar");
+		
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				swt = true;
@@ -121,31 +128,23 @@ public class GerenciaFunc extends JFrame {
 				txtPergunta.setEnabled(true);
 				txtResposta.setEnabled(true);
 				txtUsername.setEnabled(true);
+				
+				btnEditar.setEnabled(false);
 			}
 		});
 		btnCadastrar.setBounds(29, 252, 105, 25);
 		panel.add(btnCadastrar);
 		
-		JButton btnLimpar = new JButton("Limpar");
+		
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				txtNome.setText(null);
-				txtUsername.setText(null);
-				//new String (txtPassword.getPassword());
-				txtPergunta.setText(null);
-				txtResposta.setText(null);
-				
-				txtNome.setEnabled(false);
-				txtPassword.setEnabled(false);
-				txtPergunta.setEnabled(false);
-				txtResposta.setEnabled(false);
-				txtUsername.setEnabled(false);
+				limpar();
 			}
 		});
-		btnLimpar.setBounds(234, 252, 82, 25);
+		btnLimpar.setBounds(146, 289, 82, 25);
 		panel.add(btnLimpar);
 		
-		JButton btnRemover = new JButton("Remover");
+		
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0){
 				Connection con = new ConnectionFactory().getConnection();
@@ -197,7 +196,6 @@ public class GerenciaFunc extends JFrame {
 		});
 		scrollPane.setViewportView(tableDados);
 		
-		JButton btnListarDados = new JButton("Listar Dados");
 		btnListarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				updateTable();
@@ -206,7 +204,7 @@ public class GerenciaFunc extends JFrame {
 		btnListarDados.setBounds(372, 435, 147, 25);
 		panel.add(btnListarDados);
 		
-		JButton btnEditar = new JButton("Editar");
+		
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				swt = false;
@@ -215,12 +213,14 @@ public class GerenciaFunc extends JFrame {
 				txtPergunta.setEnabled(true);
 				txtResposta.setEnabled(true);
 				txtUsername.setEnabled(true);
+				
+				btnCadastrar.setEnabled(false);
 			}
 		});
-		btnEditar.setBounds(146, 252, 76, 25);
+		btnEditar.setBounds(146, 252, 82, 25);
 		panel.add(btnEditar);
 		
-		JButton btnSalvar = new JButton("Salvar");
+		
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nome;
@@ -233,20 +233,23 @@ public class GerenciaFunc extends JFrame {
 				boolean verifica;
 				
 				nome = txtNome.getText();
-				username = txtUsername.getText();
 				password = new String (txtPassword.getPassword());
 				pergunta = txtPergunta.getText();
 				resposta = txtResposta.getText();
 				
 				model.setNome(nome);
-				model.setUsername(username);
 				model.setPassword(password);
 				model.setPergunta(pergunta);
 				model.setResposta(resposta);
 				
+				DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();
+				
+				int row = tableDados.getSelectedRow();
+				
 				/*modo de cadastro*/
 				if(swt == true) {
-					
+					username = txtUsername.getText();
+					model.setUsername(username);
 					cadastra = control.validaRegistro(model);
 					
 					if(cadastra == true) {
@@ -257,7 +260,8 @@ public class GerenciaFunc extends JFrame {
 				}else {
 					/*
 					 * modo editar**/
-					
+					username = modelo.getValueAt(row, 2).toString();
+					model.setUsername(username);
 					verifica = control.verificaUsuario(model);
 					
 					if(verifica == true) {
@@ -271,10 +275,11 @@ public class GerenciaFunc extends JFrame {
 					}
 				}
 				updateTable();
+				limpar();
 				
 			}
 		});
-		btnSalvar.setBounds(29, 289, 82, 25);
+		btnSalvar.setBounds(29, 289, 105, 25);
 		panel.add(btnSalvar);
 	}
 	public void updateTable() {
@@ -303,5 +308,21 @@ public class GerenciaFunc extends JFrame {
 		} finally {
 			ConnectionFactory.closeConnection(con, stmt, rs);
 		}
+	}
+	public void limpar() {
+		txtNome.setText(null);
+		txtUsername.setText(null);
+		//new String (txtPassword.getPassword());
+		txtPergunta.setText(null);
+		txtResposta.setText(null);
+		
+		txtNome.setEnabled(false);
+		txtPassword.setEnabled(false);
+		txtPergunta.setEnabled(false);
+		txtResposta.setEnabled(false);
+		txtUsername.setEnabled(false);
+		
+		btnCadastrar.setEnabled(true);
+		btnEditar.setEnabled(true);
 	}
 }

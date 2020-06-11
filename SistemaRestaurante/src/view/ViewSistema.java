@@ -4,6 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import control.ControlGerenciaFunc;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
@@ -70,6 +73,7 @@ public class ViewSistema extends JFrame {
 	private JTextField txtInDinnheiro;
 	private JTextField txtMesa;
 
+	ControlGerenciaFunc control = new ControlGerenciaFunc();
 	/**
 	 * Create the frame.
 	 */
@@ -92,10 +96,17 @@ public class ViewSistema extends JFrame {
 		mnFuncionrios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
-				GerenciaFunc frame = new GerenciaFunc();
-				frame.setVisible(true);
-				frame.updateTable();
+				boolean permissao;
+				permissao = control.verificaPermissao(TelaLogin.login);
+				
+				if(permissao == true) {
+					dispose();
+					GerenciaFunc frame = new GerenciaFunc();
+					frame.setVisible(true);
+					frame.updateTable();
+				}else {
+					JOptionPane.showMessageDialog(null, "Usuário não possui nivel de permissão adequado.");
+				}
 			}
 		});
 		mnCadastro.add(mnFuncionrios);
