@@ -24,6 +24,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class ViewSistema extends JFrame {
@@ -66,25 +70,28 @@ public class ViewSistema extends JFrame {
 	
 	double taxa, valueTotal, subTotal, diferenca, custo, rateTaxa = 12;
 	
-	double itemcost[] = new double [8];
+	double itemcost[] = new double [20];
 	private JTextField txtTaxa;
 	private JTextField txtValue;
 	private JTextField txtTroco;
 	private JTextField txtInDinnheiro;
 	private JTextField txtMesa;
-
+	
 	ControlGerenciaFunc control = new ControlGerenciaFunc();
+	
+	private JTextArea jtxtRecibo = new JTextArea();
+
 	/**
 	 * Create the frame.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ViewSistema() {
 		setTitle("Sistema de pedidos");
-		setPreferredSize(new Dimension(1024, 768));
+		setPreferredSize(new Dimension(800, 600));
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1024, 768);
+		setBounds(100, 100, 1366, 768);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -96,9 +103,10 @@ public class ViewSistema extends JFrame {
 		mnFuncionrios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				boolean permissao;
 				permissao = control.verificaPermissao(TelaLogin.login);
-				
+
 				if(permissao == true) {
 					dispose();
 					GerenciaFunc frame = new GerenciaFunc();
@@ -445,7 +453,7 @@ public class ViewSistema extends JFrame {
 		panel_2.add(chckbxHamburger);
 		
 		
-		JCheckBox chckbxAneisdecebola = new JCheckBox("Aneisdecebola");
+		JCheckBox chckbxAneisdecebola = new JCheckBox("Anéis de cebola");
 		chckbxAneisdecebola.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxAneisdecebola.isSelected()) {
@@ -462,7 +470,7 @@ public class ViewSistema extends JFrame {
 		panel_2.add(chckbxAneisdecebola);
 		
 		
-		JCheckBox chckbxSaladadefrango = new JCheckBox("Saladadefrango");
+		JCheckBox chckbxSaladadefrango = new JCheckBox("Salada de frango");
 		chckbxSaladadefrango.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxSaladadefrango.isSelected()) {
@@ -479,12 +487,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(chckbxSaladadefrango);
 		
 		
-		JLabel lblSanduiche = new JLabel("Sanduiche");
-		lblSanduiche.setBounds(12, 196, 70, 15);
+		JLabel lblSanduiche = new JLabel("Sanduiches");
+		lblSanduiche.setBounds(12, 196, 92, 15);
 		panel_2.add(lblSanduiche);
 		
 		
-		JCheckBox chckbxSanduichedeatum = new JCheckBox("Sanduichedeatum");
+		JCheckBox chckbxSanduichedeatum = new JCheckBox("Sanduiche de atum");
 		chckbxSanduichedeatum.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxSanduichedeatum.isSelected()) {
@@ -497,10 +505,10 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedeatum.setBounds(12, 219, 107, 23);
+		chckbxSanduichedeatum.setBounds(12, 219, 155, 23);
 		panel_2.add(chckbxSanduichedeatum);
 		
-		JCheckBox chckbxSanduichedequeijo = new JCheckBox("Sanduichedequeijo");
+		JCheckBox chckbxSanduichedequeijo = new JCheckBox("Sanduiche de queijo");
 		chckbxSanduichedequeijo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxSanduichedequeijo.isSelected()) {
@@ -511,10 +519,10 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedequeijo.setBounds(12, 246, 107, 23);
+		chckbxSanduichedequeijo.setBounds(12, 246, 155, 23);
 		panel_2.add(chckbxSanduichedequeijo);
 		
-		JCheckBox chckbxSanduichedefrango = new JCheckBox("Sanduichedefrango");
+		JCheckBox chckbxSanduichedefrango = new JCheckBox("Sanduiche de frango");
 		chckbxSanduichedefrango.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxSanduichedefrango.isSelected()) {
@@ -527,7 +535,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedefrango.setBounds(12, 273, 107, 23);
+		chckbxSanduichedefrango.setBounds(12, 273, 155, 23);
 		panel_2.add(chckbxSanduichedefrango);
 		
 		
@@ -543,7 +551,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		txtFritas.setBounds(143, 39, 80, 19);
+		txtFritas.setBounds(175, 37, 80, 19);
 		panel_2.add(txtFritas);
 		txtFritas.setColumns(10);
 		
@@ -560,7 +568,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSalada.setColumns(10);
-		txtSalada.setBounds(143, 64, 80, 19);
+		txtSalada.setBounds(175, 64, 80, 19);
 		panel_2.add(txtSalada);
 		
 		txtHamburger = new JTextField();
@@ -576,7 +584,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtHamburger.setColumns(10);
-		txtHamburger.setBounds(143, 91, 80, 19);
+		txtHamburger.setBounds(175, 91, 80, 19);
 		panel_2.add(txtHamburger);
 		
 		txtAneisdecebola = new JTextField();
@@ -592,7 +600,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtAneisdecebola.setColumns(10);
-		txtAneisdecebola.setBounds(143, 118, 80, 19);
+		txtAneisdecebola.setBounds(175, 118, 80, 19);
 		panel_2.add(txtAneisdecebola);
 		
 		txtSaladadefrango = new JTextField();
@@ -608,7 +616,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSaladadefrango.setColumns(10);
-		txtSaladadefrango.setBounds(143, 143, 80, 19);
+		txtSaladadefrango.setBounds(175, 145, 80, 19);
 		panel_2.add(txtSaladadefrango);
 		
 		txtSanduichedeatum = new JTextField();
@@ -624,7 +632,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedeatum.setColumns(10);
-		txtSanduichedeatum.setBounds(143, 221, 80, 19);
+		txtSanduichedeatum.setBounds(175, 221, 80, 19);
 		panel_2.add(txtSanduichedeatum);
 		
 		txtSanduichedequeijo = new JTextField();
@@ -640,7 +648,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedequeijo.setColumns(10);
-		txtSanduichedequeijo.setBounds(143, 248, 80, 19);
+		txtSanduichedequeijo.setBounds(175, 248, 80, 19);
 		panel_2.add(txtSanduichedequeijo);
 		
 		txtSanduichedefrango = new JTextField();
@@ -656,13 +664,13 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedefrango.setColumns(10);
-		txtSanduichedefrango.setBounds(143, 275, 80, 19);
+		txtSanduichedefrango.setBounds(175, 275, 80, 19);
 		panel_2.add(txtSanduichedefrango);
 		
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(1050, 457, 290, 224);
+		panel_3.setBounds(912, 460, 290, 224);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -726,6 +734,8 @@ public class ViewSistema extends JFrame {
 				chckbxAguaCc.setSelected(false);
 				chckbxLaranja.setSelected(false);
 				chckbxMaracuja.setSelected(false);
+				
+				jtxtRecibo.setText(null);
 			}
 		});
 		btnLimpar.setBounds(96, 187, 82, 25);
@@ -755,6 +765,46 @@ public class ViewSistema extends JFrame {
 				if(!txtMaracuja.getText().isEmpty()) {
 					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
 				}
+				if(!txtFritas.getText().isEmpty()) {
+					itemcost[7] = Double.parseDouble(txtFritas.getText());
+				}
+				if(!txtSalada.getText().isEmpty()) {
+					itemcost[8] = Double.parseDouble(txtSalada.getText());
+				}
+				if(!txtHamburger.getText().isEmpty()) {
+					itemcost[9] = Double.parseDouble(txtHamburger.getText());
+				}
+				if(!txtAneisdecebola.getText().isEmpty()) {
+					itemcost[10] = Double.parseDouble(txtAneisdecebola.getText());
+				}
+				if(!txtSaladadefrango.getText().isEmpty()) {
+					itemcost[11] = Double.parseDouble(txtSaladadefrango.getText());
+				}
+				if(!txtSanduichedeatum.getText().isEmpty()) {
+					itemcost[12] = Double.parseDouble(txtSanduichedeatum.getText());
+				}
+				if(!txtSanduichedequeijo.getText().isEmpty()) {
+					itemcost[13] = Double.parseDouble(txtSanduichedequeijo.getText());
+				}
+				if(!txtSanduichedefrango.getText().isEmpty()) {
+					itemcost[14] = Double.parseDouble(txtSanduichedefrango.getText());
+				}
+				if(!txtBrownie.getText().isEmpty()) {
+					itemcost[15] = Double.parseDouble(txtBrownie.getText());
+				}
+				if(!txtTorrada.getText().isEmpty()) {
+					itemcost[16] = Double.parseDouble(txtTorrada.getText());
+				}
+				if(!txtPicole.getText().isEmpty()) {
+					itemcost[17] = Double.parseDouble(txtPicole.getText());
+				}
+				if(!txtBolinho.getText().isEmpty()) {
+					itemcost[18] = Double.parseDouble(txtBolinho.getText());
+				}
+				if(!txtPanqueca.getText().isEmpty()) {
+					itemcost[19] = Double.parseDouble(txtPanqueca.getText());
+				}
+				
 				/*
 				 * Para utilizar banco de dados, pode ser necessario utilizar
 				 * try - catch
@@ -772,13 +822,12 @@ public class ViewSistema extends JFrame {
 					System.out.println("ERRO: " + nfe.getMessage());
 				}
 				*/
-				
-				
+
 				String mPagamento = (String)metodoPagamento.getSelectedItem();
 				
 				if(mPagamento == "Dinheiro") {
 					
-					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6]; 
+					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] + itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17]; 
 					
 					diferenca = Double.parseDouble(txtInDinnheiro.getText());
 					
@@ -803,7 +852,7 @@ public class ViewSistema extends JFrame {
 					}
 				}else if(mPagamento == "Débito" || mPagamento == "Crédito") {
 					
-					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6]; 
+					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] + itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17]; 
 					
 					String quantidade = String.format("R$%.2f",subTotal);
 					txtSubT.setText(quantidade);
@@ -818,6 +867,27 @@ public class ViewSistema extends JFrame {
 					txtValue.setText(vTotal);
 				}
 				
+				Calendar timer = Calendar.getInstance();
+				timer.getTime();
+				SimpleDateFormat fTime = new SimpleDateFormat("HH:mm:ss");
+				fTime.format(timer.getTime());
+				SimpleDateFormat fDate = new SimpleDateFormat("dd-MMM-yyyy");
+				fDate.format(timer.getTime());
+				
+				jtxtRecibo.append("\tSmart Food\n"+
+						"\n====================================\n"+
+									"Pratos principais:\t\t" + "\n\n"+
+									"Bebidas:\t\t"  +"\n\n"+
+									"Sobremesa:\t\t"  +"\n\n"+
+						"====================================" + "\n\n" +
+						"Taxa: \t\t" + taxa + "\n\n" +
+						"Sub-Total: \t\t" + subTotal + "\n\n" +
+						"Total: \t\t" + valueTotal + "\n\n" +
+						"Método de pagamento: \t\t" + mPagamento + "\n\n" +
+						"====================================" + "\n\n" +
+						"\nData: " + fDate.format(timer.getTime()) + 
+						"\tHora: " + fTime.format(timer.getTime()) +
+						"\n\n\t\tObrigado !");
 				
 			}
 		});
@@ -877,13 +947,15 @@ public class ViewSistema extends JFrame {
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_4.setBounds(610, 84, 290, 600);
 		contentPane.add(panel_4);
+		panel_4.setLayout(null);
 		
 		
 		JLabel lblSobremesas = new JLabel("SOBREMESAS");
-		lblSobremesas.setBounds(149, 11, 10, 16);
+		lblSobremesas.setBounds(87, 12, 93, 15);
 		panel_4.add(lblSobremesas);
 		
 		JCheckBox chckbxBrownie = new JCheckBox("Brownie");
+		chckbxBrownie.setBounds(11, 60, 83, 23);
 		chckbxBrownie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxBrownie.isSelected()) {
@@ -896,11 +968,11 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxBrownie.setBounds(8, 35, 129, 23);
 		panel_4.add(chckbxBrownie);
 		
 		
 		JCheckBox chckbxTorrada = new JCheckBox("Torrada");
+		chckbxTorrada.setBounds(11, 33, 81, 23);
 		chckbxTorrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxTorrada.isSelected()) {
@@ -913,11 +985,11 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxTorrada.setBounds(8, 62, 129, 23);
 		panel_4.add(chckbxTorrada);
 		
 		
 		JCheckBox chckbxPicole = new JCheckBox("Picole");
+		chckbxPicole.setBounds(11, 114, 67, 23);
 		chckbxPicole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPicole.isSelected()) {
@@ -930,11 +1002,11 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxPicole.setBounds(8, 89, 129, 23);
 		panel_4.add(chckbxPicole);
 		
 		
 		JCheckBox chckbxBolinho = new JCheckBox("Bolinho");
+		chckbxBolinho.setBounds(11, 87, 78, 23);
 		chckbxBolinho.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxBolinho.isSelected()) {
@@ -947,11 +1019,11 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxBolinho.setBounds(8, 116, 129, 23);
 		panel_4.add(chckbxBolinho);
 		
 		
 		JCheckBox chckbxPanqueca = new JCheckBox("Panqueca");
+		chckbxPanqueca.setBounds(11, 141, 95, 23);
 		chckbxPanqueca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPanqueca.isSelected()) {
@@ -964,10 +1036,10 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxPanqueca.setBounds(8, 143, 129, 23);
 		panel_4.add(chckbxPanqueca);
 		
 		txtBrownie = new JTextField();
+		txtBrownie.setBounds(147, 62, 80, 19);
 		txtBrownie.setEnabled(false);
 		txtBrownie.addKeyListener(new KeyAdapter() {
 			@Override
@@ -979,27 +1051,11 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		txtBrownie.setBounds(143, 39, 80, 19);
 		panel_4.add(txtBrownie);
 		txtBrownie.setColumns(10);
 		
-		txtTorrada = new JTextField();
-		txtTorrada.setEnabled(false);
-		txtTorrada.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char iNumber = e.getKeyChar();
-				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
-						(iNumber == KeyEvent.VK_DELETE)) {
-					e.consume();
-				}
-			}
-		});
-		txtTorrada.setColumns(10);
-		txtTorrada.setBounds(143, 64, 80, 19);
-		panel_4.add(txtTorrada);
-		
 		txtPicole = new JTextField();
+		txtPicole.setBounds(147, 116, 80, 19);
 		txtPicole.setEnabled(false);
 		txtPicole.addKeyListener(new KeyAdapter() {
 			@Override
@@ -1012,10 +1068,10 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtPicole.setColumns(10);
-		txtPicole.setBounds(143, 91, 80, 19);
 		panel_4.add(txtPicole);
 		
 		txtBolinho = new JTextField();
+		txtBolinho.setBounds(147, 89, 80, 19);
 		txtBolinho.setEnabled(false);
 		txtBolinho.addKeyListener(new KeyAdapter() {
 			@Override
@@ -1028,10 +1084,10 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtBolinho.setColumns(10);
-		txtBolinho.setBounds(143, 118, 80, 19);
 		panel_4.add(txtBolinho);
 		
 		txtPanqueca = new JTextField();
+		txtPanqueca.setBounds(147, 143, 80, 19);
 		txtPanqueca.setEnabled(false);
 		txtPanqueca.addKeyListener(new KeyAdapter() {
 			@Override
@@ -1044,8 +1100,27 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtPanqueca.setColumns(10);
-		txtPanqueca.setBounds(143, 143, 80, 19);
 		panel_4.add(txtPanqueca);
+		
+		txtTorrada = new JTextField();
+		txtTorrada.setBounds(147, 35, 80, 19);
+		panel_4.add(txtTorrada);
+		txtTorrada.setEnabled(false);
+		txtTorrada.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		txtTorrada.setColumns(10);
+		
+		
+		jtxtRecibo.setBounds(912, 84, 393, 364);
+		contentPane.add(jtxtRecibo);
 		
 	}
 }
