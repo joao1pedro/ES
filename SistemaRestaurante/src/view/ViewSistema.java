@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import control.ControlGerenciaFunc;
+import control.ControlProdutos;
+import model.ModelProdutos;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class ViewSistema extends JFrame {
@@ -78,8 +81,12 @@ public class ViewSistema extends JFrame {
 	private JTextField txtMesa;
 	
 	ControlGerenciaFunc control = new ControlGerenciaFunc();
+	ModelProdutos model = new ModelProdutos();
+	ControlProdutos controlP = new ControlProdutos();
 	
 	private JTextArea jtxtRecibo = new JTextArea();
+	private int qtd = 0;
+	
 
 	/**
 	 * Create the frame.
@@ -736,6 +743,28 @@ public class ViewSistema extends JFrame {
 				chckbxMaracuja.setSelected(false);
 				
 				jtxtRecibo.setText(null);
+				
+				model.setQtd(0);
+				model.setQdtAgua(0);
+				model.setQtdCafe(0);
+				model.setQtdCerveja(0);
+				model.setQtdCoca(0);
+				model.setQtdAguacc(0);
+				model.setQtdSucoLaranja(0);
+				model.setQtdSucoMaracuja(0);
+				model.setQtdFritas(0);
+				model.setQtdSalada(0);
+				model.setQtdHamburger(0);
+				model.setQtdAneisCebola(0);
+				model.setQtdSaladaFrango(0);
+				model.setQtdSanduicheAtum(0);
+				model.setQtdSanduicheQueijo(0);
+				model.setQtdSanduicheFrango(0);
+				model.setQtdBrownie(0);
+				model.setQtdTorrada(0);
+				model.setQtdBolinho(0);
+				model.setQtdPanqueca(0);
+				model.setQtdPicole(0);
 			}
 		});
 		btnLimpar.setBounds(96, 187, 82, 25);
@@ -744,84 +773,148 @@ public class ViewSistema extends JFrame {
 		JButton btnTotal = new JButton("Total");
 		btnTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!txtAgua.getText().isEmpty()){
-					itemcost[0] = Double.parseDouble(txtAgua.getText());
-				}
-				if(!txtCafe.getText().isEmpty()){
-					itemcost[1] = Double.parseDouble(txtCafe.getText());
-				}
-				if(!txtCerveja.getText().isEmpty()) {
-					itemcost[2] = Double.parseDouble(txtCerveja.getText());
-				}
-				if(!txtCoca.getText().isEmpty()) {
-					itemcost[3] = Double.parseDouble(txtCoca.getText());
-				}
-				if(!txtAguaCc.getText().isEmpty()) {
-					itemcost[4] = Double.parseDouble(txtAguaCc.getText());
-				}
-				if(!txtLaranja.getText().isEmpty()) {
-					itemcost[5] = Double.parseDouble(txtLaranja.getText());
-				}
-				if(!txtMaracuja.getText().isEmpty()) {
-					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
-				}
-				if(!txtFritas.getText().isEmpty()) {
-					itemcost[7] = Double.parseDouble(txtFritas.getText());
-				}
-				if(!txtSalada.getText().isEmpty()) {
-					itemcost[8] = Double.parseDouble(txtSalada.getText());
-				}
-				if(!txtHamburger.getText().isEmpty()) {
-					itemcost[9] = Double.parseDouble(txtHamburger.getText());
-				}
-				if(!txtAneisdecebola.getText().isEmpty()) {
-					itemcost[10] = Double.parseDouble(txtAneisdecebola.getText());
-				}
-				if(!txtSaladadefrango.getText().isEmpty()) {
-					itemcost[11] = Double.parseDouble(txtSaladadefrango.getText());
-				}
-				if(!txtSanduichedeatum.getText().isEmpty()) {
-					itemcost[12] = Double.parseDouble(txtSanduichedeatum.getText());
-				}
-				if(!txtSanduichedequeijo.getText().isEmpty()) {
-					itemcost[13] = Double.parseDouble(txtSanduichedequeijo.getText());
-				}
-				if(!txtSanduichedefrango.getText().isEmpty()) {
-					itemcost[14] = Double.parseDouble(txtSanduichedefrango.getText());
-				}
-				if(!txtBrownie.getText().isEmpty()) {
-					itemcost[15] = Double.parseDouble(txtBrownie.getText());
-				}
-				if(!txtTorrada.getText().isEmpty()) {
-					itemcost[16] = Double.parseDouble(txtTorrada.getText());
-				}
-				if(!txtPicole.getText().isEmpty()) {
-					itemcost[17] = Double.parseDouble(txtPicole.getText());
-				}
-				if(!txtBolinho.getText().isEmpty()) {
-					itemcost[18] = Double.parseDouble(txtBolinho.getText());
-				}
-				if(!txtPanqueca.getText().isEmpty()) {
-					itemcost[19] = Double.parseDouble(txtPanqueca.getText());
-				}
+				String cafe = txtCafe.getText();
+				String agua = txtAgua.getText();
+				String cerveja = txtCerveja.getText();
+				String coca = txtCoca.getText();
+				String aguacc = txtAguaCc.getText();
+				String sucoLaranja = txtLaranja.getText();
+				String sucoMaracuja = txtMaracuja.getText();
+				String fritas = txtFritas.getText();
+				String salada = txtSalada.getText();
+				String hamburger = txtHamburger.getText();
+				String aneisCebola = txtAneisdecebola.getText();
+				String saladaFrango = txtSaladadefrango.getText();
+				String sanduicheAtum = txtSanduichedeatum.getText();
+				String sanduicheQueijo = txtSanduichedequeijo.getText();
+				String sanduicheFrango = txtSanduichedefrango.getText();
+				String brownie = txtBrownie.getText();
+				String torrada = txtTorrada.getText();
+				String bolinho = txtBolinho.getText();
+				String panqueca = txtPanqueca.getText();
+				String picole = txtPicole.getText();
 				
-				/*
-				 * Para utilizar banco de dados, pode ser necessario utilizar
-				 * try - catch
-				 * Portanto, forma alternativa do bloco de codigo acima
-				 * 
-				try {
+				int qtdCafe;
+				int qtdAgua;
+				int qtdCerveja;
+				int qtdCoca;
+				int qtdAguacc;
+				int qtdSucoLaranja;
+				int qtdSucoMaracuja;
+				int qtdFritas;
+				int qtdSalada;
+				int qtdHamburger;
+				int qtdAneisCebola;
+				int qtdSaladaFrango;
+				int qtdSanduicheAtum;
+				int qtdSanduicheQueijo;
+				int qtdSanduicheFrango;
+				int qtdBrownie;
+				int qtdTorrada;
+				int qtdBolinho;
+				int qtdPanqueca;
+				int qtdPicole;
+				
+				if(!agua.isEmpty()){
 					itemcost[0] = Double.parseDouble(txtAgua.getText());
-					itemcost[1] = Double.parseDouble(txtCafe.getText());
-					itemcost[2] = Double.parseDouble(txtCerveja.getText());
-					itemcost[3] = Double.parseDouble(txtCoca.getText());
-					itemcost[4] = Double.parseDouble(txtAguaCc.getText());
-					itemcost[5] = Double.parseDouble(txtLaranja.getText());
-					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
-				}catch(NumberFormatException nfe){
-					System.out.println("ERRO: " + nfe.getMessage());
+					qtdAgua = Integer.parseInt(txtAgua.getText());
+					model.setQdtAgua(qtdAgua);
 				}
-				*/
+				if(!cafe.isEmpty()){
+					itemcost[1] = Double.parseDouble(txtCafe.getText());
+					qtdCafe = Integer.parseInt(txtCafe.getText());
+					model.setQtdCafe(qtdCafe);
+				}
+				if(!cerveja.isEmpty()) {
+					itemcost[2] = Double.parseDouble(txtCerveja.getText());
+					qtdCerveja = Integer.parseInt(txtCerveja.getText());
+					model.setQtdCerveja(qtdCerveja);
+				}
+				if(!coca.isEmpty()) {
+					itemcost[3] = Double.parseDouble(txtCoca.getText());
+					qtdCoca = Integer.parseInt(txtCoca.getText());
+					model.setQtdCoca(qtdCoca);
+				}
+				if(!aguacc.isEmpty()) {
+					itemcost[4] = Double.parseDouble(txtAguaCc.getText());
+					qtdAguacc = Integer.parseInt(txtAguaCc.getText());
+					model.setQtdAguacc(qtdAguacc);
+				}
+				if(!sucoLaranja.isEmpty()) {
+					itemcost[5] = Double.parseDouble(txtLaranja.getText());
+					qtdSucoLaranja = Integer.parseInt(txtLaranja.getText());
+					model.setQtdSucoLaranja(qtdSucoLaranja);
+				}
+				if(!sucoMaracuja.isEmpty()) {
+					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
+					qtdSucoMaracuja = Integer.parseInt(txtMaracuja.getText());
+					model.setQtdSucoMaracuja(qtdSucoMaracuja);
+				}
+				if(!fritas.isEmpty()) {
+					itemcost[7] = Double.parseDouble(txtFritas.getText());
+					qtdFritas = Integer.parseInt(txtFritas.getText());
+					model.setQtdFritas(qtdFritas);
+				}
+				if(!salada.isEmpty()) {
+					itemcost[8] = Double.parseDouble(txtSalada.getText());
+					qtdSalada = Integer.parseInt(txtSalada.getText());
+					model.setQtdSalada(qtdSalada);
+				}
+				if(!hamburger.isEmpty()) {
+					itemcost[9] = Double.parseDouble(txtHamburger.getText());
+					qtdHamburger = Integer.parseInt(txtHamburger.getText());
+					model.setQtdHamburger(qtdHamburger);
+				}
+				if(!aneisCebola.isEmpty()) {
+					itemcost[10] = Double.parseDouble(txtAneisdecebola.getText());
+					qtdAneisCebola = Integer.parseInt(txtAneisdecebola.getText());
+					model.setQtdAneisCebola(qtdAneisCebola);
+				}
+				if(!saladaFrango.isEmpty()) {
+					itemcost[11] = Double.parseDouble(txtSaladadefrango.getText());
+					qtdSaladaFrango = Integer.parseInt(txtSaladadefrango.getText());
+					model.setQtdSaladaFrango(qtdSaladaFrango);
+				}
+				if(!sanduicheAtum.isEmpty()) {
+					itemcost[12] = Double.parseDouble(txtSanduichedeatum.getText());
+					qtdSanduicheAtum = Integer.parseInt(txtSanduichedeatum.getText());
+					model.setQtdSanduicheAtum(qtdSanduicheAtum);
+				}
+				if(!sanduicheQueijo.isEmpty()) {
+					itemcost[13] = Double.parseDouble(txtSanduichedequeijo.getText());
+					qtdSanduicheQueijo = Integer.parseInt(txtSanduichedequeijo.getText());
+					model.setQtdSanduicheQueijo(qtdSanduicheQueijo);
+				}
+				if(!sanduicheFrango.isEmpty()) {
+					itemcost[14] = Double.parseDouble(txtSanduichedefrango.getText());
+					qtdSanduicheFrango = Integer.parseInt(txtSanduichedefrango.getText());
+					model.setQtdSanduicheFrango(qtdSanduicheFrango);
+				}
+				if(!brownie.isEmpty()) {
+					itemcost[15] = Double.parseDouble(txtBrownie.getText());
+					qtdBrownie = Integer.parseInt(txtBrownie.getText());
+					model.setQtdBrownie(qtdBrownie);
+				}
+				if(!torrada.isEmpty()) {
+					itemcost[16] = Double.parseDouble(txtTorrada.getText());
+					qtdTorrada = Integer.parseInt(txtTorrada.getText());
+					model.setQtdTorrada(qtdTorrada);
+				}
+				if(!picole.isEmpty()) {
+					itemcost[17] = Double.parseDouble(txtPicole.getText());
+					qtdPicole = Integer.parseInt(txtPicole.getText());
+					model.setQtdPicole(qtdPicole);
+				}
+				if(!bolinho.isEmpty()) {
+					itemcost[18] = Double.parseDouble(txtBolinho.getText());
+					qtdBolinho = Integer.parseInt(txtBolinho.getText());
+					model.setQtdBolinho(qtdBolinho);
+				}
+				if(!panqueca.isEmpty()) {
+					itemcost[19] = Double.parseDouble(txtPanqueca.getText());
+					qtdPanqueca = Integer.parseInt(txtPanqueca.getText());
+					model.setQtdPanqueca(qtdPanqueca);
+				}
 
 				String mPagamento = (String)metodoPagamento.getSelectedItem();
 				
@@ -867,6 +960,20 @@ public class ViewSistema extends JFrame {
 					txtValue.setText(vTotal);
 				}
 				
+				qtd = model.getQdtAgua()+model.getQtdCafe()+model.getQtdCerveja()+model.getQtdCoca()+
+						model.getQtdAguacc()+model.getQtdSucoLaranja()+model.getQtdSucoMaracuja()+
+						model.getQtdFritas()+model.getQtdSalada()+model.getQtdHamburger()+model.getQtdAneisCebola()+
+						model.getQtdSaladaFrango()+model.getQtdSanduicheAtum()+model.getQtdSanduicheFrango()+
+						model.getQtdSanduicheQueijo()+model.getQtdBrownie()+model.getQtdTorrada()+model.getQtdPicole()+
+						model.getQtdBolinho()+model.getQtdPanqueca();
+				
+				model.setOperacao("Venda");
+				model.setNomeProduto("Teste");
+				model.setQtd(qtd);
+				model.setValorTotal(valueTotal);
+				model.setSubTotal(subTotal);
+				model.setTaxa(taxa);
+				
 				Calendar timer = Calendar.getInstance();
 				timer.getTime();
 				SimpleDateFormat fTime = new SimpleDateFormat("HH:mm:ss");
@@ -877,18 +984,26 @@ public class ViewSistema extends JFrame {
 				jtxtRecibo.append("\tSmart Food\n"+
 						"\n====================================\n"+
 									"Pratos principais:\t\t" + "\n\n"+
-									"Bebidas:\t\t"  +"\n\n"+
+									"Bebidas:\t\t" +"\n\n"+
 									"Sobremesa:\t\t"  +"\n\n"+
+									"Quantidade:\t\t" + qtd +"\n\n"+
 						"====================================" + "\n\n" +
 						"Taxa: \t\t" + taxa + "\n\n" +
 						"Sub-Total: \t\t" + subTotal + "\n\n" +
 						"Total: \t\t" + valueTotal + "\n\n" +
-						"Método de pagamento: \t\t" + mPagamento + "\n\n" +
+						"Método de pagamento: \t" + mPagamento + "\n\n" +
 						"====================================" + "\n\n" +
 						"\nData: " + fDate.format(timer.getTime()) + 
 						"\tHora: " + fTime.format(timer.getTime()) +
 						"\n\n\t\tObrigado !");
 				
+				boolean registra = controlP.registraVenda(model);
+				
+				if(registra == true) {
+					JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!");
+				}else {
+					JOptionPane.showMessageDialog(null, "Falha ao registrar venda!");
+				}
 			}
 		});
 		btnTotal.setBounds(12, 187, 70, 25);
@@ -1118,9 +1233,12 @@ public class ViewSistema extends JFrame {
 		});
 		txtTorrada.setColumns(10);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(912, 84, 416, 364);
+		contentPane.add(scrollPane);
 		
-		jtxtRecibo.setBounds(912, 84, 393, 364);
-		contentPane.add(jtxtRecibo);
+		
+		scrollPane.setViewportView(jtxtRecibo);
 		
 	}
 }
