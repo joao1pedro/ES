@@ -799,8 +799,11 @@ public class ViewSistema extends JFrame {
 				
 				model.setNomeAgua("");
 				model.setNomeCafe("");
-				model.setNomeCafe("");
+				model.setNomeCerveja("");
+				model.setNomeAguacc("");
 				model.setNomeCoca("");
+				model.setNomeSucoLaranja("");
+				model.setNomeSucoMaracuja("");
 				model.setNomeFritas("");
 				model.setNomeSalada("");
 				model.setNomeHamburger("");
