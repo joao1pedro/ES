@@ -108,8 +108,8 @@ public class ViewSistema extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnCadastro = new JMenu("Cadastro");
-		menuBar.add(mnCadastro);
+		JMenu mnGerenciamento = new JMenu("Gerenciamento");
+		menuBar.add(mnGerenciamento);
 		
 		JMenu mnFuncionrios = new JMenu("Funcionários");
 		mnFuncionrios.addMouseListener(new MouseAdapter() {
@@ -129,13 +129,22 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		mnCadastro.add(mnFuncionrios);
+		mnGerenciamento.add(mnFuncionrios);
 		
 		JMenu mnProdutos = new JMenu("Produtos");
-		mnCadastro.add(mnProdutos);
+		mnProdutos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				GerenciaProd frame = new GerenciaProd();
+				frame.setVisible(true);
+				frame.updateTable();
+			}
+		});
+		mnGerenciamento.add(mnProdutos);
 		
 		JMenu mnClientes = new JMenu("Clientes");
-		mnCadastro.add(mnClientes);
+		mnGerenciamento.add(mnClientes);
 		
 		JMenu mnAjuda = new JMenu("Ajuda");
 		menuBar.add(mnAjuda);
