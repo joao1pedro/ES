@@ -93,6 +93,11 @@ public class ViewSistema extends JFrame {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ViewSistema() {
+		JCheckBox chckbxTorrada = new JCheckBox("Torrada");
+		JCheckBox chckbxPicole = new JCheckBox("Picole");
+		JCheckBox chckbxBolinho = new JCheckBox("Bolinho");
+		JCheckBox chckbxPanqueca = new JCheckBox("Panqueca");
+		
 		setTitle("Sistema de pedidos");
 		setPreferredSize(new Dimension(800, 600));
 		
@@ -677,7 +682,7 @@ public class ViewSistema extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(912, 460, 290, 224);
+		panel_3.setBounds(912, 460, 387, 224);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -714,7 +719,7 @@ public class ViewSistema extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnNewButton.setBounds(188, 187, 77, 25);
+		btnNewButton.setBounds(297, 187, 77, 25);
 		panel_3.add(btnNewButton);
 		
 		JButton btnLimpar = new JButton("Limpar");
@@ -732,8 +737,21 @@ public class ViewSistema extends JFrame {
 				txtTroco.setText(null);
 				txtTaxa.setText(null);
 				txtValue.setText(null);
+				txtAneisdecebola.setText(null);
+				txtBolinho.setText(null);
+				txtBrownie.setText(null);
+				txtFritas.setText(null);
+				txtHamburger.setText(null);
+				txtPanqueca.setText(null);
+				txtPicole.setText(null);
+				txtSalada.setText(null);
+				txtSaladadefrango.setText(null);
+				txtSanduichedeatum.setText(null);
+				txtSanduichedefrango.setText(null);
+				txtSanduichedequeijo.setText(null);
+				txtTorrada.setText(null);
 				
-				//limpa caixas de sele��o
+				//limpa caixas de seleção
 				chckbxAgua.setSelected(false);
 				chckbxCaf.setSelected(false);
 				chckbxCerveja.setSelected(false);
@@ -741,6 +759,19 @@ public class ViewSistema extends JFrame {
 				chckbxAguaCc.setSelected(false);
 				chckbxLaranja.setSelected(false);
 				chckbxMaracuja.setSelected(false);
+				chckbxFritas.setSelected(false);
+				chckbxHamburger.setSelected(false);
+				chckbxSalada.setSelected(false);
+				chckbxSaladadefrango.setSelected(false);
+				chckbxSanduichedeatum.setSelected(false);
+				chckbxSanduichedefrango.setSelected(false);
+				chckbxSanduichedequeijo.setSelected(false);
+				chckbxAneisdecebola.setSelected(false);
+				chckbxTorrada.setSelected(false);
+				chckbxBolinho.setSelected(false);
+				chckbxPicole.setSelected(false);
+				chckbxPanqueca.setSelected(false);
+				
 				
 				jtxtRecibo.setText(null);
 				
@@ -765,6 +796,23 @@ public class ViewSistema extends JFrame {
 				model.setQtdBolinho(0);
 				model.setQtdPanqueca(0);
 				model.setQtdPicole(0);
+				
+				model.setNomeAgua("");
+				model.setNomeCafe("");
+				model.setNomeCafe("");
+				model.setNomeCoca("");
+				model.setNomeFritas("");
+				model.setNomeSalada("");
+				model.setNomeHamburger("");
+				model.setNomeAneisCebola("");
+				model.setNomeSaladaFrango("");
+				model.setNomeSanduicheAtum("");
+				model.setNomeSanduicheQueijo("");
+				model.setNomeBrownie("");
+				model.setNomeTorrada("");
+				model.setNomePicole("");
+				model.setNomeBolinho("");
+				model.setNomePanqueca("");
 			}
 		});
 		btnLimpar.setBounds(96, 187, 82, 25);
@@ -793,6 +841,7 @@ public class ViewSistema extends JFrame {
 				String bolinho = txtBolinho.getText();
 				String panqueca = txtPanqueca.getText();
 				String picole = txtPicole.getText();
+				String nomeP = "";
 				
 				int qtdCafe;
 				int qtdAgua;
@@ -815,105 +864,142 @@ public class ViewSistema extends JFrame {
 				int qtdPanqueca;
 				int qtdPicole;
 				
+				model.setNomeAgua("");
+				model.setNomeCafe("");
+				model.setNomeCafe("");
+				model.setNomeCoca("");
+				model.setNomeFritas("");
+				model.setNomeSalada("");
+				model.setNomeHamburger("");
+				model.setNomeAneisCebola("");
+				model.setNomeSaladaFrango("");
+				model.setNomeSanduicheAtum("");
+				model.setNomeSanduicheQueijo("");
+				model.setNomeBrownie("");
+				model.setNomeTorrada("");
+				model.setNomePicole("");
+				model.setNomeBolinho("");
+				model.setNomePanqueca("");
+						
 				if(!agua.isEmpty()){
 					itemcost[0] = Double.parseDouble(txtAgua.getText());
 					qtdAgua = Integer.parseInt(txtAgua.getText());
 					model.setQdtAgua(qtdAgua);
+					model.setNomeAgua(" Água ");
 				}
 				if(!cafe.isEmpty()){
 					itemcost[1] = Double.parseDouble(txtCafe.getText());
 					qtdCafe = Integer.parseInt(txtCafe.getText());
 					model.setQtdCafe(qtdCafe);
+					model.setNomeCafe(" Café ");
 				}
 				if(!cerveja.isEmpty()) {
 					itemcost[2] = Double.parseDouble(txtCerveja.getText());
 					qtdCerveja = Integer.parseInt(txtCerveja.getText());
 					model.setQtdCerveja(qtdCerveja);
+					model.setNomeCerveja(" Cerveja ");
 				}
 				if(!coca.isEmpty()) {
 					itemcost[3] = Double.parseDouble(txtCoca.getText());
 					qtdCoca = Integer.parseInt(txtCoca.getText());
 					model.setQtdCoca(qtdCoca);
+					model.setNomeCoca(" Coca-Cola ");
 				}
 				if(!aguacc.isEmpty()) {
 					itemcost[4] = Double.parseDouble(txtAguaCc.getText());
 					qtdAguacc = Integer.parseInt(txtAguaCc.getText());
 					model.setQtdAguacc(qtdAguacc);
+					model.setNomeAguacc(" Água de Coco ");
 				}
 				if(!sucoLaranja.isEmpty()) {
 					itemcost[5] = Double.parseDouble(txtLaranja.getText());
 					qtdSucoLaranja = Integer.parseInt(txtLaranja.getText());
 					model.setQtdSucoLaranja(qtdSucoLaranja);
+					model.setNomeAgua(" Suco de Laranja ");
 				}
 				if(!sucoMaracuja.isEmpty()) {
 					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
 					qtdSucoMaracuja = Integer.parseInt(txtMaracuja.getText());
 					model.setQtdSucoMaracuja(qtdSucoMaracuja);
+					model.setNomeSucoMaracuja(" Suco de Maracujá ");
 				}
 				if(!fritas.isEmpty()) {
 					itemcost[7] = Double.parseDouble(txtFritas.getText());
 					qtdFritas = Integer.parseInt(txtFritas.getText());
 					model.setQtdFritas(qtdFritas);
+					model.setNomeFritas(" Fritas ");
 				}
 				if(!salada.isEmpty()) {
 					itemcost[8] = Double.parseDouble(txtSalada.getText());
 					qtdSalada = Integer.parseInt(txtSalada.getText());
 					model.setQtdSalada(qtdSalada);
+					model.setNomeSalada(" Salada ");
 				}
 				if(!hamburger.isEmpty()) {
 					itemcost[9] = Double.parseDouble(txtHamburger.getText());
 					qtdHamburger = Integer.parseInt(txtHamburger.getText());
 					model.setQtdHamburger(qtdHamburger);
+					model.setNomeHamburger(" Hamburger ");
 				}
 				if(!aneisCebola.isEmpty()) {
 					itemcost[10] = Double.parseDouble(txtAneisdecebola.getText());
 					qtdAneisCebola = Integer.parseInt(txtAneisdecebola.getText());
 					model.setQtdAneisCebola(qtdAneisCebola);
+					model.setNomeAneisCebola(" Anéis de cebola ");
 				}
 				if(!saladaFrango.isEmpty()) {
 					itemcost[11] = Double.parseDouble(txtSaladadefrango.getText());
 					qtdSaladaFrango = Integer.parseInt(txtSaladadefrango.getText());
 					model.setQtdSaladaFrango(qtdSaladaFrango);
+					model.setNomeSaladaFrango(" Salada de Frango ");
 				}
 				if(!sanduicheAtum.isEmpty()) {
 					itemcost[12] = Double.parseDouble(txtSanduichedeatum.getText());
 					qtdSanduicheAtum = Integer.parseInt(txtSanduichedeatum.getText());
 					model.setQtdSanduicheAtum(qtdSanduicheAtum);
+					model.setNomeSanduicheAtum(" Sanduiche de Atum ");
 				}
 				if(!sanduicheQueijo.isEmpty()) {
 					itemcost[13] = Double.parseDouble(txtSanduichedequeijo.getText());
 					qtdSanduicheQueijo = Integer.parseInt(txtSanduichedequeijo.getText());
 					model.setQtdSanduicheQueijo(qtdSanduicheQueijo);
+					model.setNomeSanduicheQueijo(" Sanduiche de Queijo ");
 				}
 				if(!sanduicheFrango.isEmpty()) {
 					itemcost[14] = Double.parseDouble(txtSanduichedefrango.getText());
 					qtdSanduicheFrango = Integer.parseInt(txtSanduichedefrango.getText());
 					model.setQtdSanduicheFrango(qtdSanduicheFrango);
+					model.setNomeSanduicheFrango(" Sanduiche de Frango ");
 				}
 				if(!brownie.isEmpty()) {
 					itemcost[15] = Double.parseDouble(txtBrownie.getText());
 					qtdBrownie = Integer.parseInt(txtBrownie.getText());
 					model.setQtdBrownie(qtdBrownie);
+					model.setNomeBrownie(" Brownie ");
 				}
 				if(!torrada.isEmpty()) {
 					itemcost[16] = Double.parseDouble(txtTorrada.getText());
 					qtdTorrada = Integer.parseInt(txtTorrada.getText());
 					model.setQtdTorrada(qtdTorrada);
+					model.setNomeTorrada(" Torrada ");
 				}
 				if(!picole.isEmpty()) {
 					itemcost[17] = Double.parseDouble(txtPicole.getText());
 					qtdPicole = Integer.parseInt(txtPicole.getText());
 					model.setQtdPicole(qtdPicole);
+					model.setNomePicole(" Picole ");
 				}
 				if(!bolinho.isEmpty()) {
 					itemcost[18] = Double.parseDouble(txtBolinho.getText());
 					qtdBolinho = Integer.parseInt(txtBolinho.getText());
 					model.setQtdBolinho(qtdBolinho);
+					model.setNomeBolinho(" Bolinho ");
 				}
 				if(!panqueca.isEmpty()) {
 					itemcost[19] = Double.parseDouble(txtPanqueca.getText());
 					qtdPanqueca = Integer.parseInt(txtPanqueca.getText());
 					model.setQtdPanqueca(qtdPanqueca);
+					model.setNomePanqueca(" Panqueca ");
 				}
 
 				String mPagamento = (String)metodoPagamento.getSelectedItem();
@@ -967,8 +1053,13 @@ public class ViewSistema extends JFrame {
 						model.getQtdSanduicheQueijo()+model.getQtdBrownie()+model.getQtdTorrada()+model.getQtdPicole()+
 						model.getQtdBolinho()+model.getQtdPanqueca();
 				
+				nomeP = model.getNomeAgua()+model.getNomeCafe()+model.getNomeCoca()+model.getNomeCerveja()+model.getNomeAguacc()+model.getNomeSucoLaranja()+
+						model.getNomeSucoMaracuja()+model.getNomeFritas()+model.getNomeSalada()+model.getNomeHamburger()+model.getNomeAneisCebola()+
+						model.getNomeSaladaFrango()+model.getNomeSanduicheAtum()+model.getNomeSanduicheQueijo()+model.getNomeBrownie()+
+						model.getNomeTorrada()+model.getNomePicole()+model.getNomeBolinho()+model.getNomePanqueca();
+				
 				model.setOperacao("Venda");
-				model.setNomeProduto("Teste");
+				model.setNomeProduto(nomeP);
 				model.setQtd(qtd);
 				model.setValorTotal(valueTotal);
 				model.setSubTotal(subTotal);
@@ -1058,6 +1149,15 @@ public class ViewSistema extends JFrame {
 		txtMesa.setBounds(12, 150, 56, 15);
 		panel_3.add(txtMesa);
 		
+		JButton btnEstornar = new JButton("Estornar");
+		btnEstornar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnEstornar.setBounds(190, 187, 95, 25);
+		panel_3.add(btnEstornar);
+		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_4.setBounds(610, 84, 290, 600);
@@ -1085,8 +1185,6 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(chckbxBrownie);
 		
-		
-		JCheckBox chckbxTorrada = new JCheckBox("Torrada");
 		chckbxTorrada.setBounds(11, 33, 81, 23);
 		chckbxTorrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1102,8 +1200,6 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(chckbxTorrada);
 		
-		
-		JCheckBox chckbxPicole = new JCheckBox("Picole");
 		chckbxPicole.setBounds(11, 114, 67, 23);
 		chckbxPicole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1119,8 +1215,6 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(chckbxPicole);
 		
-		
-		JCheckBox chckbxBolinho = new JCheckBox("Bolinho");
 		chckbxBolinho.setBounds(11, 87, 78, 23);
 		chckbxBolinho.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1136,8 +1230,6 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(chckbxBolinho);
 		
-		
-		JCheckBox chckbxPanqueca = new JCheckBox("Panqueca");
 		chckbxPanqueca.setBounds(11, 141, 95, 23);
 		chckbxPanqueca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

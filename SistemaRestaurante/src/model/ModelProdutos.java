@@ -4,6 +4,7 @@ public class ModelProdutos {
 	String operacao;
 	String nomeProduto;
 	int qtd;
+	int id;
 	
 	double valorTotal;
 	double subTotal;
@@ -51,6 +52,153 @@ public class ModelProdutos {
 	double pricePanqueca;
 	double pricePicole;
 	
+	String nomeCafe;
+	String nomeAgua;
+	String nomeCerveja;
+	String nomeCoca;
+	String nomeAguacc;
+	String nomeSucoLaranja;
+	String nomeSucoMaracuja;
+	String nomeFritas;
+	String nomeSalada;
+	String nomeHamburger;
+	String nomeAneisCebola;
+	String nomeSaladaFrango;
+	String nomeSanduicheAtum;
+	String nomeSanduicheQueijo;
+	String nomeSanduicheFrango;
+	String nomeBrownie;
+	String nomeTorrada;
+	String nomeBolinho;
+	String nomePanqueca;
+	String nomePicole;
+	
+	public int getQtdAgua() {
+		return qtdAgua;
+	}
+	public void setQtdAgua(int qtdAgua) {
+		this.qtdAgua = qtdAgua;
+	}
+	public String getNomeCafe() {
+		return nomeCafe;
+	}
+	public void setNomeCafe(String nomeCafe) {
+		this.nomeCafe = nomeCafe;
+	}
+	public String getNomeAgua() {
+		return nomeAgua;
+	}
+	public void setNomeAgua(String nomeAgua) {
+		this.nomeAgua = nomeAgua;
+	}
+	public String getNomeCerveja() {
+		return nomeCerveja;
+	}
+	public void setNomeCerveja(String nomeCerveja) {
+		this.nomeCerveja = nomeCerveja;
+	}
+	public String getNomeCoca() {
+		return nomeCoca;
+	}
+	public void setNomeCoca(String nomeCoca) {
+		this.nomeCoca = nomeCoca;
+	}
+	public String getNomeAguacc() {
+		return nomeAguacc;
+	}
+	public void setNomeAguacc(String nomeAguacc) {
+		this.nomeAguacc = nomeAguacc;
+	}
+	public String getNomeSucoLaranja() {
+		return nomeSucoLaranja;
+	}
+	public void setNomeSucoLaranja(String nomeSucoLaranja) {
+		this.nomeSucoLaranja = nomeSucoLaranja;
+	}
+	public String getNomeSucoMaracuja() {
+		return nomeSucoMaracuja;
+	}
+	public void setNomeSucoMaracuja(String nomeSucoMaracuja) {
+		this.nomeSucoMaracuja = nomeSucoMaracuja;
+	}
+	public String getNomeFritas() {
+		return nomeFritas;
+	}
+	public void setNomeFritas(String nomeFritas) {
+		this.nomeFritas = nomeFritas;
+	}
+	public String getNomeSalada() {
+		return nomeSalada;
+	}
+	public void setNomeSalada(String nomeSalada) {
+		this.nomeSalada = nomeSalada;
+	}
+	public String getNomeHamburger() {
+		return nomeHamburger;
+	}
+	public void setNomeHamburger(String nomeHamburger) {
+		this.nomeHamburger = nomeHamburger;
+	}
+	public String getNomeAneisCebola() {
+		return nomeAneisCebola;
+	}
+	public void setNomeAneisCebola(String nomeAneisCebola) {
+		this.nomeAneisCebola = nomeAneisCebola;
+	}
+	public String getNomeSaladaFrango() {
+		return nomeSaladaFrango;
+	}
+	public void setNomeSaladaFrango(String nomeSaladaFrango) {
+		this.nomeSaladaFrango = nomeSaladaFrango;
+	}
+	public String getNomeSanduicheAtum() {
+		return nomeSanduicheAtum;
+	}
+	public void setNomeSanduicheAtum(String nomeSanduicheAtum) {
+		this.nomeSanduicheAtum = nomeSanduicheAtum;
+	}
+	public String getNomeSanduicheQueijo() {
+		return nomeSanduicheQueijo;
+	}
+	public void setNomeSanduicheQueijo(String nomeSanduicheQueijo) {
+		this.nomeSanduicheQueijo = nomeSanduicheQueijo;
+	}
+	public String getNomeSanduicheFrango() {
+		return nomeSanduicheFrango;
+	}
+	public void setNomeSanduicheFrango(String nomeSanduicheFrango) {
+		this.nomeSanduicheFrango = nomeSanduicheFrango;
+	}
+	public String getNomeBrownie() {
+		return nomeBrownie;
+	}
+	public void setNomeBrownie(String nomeBrownie) {
+		this.nomeBrownie = nomeBrownie;
+	}
+	public String getNomeTorrada() {
+		return nomeTorrada;
+	}
+	public void setNomeTorrada(String nomeTorrada) {
+		this.nomeTorrada = nomeTorrada;
+	}
+	public String getNomeBolinho() {
+		return nomeBolinho;
+	}
+	public void setNomeBolinho(String nomeBolinho) {
+		this.nomeBolinho = nomeBolinho;
+	}
+	public String getNomePanqueca() {
+		return nomePanqueca;
+	}
+	public void setNomePanqueca(String nomePanqueca) {
+		this.nomePanqueca = nomePanqueca;
+	}
+	public String getNomePicole() {
+		return nomePicole;
+	}
+	public void setNomePicole(String nomePicole) {
+		this.nomePicole = nomePicole;
+	}
 	public double getPriceCafe() {
 		return priceCafe;
 	}
@@ -326,5 +474,11 @@ public class ModelProdutos {
 	}
 	public void setNomeProduto(String nomeProduto) {
 		this.nomeProduto = nomeProduto;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }
