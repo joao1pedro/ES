@@ -30,6 +30,7 @@ public class ModelProdutos {
 	int qtdBolinho;
 	int qtdPanqueca;
 	int qtdPicole;
+	int qtdTortaMorango;
 	
 	double priceCafe;
 	double priceAgua;
@@ -51,6 +52,7 @@ public class ModelProdutos {
 	double priceBolinho;
 	double pricePanqueca;
 	double pricePicole;
+	double priceTortaMorango;
 	
 	String nomeCafe;
 	String nomeAgua;
@@ -72,7 +74,28 @@ public class ModelProdutos {
 	String nomeBolinho;
 	String nomePanqueca;
 	String nomePicole;
+	String nomeTortaMorango;
 	
+	
+	
+	public int getQtdTortaMorango() {
+		return qtdTortaMorango;
+	}
+	public void setQtdTortaMorango(int qtdTortaMorango) {
+		this.qtdTortaMorango = qtdTortaMorango;
+	}
+	public double getPriceTortaMorango() {
+		return priceTortaMorango;
+	}
+	public void setPriceTortaMorango(double priceTortaMorango) {
+		this.priceTortaMorango = priceTortaMorango;
+	}
+	public String getNomeTortaMorango() {
+		return nomeTortaMorango;
+	}
+	public void setNomeTortaMorango(String nomeTortaMorango) {
+		this.nomeTortaMorango = nomeTortaMorango;
+	}
 	public int getQtdAgua() {
 		return qtdAgua;
 	}

@@ -70,10 +70,19 @@ public class ViewSistema extends JFrame {
 	double priceSucoLaranja = 2.5;
 	double priceSucoMaracuja = 2.5;
 	double priceCoca = 2.8;
+	double priceFritas = 5;
+	double priceSalada = 5;
+	double priceHamburger = 5;
+	double priceAneisCebola = 3;
+	double pricesaladaFrango = 8;
+	double priceSanduicheAtum = 4.5;
+	double priceSanduicheFrango = 4.5;
+	double priceSanduicheQueijo = 4.5;
+	double priceTortaMorango = 7;
 	
 	double taxa, valueTotal, subTotal, diferenca, custo, rateTaxa = 12;
 	
-	double itemcost[] = new double [20];
+	double itemcost[] = new double [100];
 	private JTextField txtTaxa;
 	private JTextField txtValue;
 	private JTextField txtTroco;
@@ -86,6 +95,7 @@ public class ViewSistema extends JFrame {
 	
 	private JTextArea jtxtRecibo = new JTextArea();
 	private int qtd = 0;
+	private JTextField txtTortaMorango;
 	
 
 	/**
@@ -97,6 +107,20 @@ public class ViewSistema extends JFrame {
 		JCheckBox chckbxPicole = new JCheckBox("Picole");
 		JCheckBox chckbxBolinho = new JCheckBox("Bolinho");
 		JCheckBox chckbxPanqueca = new JCheckBox("Panqueca");
+		JCheckBox chckbxTortaDeMorango = new JCheckBox("Torta de Morango");
+		chckbxTortaDeMorango.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxTortaDeMorango.isSelected()) {
+					txtTortaMorango.setEnabled(true);
+					txtTortaMorango.setText("");
+				}
+				else {
+					txtTortaMorango.setEnabled(false);
+					txtTortaMorango.setText("0");
+				}
+			}
+		});
 		
 		setTitle("Sistema de pedidos");
 		setPreferredSize(new Dimension(800, 600));
@@ -115,7 +139,6 @@ public class ViewSistema extends JFrame {
 		mnFuncionrios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
 				boolean permissao;
 				permissao = control.verificaPermissao(TelaLogin.login);
 
@@ -135,10 +158,19 @@ public class ViewSistema extends JFrame {
 		mnProdutos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
-				GerenciaProd frame = new GerenciaProd();
-				frame.setVisible(true);
-				frame.updateTable();
+				boolean permissao;
+				permissao = control.verificaPermissao(TelaLogin.login);
+				
+				if(permissao == true) {
+					dispose();
+					GerenciaProd frame = new GerenciaProd();
+					frame.setVisible(true);
+					frame.pegaTaxa();
+					frame.pegaTotal();
+					frame.updateTable();
+				} else {
+					JOptionPane.showMessageDialog(null, "Usuário não possui nivel de permissão adequado.");
+				}
 			}
 		});
 		mnGerenciamento.add(mnProdutos);
@@ -759,6 +791,8 @@ public class ViewSistema extends JFrame {
 				txtSanduichedefrango.setText(null);
 				txtSanduichedequeijo.setText(null);
 				txtTorrada.setText(null);
+				txtAguaCc.setText(null);
+				txtTortaMorango.setText(null);
 				
 				//limpa caixas de seleção
 				chckbxAgua.setSelected(false);
@@ -780,6 +814,35 @@ public class ViewSistema extends JFrame {
 				chckbxBolinho.setSelected(false);
 				chckbxPicole.setSelected(false);
 				chckbxPanqueca.setSelected(false);
+				chckbxTortaDeMorango.setSelected(false);
+				
+				//desabilita campos de texto
+				txtAgua.setEnabled(false);
+				txtCafe.setEnabled(false);
+				txtCerveja.setEnabled(false);
+				txtCoca.setEnabled(false);
+				txtLaranja.setEnabled(false);
+				txtMaracuja.setEnabled(false);
+				txtSubT.setEnabled(false);
+				txtInDinnheiro.setEnabled(false);
+				txtTroco.setEnabled(false);
+				txtTaxa.setEnabled(false);
+				txtValue.setEnabled(false);
+				txtAneisdecebola.setEnabled(false);
+				txtBolinho.setEnabled(false);
+				txtBrownie.setEnabled(false);
+				txtFritas.setEnabled(false);
+				txtHamburger.setEnabled(false);
+				txtPanqueca.setEnabled(false);
+				txtPicole.setEnabled(false);
+				txtSalada.setEnabled(false);
+				txtSaladadefrango.setEnabled(false);
+				txtSanduichedeatum.setEnabled(false);
+				txtSanduichedefrango.setEnabled(false);
+				txtSanduichedequeijo.setEnabled(false);
+				txtTorrada.setEnabled(false);
+				txtAguaCc.setEnabled(false);
+				txtTortaMorango.setEnabled(false);
 				
 				
 				jtxtRecibo.setText(null);
@@ -805,6 +868,7 @@ public class ViewSistema extends JFrame {
 				model.setQtdBolinho(0);
 				model.setQtdPanqueca(0);
 				model.setQtdPicole(0);
+				model.setQtdTortaMorango(0);
 				
 				model.setNomeAgua("");
 				model.setNomeCafe("");
@@ -825,6 +889,7 @@ public class ViewSistema extends JFrame {
 				model.setNomePicole("");
 				model.setNomeBolinho("");
 				model.setNomePanqueca("");
+				model.setNomeTortaMorango("");
 			}
 		});
 		btnLimpar.setBounds(96, 187, 82, 25);
@@ -833,6 +898,7 @@ public class ViewSistema extends JFrame {
 		JButton btnTotal = new JButton("Total");
 		btnTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String nomeP = "";
 				String cafe = txtCafe.getText();
 				String agua = txtAgua.getText();
 				String cerveja = txtCerveja.getText();
@@ -853,7 +919,8 @@ public class ViewSistema extends JFrame {
 				String bolinho = txtBolinho.getText();
 				String panqueca = txtPanqueca.getText();
 				String picole = txtPicole.getText();
-				String nomeP = "";
+				String tortaMorango = txtTortaMorango.getText();
+				
 				
 				int qtdCafe;
 				int qtdAgua;
@@ -875,6 +942,7 @@ public class ViewSistema extends JFrame {
 				int qtdBolinho;
 				int qtdPanqueca;
 				int qtdPicole;
+				int qtdTortaMorango;
 				
 				model.setNomeAgua("");
 				model.setNomeCafe("");
@@ -892,6 +960,7 @@ public class ViewSistema extends JFrame {
 				model.setNomePicole("");
 				model.setNomeBolinho("");
 				model.setNomePanqueca("");
+				model.setNomeTortaMorango("");
 						
 				if(!agua.isEmpty()){
 					itemcost[0] = Double.parseDouble(txtAgua.getText());
@@ -1013,12 +1082,20 @@ public class ViewSistema extends JFrame {
 					model.setQtdPanqueca(qtdPanqueca);
 					model.setNomePanqueca(" Panqueca ");
 				}
+				if(!tortaMorango.isEmpty()) {
+					itemcost[20] = Double.parseDouble(txtTortaMorango.getText());
+					qtdTortaMorango = Integer.parseInt(txtTortaMorango.getText());
+					model.setQtdTortaMorango(qtdTortaMorango);
+					model.setNomeTortaMorango(" Torta de morango ");
+				}
 
 				String mPagamento = (String)metodoPagamento.getSelectedItem();
 				
 				if(mPagamento == "Dinheiro") {
 					
-					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] + itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17]; 
+					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] +
+						itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] +
+						itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17] + itemcost[18] + itemcost[19]; 
 					
 					diferenca = Double.parseDouble(txtInDinnheiro.getText());
 					
@@ -1043,7 +1120,10 @@ public class ViewSistema extends JFrame {
 					}
 				}else if(mPagamento == "Débito" || mPagamento == "Crédito") {
 					
-					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] + itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] + itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17]; 
+					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] +
+						itemcost[6] + itemcost[7] +itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] +
+						itemcost[13] +itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17]+itemcost[18] +
+						itemcost[19]; 
 					
 					String quantidade = String.format("R$%.2f",subTotal);
 					txtSubT.setText(quantidade);
@@ -1063,12 +1143,12 @@ public class ViewSistema extends JFrame {
 						model.getQtdFritas()+model.getQtdSalada()+model.getQtdHamburger()+model.getQtdAneisCebola()+
 						model.getQtdSaladaFrango()+model.getQtdSanduicheAtum()+model.getQtdSanduicheFrango()+
 						model.getQtdSanduicheQueijo()+model.getQtdBrownie()+model.getQtdTorrada()+model.getQtdPicole()+
-						model.getQtdBolinho()+model.getQtdPanqueca();
+						model.getQtdBolinho()+model.getQtdPanqueca()+model.getQtdTortaMorango();
 				
 				nomeP = model.getNomeAgua()+model.getNomeCafe()+model.getNomeCoca()+model.getNomeCerveja()+model.getNomeAguacc()+model.getNomeSucoLaranja()+
 						model.getNomeSucoMaracuja()+model.getNomeFritas()+model.getNomeSalada()+model.getNomeHamburger()+model.getNomeAneisCebola()+
 						model.getNomeSaladaFrango()+model.getNomeSanduicheAtum()+model.getNomeSanduicheQueijo()+model.getNomeBrownie()+
-						model.getNomeTorrada()+model.getNomePicole()+model.getNomeBolinho()+model.getNomePanqueca();
+						model.getNomeTorrada()+model.getNomePicole()+model.getNomeBolinho()+model.getNomePanqueca()+model.getNomeTortaMorango();
 				
 				model.setOperacao("Venda");
 				model.setNomeProduto(nomeP);
@@ -1336,6 +1416,16 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtTorrada.setColumns(10);
+		
+		
+		chckbxTortaDeMorango.setBounds(11, 168, 129, 23);
+		panel_4.add(chckbxTortaDeMorango);
+		
+		txtTortaMorango = new JTextField();
+		txtTortaMorango.setEnabled(false);
+		txtTortaMorango.setBounds(147, 170, 83, 19);
+		panel_4.add(txtTortaMorango);
+		txtTortaMorango.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(912, 84, 416, 364);

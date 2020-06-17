@@ -10,12 +10,13 @@ import connection.ConnectionFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
@@ -46,28 +47,26 @@ public class GerenciaProd extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnEstornar = new JButton("Estornar");
+		btnEstornar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				estornar();
+				pegaTotal();
+				pegaTaxa();
+			}
+		});
 		btnEstornar.setBounds(272, 425, 95, 25);
 		panel.add(btnEstornar);
 		
-		JLabel lblReceitaTotal = new JLabel("Receita total:");
+		JLabel lblReceitaTotal = new JLabel("Receita total: R$");
 		lblReceitaTotal.setBounds(33, 12, 103, 15);
 		panel.add(lblReceitaTotal);
 		
-		JButton btnTotal = new JButton("Total");
-		btnTotal.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				pegaValores();
-			}
-		});
-		btnTotal.setBounds(379, 425, 75, 25);
-		panel.add(btnTotal);
-		
-		JLabel lblTaxaTotal = new JLabel("Taxa total:");
+		JLabel lblTaxaTotal = new JLabel("Taxa total: ");
 		lblTaxaTotal.setBounds(33, 39, 103, 15);
 		panel.add(lblTaxaTotal);
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(466, 425, 84, 25);
+		btnVoltar.setBounds(379, 425, 77, 25);
 		panel.add(btnVoltar);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -128,21 +127,75 @@ public class GerenciaProd extends JFrame {
 			ConnectionFactory.closeConnection(con, stmt, rs);
 		}
 	}
-	public void pegaValores() {
+	public void pegaTotal() {
 		Connection con = new ConnectionFactory().getConnection();
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
 	    String sql = "select sum(total) as total from produtos;";
-	    String labelTaxa = null;
+	    
 	    String labelTotal = null;
+	    double total = 0;
 	    try {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
+			while(rs.next()) {
+				labelTotal = rs.getString("total");
+				total = Double.parseDouble(labelTotal);
+				lblTotal.setText(String.format("%.2f", total));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			ConnectionFactory.closeConnection(con, stmt, rs);
 		}
+	}
+	public void pegaTaxa() {
+		Connection con = new ConnectionFactory().getConnection();
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
+	    String sql = "select sum(taxa) as taxa from produtos;";
+	    
+	    String labelTaxa = null;
+	    double taxa = 0;
+	    try {
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				labelTaxa = rs.getString("taxa");
+				taxa = Double.parseDouble(labelTaxa);
+				lblTaxa.setText(String.format("%.2f", taxa));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+	}
+	public void estornar() {
+		Connection con = new ConnectionFactory().getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+		
+		int row = table.getSelectedRow();
+		String selected = modelo.getValueAt(row, 0).toString();
+		
+
+        String sql = "delete from produtos where id = '"+ selected + "';";
+        
+        try {
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			JOptionPane.showMessageDialog(null, "Compra id:" + selected + " removido com sucesso!");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+        updateTable();
 	}
 }
