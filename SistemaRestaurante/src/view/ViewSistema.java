@@ -59,6 +59,7 @@ public class ViewSistema extends JFrame {
 	private JTextField txtPicole;
 	private JTextField txtBolinho;
 	private JTextField txtPanqueca;
+	private JTextField txtTortaMorango;
 	
 	/*
 	 * preco dos produtos
@@ -95,7 +96,6 @@ public class ViewSistema extends JFrame {
 	
 	private JTextArea jtxtRecibo = new JTextArea();
 	private int qtd = 0;
-	private JTextField txtTortaMorango;
 	
 
 	/**
@@ -848,7 +848,7 @@ public class ViewSistema extends JFrame {
 				jtxtRecibo.setText(null);
 				
 				model.setQtd(0);
-				model.setQdtAgua(0);
+				model.setQtdAgua(0);
 				model.setQtdCafe(0);
 				model.setQtdCerveja(0);
 				model.setQtdCoca(0);
@@ -898,7 +898,6 @@ public class ViewSistema extends JFrame {
 		JButton btnTotal = new JButton("Total");
 		btnTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String nomeP = "";
 				String cafe = txtCafe.getText();
 				String agua = txtAgua.getText();
 				String cerveja = txtCerveja.getText();
@@ -920,7 +919,6 @@ public class ViewSistema extends JFrame {
 				String panqueca = txtPanqueca.getText();
 				String picole = txtPicole.getText();
 				String tortaMorango = txtTortaMorango.getText();
-				
 				
 				int qtdCafe;
 				int qtdAgua;
@@ -965,7 +963,7 @@ public class ViewSistema extends JFrame {
 				if(!agua.isEmpty()){
 					itemcost[0] = Double.parseDouble(txtAgua.getText());
 					qtdAgua = Integer.parseInt(txtAgua.getText());
-					model.setQdtAgua(qtdAgua);
+					model.setQtdAgua(qtdAgua);
 					model.setNomeAgua(" Água ");
 				}
 				if(!cafe.isEmpty()){
@@ -1091,11 +1089,11 @@ public class ViewSistema extends JFrame {
 
 				String mPagamento = (String)metodoPagamento.getSelectedItem();
 				
-				if(mPagamento == "Dinheiro") {
-					
-					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] +
+				subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] +
 						itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] +
-						itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17] + itemcost[18] + itemcost[19]; 
+						itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17] + itemcost[18] + itemcost[19] +itemcost[20];
+				
+				if(mPagamento == "Dinheiro") {
 					
 					diferenca = Double.parseDouble(txtInDinnheiro.getText());
 					
@@ -1120,11 +1118,6 @@ public class ViewSistema extends JFrame {
 					}
 				}else if(mPagamento == "Débito" || mPagamento == "Crédito") {
 					
-					subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] +
-						itemcost[6] + itemcost[7] +itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] +
-						itemcost[13] +itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17]+itemcost[18] +
-						itemcost[19]; 
-					
 					String quantidade = String.format("R$%.2f",subTotal);
 					txtSubT.setText(quantidade);
 					
@@ -1138,55 +1131,53 @@ public class ViewSistema extends JFrame {
 					txtValue.setText(vTotal);
 				}
 				
-				qtd = model.getQdtAgua()+model.getQtdCafe()+model.getQtdCerveja()+model.getQtdCoca()+
+				qtd = model.getQtdAgua()+model.getQtdCafe()+model.getQtdCerveja()+model.getQtdCoca()+
 						model.getQtdAguacc()+model.getQtdSucoLaranja()+model.getQtdSucoMaracuja()+
 						model.getQtdFritas()+model.getQtdSalada()+model.getQtdHamburger()+model.getQtdAneisCebola()+
 						model.getQtdSaladaFrango()+model.getQtdSanduicheAtum()+model.getQtdSanduicheFrango()+
 						model.getQtdSanduicheQueijo()+model.getQtdBrownie()+model.getQtdTorrada()+model.getQtdPicole()+
 						model.getQtdBolinho()+model.getQtdPanqueca()+model.getQtdTortaMorango();
 				
-				nomeP = model.getNomeAgua()+model.getNomeCafe()+model.getNomeCoca()+model.getNomeCerveja()+model.getNomeAguacc()+model.getNomeSucoLaranja()+
-						model.getNomeSucoMaracuja()+model.getNomeFritas()+model.getNomeSalada()+model.getNomeHamburger()+model.getNomeAneisCebola()+
-						model.getNomeSaladaFrango()+model.getNomeSanduicheAtum()+model.getNomeSanduicheQueijo()+model.getNomeBrownie()+
-						model.getNomeTorrada()+model.getNomePicole()+model.getNomeBolinho()+model.getNomePanqueca()+model.getNomeTortaMorango();
-				
 				model.setOperacao("Venda");
-				model.setNomeProduto(nomeP);
 				model.setQtd(qtd);
 				model.setValorTotal(valueTotal);
 				model.setSubTotal(subTotal);
 				model.setTaxa(taxa);
 				
-				Calendar timer = Calendar.getInstance();
-				timer.getTime();
-				SimpleDateFormat fTime = new SimpleDateFormat("HH:mm:ss");
-				fTime.format(timer.getTime());
-				SimpleDateFormat fDate = new SimpleDateFormat("dd-MMM-yyyy");
-				fDate.format(timer.getTime());
-				
-				jtxtRecibo.append("\tSmart Food\n"+
-						"\n====================================\n"+
-									"Pratos principais:\t\t" + "\n\n"+
-									"Bebidas:\t\t" +"\n\n"+
-									"Sobremesa:\t\t"  +"\n\n"+
-									"Quantidade:\t\t" + qtd +"\n\n"+
-						"====================================" + "\n\n" +
-						"Taxa: \t\t" + taxa + "\n\n" +
-						"Sub-Total: \t\t" + subTotal + "\n\n" +
-						"Total: \t\t" + valueTotal + "\n\n" +
-						"Método de pagamento: \t" + mPagamento + "\n\n" +
-						"====================================" + "\n\n" +
-						"\nData: " + fDate.format(timer.getTime()) + 
-						"\tHora: " + fTime.format(timer.getTime()) +
-						"\n\n\t\tObrigado !");
-				
 				boolean registra = controlP.registraVenda(model);
 				
 				if(registra == true) {
 					JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!");
+					int id = controlP.getMax(model);
+					
+					Calendar timer = Calendar.getInstance();
+					timer.getTime();
+					SimpleDateFormat fTime = new SimpleDateFormat("HH:mm:ss");
+					fTime.format(timer.getTime());
+					SimpleDateFormat fDate = new SimpleDateFormat("dd-MMM-yyyy");
+					fDate.format(timer.getTime());
+					
+					jtxtRecibo.append("\tSmart Food\n"+
+							"\n====================================\n"+
+										"Pratos principais:\t\t" + "\n\n"+
+										"Bebidas:\t\t" +"\n\n"+
+										"Sobremesa:\t\t"  +"\n\n"+
+										"Quantidade:\t\t" + qtd +"\n\n"+
+										"ID:\t\t" + id +"\n\n"+
+							"====================================" + "\n\n" +
+							"Taxa: \t\t" + taxa + "\n\n" +
+							"Sub-Total: \t\t" + subTotal + "\n\n" +
+							"Total: \t\t" + valueTotal + "\n\n" +
+							"Método de pagamento: \t" + mPagamento + "\n\n" +
+							"====================================" + "\n\n" +
+							"\nData: " + fDate.format(timer.getTime()) + 
+							"\tHora: " + fTime.format(timer.getTime()) +
+							"\n\n\t\tObrigado !");
 				}else {
 					JOptionPane.showMessageDialog(null, "Falha ao registrar venda!");
 				}
+				
+				
 			}
 		});
 		btnTotal.setBounds(12, 187, 70, 25);
@@ -1424,6 +1415,16 @@ public class ViewSistema extends JFrame {
 		txtTortaMorango = new JTextField();
 		txtTortaMorango.setEnabled(false);
 		txtTortaMorango.setBounds(147, 170, 83, 19);
+		txtTortaMorango.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
 		panel_4.add(txtTortaMorango);
 		txtTortaMorango.setColumns(10);
 		

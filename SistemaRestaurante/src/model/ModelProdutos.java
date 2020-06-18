@@ -366,12 +366,6 @@ public class ModelProdutos {
 	public void setQtdCafe(int qtdCafe) {
 		this.qtdCafe = qtdCafe;
 	}
-	public int getQdtAgua() {
-		return qtdAgua;
-	}
-	public void setQdtAgua(int qdtAgua) {
-		this.qtdAgua = qdtAgua;
-	}
 	public int getQtdCerveja() {
 		return qtdCerveja;
 	}

@@ -21,8 +21,8 @@ public class ControlProdutos {
 			return false;
 			
 		}else {
-			String sql = "insert into produtos (operacao, nome_produto, qtd, total, sub_total, taxa) values ('"+
-					model.getOperacao() + "','" +model.getNomeProduto() + "','" + model.getQtd() + "','" +
+			String sql = "insert into produtos (operacao, qtd, total, sub_total, taxa) values ('"+
+					model.getOperacao() +"','" + model.getQtd() + "','" +
 					model.getValorTotal() + "','" + model.getSubTotal() +"','" + model.getTaxa()+"');";
 			try {
 				stmt = con.prepareStatement(sql);
@@ -111,5 +111,26 @@ public class ControlProdutos {
 			ConnectionFactory.closeConnection(con, stmt, rs);
 		}
 		return false;
+	}
+	public int getMax(ModelProdutos model) {
+		Connection con = new ConnectionFactory().getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int max = 0;
+		
+		String sql = "select max(id) from produtos;";
+		try {
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				max = rs.getInt("max(id)");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+		return max;
 	}
 }
