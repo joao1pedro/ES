@@ -66,7 +66,7 @@ public class GerenciaProd extends JFrame {
 		panel.add(lblTaxaTotal);
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(379, 425, 77, 25);
+		btnVoltar.setBounds(511, 425, 77, 25);
 		panel.add(btnVoltar);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -79,7 +79,7 @@ public class GerenciaProd extends JFrame {
 				{null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"id", "opera\u00E7\u00E3o", "nome produto", "qtd", "taxa", "sub total", "total"
+				"id", "opera\u00E7\u00E3o", "qtd", "sub total", "taxa", "total"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -96,12 +96,23 @@ public class GerenciaProd extends JFrame {
 
 		lblTaxa.setBounds(138, 39, 84, 15);
 		panel.add(lblTaxa);
+		
+		JButton btnEditarPreo = new JButton("Editar preço");
+		btnEditarPreo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EditarPreco frame = new EditarPreco();
+				frame.setVisible(true);
+				frame.updateProdutos();
+			}
+		});
+		btnEditarPreo.setBounds(379, 425, 120, 25);
+		panel.add(btnEditarPreo);
 	}
 	public void updateTable() {
 		Connection con = new ConnectionFactory().getConnection();
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
-	    String sql = "select * from produtos;";
+	    String sql = "select * from vendas;";
 	    try{
 	        stmt = con.prepareStatement(sql);
 	        rs = stmt.executeQuery();
@@ -113,7 +124,6 @@ public class GerenciaProd extends JFrame {
 	        	modelo.addRow(new Object[] {
 	        			rs.getInt("id"),
 	        			rs.getString("operacao"),
-	        			rs.getString("nome_produto"),
 	        			rs.getInt("qtd"),
 	        			rs.getDouble("sub_total"),
 	        			rs.getDouble("taxa"),
@@ -131,7 +141,7 @@ public class GerenciaProd extends JFrame {
 		Connection con = new ConnectionFactory().getConnection();
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
-	    String sql = "select sum(total) as total from produtos;";
+	    String sql = "select sum(total) as total from vendas;";
 	    
 	    String labelTotal = null;
 	    double total = 0;
@@ -154,7 +164,7 @@ public class GerenciaProd extends JFrame {
 		Connection con = new ConnectionFactory().getConnection();
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
-	    String sql = "select sum(taxa) as taxa from produtos;";
+	    String sql = "select sum(taxa) as taxa from vendas;";
 	    
 	    String labelTaxa = null;
 	    double taxa = 0;
@@ -184,7 +194,7 @@ public class GerenciaProd extends JFrame {
 		String selected = modelo.getValueAt(row, 0).toString();
 		
 
-        String sql = "delete from produtos where id = '"+ selected + "';";
+        String sql = "delete from vendas where id = '"+ selected + "';";
         
         try {
 			stmt = con.prepareStatement(sql);

@@ -21,7 +21,7 @@ public class ControlProdutos {
 			return false;
 			
 		}else {
-			String sql = "insert into produtos (operacao, qtd, total, sub_total, taxa) values ('"+
+			String sql = "insert into vendas (operacao, qtd, total, sub_total, taxa) values ('"+
 					model.getOperacao() +"','" + model.getQtd() + "','" +
 					model.getValorTotal() + "','" + model.getSubTotal() +"','" + model.getTaxa()+"');";
 			try {
@@ -40,7 +40,7 @@ public class ControlProdutos {
 		Connection con = new ConnectionFactory().getConnection();
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
-	    String sql = "select * from produtos where id = '"+ model.getId() +"';";
+	    String sql = "select * from vendas where id = '"+ model.getId() +"';";
 	    try{
 	        stmt = con.prepareStatement(sql);
 	        rs = stmt.executeQuery();
@@ -57,31 +57,12 @@ public class ControlProdutos {
 		}
 		return false;
 	}
-	public boolean remover(ModelProdutos model){
-		Connection con = new ConnectionFactory().getConnection();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		if(model.getId()>0) {
-			String sql = "delete from usuarios where id = '" + model.getId() + "';";
-			try {
-				stmt = con.prepareStatement(sql);
-				rs = stmt.executeQuery();
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				ConnectionFactory.closeConnection(con, stmt, rs);
-			}
-		}
-		return false;
-	}
 	public boolean totalBanco(ModelProdutos model) {
 		Connection con = new ConnectionFactory().getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select sum(total) as total from produtos;";
+		String sql = "select sum(total) as total from vendas;";
 		try {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
@@ -99,7 +80,7 @@ public class ControlProdutos {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select sum(taxa) as taxa from produtos;";
+		String sql = "select sum(taxa) as taxa from vendas;";
 		try {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
@@ -118,7 +99,7 @@ public class ControlProdutos {
 		ResultSet rs = null;
 		int max = 0;
 		
-		String sql = "select max(id) from produtos;";
+		String sql = "select max(id) from vendas;";
 		try {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();

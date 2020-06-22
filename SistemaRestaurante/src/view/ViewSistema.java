@@ -41,15 +41,27 @@ public class ViewSistema extends JFrame {
 	private JTextField txtCerveja;
 	private JTextField txtCoca;
 	private JTextField txtAguaCc;
+	private JTextField txtSubT;
 	private JTextField txtLaranja;
 	private JTextField txtMaracuja;
-	private JTextField txtSubT;
+	private JTextField txtUva;
+	private JTextField txtMorango;
+	private JTextField txtLimao;
+	private JTextField txtAbacaxi;
+	private JTextField txtCaju;
+	private JTextField txtManga;
+	private JTextField txtGraviola;
 	
 	private JTextField txtFritas;
 	private JTextField txtSalada;
 	private JTextField txtHamburger;
 	private JTextField txtAneisdecebola;
 	private JTextField txtSaladadefrango;
+	private JTextField txtArroz;
+	private JTextField txtMacarrao;
+	private JTextField txtFeijao;
+	private JTextField txtBife;
+	private JTextField txtFrango;
 	private JTextField txtSanduichedeatum;
 	private JTextField txtSanduichedequeijo;
 	private JTextField txtSanduichedefrango;
@@ -60,28 +72,57 @@ public class ViewSistema extends JFrame {
 	private JTextField txtBolinho;
 	private JTextField txtPanqueca;
 	private JTextField txtTortaMorango;
+	private JTextField txtTortaChocolate;
+	private JTextField txtTortaLimao;
+	private JTextField txtTortaAbacaxi;
+	private JTextField txtTortaBanana;
+	private JTextField txtTortaMaca;
+	private JTextField txtSorvete;
+	private JTextField txtPudim;
+	private JTextField txtPave;
+	
 	
 	/*
 	 * preco dos produtos
 	 * */
-	double priceAgua = 2.0;
-	double priceAguaCc = 3.0;
-	double priceCafe = 2.5;
-	double priceCerveja= 3.5;
-	double priceSucoLaranja = 2.5;
-	double priceSucoMaracuja = 2.5;
-	double priceCoca = 2.8;
-	double priceFritas = 5;
-	double priceSalada = 5;
-	double priceHamburger = 5;
-	double priceAneisCebola = 3;
-	double pricesaladaFrango = 8;
-	double priceSanduicheAtum = 4.5;
-	double priceSanduicheFrango = 4.5;
-	double priceSanduicheQueijo = 4.5;
-	double priceTortaMorango = 7;
+	private double priceAgua = 2.0;
+	private double priceAguaCc = 3.0;
+	private double priceCafe = 2.5;
+	private double priceCerveja= 3.5;
+	private double priceSucoLaranja = 2.5;
+	private double priceSucoMaracuja = 2.5;
+	private double priceCoca = 2.8;
+	private double priceFritas = 5;
+	private double priceSalada = 5;
+	private double priceHamburger = 5;
+	private double priceAneisCebola = 3;
+	private double pricesaladaFrango = 8;
+	private double priceSanduicheAtum = 4.5;
+	private double priceSanduicheFrango = 4.5;
+	private double priceSanduicheQueijo = 4.5;
+	private double priceTortaMorango = 7;
+	private double priceTortaChocolate = 7;
+	private double priceTortaLimao = 7;
+	private double priceTortaAbacaxi = 7;
+	private double priceTortaBanana = 7;
+	private double priceTortaMaca = 7;
+	private double priceSorvete = 4;
+	private double pricePudim = 5;
+	private double pricePave = 5;
+	private double priceUva = 2.5;
+	private double priceMorango = 2.5;
+	private double priceLimao = 2.5;
+	private double priceAbacaxi = 2.5;
+	private double priceCaju = 2.5;
+	private double priceManga = 2.5;
+	private double priceGraviola = 2.5;
+	private double priceArroz = 3;
+	private double priceMacarrao = 3;
+	private double priceFeijao = 3;
+	private double priceBife = 4.5;
+	private double priceFrango = 4;
 	
-	double taxa, valueTotal, subTotal, diferenca, custo, rateTaxa = 12;
+	private double taxa, valueTotal, subTotal, diferenca, custo, rateTaxa = 12;
 	
 	double itemcost[] = new double [100];
 	private JTextField txtTaxa;
@@ -108,6 +149,26 @@ public class ViewSistema extends JFrame {
 		JCheckBox chckbxBolinho = new JCheckBox("Bolinho");
 		JCheckBox chckbxPanqueca = new JCheckBox("Panqueca");
 		JCheckBox chckbxTortaDeMorango = new JCheckBox("Torta de Morango");
+		JCheckBox chckbxTortaChocolate = new JCheckBox("Torta de Chocolate");
+		JCheckBox chckbxTortaLimao = new JCheckBox("Torta de Limao");
+		JCheckBox chckbxTortaAbacaxi = new JCheckBox("Torta de Abacaxi");
+		JCheckBox chckbxTortaBanana = new JCheckBox("Torta de Banana");
+		JCheckBox chckbxTortaMaca = new JCheckBox("Torta de Maca");
+		JCheckBox chckbxSorvete = new JCheckBox("Sorvete");
+		JCheckBox chckbxPudim = new JCheckBox("Pudim");
+		JCheckBox chckbxPave = new JCheckBox("Pave");
+		JCheckBox chckbxUva = new JCheckBox("Uva");
+		JCheckBox chckbxMorango = new JCheckBox("Morango");
+		JCheckBox chckbxLimao = new JCheckBox("Limao");
+		JCheckBox chckbxAbacaxi = new JCheckBox("Abacaxi");
+		JCheckBox chckbxCaju = new JCheckBox("Caju");
+		JCheckBox chckbxManga = new JCheckBox("Manga");
+		JCheckBox chckbxGraviola = new JCheckBox("Graviola");
+		JCheckBox chckbxArroz = new JCheckBox("Arroz");
+		JCheckBox chckbxMacarrao = new JCheckBox("Macarrao");
+		JCheckBox chckbxFeijao = new JCheckBox("Feijao");
+		JCheckBox chckbxBife = new JCheckBox("Bife");
+		JCheckBox chckbxFrango = new JCheckBox("Frango");
 		chckbxTortaDeMorango.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -121,6 +182,288 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
+		
+		chckbxTortaChocolate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxTortaChocolate.isSelected()) {
+					txtTortaChocolate.setEnabled(true);
+					txtTortaChocolate.setText("");
+				}
+				else {
+					txtTortaChocolate.setEnabled(false);
+					txtTortaChocolate.setText("0");
+				}
+			}
+		});
+		
+		chckbxTortaLimao.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxTortaLimao.isSelected()) {
+					txtTortaLimao.setEnabled(true);
+					txtTortaLimao.setText("");
+				}
+				else {
+					txtTortaLimao.setEnabled(false);
+					txtTortaLimao.setText("0");
+				}
+			}
+		});
+		
+		chckbxTortaAbacaxi.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxTortaAbacaxi.isSelected()) {
+					txtTortaAbacaxi.setEnabled(true);
+					txtTortaAbacaxi.setText("");
+				}
+				else {
+					txtTortaAbacaxi.setEnabled(false);
+					txtTortaAbacaxi.setText("0");
+				}
+			}
+		});
+		
+		chckbxTortaMaca.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxTortaMaca.isSelected()) {
+					txtTortaMaca.setEnabled(true);
+					txtTortaMaca.setText("");
+				}
+				else {
+					txtTortaMaca.setEnabled(false);
+					txtTortaMaca.setText("0");
+				}
+			}
+		});
+		
+		chckbxTortaBanana.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxTortaBanana.isSelected()) {
+					txtTortaBanana.setEnabled(true);
+					txtTortaBanana.setText("");
+				}
+				else {
+					txtTortaBanana.setEnabled(false);
+					txtTortaBanana.setText("0");
+				}
+			}
+		});
+		
+		chckbxSorvete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxSorvete.isSelected()) {
+					txtSorvete.setEnabled(true);
+					txtSorvete.setText("");
+				}
+				else {
+					txtSorvete.setEnabled(false);
+					txtSorvete.setText("0");
+				}
+			}
+		});
+		
+		chckbxPudim.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxPudim.isSelected()) {
+					txtPudim.setEnabled(true);
+					txtPudim.setText("");
+				}
+				else {
+					txtPudim.setEnabled(false);
+					txtPudim.setText("0");
+				}
+			}
+		});
+		
+		chckbxPave.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxPave.isSelected()) {
+					txtPave.setEnabled(true);
+					txtPave.setText("");
+				}
+				else {
+					txtPave.setEnabled(false);
+					txtPave.setText("0");
+				}
+			}
+		});
+		
+		chckbxUva.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxUva.isSelected()) {
+					txtUva.setEnabled(true);
+					txtUva.setText("");
+				}
+				else {
+					txtUva.setEnabled(false);
+					txtUva.setText("0");
+				}
+			}
+		});
+		
+		chckbxMorango.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxMorango.isSelected()) {
+					txtMorango.setEnabled(true);
+					txtMorango.setText("");
+				}
+				else {
+					txtMorango.setEnabled(false);
+					txtMorango.setText("0");
+				}
+			}
+		});
+		
+		chckbxLimao.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxLimao.isSelected()) {
+					txtLimao.setEnabled(true);
+					txtLimao.setText("");
+				}
+				else {
+					txtLimao.setEnabled(false);
+					txtLimao.setText("0");
+				}
+			}
+		});
+		
+		chckbxAbacaxi.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxAbacaxi.isSelected()) {
+					txtAbacaxi.setEnabled(true);
+					txtAbacaxi.setText("");
+				}
+				else {
+					txtAbacaxi.setEnabled(false);
+					txtAbacaxi.setText("0");
+				}
+			}
+		});
+		
+		chckbxCaju.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxCaju.isSelected()) {
+					txtCaju.setEnabled(true);
+					txtCaju.setText("");
+				}
+				else {
+					txtCaju.setEnabled(false);
+					txtCaju.setText("0");
+				}
+			}
+		});
+		
+		chckbxManga.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxManga.isSelected()) {
+					txtManga.setEnabled(true);
+					txtManga.setText("");
+				}
+				else {
+					txtManga.setEnabled(false);
+					txtManga.setText("0");
+				}
+			}
+		});
+		
+		chckbxGraviola.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxGraviola.isSelected()) {
+					txtGraviola.setEnabled(true);
+					txtGraviola.setText("");
+				}
+				else {
+					txtGraviola.setEnabled(false);
+					txtGraviola.setText("0");
+				}
+			}
+		});
+		
+		chckbxArroz.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxArroz.isSelected()) {
+					txtArroz.setEnabled(true);
+					txtArroz.setText("");
+				}
+				else {
+					txtArroz.setEnabled(false);
+					txtArroz.setText("0");
+				}
+			}
+		});
+		
+		chckbxMacarrao.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxMacarrao.isSelected()) {
+					txtMacarrao.setEnabled(true);
+					txtMacarrao.setText("");
+				}
+				else {
+					txtMacarrao.setEnabled(false);
+					txtMacarrao.setText("0");
+				}
+			}
+		});
+		
+		chckbxFeijao.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxFeijao.isSelected()) {
+					txtFeijao.setEnabled(true);
+					txtFeijao.setText("");
+				}
+				else {
+					txtFeijao.setEnabled(false);
+					txtFeijao.setText("0");
+				}
+			}
+		});
+		
+		chckbxBife.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxBife.isSelected()) {
+					txtBife.setEnabled(true);
+					txtBife.setText("");
+				}
+				else {
+					txtBife.setEnabled(false);
+					txtBife.setText("0");
+				}
+			}
+		});
+		
+		chckbxFrango.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxFrango.isSelected()) {
+					txtFrango.setEnabled(true);
+					txtFrango.setText("");
+				}
+				else {
+					txtFrango.setEnabled(false);
+					txtFrango.setText("0");
+				}
+			}
+		});
+		
+	
 		
 		setTitle("Sistema de pedidos");
 		setPreferredSize(new Dimension(800, 600));
@@ -301,6 +644,141 @@ public class ViewSistema extends JFrame {
 		});
 		chckbxMaracuja.setBounds(12, 246, 107, 23);
 		panel.add(chckbxMaracuja);
+		
+		chckbxUva.setBounds(12, 273, 107, 23);
+		panel.add(chckbxUva);
+		
+		txtUva = new JTextField();
+		txtUva.setEnabled(false);
+		txtUva.setBounds(143, 275, 80, 19);
+		txtUva.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel.add(txtUva);
+		txtUva.setColumns(10);
+		
+		
+		chckbxMorango.setBounds(12, 300, 107, 23);
+		panel.add(chckbxMorango);
+		
+		txtMorango = new JTextField();
+		txtMorango.setEnabled(false);
+		txtMorango.setBounds(143, 302, 80, 19);
+		txtMorango.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel.add(txtMorango);
+		txtMorango.setColumns(10);
+		
+		chckbxLimao.setBounds(12, 327, 107, 23);
+		panel.add(chckbxLimao);
+		
+		txtLimao = new JTextField();
+		txtLimao.setEnabled(false);
+		txtLimao.setBounds(143, 329, 80, 19);
+		txtLimao.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel.add(txtLimao);
+		txtLimao.setColumns(10);
+		
+		chckbxAbacaxi.setBounds(12, 354, 107, 23);
+		panel.add(chckbxAbacaxi);
+		
+		txtAbacaxi = new JTextField();
+		txtAbacaxi.setEnabled(false);
+		txtAbacaxi.setBounds(143, 356, 80, 19);
+		txtAbacaxi.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel.add(txtAbacaxi);
+		txtAbacaxi.setColumns(10);
+		
+		chckbxCaju.setBounds(12, 381, 107, 23);
+		panel.add(chckbxCaju);
+		
+		txtCaju = new JTextField();
+		txtCaju.setEnabled(false);
+		txtCaju.setBounds(143, 383, 80, 19);
+		txtCaju.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel.add(txtCaju);
+		txtCaju.setColumns(10);
+		
+		chckbxManga.setBounds(12, 408, 107, 23);
+		panel.add(chckbxManga);
+		
+		txtManga = new JTextField();
+		txtManga.setEnabled(false);
+		txtManga.setBounds(143, 410, 80, 19);
+		txtManga.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel.add(txtManga);
+		txtManga.setColumns(10);
+		
+		chckbxGraviola.setBounds(12, 435, 107, 23);
+		panel.add(chckbxGraviola);
+		
+		txtGraviola = new JTextField();
+		txtGraviola.setEnabled(false);
+		txtGraviola.setBounds(143, 437, 80, 19);
+		txtGraviola.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel.add(txtGraviola);
+		txtGraviola.setColumns(10);
+		
 		
 		JCheckBox chckbxAguaCc = new JCheckBox("Água de Côco");
 		chckbxAguaCc.addActionListener(new ActionListener() {
@@ -539,9 +1017,104 @@ public class ViewSistema extends JFrame {
 		chckbxSaladadefrango.setBounds(8, 143, 129, 23);
 		panel_2.add(chckbxSaladadefrango);
 		
+		chckbxArroz.setBounds(8, 170, 129, 23);
+		panel_2.add(chckbxArroz);
+		
+		txtArroz = new JTextField();
+		txtArroz.setEnabled(false);
+		txtArroz.setBounds(175, 172, 80, 19);
+		txtArroz.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_2.add(txtArroz);
+		txtArroz.setColumns(10);
+		
+		chckbxMacarrao.setBounds(8, 197, 129, 23);
+		panel_2.add(chckbxMacarrao);
+		
+		txtMacarrao = new JTextField();
+		txtMacarrao.setEnabled(false);
+		txtMacarrao.setBounds(175, 199, 80, 19);
+		txtMacarrao.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_2.add(txtMacarrao);
+		txtMacarrao.setColumns(10);
+		
+		chckbxFeijao.setBounds(8, 224, 129, 23);
+		panel_2.add(chckbxFeijao);
+		
+		txtFeijao = new JTextField();
+		txtFeijao.setEnabled(false);
+		txtFeijao.setBounds(175, 226, 80, 19);
+		txtFeijao.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_2.add(txtFeijao);
+		txtFeijao.setColumns(10);
+		
+		chckbxBife.setBounds(8, 251, 129, 23);
+		panel_2.add(chckbxBife);
+		
+		txtBife = new JTextField();
+		txtBife.setEnabled(false);
+		txtBife.setBounds(175, 253, 80, 19);
+		txtBife.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_2.add(txtBife);
+		txtBife.setColumns(10);
+		
+		chckbxFrango.setBounds(8, 278, 129, 23);
+		panel_2.add(chckbxFrango);
+		
+		txtFrango = new JTextField();
+		txtFrango.setEnabled(false);
+		txtFrango.setBounds(175, 280, 80, 19);
+		txtFrango.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_2.add(txtFrango);
+		txtFrango.setColumns(10);
+		
 		
 		JLabel lblSanduiche = new JLabel("Sanduiches");
-		lblSanduiche.setBounds(12, 196, 92, 15);
+		lblSanduiche.setBounds(12, 331, 92, 15);
 		panel_2.add(lblSanduiche);
 		
 		
@@ -558,7 +1131,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedeatum.setBounds(12, 219, 155, 23);
+		chckbxSanduichedeatum.setBounds(12, 354, 155, 23);
 		panel_2.add(chckbxSanduichedeatum);
 		
 		JCheckBox chckbxSanduichedequeijo = new JCheckBox("Sanduiche de queijo");
@@ -572,7 +1145,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedequeijo.setBounds(12, 246, 155, 23);
+		chckbxSanduichedequeijo.setBounds(12, 381, 155, 23);
 		panel_2.add(chckbxSanduichedequeijo);
 		
 		JCheckBox chckbxSanduichedefrango = new JCheckBox("Sanduiche de frango");
@@ -588,7 +1161,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedefrango.setBounds(12, 273, 155, 23);
+		chckbxSanduichedefrango.setBounds(12, 408, 155, 23);
 		panel_2.add(chckbxSanduichedefrango);
 		
 		
@@ -685,7 +1258,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedeatum.setColumns(10);
-		txtSanduichedeatum.setBounds(175, 221, 80, 19);
+		txtSanduichedeatum.setBounds(175, 356, 80, 19);
 		panel_2.add(txtSanduichedeatum);
 		
 		txtSanduichedequeijo = new JTextField();
@@ -701,7 +1274,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedequeijo.setColumns(10);
-		txtSanduichedequeijo.setBounds(175, 248, 80, 19);
+		txtSanduichedequeijo.setBounds(175, 383, 80, 19);
 		panel_2.add(txtSanduichedequeijo);
 		
 		txtSanduichedefrango = new JTextField();
@@ -717,7 +1290,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedefrango.setColumns(10);
-		txtSanduichedefrango.setBounds(175, 275, 80, 19);
+		txtSanduichedefrango.setBounds(175, 410, 80, 19);
 		panel_2.add(txtSanduichedefrango);
 		
 		
@@ -793,6 +1366,26 @@ public class ViewSistema extends JFrame {
 				txtTorrada.setText(null);
 				txtAguaCc.setText(null);
 				txtTortaMorango.setText(null);
+				txtTortaChocolate.setText(null);
+				txtTortaLimao.setText(null);
+				txtTortaAbacaxi.setText(null);
+				txtTortaBanana.setText(null);
+				txtTortaMaca.setText(null);
+				txtSorvete.setText(null);
+				txtPudim.setText(null);
+				txtPave.setText(null);
+				txtUva.setText(null);
+				txtMorango.setText(null);
+				txtLimao.setText(null);
+				txtAbacaxi.setText(null);
+				txtCaju.setText(null);
+				txtManga.setText(null);
+				txtGraviola.setText(null);
+				txtArroz.setText(null);
+				txtMacarrao.setText(null);
+				txtFeijao.setText(null);
+				txtBife.setText(null);
+				txtFrango.setText(null);
 				
 				//limpa caixas de seleção
 				chckbxAgua.setSelected(false);
@@ -815,6 +1408,26 @@ public class ViewSistema extends JFrame {
 				chckbxPicole.setSelected(false);
 				chckbxPanqueca.setSelected(false);
 				chckbxTortaDeMorango.setSelected(false);
+				chckbxTortaChocolate.setSelected(false);
+				chckbxTortaLimao.setSelected(false); 
+				chckbxTortaAbacaxi.setSelected(false); 
+				chckbxTortaBanana.setSelected(false);
+				chckbxTortaMaca.setSelected(false);
+				chckbxSorvete.setSelected(false);
+				chckbxPudim.setSelected(false); 
+				chckbxPave.setSelected(false);
+				chckbxUva.setSelected(false);
+				chckbxMorango.setSelected(false);
+				chckbxLimao.setSelected(false);
+				chckbxAbacaxi.setSelected(false);
+				chckbxCaju.setSelected(false);
+				chckbxManga.setSelected(false);
+				chckbxGraviola.setSelected(false);
+				chckbxArroz.setSelected(false);
+				chckbxMacarrao.setSelected(false);
+				chckbxFeijao.setSelected(false);
+				chckbxBife.setSelected(false);
+				chckbxFrango.setSelected(false);
 				
 				//desabilita campos de texto
 				txtAgua.setEnabled(false);
@@ -843,6 +1456,26 @@ public class ViewSistema extends JFrame {
 				txtTorrada.setEnabled(false);
 				txtAguaCc.setEnabled(false);
 				txtTortaMorango.setEnabled(false);
+				txtTortaChocolate.setEnabled(false);
+				txtTortaLimao.setEnabled(false);
+				txtTortaAbacaxi.setEnabled(false);
+				txtTortaBanana.setEnabled(false);
+				txtTortaMaca.setEnabled(false);
+				txtSorvete.setEnabled(false);
+				txtPudim.setEnabled(false);
+				txtPave.setEnabled(false);
+				txtUva.setEnabled(false);
+				txtMorango.setEnabled(false);
+				txtLimao.setEnabled(false);
+				txtAbacaxi.setEnabled(false);
+				txtCaju.setEnabled(false);
+				txtManga.setEnabled(false);
+				txtGraviola.setEnabled(false);
+				txtArroz.setEnabled(false);
+				txtMacarrao.setEnabled(false);
+				txtFeijao.setEnabled(false);
+				txtBife.setEnabled(false);
+				txtFrango.setEnabled(false);
 				
 				
 				jtxtRecibo.setText(null);
@@ -869,6 +1502,27 @@ public class ViewSistema extends JFrame {
 				model.setQtdPanqueca(0);
 				model.setQtdPicole(0);
 				model.setQtdTortaMorango(0);
+				model.setQtdTortaChocolate(0);
+				model.setQtdTortaLimao(0);
+				model.setQtdTortaAbacaxi(0);
+				model.setQtdTortaBanana(0);
+				model.setQtdTortaMaca(0);
+				model.setQtdSorvete(0);
+				model.setQtdPudim(0);
+				model.setQtdPave(0);
+				model.setQtdUva(0);
+				model.setQtdMorango(0);
+				model.setQtdLimao(0);
+				model.setQtdAbacaxi(0);
+				model.setQtdCaju(0);
+				model.setQtdManga(0);
+				model.setQtdGraviola(0);
+				model.setQtdArroz(0);
+				model.setQtdMacarrao(0);
+				model.setQtdFeijao(0);
+				model.setQtdBife(0);
+				model.setQtdFrango(0);
+				
 				
 				model.setNomeAgua("");
 				model.setNomeCafe("");
@@ -890,6 +1544,26 @@ public class ViewSistema extends JFrame {
 				model.setNomeBolinho("");
 				model.setNomePanqueca("");
 				model.setNomeTortaMorango("");
+				model.setNomeTortaChocolate("");
+				model.setNomeTortaLimao("");
+				model.setNomeTortaAbacaxi("");
+				model.setNomeTortaBanana("");
+				model.setNomeTortaMaca("");
+				model.setNomeSorvete("");
+				model.setNomePudim("");
+				model.setNomePave("");
+				model.setNomeUva("");
+				model.setNomeMorango("");
+				model.setNomeLimao("");
+				model.setNomeAbacaxi("");
+				model.setNomeCaju("");
+				model.setNomeManga("");
+				model.setNomeGraviola("");
+				model.setNomeArroz("");
+				model.setNomeMacarrao("");
+				model.setNomeFeijao("");
+				model.setNomeBife("");
+				model.setNomeFrango("");
 			}
 		});
 		btnLimpar.setBounds(96, 187, 82, 25);
@@ -919,6 +1593,26 @@ public class ViewSistema extends JFrame {
 				String panqueca = txtPanqueca.getText();
 				String picole = txtPicole.getText();
 				String tortaMorango = txtTortaMorango.getText();
+				String tortaChocolate = txtTortaChocolate.getText();
+				String tortaLimao = txtTortaLimao.getText();
+				String tortaAbacaxi = txtTortaAbacaxi.getText();
+				String tortaBanana = txtTortaBanana.getText();
+				String tortaMaca = txtTortaMaca.getText();
+				String sorvete = txtSorvete.getText();
+				String pudim = txtPudim.getText();
+				String pave = txtPave.getText();
+				String uva = txtUva.getText();
+				String morango = txtMorango.getText();
+				String limao = txtLimao.getText();
+				String abacaxi = txtAbacaxi.getText();
+				String caju = txtCaju.getText();
+				String manga = txtManga.getText();
+				String graviola = txtGraviola.getText();
+				String arroz = txtArroz.getText();
+				String macarrao = txtMacarrao.getText();
+				String feijao = txtFeijao.getText();
+				String bife = txtBife.getText();
+				String frango = txtFrango.getText();
 				
 				int qtdCafe;
 				int qtdAgua;
@@ -941,6 +1635,27 @@ public class ViewSistema extends JFrame {
 				int qtdPanqueca;
 				int qtdPicole;
 				int qtdTortaMorango;
+				int qtdTortaChocolate;
+				int qtdTortaLimao;
+				int qtdTortaAbacaxi;
+				int qtdTortaBanana;
+				int qtdTortaMaca;
+				int qtdSorvete;
+				int qtdPudim;
+				int qtdPave;
+				int qtdUva;
+				int qtdMorango;
+				int qtdLimao;
+				int qtdAbacaxi;
+				int qtdCaju;
+				int qtdManga;
+				int qtdGraviola;
+				int qtdArroz;
+				int qtdMacarrao;
+				int qtdFeijao;
+				int qtdBife;
+				int qtdFrango;
+				
 				
 				model.setNomeAgua("");
 				model.setNomeCafe("");
@@ -959,6 +1674,26 @@ public class ViewSistema extends JFrame {
 				model.setNomeBolinho("");
 				model.setNomePanqueca("");
 				model.setNomeTortaMorango("");
+				model.setNomeTortaChocolate("");
+				model.setNomeTortaLimao("");
+				model.setNomeTortaAbacaxi("");
+				model.setNomeTortaBanana("");
+				model.setNomeTortaMaca("");
+				model.setNomeSorvete("");
+				model.setNomePudim("");
+				model.setNomePave("");
+				model.setNomeUva("");
+				model.setNomeMorango("");
+				model.setNomeLimao("");
+				model.setNomeAbacaxi("");
+				model.setNomeCaju("");
+				model.setNomeManga("");
+				model.setNomeGraviola("");
+				model.setNomeArroz("");
+				model.setNomeMacarrao("");
+				model.setNomeFeijao("");
+				model.setNomeBife("");
+				model.setNomeFrango("");
 						
 				if(!agua.isEmpty()){
 					itemcost[0] = Double.parseDouble(txtAgua.getText());
@@ -1084,14 +1819,152 @@ public class ViewSistema extends JFrame {
 					itemcost[20] = Double.parseDouble(txtTortaMorango.getText());
 					qtdTortaMorango = Integer.parseInt(txtTortaMorango.getText());
 					model.setQtdTortaMorango(qtdTortaMorango);
-					model.setNomeTortaMorango(" Torta de morango ");
+					model.setNomeTortaMorango(" Torta de Morango ");
+				}
+				if(!tortaChocolate.isEmpty()) {
+					itemcost[21] = Double.parseDouble(txtTortaChocolate.getText());
+					qtdTortaChocolate = Integer.parseInt(txtTortaChocolate.getText());
+					model.setQtdTortaChocolate(qtdTortaChocolate);
+					model.setNomeTortaChocolate(" Torta de Chocolate ");
+				}
+				if(!tortaLimao.isEmpty()) {
+					itemcost[22] = Double.parseDouble(txtTortaLimao.getText());
+					qtdTortaLimao = Integer.parseInt(txtTortaLimao.getText());
+					model.setQtdTortaLimao(qtdTortaLimao);
+					model.setNomeTortaLimao(" Torta de Limao ");
+				}
+				if(!tortaAbacaxi.isEmpty()) {
+					itemcost[23] = Double.parseDouble(txtTortaAbacaxi.getText());
+					qtdTortaAbacaxi = Integer.parseInt(txtTortaAbacaxi.getText());
+					model.setQtdTortaAbacaxi(qtdTortaAbacaxi);
+					model.setNomeTortaAbacaxi(" Torta de Abacaxi ");
+				}
+				if(!tortaBanana.isEmpty()) {
+					itemcost[24] = Double.parseDouble(txtTortaBanana.getText());
+					qtdTortaBanana = Integer.parseInt(txtTortaBanana.getText());
+					model.setQtdTortaBanana(qtdTortaBanana);
+					model.setNomeTortaBanana(" Torta de Banana ");
+				}
+				if(!tortaMaca.isEmpty()) {
+					itemcost[25] = Double.parseDouble(txtTortaMaca.getText());
+					qtdTortaMaca = Integer.parseInt(txtTortaMaca.getText());
+					model.setQtdTortaMaca(qtdTortaMaca);
+					model.setNomeTortaMaca(" Torta de Maca ");
+				}
+				
+				if(!sorvete.isEmpty()) {
+					itemcost[26] = Double.parseDouble(txtSorvete.getText());
+					qtdSorvete = Integer.parseInt(txtSorvete.getText());
+					model.setQtdSorvete(qtdSorvete);
+					model.setNomeSorvete(" Sorvete ");
+				}
+				
+				if(!pudim.isEmpty()) {
+					itemcost[27] = Double.parseDouble(txtPudim.getText());
+					qtdPudim = Integer.parseInt(txtPudim.getText());
+					model.setQtdPudim(qtdPudim);
+					model.setNomePudim(" Pudim ");
+				}
+				
+				if(!pave.isEmpty()) {
+					itemcost[28] = Double.parseDouble(txtPave.getText());
+					qtdPave= Integer.parseInt(txtPave.getText());
+					model.setQtdPave(qtdPave);
+					model.setNomePave(" Pave "); 
+				}
+				
+				if(!uva.isEmpty()) {
+					itemcost[29] = Double.parseDouble(txtUva.getText());
+					qtdUva= Integer.parseInt(txtUva.getText());
+					model.setQtdUva(qtdUva);
+					model.setNomeUva(" Uva "); 
+				}
+				
+				if(!morango.isEmpty()) {
+					itemcost[30] = Double.parseDouble(txtMorango.getText());
+					qtdMorango= Integer.parseInt(txtMorango.getText());
+					model.setQtdMorango(qtdMorango);
+					model.setNomeMorango(" Morango "); 
+				}
+				
+				if(!limao.isEmpty()) {
+					itemcost[31] = Double.parseDouble(txtLimao.getText());
+					qtdLimao= Integer.parseInt(txtLimao.getText());
+					model.setQtdLimao(qtdLimao);
+					model.setNomeLimao(" Limao "); 
+				}
+				
+				if(!abacaxi.isEmpty()) {
+					itemcost[32] = Double.parseDouble(txtAbacaxi.getText());
+					qtdAbacaxi= Integer.parseInt(txtAbacaxi.getText());
+					model.setQtdAbacaxi(qtdAbacaxi);
+					model.setNomeAbacaxi(" Abacaxi "); 
+				}
+				
+				if(!caju.isEmpty()) {
+					itemcost[33] = Double.parseDouble(txtCaju.getText());
+					qtdCaju= Integer.parseInt(txtCaju.getText());
+					model.setQtdCaju(qtdCaju);
+					model.setNomeCaju(" Caju "); 
+				}
+				
+				if(!manga.isEmpty()) {
+					itemcost[34] = Double.parseDouble(txtManga.getText());
+					qtdManga= Integer.parseInt(txtManga.getText());
+					model.setQtdManga(qtdManga);
+					model.setNomeManga(" Manga "); 
+				}
+				
+				if(!graviola.isEmpty()) {
+					itemcost[35] = Double.parseDouble(txtGraviola.getText());
+					qtdGraviola= Integer.parseInt(txtGraviola.getText());
+					model.setQtdGraviola(qtdGraviola);
+					model.setNomeGraviola(" Graviola "); 
+				}
+				
+				if(!arroz.isEmpty()) {
+					itemcost[36] = Double.parseDouble(txtArroz.getText());
+					qtdArroz= Integer.parseInt(txtArroz.getText());
+					model.setQtdArroz(qtdArroz);
+					model.setNomeArroz(" Arroz "); 
+				}
+				
+				if(!macarrao.isEmpty()) {
+					itemcost[37] = Double.parseDouble(txtMacarrao.getText());
+					qtdMacarrao= Integer.parseInt(txtMacarrao.getText());
+					model.setQtdMacarrao(qtdMacarrao);
+					model.setNomeMacarrao(" Macarrao "); 
 				}
 
+				if(!feijao.isEmpty()) {
+					itemcost[38] = Double.parseDouble(txtFeijao.getText());
+					qtdFeijao= Integer.parseInt(txtFeijao.getText());
+					model.setQtdFeijao(qtdFeijao);
+					model.setNomeFeijao(" Feijao "); 
+				}
+				
+				if(!bife.isEmpty()) {
+					itemcost[39] = Double.parseDouble(txtBife.getText());
+					qtdBife= Integer.parseInt(txtBife.getText());
+					model.setQtdBife(qtdBife);
+					model.setNomeBife(" Bife "); 
+				}
+				
+				if(!frango.isEmpty()) {
+					itemcost[40] = Double.parseDouble(txtFrango.getText());
+					qtdFrango= Integer.parseInt(txtFrango.getText());
+					model.setQtdFrango(qtdFrango);
+					model.setNomeFrango(" Frango "); 
+				}
+				
 				String mPagamento = (String)metodoPagamento.getSelectedItem();
 				
 				subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] +
 						itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] +
-						itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17] + itemcost[18] + itemcost[19] +itemcost[20];
+						itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17] + itemcost[18] + itemcost[19] + 
+						itemcost[20] + itemcost[21] + itemcost[22] + itemcost[23] + itemcost[24] + itemcost[25] + itemcost[26] + 
+						itemcost[27] + itemcost[28] + itemcost[29] + itemcost[30] + itemcost[31] + itemcost[32] + itemcost[33] + 
+						itemcost[34] + itemcost[35] + itemcost[36] + itemcost[37] + itemcost[38] + itemcost[39] + itemcost[40];
 				
 				if(mPagamento == "Dinheiro") {
 					
@@ -1136,7 +2009,10 @@ public class ViewSistema extends JFrame {
 						model.getQtdFritas()+model.getQtdSalada()+model.getQtdHamburger()+model.getQtdAneisCebola()+
 						model.getQtdSaladaFrango()+model.getQtdSanduicheAtum()+model.getQtdSanduicheFrango()+
 						model.getQtdSanduicheQueijo()+model.getQtdBrownie()+model.getQtdTorrada()+model.getQtdPicole()+
-						model.getQtdBolinho()+model.getQtdPanqueca()+model.getQtdTortaMorango();
+						model.getQtdBolinho()+model.getQtdPanqueca()+model.getQtdTortaMorango()+model.getQtdTortaChocolate()+
+						model.getQtdTortaLimao()+model.getQtdTortaAbacaxi()+model.getQtdTortaBanana()+model.getQtdTortaMaca()+
+						model.getQtdSorvete()+model.getQtdPudim()+model.getQtdPave()+model.getQtdUva()+model.getQtdMorango()+
+						model.getQtdAbacaxi()+model.getQtdLimao()+model.getQtdCaju()+model.getQtdManga()+model.getQtdGraviola();
 				
 				model.setOperacao("Venda");
 				model.setQtd(qtd);
@@ -1329,7 +2205,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(chckbxPanqueca);
 		
 		txtBrownie = new JTextField();
-		txtBrownie.setBounds(147, 62, 80, 19);
+		txtBrownie.setBounds(183, 62, 80, 19);
 		txtBrownie.setEnabled(false);
 		txtBrownie.addKeyListener(new KeyAdapter() {
 			@Override
@@ -1345,7 +2221,7 @@ public class ViewSistema extends JFrame {
 		txtBrownie.setColumns(10);
 		
 		txtPicole = new JTextField();
-		txtPicole.setBounds(147, 116, 80, 19);
+		txtPicole.setBounds(183, 116, 80, 19);
 		txtPicole.setEnabled(false);
 		txtPicole.addKeyListener(new KeyAdapter() {
 			@Override
@@ -1361,7 +2237,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtPicole);
 		
 		txtBolinho = new JTextField();
-		txtBolinho.setBounds(147, 89, 80, 19);
+		txtBolinho.setBounds(183, 89, 80, 19);
 		txtBolinho.setEnabled(false);
 		txtBolinho.addKeyListener(new KeyAdapter() {
 			@Override
@@ -1377,7 +2253,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtBolinho);
 		
 		txtPanqueca = new JTextField();
-		txtPanqueca.setBounds(147, 143, 80, 19);
+		txtPanqueca.setBounds(183, 143, 80, 19);
 		txtPanqueca.setEnabled(false);
 		txtPanqueca.addKeyListener(new KeyAdapter() {
 			@Override
@@ -1393,7 +2269,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtPanqueca);
 		
 		txtTorrada = new JTextField();
-		txtTorrada.setBounds(147, 35, 80, 19);
+		txtTorrada.setBounds(183, 35, 80, 19);
 		panel_4.add(txtTorrada);
 		txtTorrada.setEnabled(false);
 		txtTorrada.addKeyListener(new KeyAdapter() {
@@ -1409,12 +2285,12 @@ public class ViewSistema extends JFrame {
 		txtTorrada.setColumns(10);
 		
 		
-		chckbxTortaDeMorango.setBounds(11, 168, 129, 23);
+		chckbxTortaDeMorango.setBounds(11, 168, 152, 23);
 		panel_4.add(chckbxTortaDeMorango);
 		
 		txtTortaMorango = new JTextField();
 		txtTortaMorango.setEnabled(false);
-		txtTortaMorango.setBounds(147, 170, 83, 19);
+		txtTortaMorango.setBounds(183, 174, 80, 19);
 		txtTortaMorango.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1427,6 +2303,162 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(txtTortaMorango);
 		txtTortaMorango.setColumns(10);
+
+		
+		chckbxTortaChocolate.setBounds(11, 195, 164, 23);
+		panel_4.add(chckbxTortaChocolate);
+		
+		txtTortaChocolate = new JTextField();
+		txtTortaChocolate.setEnabled(false);
+		txtTortaChocolate.setBounds(183, 197, 80, 19);
+		txtTortaChocolate.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		
+		panel_4.add(txtTortaChocolate);
+		txtTortaChocolate.setColumns(10);
+		
+		
+		chckbxTortaLimao.setBounds(11, 222, 139, 23);
+		panel_4.add(chckbxTortaLimao);
+		
+		txtTortaLimao = new JTextField();
+		txtTortaLimao.setEnabled(false);
+		txtTortaLimao.setBounds(183, 224, 80, 19);
+		txtTortaLimao.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_4.add(txtTortaLimao);
+		txtTortaLimao.setColumns(10);
+		
+		
+		chckbxTortaAbacaxi.setBounds(11, 249, 149, 23);
+		panel_4.add(chckbxTortaAbacaxi);
+		
+		txtTortaAbacaxi = new JTextField();
+		txtTortaAbacaxi.setEnabled(false);
+		txtTortaAbacaxi.setBounds(183, 255, 80, 19);
+		txtTortaAbacaxi.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_4.add(txtTortaAbacaxi);
+		txtTortaAbacaxi.setColumns(10);
+		
+		chckbxTortaBanana.setBounds(11, 276, 164, 23);
+		panel_4.add(chckbxTortaBanana);
+		
+		txtTortaBanana = new JTextField();
+		txtTortaBanana.setEnabled(false);
+		txtTortaBanana.setBounds(183, 278, 80, 19);
+		txtTortaBanana.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_4.add(txtTortaBanana);
+		txtTortaBanana.setColumns(10);
+		
+		chckbxTortaMaca.setBounds(11, 303, 139, 23);
+		panel_4.add(chckbxTortaMaca);
+		
+		txtTortaMaca = new JTextField();
+		txtTortaMaca.setEnabled(false);
+		txtTortaMaca.setBounds(183, 305, 80, 19);
+		txtTortaMaca.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_4.add(txtTortaMaca);
+		txtTortaMaca.setColumns(10);
+		
+		chckbxSorvete.setBounds(11, 330, 93, 23);
+		panel_4.add(chckbxSorvete);
+		
+		txtSorvete = new JTextField();
+		txtSorvete.setEnabled(false);
+		txtSorvete.setBounds(183, 332, 80, 19);
+		txtSorvete.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_4.add(txtSorvete);
+		txtSorvete.setColumns(10);
+		
+		chckbxPudim.setBounds(11, 357, 98, 23);
+		panel_4.add(chckbxPudim);
+		
+		txtPudim = new JTextField();
+		txtPudim.setEnabled(false);
+		txtPudim.setBounds(183, 361, 80, 19);
+		txtPudim.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_4.add(txtPudim);
+		txtPudim.setColumns(10);
+		
+		chckbxPave.setBounds(11, 384, 83, 23);
+		panel_4.add(chckbxPave);
+		
+		txtPave = new JTextField();
+		txtPave.setEnabled(false);
+		txtPave.setBounds(183, 386, 80, 19);
+		txtPave.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char iNumber = e.getKeyChar();
+				if(!(Character.isDigit(iNumber)) || (iNumber == KeyEvent.VK_BACK_SPACE) ||
+						(iNumber == KeyEvent.VK_DELETE)) {
+					e.consume();
+				}
+			}
+		});
+		panel_4.add(txtPave);
+		txtPave.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(912, 84, 416, 364);

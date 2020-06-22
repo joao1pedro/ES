@@ -2,7 +2,6 @@ package model;
 
 public class ModelProdutos {
 	String operacao;
-	String nomeProduto;
 	int qtd;
 	int id;
 	
@@ -31,7 +30,28 @@ public class ModelProdutos {
 	int qtdPanqueca;
 	int qtdPicole;
 	int qtdTortaMorango;
+	int qtdTortaChocolate;
+	int qtdTortaLimao;
+	int qtdTortaAbacaxi;
+	int qtdTortaBanana;
+	int qtdTortaMaca;
+	int qtdSorvete;
+	int qtdPudim;
+	int qtdPave;
+	int qtdUva;
+	int qtdMorango;
+	int qtdLimao;
+	int qtdAbacaxi;
+	int qtdCaju;
+	int qtdManga;
+	int qtdGraviola;
+	int qtdArroz;
+	int qtdMacarrao;
+	int qtdFeijao;
+	int qtdBife;
+	int qtdFrango;
 	
+
 	double priceCafe;
 	double priceAgua;
 	double priceCerveja;
@@ -53,6 +73,26 @@ public class ModelProdutos {
 	double pricePanqueca;
 	double pricePicole;
 	double priceTortaMorango;
+	double priceTortaChocolate;
+	double priceTortaLimao;
+	double priceTortaAbacaxi;
+	double priceTortaBanana;
+	double priceTortaMaca;
+	double priceSorvete;
+	double pricePudim;
+	double pricePave;
+	double priceUva;
+	double priceMorango;
+	double priceLimao;
+	double priceAbacaxi;
+	double priceCaju;
+	double priceManga;
+	double priceGraviola;
+	double priceArroz;
+	double priceMacarrao;
+	double priceFeijao;
+	double priceBife;
+	double priceFrango;
 	
 	String nomeCafe;
 	String nomeAgua;
@@ -75,7 +115,392 @@ public class ModelProdutos {
 	String nomePanqueca;
 	String nomePicole;
 	String nomeTortaMorango;
+	String nomeTortaChocolate;
+	String nomeTortaLimao;
+	String nomeTortaAbacaxi;
+	String nomeTortaBanana;
+	String nomeTortaMaca;
+	String nomeSorvete;
+	String nomePudim;
+	String nomeUva;
+	String nomeMorango;
+	String nomeLimao;
+	String nomeAbacaxi;
+	String nomeCaju;
+	String nomeManga;
+	String nomeArroz;
+	String nomeMacarrao;
+	String nomeFeijao;
+	String nomeBife;
+	String nomeFrango;
 	
+	public int getQtdArroz() {
+		return qtdArroz;
+	}
+	public void setQtdArroz(int qtdArroz) {
+		this.qtdArroz = qtdArroz;
+	}
+	public int getQtdMacarrao() {
+		return qtdMacarrao;
+	}
+	public void setQtdMacarrao(int qtdMacarrao) {
+		this.qtdMacarrao = qtdMacarrao;
+	}
+	public int getQtdFeijao() {
+		return qtdFeijao;
+	}
+	public void setQtdFeijao(int qtdFeijao) {
+		this.qtdFeijao = qtdFeijao;
+	}
+	public int getQtdBife() {
+		return qtdBife;
+	}
+	public void setQtdBife(int qtdBife) {
+		this.qtdBife = qtdBife;
+	}
+	public int getQtdFrango() {
+		return qtdFrango;
+	}
+	public void setQtdFrango(int qtdFrango) {
+		this.qtdFrango = qtdFrango;
+	}
+	public double getPriceArroz() {
+		return priceArroz;
+	}
+	public void setPriceArroz(double priceArroz) {
+		this.priceArroz = priceArroz;
+	}
+	public double getPriceMacarrao() {
+		return priceMacarrao;
+	}
+	public void setPriceMacarrao(double priceMacarrao) {
+		this.priceMacarrao = priceMacarrao;
+	}
+	public double getPriceFeijao() {
+		return priceFeijao;
+	}
+	public void setPriceFeijao(double priceFeijao) {
+		this.priceFeijao = priceFeijao;
+	}
+	public double getPriceBife() {
+		return priceBife;
+	}
+	public void setPriceBife(double priceBife) {
+		this.priceBife = priceBife;
+	}
+	public double getPriceFrango() {
+		return priceFrango;
+	}
+	public void setPriceFrango(double priceFrango) {
+		this.priceFrango = priceFrango;
+	}
+	public String getNomeArroz() {
+		return nomeArroz;
+	}
+	public void setNomeArroz(String nomeArroz) {
+		this.nomeArroz = nomeArroz;
+	}
+	public String getNomeMacarrao() {
+		return nomeMacarrao;
+	}
+	public void setNomeMacarrao(String nomeMacarrao) {
+		this.nomeMacarrao = nomeMacarrao;
+	}
+	public String getNomeFeijao() {
+		return nomeFeijao;
+	}
+	public void setNomeFeijao(String nomeFeijao) {
+		this.nomeFeijao = nomeFeijao;
+	}
+	public String getNomeBife() {
+		return nomeBife;
+	}
+	public void setNomeBife(String nomeBife) {
+		this.nomeBife = nomeBife;
+	}
+	public String getNomeFrango() {
+		return nomeFrango;
+	}
+	public void setNomeFrango(String nomeFrango) {
+		this.nomeFrango = nomeFrango;
+	}
+	public int getQtdUva() {
+		return qtdUva;
+	}
+	public void setQtdUva(int qtdUva) {
+		this.qtdUva = qtdUva;
+	}
+	public int getQtdMorango() {
+		return qtdMorango;
+	}
+	public void setQtdMorango(int qtdMorango) {
+		this.qtdMorango = qtdMorango;
+	}
+	public int getQtdLimao() {
+		return qtdLimao;
+	}
+	public void setQtdLimao(int qtdLimao) {
+		this.qtdLimao = qtdLimao;
+	}
+	public int getQtdAbacaxi() {
+		return qtdAbacaxi;
+	}
+	public void setQtdAbacaxi(int qtdAbacaxi) {
+		this.qtdAbacaxi = qtdAbacaxi;
+	}
+	public int getQtdCaju() {
+		return qtdCaju;
+	}
+	public void setQtdCaju(int qtdCaju) {
+		this.qtdCaju = qtdCaju;
+	}
+	public int getQtdManga() {
+		return qtdManga;
+	}
+	public void setQtdManga(int qtdManga) {
+		this.qtdManga = qtdManga;
+	}
+	public int getQtdGraviola() {
+		return qtdGraviola;
+	}
+	public void setQtdGraviola(int qtdGraviola) {
+		this.qtdGraviola = qtdGraviola;
+	}
+	public double getPriceUva() {
+		return priceUva;
+	}
+	public void setPriceUva(double priceUva) {
+		this.priceUva = priceUva;
+	}
+	public double getPriceMorango() {
+		return priceMorango;
+	}
+	public void setPriceMorango(double priceMorango) {
+		this.priceMorango = priceMorango;
+	}
+	public double getPriceLimao() {
+		return priceLimao;
+	}
+	public void setPriceLimao(double priceLimao) {
+		this.priceLimao = priceLimao;
+	}
+	public double getPriceAbacaxi() {
+		return priceAbacaxi;
+	}
+	public void setPriceAbacaxi(double priceAbacaxi) {
+		this.priceAbacaxi = priceAbacaxi;
+	}
+	public double getPriceCaju() {
+		return priceCaju;
+	}
+	public void setPriceCaju(double priceCaju) {
+		this.priceCaju = priceCaju;
+	}
+	public double getPriceManga() {
+		return priceManga;
+	}
+	public void setPriceManga(double priceManga) {
+		this.priceManga = priceManga;
+	}
+	public double getPriceGraviola() {
+		return priceGraviola;
+	}
+	public void setPriceGraviola(double priceGraviola) {
+		this.priceGraviola = priceGraviola;
+	}
+	public String getNomeUva() {
+		return nomeUva;
+	}
+	public void setNomeUva(String nomeUva) {
+		this.nomeUva = nomeUva;
+	}
+	public String getNomeMorango() {
+		return nomeMorango;
+	}
+	public void setNomeMorango(String nomeMorango) {
+		this.nomeMorango = nomeMorango;
+	}
+	public String getNomeLimao() {
+		return nomeLimao;
+	}
+	public void setNomeLimao(String nomeLimao) {
+		this.nomeLimao = nomeLimao;
+	}
+	public String getNomeAbacaxi() {
+		return nomeAbacaxi;
+	}
+	public void setNomeAbacaxi(String nomeAbacaxi) {
+		this.nomeAbacaxi = nomeAbacaxi;
+	}
+	public String getNomeCaju() {
+		return nomeCaju;
+	}
+	public void setNomeCaju(String nomeCaju) {
+		this.nomeCaju = nomeCaju;
+	}
+	public String getNomeManga() {
+		return nomeManga;
+	}
+	public void setNomeManga(String nomeManga) {
+		this.nomeManga = nomeManga;
+	}
+	public String getNomeGraviola() {
+		return nomeGraviola;
+	}
+	public void setNomeGraviola(String nomeGraviola) {
+		this.nomeGraviola = nomeGraviola;
+	}
+	String nomeGraviola;
+	
+	
+	
+	public int getQtdTortaLimao() {
+		return qtdTortaLimao;
+	}
+	public void setQtdTortaLimao(int qtdTortaLimao) {
+		this.qtdTortaLimao = qtdTortaLimao;
+	}
+	public int getQtdTortaAbacaxi() {
+		return qtdTortaAbacaxi;
+	}
+	public void setQtdTortaAbacaxi(int qtdTortaAbacaxi) {
+		this.qtdTortaAbacaxi = qtdTortaAbacaxi;
+	}
+	public int getQtdTortaBanana() {
+		return qtdTortaBanana;
+	}
+	public void setQtdTortaBanana(int qtdTortaBanana) {
+		this.qtdTortaBanana = qtdTortaBanana;
+	}
+	public int getQtdTortaMaca() {
+		return qtdTortaMaca;
+	}
+	public void setQtdTortaMaca(int qtdTortaMaca) {
+		this.qtdTortaMaca = qtdTortaMaca;
+	}
+	public int getQtdSorvete() {
+		return qtdSorvete;
+	}
+	public void setQtdSorvete(int qtdSorvete) {
+		this.qtdSorvete = qtdSorvete;
+	}
+	public int getQtdPudim() {
+		return qtdPudim;
+	}
+	public void setQtdPudim(int qtdPudim) {
+		this.qtdPudim = qtdPudim;
+	}
+	public int getQtdPave() {
+		return qtdPave;
+	}
+	public void setQtdPave(int qtdPave) {
+		this.qtdPave = qtdPave;
+	}
+	public double getPriceTortaLimao() {
+		return priceTortaLimao;
+	}
+	public void setPriceTortaLimao(double priceTortaLimao) {
+		this.priceTortaLimao = priceTortaLimao;
+	}
+	public double getPriceTortaAbacaxi() {
+		return priceTortaAbacaxi;
+	}
+	public void setPriceTortaAbacaxi(double priceTortaAbacaxi) {
+		this.priceTortaAbacaxi = priceTortaAbacaxi;
+	}
+	public double getPriceTortaBanana() {
+		return priceTortaBanana;
+	}
+	public void setPriceTortaBanana(double priceTortaBanana) {
+		this.priceTortaBanana = priceTortaBanana;
+	}
+	public double getPriceTortaMaca() {
+		return priceTortaMaca;
+	}
+	public void setPriceTortaMaca(double priceTortaMaca) {
+		this.priceTortaMaca = priceTortaMaca;
+	}
+	public double getPriceSorvete() {
+		return priceSorvete;
+	}
+	public void setPriceSorvete(double priceSorvete) {
+		this.priceSorvete = priceSorvete;
+	}
+	public double getPricePudim() {
+		return pricePudim;
+	}
+	public void setPricePudim(double pricePudim) {
+		this.pricePudim = pricePudim;
+	}
+	public double getPricePave() {
+		return pricePave;
+	}
+	public void setPricePave(double pricePave) {
+		this.pricePave = pricePave;
+	}
+	public String getNomeTortaLimao() {
+		return nomeTortaLimao;
+	}
+	public void setNomeTortaLimao(String nomeTortaLimao) {
+		this.nomeTortaLimao = nomeTortaLimao;
+	}
+	public String getNomeTortaAbacaxi() {
+		return nomeTortaAbacaxi;
+	}
+	public void setNomeTortaAbacaxi(String nomeTortaAbacaxi) {
+		this.nomeTortaAbacaxi = nomeTortaAbacaxi;
+	}
+	public String getNomeTortaBanana() {
+		return nomeTortaBanana;
+	}
+	public void setNomeTortaBanana(String nomeTortaBanana) {
+		this.nomeTortaBanana = nomeTortaBanana;
+	}
+	public String getNomeTortaMaca() {
+		return nomeTortaMaca;
+	}
+	public void setNomeTortaMaca(String nomeTortaMaca) {
+		this.nomeTortaMaca = nomeTortaMaca;
+	}
+	public String getNomeSorvete() {
+		return nomeSorvete;
+	}
+	public void setNomeSorvete(String nomeSorvete) {
+		this.nomeSorvete = nomeSorvete;
+	}
+	public String getNomePudim() {
+		return nomePudim;
+	}
+	public void setNomePudim(String nomePudim) {
+		this.nomePudim = nomePudim;
+	}
+	public String getNomePave() {
+		return nomePave;
+	}
+	public void setNomePave(String nomePave) {
+		this.nomePave = nomePave;
+	}
+	String nomePave;
+	
+	
+	public int getQtdTortaChocolate() {
+		return qtdTortaChocolate;
+	}
+	public void setQtdTortaChocolate(int qtdTortaChocolate) {
+		this.qtdTortaChocolate = qtdTortaChocolate;
+	}
+	public double getPriceTortaChocolate() {
+		return priceTortaChocolate;
+	}
+	public void setPriceTortaChocolate(double priceTortaChocolate) {
+		this.priceTortaChocolate = priceTortaChocolate;
+	}
+	public String getNomeTortaChocolate() {
+		return nomeTortaChocolate;
+	}
+	public void setNomeTortaChocolate(String nomeTortaChocolate) {
+		this.nomeTortaChocolate = nomeTortaChocolate;
+	}
 	
 	
 	public int getQtdTortaMorango() {
@@ -485,12 +910,6 @@ public class ModelProdutos {
 	}
 	public void setQtd(int qtd) {
 		this.qtd = qtd;
-	}
-	public String getNomeProduto() {
-		return nomeProduto;
-	}
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
 	}
 	public int getId() {
 		return id;
