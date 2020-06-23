@@ -81,48 +81,7 @@ public class ViewSistema extends JFrame {
 	private JTextField txtPudim;
 	private JTextField txtPave;
 	
-	
-	/*
-	 * preco dos produtos
-	 * */
-	private double priceAgua = 2.0;
-	private double priceAguaCc = 3.0;
-	private double priceCafe = 2.5;
-	private double priceCerveja= 3.5;
-	private double priceSucoLaranja = 2.5;
-	private double priceSucoMaracuja = 2.5;
-	private double priceCoca = 2.8;
-	private double priceFritas = 5;
-	private double priceSalada = 5;
-	private double priceHamburger = 5;
-	private double priceAneisCebola = 3;
-	private double pricesaladaFrango = 8;
-	private double priceSanduicheAtum = 4.5;
-	private double priceSanduicheFrango = 4.5;
-	private double priceSanduicheQueijo = 4.5;
-	private double priceTortaMorango = 7;
-	private double priceTortaChocolate = 7;
-	private double priceTortaLimao = 7;
-	private double priceTortaAbacaxi = 7;
-	private double priceTortaBanana = 7;
-	private double priceTortaMaca = 7;
-	private double priceSorvete = 4;
-	private double pricePudim = 5;
-	private double pricePave = 5;
-	private double priceUva = 2.5;
-	private double priceMorango = 2.5;
-	private double priceLimao = 2.5;
-	private double priceAbacaxi = 2.5;
-	private double priceCaju = 2.5;
-	private double priceManga = 2.5;
-	private double priceGraviola = 2.5;
-	private double priceArroz = 3;
-	private double priceMacarrao = 3;
-	private double priceFeijao = 3;
-	private double priceBife = 4.5;
-	private double priceFrango = 4;
-	
-	private double taxa, valueTotal, subTotal, diferenca, custo, rateTaxa = 12;
+	private double taxa, valueTotal, subTotal, diferenca, rateTaxa;
 	
 	double itemcost[] = new double [100];
 	private JTextField txtTaxa;
@@ -138,6 +97,47 @@ public class ViewSistema extends JFrame {
 	private JTextArea jtxtRecibo = new JTextArea();
 	private int qtd = 0;
 	
+	private String NomeAgua="";
+	private String NomeCafe="";
+	private String NomeCoca="";
+	private String NomeCerveja="";
+	private String NomeFritas="";
+	private String NomeSalada="";
+	private String NomeHamburger="";
+	private String NomeAneisCebola="";
+	private String NomeSaladaFrango="";
+	private String NomeSanduicheAtum="";
+	private String NomeSanduicheQueijo="";
+	private String NomeSanduicheFrango="";
+	private String NomeBrownie="";
+	private String NomeTorrada="";
+	private String NomePicole="";
+	private String NomeBolinho="";
+	private String NomePanqueca="";
+	private String NomeTortaMorango="";
+	private String NomeTortaChocolate="";
+	private String NomeTortaLimao="";
+	private String NomeTortaAbacaxi="";
+	private String NomeTortaBanana="";
+	private String NomeTortaMaca="";
+	private String NomeSorvete="";
+	private String NomePudim="";
+	private String NomePave="";
+	private String NomeUva="";
+	private String NomeMorango="";
+	private String NomeLimao="";
+	private String NomeAbacaxi="";
+	private String NomeCaju="";
+	private String NomeManga="";
+	private String NomeGraviola="";
+	private String NomeArroz="";
+	private String NomeMacarrao="";
+	private String NomeFeijao="";
+	private String NomeBife="";
+	private String NomeFrango="";
+	private String NomeSucoLaranja="";
+	private String NomeSucoMaracuja="";
+	private String NomeAguacc="";
 
 	/**
 	 * Create the frame.
@@ -1436,11 +1436,7 @@ public class ViewSistema extends JFrame {
 				txtCoca.setEnabled(false);
 				txtLaranja.setEnabled(false);
 				txtMaracuja.setEnabled(false);
-				txtSubT.setEnabled(false);
-				txtInDinnheiro.setEnabled(false);
-				txtTroco.setEnabled(false);
-				txtTaxa.setEnabled(false);
-				txtValue.setEnabled(false);
+				
 				txtAneisdecebola.setEnabled(false);
 				txtBolinho.setEnabled(false);
 				txtBrownie.setEnabled(false);
@@ -1523,47 +1519,89 @@ public class ViewSistema extends JFrame {
 				model.setQtdBife(0);
 				model.setQtdFrango(0);
 				
+				//limpa preços para não dar erro no preço total
+				itemcost[0] = 0;
+				itemcost[1] = 0;
+				itemcost[2] = 0;
+				itemcost[3] = 0;
+				itemcost[4] = 0;
+				itemcost[5] = 0;
+				itemcost[6] = 0;
+				itemcost[7] = 0;
+				itemcost[8] = 0;
+				itemcost[9] = 0;
+				itemcost[10] = 0;
+				itemcost[11] = 0;
+				itemcost[12] = 0;
+				itemcost[13] = 0;
+				itemcost[14] = 0;
+				itemcost[15] = 0;
+				itemcost[16] = 0;
+				itemcost[17] = 0;
+				itemcost[18] = 0;
+				itemcost[19] = 0;
+				itemcost[20] = 0;
+				itemcost[21] = 0;
+				itemcost[22] = 0;
+				itemcost[23] = 0;
+				itemcost[24] = 0;
+				itemcost[25] = 0;
+				itemcost[26] = 0;
+				itemcost[27] = 0;
+				itemcost[28] = 0;
+				itemcost[29] = 0;
+				itemcost[30] = 0;
+				itemcost[31] = 0;
+				itemcost[32] = 0;
+				itemcost[33] = 0;
+				itemcost[34] = 0;
+				itemcost[35] = 0;
+				itemcost[36] = 0;
+				itemcost[37] = 0;
+				itemcost[38] = 0;
+				itemcost[39] = 0;
+				itemcost[40] = 0;
 				
-				model.setNomeAgua("");
-				model.setNomeCafe("");
-				model.setNomeCerveja("");
-				model.setNomeAguacc("");
-				model.setNomeCoca("");
-				model.setNomeSucoLaranja("");
-				model.setNomeSucoMaracuja("");
-				model.setNomeFritas("");
-				model.setNomeSalada("");
-				model.setNomeHamburger("");
-				model.setNomeAneisCebola("");
-				model.setNomeSaladaFrango("");
-				model.setNomeSanduicheAtum("");
-				model.setNomeSanduicheQueijo("");
-				model.setNomeBrownie("");
-				model.setNomeTorrada("");
-				model.setNomePicole("");
-				model.setNomeBolinho("");
-				model.setNomePanqueca("");
-				model.setNomeTortaMorango("");
-				model.setNomeTortaChocolate("");
-				model.setNomeTortaLimao("");
-				model.setNomeTortaAbacaxi("");
-				model.setNomeTortaBanana("");
-				model.setNomeTortaMaca("");
-				model.setNomeSorvete("");
-				model.setNomePudim("");
-				model.setNomePave("");
-				model.setNomeUva("");
-				model.setNomeMorango("");
-				model.setNomeLimao("");
-				model.setNomeAbacaxi("");
-				model.setNomeCaju("");
-				model.setNomeManga("");
-				model.setNomeGraviola("");
-				model.setNomeArroz("");
-				model.setNomeMacarrao("");
-				model.setNomeFeijao("");
-				model.setNomeBife("");
-				model.setNomeFrango("");
+				NomeAgua="";
+				NomeCafe="";
+				NomeCerveja="";
+				NomeAguacc="";
+				NomeCoca="";
+				NomeSucoLaranja="";
+				NomeSucoMaracuja="";
+				NomeFritas="";
+				NomeSalada="";
+				NomeHamburger="";
+				NomeAneisCebola="";
+				NomeSaladaFrango="";
+				NomeSanduicheAtum="";
+				NomeSanduicheQueijo="";
+				NomeBrownie="";
+				NomeTorrada="";
+				NomePicole="";
+				NomeBolinho="";
+				NomePanqueca="";
+				NomeTortaMorango="";
+				NomeTortaChocolate="";
+				NomeTortaLimao="";
+				NomeTortaAbacaxi="";
+				NomeTortaBanana="";
+				NomeTortaMaca="";
+				NomeSorvete="";
+				NomePudim="";
+				NomePave="";
+				NomeUva="";
+				NomeMorango="";
+				NomeLimao="";
+				NomeAbacaxi="";
+				NomeCaju="";
+				NomeManga="";
+				NomeGraviola="";
+				NomeArroz="";
+				NomeMacarrao="";
+				NomeFeijao="";
+				NomeBife="";
+				NomeFrango="";
 			}
 		});
 		btnLimpar.setBounds(96, 187, 82, 25);
@@ -1656,305 +1694,269 @@ public class ViewSistema extends JFrame {
 				int qtdBife;
 				int qtdFrango;
 				
+				rateTaxa = controlP.getPrice(model, "taxa");
 				
-				model.setNomeAgua("");
-				model.setNomeCafe("");
-				model.setNomeCafe("");
-				model.setNomeCoca("");
-				model.setNomeFritas("");
-				model.setNomeSalada("");
-				model.setNomeHamburger("");
-				model.setNomeAneisCebola("");
-				model.setNomeSaladaFrango("");
-				model.setNomeSanduicheAtum("");
-				model.setNomeSanduicheQueijo("");
-				model.setNomeBrownie("");
-				model.setNomeTorrada("");
-				model.setNomePicole("");
-				model.setNomeBolinho("");
-				model.setNomePanqueca("");
-				model.setNomeTortaMorango("");
-				model.setNomeTortaChocolate("");
-				model.setNomeTortaLimao("");
-				model.setNomeTortaAbacaxi("");
-				model.setNomeTortaBanana("");
-				model.setNomeTortaMaca("");
-				model.setNomeSorvete("");
-				model.setNomePudim("");
-				model.setNomePave("");
-				model.setNomeUva("");
-				model.setNomeMorango("");
-				model.setNomeLimao("");
-				model.setNomeAbacaxi("");
-				model.setNomeCaju("");
-				model.setNomeManga("");
-				model.setNomeGraviola("");
-				model.setNomeArroz("");
-				model.setNomeMacarrao("");
-				model.setNomeFeijao("");
-				model.setNomeBife("");
-				model.setNomeFrango("");
 						
 				if(!agua.isEmpty()){
-					itemcost[0] = Double.parseDouble(txtAgua.getText());
 					qtdAgua = Integer.parseInt(txtAgua.getText());
+					itemcost[0] = controlP.getPrice(model, "água") * qtdAgua;
 					model.setQtdAgua(qtdAgua);
-					model.setNomeAgua(" Água ");
+					NomeAgua=" Água ";
 				}
 				if(!cafe.isEmpty()){
-					itemcost[1] = Double.parseDouble(txtCafe.getText());
 					qtdCafe = Integer.parseInt(txtCafe.getText());
+					itemcost[1] = controlP.getPrice(model, "café") * qtdCafe;
 					model.setQtdCafe(qtdCafe);
-					model.setNomeCafe(" Café ");
+					NomeCafe=" Café ";
 				}
 				if(!cerveja.isEmpty()) {
-					itemcost[2] = Double.parseDouble(txtCerveja.getText());
 					qtdCerveja = Integer.parseInt(txtCerveja.getText());
+					itemcost[2] = controlP.getPrice(model, "cerveja") * qtdCerveja;
 					model.setQtdCerveja(qtdCerveja);
-					model.setNomeCerveja(" Cerveja ");
+					NomeCerveja=" Cerveja ";
 				}
 				if(!coca.isEmpty()) {
-					itemcost[3] = Double.parseDouble(txtCoca.getText());
 					qtdCoca = Integer.parseInt(txtCoca.getText());
+					itemcost[3] = controlP.getPrice(model, "coca-cola") * qtdCoca;
 					model.setQtdCoca(qtdCoca);
-					model.setNomeCoca(" Coca-Cola ");
+					NomeCoca=" Coca-Cola ";
 				}
 				if(!aguacc.isEmpty()) {
-					itemcost[4] = Double.parseDouble(txtAguaCc.getText());
 					qtdAguacc = Integer.parseInt(txtAguaCc.getText());
+					itemcost[4] = controlP.getPrice(model, "água de côco") * qtdAguacc;
 					model.setQtdAguacc(qtdAguacc);
-					model.setNomeAguacc(" Água de Coco ");
+					NomeAguacc=" Água de Coco ";
 				}
 				if(!sucoLaranja.isEmpty()) {
-					itemcost[5] = Double.parseDouble(txtLaranja.getText());
 					qtdSucoLaranja = Integer.parseInt(txtLaranja.getText());
+					itemcost[5] = Double.parseDouble(txtLaranja.getText()) * qtdSucoLaranja;
 					model.setQtdSucoLaranja(qtdSucoLaranja);
-					model.setNomeAgua(" Suco de Laranja ");
+					NomeSucoLaranja=" Suco de Laranja ";
 				}
 				if(!sucoMaracuja.isEmpty()) {
-					itemcost[6] = Double.parseDouble(txtMaracuja.getText());
 					qtdSucoMaracuja = Integer.parseInt(txtMaracuja.getText());
+					itemcost[6] = controlP.getPrice(model, "suco de maracujá") * qtdSucoMaracuja;
 					model.setQtdSucoMaracuja(qtdSucoMaracuja);
-					model.setNomeSucoMaracuja(" Suco de Maracujá ");
+					NomeSucoMaracuja=" Suco de Maracujá ";
 				}
 				if(!fritas.isEmpty()) {
-					itemcost[7] = Double.parseDouble(txtFritas.getText());
 					qtdFritas = Integer.parseInt(txtFritas.getText());
+					itemcost[7] = controlP.getPrice(model, "batata frita") * qtdFritas;
 					model.setQtdFritas(qtdFritas);
-					model.setNomeFritas(" Fritas ");
+					NomeFritas=" Fritas ";
 				}
 				if(!salada.isEmpty()) {
-					itemcost[8] = Double.parseDouble(txtSalada.getText());
 					qtdSalada = Integer.parseInt(txtSalada.getText());
+					itemcost[8] = controlP.getPrice(model, "salada") * qtdSalada;
 					model.setQtdSalada(qtdSalada);
-					model.setNomeSalada(" Salada ");
+					NomeSalada=" Salada ";
 				}
 				if(!hamburger.isEmpty()) {
-					itemcost[9] = Double.parseDouble(txtHamburger.getText());
 					qtdHamburger = Integer.parseInt(txtHamburger.getText());
+					itemcost[9] = controlP.getPrice(model, "hamburger") * qtdHamburger;
 					model.setQtdHamburger(qtdHamburger);
-					model.setNomeHamburger(" Hamburger ");
+					NomeHamburger=" Hamburger ";
 				}
 				if(!aneisCebola.isEmpty()) {
-					itemcost[10] = Double.parseDouble(txtAneisdecebola.getText());
 					qtdAneisCebola = Integer.parseInt(txtAneisdecebola.getText());
+					itemcost[10] = controlP.getPrice(model, "anéis de cebola") * qtdAneisCebola;
 					model.setQtdAneisCebola(qtdAneisCebola);
-					model.setNomeAneisCebola(" Anéis de cebola ");
+					NomeAneisCebola=" Anéis de cebola ";
 				}
 				if(!saladaFrango.isEmpty()) {
-					itemcost[11] = Double.parseDouble(txtSaladadefrango.getText());
 					qtdSaladaFrango = Integer.parseInt(txtSaladadefrango.getText());
+					itemcost[11] = controlP.getPrice(model, "salada de frango") * qtdSaladaFrango;
 					model.setQtdSaladaFrango(qtdSaladaFrango);
-					model.setNomeSaladaFrango(" Salada de Frango ");
+					NomeSaladaFrango=" Salada de Frango ";
 				}
 				if(!sanduicheAtum.isEmpty()) {
-					itemcost[12] = Double.parseDouble(txtSanduichedeatum.getText());
 					qtdSanduicheAtum = Integer.parseInt(txtSanduichedeatum.getText());
+					itemcost[12] = controlP.getPrice(model, "sanduiche de atum") * qtdSanduicheAtum;
 					model.setQtdSanduicheAtum(qtdSanduicheAtum);
-					model.setNomeSanduicheAtum(" Sanduiche de Atum ");
+					NomeSanduicheAtum=" Sanduiche de Atum ";
 				}
 				if(!sanduicheQueijo.isEmpty()) {
-					itemcost[13] = Double.parseDouble(txtSanduichedequeijo.getText());
 					qtdSanduicheQueijo = Integer.parseInt(txtSanduichedequeijo.getText());
+					itemcost[13] = controlP.getPrice(model, "sanduiche de queijo") * qtdSanduicheQueijo;
 					model.setQtdSanduicheQueijo(qtdSanduicheQueijo);
-					model.setNomeSanduicheQueijo(" Sanduiche de Queijo ");
+					NomeSanduicheQueijo=" Sanduiche de Queijo ";
 				}
 				if(!sanduicheFrango.isEmpty()) {
-					itemcost[14] = Double.parseDouble(txtSanduichedefrango.getText());
 					qtdSanduicheFrango = Integer.parseInt(txtSanduichedefrango.getText());
+					itemcost[14] = controlP.getPrice(model, "sanduiche de frango") * qtdSanduicheFrango;
 					model.setQtdSanduicheFrango(qtdSanduicheFrango);
-					model.setNomeSanduicheFrango(" Sanduiche de Frango ");
+					NomeSanduicheFrango=" Sanduiche de Frango ";
 				}
 				if(!brownie.isEmpty()) {
-					itemcost[15] = Double.parseDouble(txtBrownie.getText());
 					qtdBrownie = Integer.parseInt(txtBrownie.getText());
+					itemcost[15] = controlP.getPrice(model, "brownie") * qtdBrownie;
 					model.setQtdBrownie(qtdBrownie);
-					model.setNomeBrownie(" Brownie ");
+					NomeBrownie=" Brownie ";
 				}
 				if(!torrada.isEmpty()) {
-					itemcost[16] = Double.parseDouble(txtTorrada.getText());
 					qtdTorrada = Integer.parseInt(txtTorrada.getText());
+					itemcost[16] = controlP.getPrice(model, "torrada") * qtdTorrada;
 					model.setQtdTorrada(qtdTorrada);
-					model.setNomeTorrada(" Torrada ");
+					NomeTorrada=" Torrada ";
 				}
 				if(!picole.isEmpty()) {
-					itemcost[17] = Double.parseDouble(txtPicole.getText());
 					qtdPicole = Integer.parseInt(txtPicole.getText());
+					itemcost[17] = controlP.getPrice(model, "picole") * qtdPicole;
 					model.setQtdPicole(qtdPicole);
-					model.setNomePicole(" Picole ");
+					NomePicole=" Picole ";
 				}
 				if(!bolinho.isEmpty()) {
-					itemcost[18] = Double.parseDouble(txtBolinho.getText());
 					qtdBolinho = Integer.parseInt(txtBolinho.getText());
+					itemcost[18] = controlP.getPrice(model, "bolinho") * qtdBolinho;
 					model.setQtdBolinho(qtdBolinho);
-					model.setNomeBolinho(" Bolinho ");
+					NomeBolinho=" Bolinho ";
 				}
 				if(!panqueca.isEmpty()) {
-					itemcost[19] = Double.parseDouble(txtPanqueca.getText());
 					qtdPanqueca = Integer.parseInt(txtPanqueca.getText());
+					itemcost[19] = controlP.getPrice(model, "panqueca") * qtdPanqueca;
 					model.setQtdPanqueca(qtdPanqueca);
-					model.setNomePanqueca(" Panqueca ");
+					NomePanqueca=" Panqueca ";
 				}
 				if(!tortaMorango.isEmpty()) {
-					itemcost[20] = Double.parseDouble(txtTortaMorango.getText());
 					qtdTortaMorango = Integer.parseInt(txtTortaMorango.getText());
+					itemcost[20] = controlP.getPrice(model, "torta de morango") * qtdTortaMorango;
 					model.setQtdTortaMorango(qtdTortaMorango);
-					model.setNomeTortaMorango(" Torta de Morango ");
+					NomeTortaMorango=" Torta de Morango ";
 				}
 				if(!tortaChocolate.isEmpty()) {
-					itemcost[21] = Double.parseDouble(txtTortaChocolate.getText());
 					qtdTortaChocolate = Integer.parseInt(txtTortaChocolate.getText());
+					itemcost[21] = controlP.getPrice(model, "torta de chocolate") * qtdTortaChocolate;
 					model.setQtdTortaChocolate(qtdTortaChocolate);
-					model.setNomeTortaChocolate(" Torta de Chocolate ");
+					NomeTortaChocolate=" Torta de Chocolate ";
 				}
 				if(!tortaLimao.isEmpty()) {
-					itemcost[22] = Double.parseDouble(txtTortaLimao.getText());
 					qtdTortaLimao = Integer.parseInt(txtTortaLimao.getText());
+					itemcost[22] = controlP.getPrice(model, "torta de limão") * qtdTortaLimao;
 					model.setQtdTortaLimao(qtdTortaLimao);
-					model.setNomeTortaLimao(" Torta de Limao ");
+					NomeTortaLimao=" Torta de Limao ";
 				}
 				if(!tortaAbacaxi.isEmpty()) {
-					itemcost[23] = Double.parseDouble(txtTortaAbacaxi.getText());
 					qtdTortaAbacaxi = Integer.parseInt(txtTortaAbacaxi.getText());
+					itemcost[23] = controlP.getPrice(model, "torta de abacaxi") * qtdTortaAbacaxi;
 					model.setQtdTortaAbacaxi(qtdTortaAbacaxi);
-					model.setNomeTortaAbacaxi(" Torta de Abacaxi ");
+					NomeTortaAbacaxi=" Torta de Abacaxi ";
 				}
 				if(!tortaBanana.isEmpty()) {
-					itemcost[24] = Double.parseDouble(txtTortaBanana.getText());
 					qtdTortaBanana = Integer.parseInt(txtTortaBanana.getText());
+					itemcost[24] = controlP.getPrice(model, "torta de banana") * qtdTortaBanana;
 					model.setQtdTortaBanana(qtdTortaBanana);
-					model.setNomeTortaBanana(" Torta de Banana ");
+					NomeTortaBanana=" Torta de Banana ";
 				}
 				if(!tortaMaca.isEmpty()) {
-					itemcost[25] = Double.parseDouble(txtTortaMaca.getText());
 					qtdTortaMaca = Integer.parseInt(txtTortaMaca.getText());
+					itemcost[25] = controlP.getPrice(model, "torta de maça") * qtdTortaMaca;
 					model.setQtdTortaMaca(qtdTortaMaca);
-					model.setNomeTortaMaca(" Torta de Maca ");
+					NomeTortaMaca=" Torta de Maca ";
 				}
 				
 				if(!sorvete.isEmpty()) {
-					itemcost[26] = Double.parseDouble(txtSorvete.getText());
 					qtdSorvete = Integer.parseInt(txtSorvete.getText());
+					itemcost[26] = controlP.getPrice(model, "sorvete") * qtdSorvete;
 					model.setQtdSorvete(qtdSorvete);
-					model.setNomeSorvete(" Sorvete ");
+					NomeSorvete=" Sorvete ";
 				}
 				
 				if(!pudim.isEmpty()) {
-					itemcost[27] = Double.parseDouble(txtPudim.getText());
 					qtdPudim = Integer.parseInt(txtPudim.getText());
+					itemcost[27] = controlP.getPrice(model, "pudim") * qtdPudim;
 					model.setQtdPudim(qtdPudim);
-					model.setNomePudim(" Pudim ");
+					NomePudim=" Pudim ";
 				}
 				
 				if(!pave.isEmpty()) {
-					itemcost[28] = Double.parseDouble(txtPave.getText());
 					qtdPave= Integer.parseInt(txtPave.getText());
+					itemcost[28] = controlP.getPrice(model, "pava") * qtdPave;
 					model.setQtdPave(qtdPave);
-					model.setNomePave(" Pave "); 
+					NomePave=" Pave "; 
 				}
 				
 				if(!uva.isEmpty()) {
-					itemcost[29] = Double.parseDouble(txtUva.getText());
 					qtdUva= Integer.parseInt(txtUva.getText());
+					itemcost[29] = controlP.getPrice(model, "suco de uva") * qtdUva;
 					model.setQtdUva(qtdUva);
-					model.setNomeUva(" Uva "); 
+					NomeUva=" Uva "; 
 				}
 				
 				if(!morango.isEmpty()) {
-					itemcost[30] = Double.parseDouble(txtMorango.getText());
 					qtdMorango= Integer.parseInt(txtMorango.getText());
+					itemcost[30] = controlP.getPrice(model, "suco de morango") * qtdMorango;
 					model.setQtdMorango(qtdMorango);
-					model.setNomeMorango(" Morango "); 
+					NomeMorango=" Morango "; 
 				}
 				
 				if(!limao.isEmpty()) {
-					itemcost[31] = Double.parseDouble(txtLimao.getText());
 					qtdLimao= Integer.parseInt(txtLimao.getText());
+					itemcost[31] = controlP.getPrice(model, "suco de limão") * qtdLimao;
 					model.setQtdLimao(qtdLimao);
-					model.setNomeLimao(" Limao "); 
+					NomeLimao=" Limão "; 
 				}
 				
 				if(!abacaxi.isEmpty()) {
-					itemcost[32] = Double.parseDouble(txtAbacaxi.getText());
 					qtdAbacaxi= Integer.parseInt(txtAbacaxi.getText());
+					itemcost[32] = controlP.getPrice(model, "suco de abacaxi") * qtdAbacaxi;
 					model.setQtdAbacaxi(qtdAbacaxi);
-					model.setNomeAbacaxi(" Abacaxi "); 
+					NomeAbacaxi=" Abacaxi "; 
 				}
 				
 				if(!caju.isEmpty()) {
-					itemcost[33] = Double.parseDouble(txtCaju.getText());
 					qtdCaju= Integer.parseInt(txtCaju.getText());
+					itemcost[33] = controlP.getPrice(model, "suco de caju") * qtdCaju;
 					model.setQtdCaju(qtdCaju);
-					model.setNomeCaju(" Caju "); 
+					NomeCaju=" Caju "; 
 				}
 				
 				if(!manga.isEmpty()) {
-					itemcost[34] = Double.parseDouble(txtManga.getText());
 					qtdManga= Integer.parseInt(txtManga.getText());
+					itemcost[34] = controlP.getPrice(model, "suco de manga") * qtdManga;
 					model.setQtdManga(qtdManga);
-					model.setNomeManga(" Manga "); 
+					NomeManga=" Manga "; 
 				}
 				
 				if(!graviola.isEmpty()) {
-					itemcost[35] = Double.parseDouble(txtGraviola.getText());
 					qtdGraviola= Integer.parseInt(txtGraviola.getText());
+					itemcost[35] = controlP.getPrice(model, "suco de graviola") * qtdGraviola;
 					model.setQtdGraviola(qtdGraviola);
-					model.setNomeGraviola(" Graviola "); 
+					NomeGraviola=" Graviola "; 
 				}
 				
 				if(!arroz.isEmpty()) {
-					itemcost[36] = Double.parseDouble(txtArroz.getText());
 					qtdArroz= Integer.parseInt(txtArroz.getText());
+					itemcost[36] = controlP.getPrice(model, "arroz") * qtdArroz;
 					model.setQtdArroz(qtdArroz);
-					model.setNomeArroz(" Arroz "); 
+					NomeArroz=" Arroz "; 
 				}
 				
 				if(!macarrao.isEmpty()) {
-					itemcost[37] = Double.parseDouble(txtMacarrao.getText());
 					qtdMacarrao= Integer.parseInt(txtMacarrao.getText());
+					itemcost[37] = controlP.getPrice(model, "macarrão") * qtdMacarrao;
 					model.setQtdMacarrao(qtdMacarrao);
-					model.setNomeMacarrao(" Macarrao "); 
+					NomeMacarrao=" Macarrão "; 
 				}
 
 				if(!feijao.isEmpty()) {
-					itemcost[38] = Double.parseDouble(txtFeijao.getText());
 					qtdFeijao= Integer.parseInt(txtFeijao.getText());
+					itemcost[38] = controlP.getPrice(model, "feijão") * qtdFeijao;
 					model.setQtdFeijao(qtdFeijao);
-					model.setNomeFeijao(" Feijao "); 
+					NomeFeijao=" Feijão "; 
 				}
 				
 				if(!bife.isEmpty()) {
-					itemcost[39] = Double.parseDouble(txtBife.getText());
 					qtdBife= Integer.parseInt(txtBife.getText());
+					itemcost[39] = controlP.getPrice(model, "bife") * qtdBife;
 					model.setQtdBife(qtdBife);
-					model.setNomeBife(" Bife "); 
+					NomeBife=" Bife "; 
 				}
 				
 				if(!frango.isEmpty()) {
-					itemcost[40] = Double.parseDouble(txtFrango.getText());
 					qtdFrango= Integer.parseInt(txtFrango.getText());
+					itemcost[40] = controlP.getPrice(model, "frango") * qtdFrango;
 					model.setQtdFrango(qtdFrango);
-					model.setNomeFrango(" Frango "); 
+					NomeFrango=" Frango "; 
 				}
 				
 				String mPagamento = (String)metodoPagamento.getSelectedItem();
@@ -2035,9 +2037,18 @@ public class ViewSistema extends JFrame {
 					
 					jtxtRecibo.append("\tSmart Food\n"+
 							"\n====================================\n"+
-										"Pratos principais:\t\t" + "\n\n"+
-										"Bebidas:\t\t" +"\n\n"+
-										"Sobremesa:\t\t"  +"\n\n"+
+										"Pratos principais:\t\t" + NomeFritas+NomeAneisCebola + NomeArroz+ NomeBife +NomeFeijao+
+										NomeFrango+NomeHamburger+NomeMacarrao+NomeSalada+ NomeSaladaFrango+NomeSanduicheAtum+
+										NomeSanduicheFrango+NomeSanduicheQueijo+
+										"\n\n"+
+										"Bebidas:\t\t"+ NomeAgua +  NomeCafe + NomeAguacc + NomeCerveja
+										+ NomeCoca + NomeSucoLaranja+ NomeSucoMaracuja+NomeUva+
+										NomeMorango + NomeLimao+NomeAbacaxi+NomeCaju+NomeManga+NomeGraviola
+										+"\n\n"+
+										"Sobremesa:\t\t"+ NomeTorrada + NomeBolinho+ NomeBrownie+ NomeSorvete+NomePanqueca +
+										NomeTortaAbacaxi+NomeTortaBanana+NomeTortaChocolate+NomeTortaLimao+NomeTortaMaca+
+										NomeTortaMorango+NomePave+NomePudim+NomePicole+
+										"\n\n"+
 										"Quantidade:\t\t" + qtd +"\n\n"+
 										"ID:\t\t" + id +"\n\n"+
 							"====================================" + "\n\n" +

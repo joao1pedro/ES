@@ -14,6 +14,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import connection.ConnectionFactory;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class EditarPreco extends JFrame {
@@ -22,6 +25,7 @@ public class EditarPreco extends JFrame {
 	private JTable table;
 
 	public EditarPreco() {
+		setTitle("Editar preços");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -35,7 +39,7 @@ public class EditarPreco extends JFrame {
 		panel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(89, 12, 282, 243);
+		scrollPane.setBounds(156, 12, 282, 243);
 		panel.add(scrollPane);
 		
 		table = new JTable();
@@ -47,14 +51,38 @@ public class EditarPreco extends JFrame {
 				"id", "nome", "pre\u00E7o"
 			}
 		) {
+			Class[] columnTypes = new Class[] {
+				Object.class, Object.class, Float.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
 			boolean[] columnEditables = new boolean[] {
-				false, false, true
+				false, false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
 		scrollPane.setViewportView(table);
+		
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				editarPrice();
+			}
+		});
+		btnEditar.setBounds(50, 157, 94, 25);
+		panel.add(btnEditar);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnSair.setBounds(50, 194, 94, 25);
+		panel.add(btnSair);
 	}
 	public void updateProdutos() {
 		Connection con = new ConnectionFactory().getConnection();
@@ -82,60 +110,22 @@ public class EditarPreco extends JFrame {
 			ConnectionFactory.closeConnection(con, stmt, rs);
 		}
 	}
-	public boolean editarPrice() {
+	public void editarPrice() {
 		Connection con = new ConnectionFactory().getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String cafe = "café";
-		String agua = "água";
-		String cerveja = "cerveja";
-		String coca = "coca-cola";
-		String aguacc = "água de côco";
-		String sucoLaranja = "suco de laranja";
-		String sucoMaracuja = "suco de maracuja";
-		String fritas = "batata frita";
-		String salada = "salada";
-		String hamburger = "hamburger";
-		String aneisCebola = "anéis de cebola";
-		String saladaFrango = "salada de frango";
-		String sanduicheAtum = "sanduiche de atum";
-		String sanduicheQueijo = "sanduiche de queijo";
-		String sanduicheFrango = "sanduiche de frango";
-		String brownie = "brownie";
-		String torrada = "torrada";
-		String bolinho = "bolinho";
-		String panqueca = "panqueca";
-		String picole = "picole";
-		String tortaMorango = "torta de morango";
-		String tortaChocolate = "torta de chocolate";
-		String tortaLimao = "torta de limão";
-		String tortaAbacaxi = "torta de abacaxi";
-		String tortaBanana = "torta de banana";
-		String tortaMaca = "torta de maça";
-		String sorvete = "sorvete";
-		String pudim = "pudim";
-		String pave = "pave";
-		String uva = "suco de uva";
-		String morango = "suco de morango";
-		String limao = "suco de limão";
-		String abacaxi = "suco de abacaxi";
-		String caju = "suco de caju";
-		String manga = "suco de manga";
-		String graviola = "suco de graviola";
-		String arroz = "arroz";
-		String macarrao = "macarrão";
-		String feijao = "feijão";
-		String bife = "bife";
-		String frango = "bife";
+		double preco = 0;
 		
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		
 		int row = table.getSelectedRow();
-		String selected = modelo.getValueAt(row, 0).toString();
+		String selected = modelo.getValueAt(row, 1).toString();
 		
+		String numero = JOptionPane.showInputDialog("Digite o novo preço: ");
+		preco = Double.parseDouble(numero);
+		
+		String sql = "update produtos set preco  = '"+ preco +"' where nome = '"+ selected + "';";
 
-        String sql = "update produtos set preco  = ? where id = '"+ selected + "';";
-        
         try {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
@@ -147,6 +137,5 @@ public class EditarPreco extends JFrame {
 			ConnectionFactory.closeConnection(con, stmt, rs);
 		}
         updateProdutos();
-        return true;
 	}
 }
