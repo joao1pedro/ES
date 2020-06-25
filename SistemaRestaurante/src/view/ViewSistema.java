@@ -29,8 +29,10 @@ import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class ViewSistema extends JFrame {
@@ -138,6 +140,8 @@ public class ViewSistema extends JFrame {
 	private String NomeSucoLaranja="";
 	private String NomeSucoMaracuja="";
 	private String NomeAguacc="";
+	
+    private JLabel lblHr = new JLabel("");
 
 	/**
 	 * Create the frame.
@@ -169,6 +173,7 @@ public class ViewSistema extends JFrame {
 		JCheckBox chckbxFeijao = new JCheckBox("Feijao");
 		JCheckBox chckbxBife = new JCheckBox("Bife");
 		JCheckBox chckbxFrango = new JCheckBox("Frango");
+		
 		chckbxTortaDeMorango.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -543,7 +548,7 @@ public class ViewSistema extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(310, 84, 290, 600);
+		panel.setBounds(310, 84, 290, 546);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -924,7 +929,7 @@ public class ViewSistema extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(12, 84, 290, 600);
+		panel_2.setBounds(12, 84, 290, 546);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -1296,7 +1301,7 @@ public class ViewSistema extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(912, 460, 387, 224);
+		panel_3.setBounds(912, 460, 307, 224);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -1330,10 +1335,12 @@ public class ViewSistema extends JFrame {
 		JButton btnNewButton = new JButton("Sair");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				dispose();
+				TelaLogin frame = new TelaLogin();
+				frame.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(297, 187, 77, 25);
+		btnNewButton.setBounds(190, 187, 77, 25);
 		panel_3.add(btnNewButton);
 		
 		JButton btnLimpar = new JButton("Limpar");
@@ -2024,16 +2031,19 @@ public class ViewSistema extends JFrame {
 				
 				boolean registra = controlP.registraVenda(model);
 				
+				/*
+				 * data e hora
+				 * */
+				Calendar timer = Calendar.getInstance();
+				timer.getTime();
+				SimpleDateFormat fTime = new SimpleDateFormat("HH:mm:ss");
+				fTime.format(timer.getTime());
+				SimpleDateFormat fDate = new SimpleDateFormat("dd-MMM-yyyy");
+				fDate.format(timer.getTime());
+				
 				if(registra == true) {
 					JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!");
 					int id = controlP.getMax(model);
-					
-					Calendar timer = Calendar.getInstance();
-					timer.getTime();
-					SimpleDateFormat fTime = new SimpleDateFormat("HH:mm:ss");
-					fTime.format(timer.getTime());
-					SimpleDateFormat fDate = new SimpleDateFormat("dd-MMM-yyyy");
-					fDate.format(timer.getTime());
 					
 					jtxtRecibo.append("\tSmart Food\n"+
 							"\n====================================\n"+
@@ -2056,6 +2066,8 @@ public class ViewSistema extends JFrame {
 							"Sub-Total: \t\t" + subTotal + "\n\n" +
 							"Total: \t\t" + valueTotal + "\n\n" +
 							"Método de pagamento: \t" + mPagamento + "\n\n" +
+							"====================================" + "\n\n" +
+							"Vendedor: \t\t" + TelaLogin.login + "\n\n"+
 							"====================================" + "\n\n" +
 							"\nData: " + fDate.format(timer.getTime()) + 
 							"\tHora: " + fTime.format(timer.getTime()) +
@@ -2119,18 +2131,9 @@ public class ViewSistema extends JFrame {
 		txtMesa.setBounds(12, 150, 56, 15);
 		panel_3.add(txtMesa);
 		
-		JButton btnEstornar = new JButton("Estornar");
-		btnEstornar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		btnEstornar.setBounds(190, 187, 95, 25);
-		panel_3.add(btnEstornar);
-		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_4.setBounds(610, 84, 290, 600);
+		panel_4.setBounds(610, 84, 290, 546);
 		contentPane.add(panel_4);
 		panel_4.setLayout(null);
 		
@@ -2478,5 +2481,44 @@ public class ViewSistema extends JFrame {
 		
 		scrollPane.setViewportView(jtxtRecibo);
 		
+		JLabel lblUsurio = new JLabel("Usuário:");
+		lblUsurio.setBounds(12, 640, 70, 15);
+		contentPane.add(lblUsurio);
+		
+		JLabel lblUser = new JLabel(TelaLogin.login);
+		lblUser.setBounds(79, 642, 70, 15);
+		contentPane.add(lblUser);
+		
+		JLabel lblHora = new JLabel("Hora:");
+		lblHora.setBounds(408, 640, 52, 15);
+		contentPane.add(lblHora);
+
+		
+		
+		lblHr.setBounds(465, 642, 70, 15);
+		contentPane.add(lblHr);
+		
+		JLabel lblData = new JLabel("Data:");
+		lblData.setBounds(172, 640, 52, 15);
+		contentPane.add(lblData);
+		
+		Calendar timer = Calendar.getInstance();
+		SimpleDateFormat fDate = new SimpleDateFormat("dd-MMM-yyyy");
+		fDate.format(timer.getTime());
+		JLabel lblDate = new JLabel(fDate.format(timer.getTime()));
+		lblDate.setBounds(222, 642, 80, 15);
+		contentPane.add(lblDate);
+		
+		Timer tm = new Timer(1000, new hora());
+		tm.start();
+		
+	}	
+	class hora implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Calendar now = Calendar.getInstance();
+			lblHr.setText(String.format("%1$tH:%1$tM:%1$tS", now));
+			
+		}
 	}
 }

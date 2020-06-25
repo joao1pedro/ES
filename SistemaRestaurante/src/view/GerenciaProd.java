@@ -66,6 +66,13 @@ public class GerenciaProd extends JFrame {
 		panel.add(lblTaxaTotal);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				ViewSistema frame = new ViewSistema();
+				frame.setVisible(true);
+			}
+		});
 		btnVoltar.setBounds(511, 425, 77, 25);
 		panel.add(btnVoltar);
 		
