@@ -83,19 +83,20 @@ public class GerenciaProd extends JFrame {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"id", "opera\u00E7\u00E3o", "qtd", "sub total", "taxa", "total"
+				"id", "opera\u00E7\u00E3o", "qtd", "sub total", "taxa", "total", "vendedor", "mesa"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false, false
+				false, false, false, false, false, false, false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
+		table.getColumnModel().getColumn(6).setPreferredWidth(100);
 		scrollPane.setViewportView(table);
 
 		lblTotal.setBounds(138, 12, 84, 15);
@@ -134,7 +135,9 @@ public class GerenciaProd extends JFrame {
 	        			rs.getInt("qtd"),
 	        			rs.getDouble("sub_total"),
 	        			rs.getDouble("taxa"),
-	        			rs.getDouble("total")
+	        			rs.getDouble("total"),
+	        			rs.getString("vendedor"),
+	        			rs.getInt("mesa")
 	        	});
 	        }
 	    } catch (SQLException e) {

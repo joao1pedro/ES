@@ -21,9 +21,10 @@ public class ControlProdutos {
 			return false;
 			
 		}else {
-			String sql = "insert into vendas (operacao, qtd, total, sub_total, taxa) values ('"+
+			String sql = "insert into vendas (operacao, qtd, total, sub_total, taxa, vendedor, mesa) values ('"+
 					model.getOperacao() +"','" + model.getQtd() + "','" +
-					model.getValorTotal() + "','" + model.getSubTotal() +"','" + model.getTaxa()+"');";
+					model.getValorTotal() + "','" + model.getSubTotal() +"','" + model.getTaxa()+"','"+model.getVendedor()+
+					"','"+model.getMesa()+"');";
 			try {
 				stmt = con.prepareStatement(sql);
 				rs = stmt.executeQuery();    

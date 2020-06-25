@@ -2,8 +2,10 @@ package model;
 
 public class ModelProdutos {
 	String operacao;
+	String vendedor;
 	int qtd;
 	int id;
+	int mesa;
 	
 	double valorTotal;
 	double subTotal;
@@ -51,7 +53,6 @@ public class ModelProdutos {
 	int qtdBife;
 	int qtdFrango;
 	
-
 	double priceCafe;
 	double priceAgua;
 	double priceCerveja;
@@ -93,47 +94,20 @@ public class ModelProdutos {
 	double priceFeijao;
 	double priceBife;
 	double priceFrango;
+
 	
-	String nomeCafe;
-	String nomeAgua;
-	String nomeCerveja;
-	String nomeCoca;
-	String nomeAguacc;
-	String nomeSucoLaranja;
-	String nomeSucoMaracuja;
-	String nomeFritas;
-	String nomeSalada;
-	String nomeHamburger;
-	String nomeAneisCebola;
-	String nomeSaladaFrango;
-	String nomeSanduicheAtum;
-	String nomeSanduicheQueijo;
-	String nomeSanduicheFrango;
-	String nomeBrownie;
-	String nomeTorrada;
-	String nomeBolinho;
-	String nomePanqueca;
-	String nomePicole;
-	String nomeTortaMorango;
-	String nomeTortaChocolate;
-	String nomeTortaLimao;
-	String nomeTortaAbacaxi;
-	String nomeTortaBanana;
-	String nomeTortaMaca;
-	String nomeSorvete;
-	String nomePudim;
-	String nomeUva;
-	String nomeMorango;
-	String nomeLimao;
-	String nomeAbacaxi;
-	String nomeCaju;
-	String nomeManga;
-	String nomeArroz;
-	String nomeMacarrao;
-	String nomeFeijao;
-	String nomeBife;
-	String nomeFrango;
-	
+	public String getVendedor() {
+		return vendedor;
+	}
+	public void setVendedor(String vendedor) {
+		this.vendedor = vendedor;
+	}
+	public int getMesa() {
+		return mesa;
+	}
+	public void setMesa(int mesa) {
+		this.mesa = mesa;
+	}
 	public int getQtdArroz() {
 		return qtdArroz;
 	}
@@ -193,36 +167,6 @@ public class ModelProdutos {
 	}
 	public void setPriceFrango(double priceFrango) {
 		this.priceFrango = priceFrango;
-	}
-	public String getNomeArroz() {
-		return nomeArroz;
-	}
-	public void setNomeArroz(String nomeArroz) {
-		this.nomeArroz = nomeArroz;
-	}
-	public String getNomeMacarrao() {
-		return nomeMacarrao;
-	}
-	public void setNomeMacarrao(String nomeMacarrao) {
-		this.nomeMacarrao = nomeMacarrao;
-	}
-	public String getNomeFeijao() {
-		return nomeFeijao;
-	}
-	public void setNomeFeijao(String nomeFeijao) {
-		this.nomeFeijao = nomeFeijao;
-	}
-	public String getNomeBife() {
-		return nomeBife;
-	}
-	public void setNomeBife(String nomeBife) {
-		this.nomeBife = nomeBife;
-	}
-	public String getNomeFrango() {
-		return nomeFrango;
-	}
-	public void setNomeFrango(String nomeFrango) {
-		this.nomeFrango = nomeFrango;
 	}
 	public int getQtdUva() {
 		return qtdUva;
@@ -307,42 +251,6 @@ public class ModelProdutos {
 	}
 	public void setPriceGraviola(double priceGraviola) {
 		this.priceGraviola = priceGraviola;
-	}
-	public String getNomeUva() {
-		return nomeUva;
-	}
-	public void setNomeUva(String nomeUva) {
-		this.nomeUva = nomeUva;
-	}
-	public String getNomeMorango() {
-		return nomeMorango;
-	}
-	public void setNomeMorango(String nomeMorango) {
-		this.nomeMorango = nomeMorango;
-	}
-	public String getNomeLimao() {
-		return nomeLimao;
-	}
-	public void setNomeLimao(String nomeLimao) {
-		this.nomeLimao = nomeLimao;
-	}
-	public String getNomeAbacaxi() {
-		return nomeAbacaxi;
-	}
-	public void setNomeAbacaxi(String nomeAbacaxi) {
-		this.nomeAbacaxi = nomeAbacaxi;
-	}
-	public String getNomeCaju() {
-		return nomeCaju;
-	}
-	public void setNomeCaju(String nomeCaju) {
-		this.nomeCaju = nomeCaju;
-	}
-	public String getNomeManga() {
-		return nomeManga;
-	}
-	public void setNomeManga(String nomeManga) {
-		this.nomeManga = nomeManga;
 	}
 	public String getNomeGraviola() {
 		return nomeGraviola;
@@ -438,42 +346,6 @@ public class ModelProdutos {
 	public void setPricePave(double pricePave) {
 		this.pricePave = pricePave;
 	}
-	public String getNomeTortaLimao() {
-		return nomeTortaLimao;
-	}
-	public void setNomeTortaLimao(String nomeTortaLimao) {
-		this.nomeTortaLimao = nomeTortaLimao;
-	}
-	public String getNomeTortaAbacaxi() {
-		return nomeTortaAbacaxi;
-	}
-	public void setNomeTortaAbacaxi(String nomeTortaAbacaxi) {
-		this.nomeTortaAbacaxi = nomeTortaAbacaxi;
-	}
-	public String getNomeTortaBanana() {
-		return nomeTortaBanana;
-	}
-	public void setNomeTortaBanana(String nomeTortaBanana) {
-		this.nomeTortaBanana = nomeTortaBanana;
-	}
-	public String getNomeTortaMaca() {
-		return nomeTortaMaca;
-	}
-	public void setNomeTortaMaca(String nomeTortaMaca) {
-		this.nomeTortaMaca = nomeTortaMaca;
-	}
-	public String getNomeSorvete() {
-		return nomeSorvete;
-	}
-	public void setNomeSorvete(String nomeSorvete) {
-		this.nomeSorvete = nomeSorvete;
-	}
-	public String getNomePudim() {
-		return nomePudim;
-	}
-	public void setNomePudim(String nomePudim) {
-		this.nomePudim = nomePudim;
-	}
 	public String getNomePave() {
 		return nomePave;
 	}
@@ -495,14 +367,6 @@ public class ModelProdutos {
 	public void setPriceTortaChocolate(double priceTortaChocolate) {
 		this.priceTortaChocolate = priceTortaChocolate;
 	}
-	public String getNomeTortaChocolate() {
-		return nomeTortaChocolate;
-	}
-	public void setNomeTortaChocolate(String nomeTortaChocolate) {
-		this.nomeTortaChocolate = nomeTortaChocolate;
-	}
-	
-	
 	public int getQtdTortaMorango() {
 		return qtdTortaMorango;
 	}
@@ -515,137 +379,11 @@ public class ModelProdutos {
 	public void setPriceTortaMorango(double priceTortaMorango) {
 		this.priceTortaMorango = priceTortaMorango;
 	}
-	public String getNomeTortaMorango() {
-		return nomeTortaMorango;
-	}
-	public void setNomeTortaMorango(String nomeTortaMorango) {
-		this.nomeTortaMorango = nomeTortaMorango;
-	}
 	public int getQtdAgua() {
 		return qtdAgua;
 	}
 	public void setQtdAgua(int qtdAgua) {
 		this.qtdAgua = qtdAgua;
-	}
-	public String getNomeCafe() {
-		return nomeCafe;
-	}
-	public void setNomeCafe(String nomeCafe) {
-		this.nomeCafe = nomeCafe;
-	}
-	public String getNomeAgua() {
-		return nomeAgua;
-	}
-	public void setNomeAgua(String nomeAgua) {
-		this.nomeAgua = nomeAgua;
-	}
-	public String getNomeCerveja() {
-		return nomeCerveja;
-	}
-	public void setNomeCerveja(String nomeCerveja) {
-		this.nomeCerveja = nomeCerveja;
-	}
-	public String getNomeCoca() {
-		return nomeCoca;
-	}
-	public void setNomeCoca(String nomeCoca) {
-		this.nomeCoca = nomeCoca;
-	}
-	public String getNomeAguacc() {
-		return nomeAguacc;
-	}
-	public void setNomeAguacc(String nomeAguacc) {
-		this.nomeAguacc = nomeAguacc;
-	}
-	public String getNomeSucoLaranja() {
-		return nomeSucoLaranja;
-	}
-	public void setNomeSucoLaranja(String nomeSucoLaranja) {
-		this.nomeSucoLaranja = nomeSucoLaranja;
-	}
-	public String getNomeSucoMaracuja() {
-		return nomeSucoMaracuja;
-	}
-	public void setNomeSucoMaracuja(String nomeSucoMaracuja) {
-		this.nomeSucoMaracuja = nomeSucoMaracuja;
-	}
-	public String getNomeFritas() {
-		return nomeFritas;
-	}
-	public void setNomeFritas(String nomeFritas) {
-		this.nomeFritas = nomeFritas;
-	}
-	public String getNomeSalada() {
-		return nomeSalada;
-	}
-	public void setNomeSalada(String nomeSalada) {
-		this.nomeSalada = nomeSalada;
-	}
-	public String getNomeHamburger() {
-		return nomeHamburger;
-	}
-	public void setNomeHamburger(String nomeHamburger) {
-		this.nomeHamburger = nomeHamburger;
-	}
-	public String getNomeAneisCebola() {
-		return nomeAneisCebola;
-	}
-	public void setNomeAneisCebola(String nomeAneisCebola) {
-		this.nomeAneisCebola = nomeAneisCebola;
-	}
-	public String getNomeSaladaFrango() {
-		return nomeSaladaFrango;
-	}
-	public void setNomeSaladaFrango(String nomeSaladaFrango) {
-		this.nomeSaladaFrango = nomeSaladaFrango;
-	}
-	public String getNomeSanduicheAtum() {
-		return nomeSanduicheAtum;
-	}
-	public void setNomeSanduicheAtum(String nomeSanduicheAtum) {
-		this.nomeSanduicheAtum = nomeSanduicheAtum;
-	}
-	public String getNomeSanduicheQueijo() {
-		return nomeSanduicheQueijo;
-	}
-	public void setNomeSanduicheQueijo(String nomeSanduicheQueijo) {
-		this.nomeSanduicheQueijo = nomeSanduicheQueijo;
-	}
-	public String getNomeSanduicheFrango() {
-		return nomeSanduicheFrango;
-	}
-	public void setNomeSanduicheFrango(String nomeSanduicheFrango) {
-		this.nomeSanduicheFrango = nomeSanduicheFrango;
-	}
-	public String getNomeBrownie() {
-		return nomeBrownie;
-	}
-	public void setNomeBrownie(String nomeBrownie) {
-		this.nomeBrownie = nomeBrownie;
-	}
-	public String getNomeTorrada() {
-		return nomeTorrada;
-	}
-	public void setNomeTorrada(String nomeTorrada) {
-		this.nomeTorrada = nomeTorrada;
-	}
-	public String getNomeBolinho() {
-		return nomeBolinho;
-	}
-	public void setNomeBolinho(String nomeBolinho) {
-		this.nomeBolinho = nomeBolinho;
-	}
-	public String getNomePanqueca() {
-		return nomePanqueca;
-	}
-	public void setNomePanqueca(String nomePanqueca) {
-		this.nomePanqueca = nomePanqueca;
-	}
-	public String getNomePicole() {
-		return nomePicole;
-	}
-	public void setNomePicole(String nomePicole) {
-		this.nomePicole = nomePicole;
 	}
 	public double getPriceCafe() {
 		return priceCafe;

@@ -98,6 +98,7 @@ public class ViewSistema extends JFrame {
 	
 	private JTextArea jtxtRecibo = new JTextArea();
 	private int qtd = 0;
+	private int mesa = 0;
 	
 	private String NomeAgua="";
 	private String NomeCafe="";
@@ -1393,6 +1394,7 @@ public class ViewSistema extends JFrame {
 				txtFeijao.setText(null);
 				txtBife.setText(null);
 				txtFrango.setText(null);
+				txtMesa.setText(null);
 				
 				//limpa caixas de seleção
 				chckbxAgua.setSelected(false);
@@ -1609,6 +1611,8 @@ public class ViewSistema extends JFrame {
 				NomeFeijao="";
 				NomeBife="";
 				NomeFrango="";
+				
+				model.setMesa(0);
 			}
 		});
 		btnLimpar.setBounds(96, 187, 82, 25);
@@ -2028,54 +2032,60 @@ public class ViewSistema extends JFrame {
 				model.setValorTotal(valueTotal);
 				model.setSubTotal(subTotal);
 				model.setTaxa(taxa);
+				model.setVendedor(TelaLogin.login);
 				
-				boolean registra = controlP.registraVenda(model);
-				
-				/*
-				 * data e hora
-				 * */
-				Calendar timer = Calendar.getInstance();
-				timer.getTime();
-				SimpleDateFormat fTime = new SimpleDateFormat("HH:mm:ss");
-				fTime.format(timer.getTime());
-				SimpleDateFormat fDate = new SimpleDateFormat("dd-MMM-yyyy");
-				fDate.format(timer.getTime());
-				
-				if(registra == true) {
-					JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!");
-					int id = controlP.getMax(model);
+				mesa = Integer.parseInt(txtMesa.getText());
+				if(mesa >0 && mesa<=30) {
+					model.setMesa(mesa);
+					boolean registra = controlP.registraVenda(model);
 					
-					jtxtRecibo.append("\tSmart Food\n"+
-							"\n====================================\n"+
-										"Pratos principais:\t\t" + NomeFritas+NomeAneisCebola + NomeArroz+ NomeBife +NomeFeijao+
-										NomeFrango+NomeHamburger+NomeMacarrao+NomeSalada+ NomeSaladaFrango+NomeSanduicheAtum+
-										NomeSanduicheFrango+NomeSanduicheQueijo+
-										"\n\n"+
-										"Bebidas:\t\t"+ NomeAgua +  NomeCafe + NomeAguacc + NomeCerveja
-										+ NomeCoca + NomeSucoLaranja+ NomeSucoMaracuja+NomeUva+
-										NomeMorango + NomeLimao+NomeAbacaxi+NomeCaju+NomeManga+NomeGraviola
-										+"\n\n"+
-										"Sobremesa:\t\t"+ NomeTorrada + NomeBolinho+ NomeBrownie+ NomeSorvete+NomePanqueca +
-										NomeTortaAbacaxi+NomeTortaBanana+NomeTortaChocolate+NomeTortaLimao+NomeTortaMaca+
-										NomeTortaMorango+NomePave+NomePudim+NomePicole+
-										"\n\n"+
-										"Quantidade:\t\t" + qtd +"\n\n"+
-										"ID:\t\t" + id +"\n\n"+
-							"====================================" + "\n\n" +
-							"Taxa: \t\t" + taxa + "\n\n" +
-							"Sub-Total: \t\t" + subTotal + "\n\n" +
-							"Total: \t\t" + valueTotal + "\n\n" +
-							"Método de pagamento: \t" + mPagamento + "\n\n" +
-							"====================================" + "\n\n" +
-							"Vendedor: \t\t" + TelaLogin.login + "\n\n"+
-							"====================================" + "\n\n" +
-							"\nData: " + fDate.format(timer.getTime()) + 
-							"\tHora: " + fTime.format(timer.getTime()) +
-							"\n\n\t\tObrigado !");
+					/*
+					 * data e hora
+					 * */
+					Calendar timer = Calendar.getInstance();
+					timer.getTime();
+					SimpleDateFormat fTime = new SimpleDateFormat("HH:mm:ss");
+					fTime.format(timer.getTime());
+					SimpleDateFormat fDate = new SimpleDateFormat("dd-MMM-yyyy");
+					fDate.format(timer.getTime());
+					
+					if(registra == true) {
+						JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!");
+						int id = controlP.getMax(model);
+						
+						jtxtRecibo.append("\tSmart Food\n"+
+								"\n====================================\n"+
+											"Pratos principais:\t\t" + NomeFritas+NomeAneisCebola + NomeArroz+ NomeBife +NomeFeijao+
+											NomeFrango+NomeHamburger+NomeMacarrao+NomeSalada+ NomeSaladaFrango+NomeSanduicheAtum+
+											NomeSanduicheFrango+NomeSanduicheQueijo+
+											"\n\n"+
+											"Bebidas:\t\t"+ NomeAgua +  NomeCafe + NomeAguacc + NomeCerveja
+											+ NomeCoca + NomeSucoLaranja+ NomeSucoMaracuja+NomeUva+
+											NomeMorango + NomeLimao+NomeAbacaxi+NomeCaju+NomeManga+NomeGraviola
+											+"\n\n"+
+											"Sobremesa:\t\t"+ NomeTorrada + NomeBolinho+ NomeBrownie+ NomeSorvete+NomePanqueca +
+											NomeTortaAbacaxi+NomeTortaBanana+NomeTortaChocolate+NomeTortaLimao+NomeTortaMaca+
+											NomeTortaMorango+NomePave+NomePudim+NomePicole+
+											"\n\n"+
+											"Quantidade:\t\t" + qtd +"\n\n"+
+											"ID:\t\t" + id +"\n\n"+
+								"====================================" + "\n\n" +
+								"Taxa: \t\t" + taxa + "\n\n" +
+								"Sub-Total: \t\t" + subTotal + "\n\n" +
+								"Total: \t\t" + valueTotal + "\n\n" +
+								"Método de pagamento: \t" + mPagamento + "\n\n" +
+								"====================================" + "\n\n" +
+								"Vendedor: \t\t" + TelaLogin.login + "\n\n"+
+								"====================================" + "\n\n" +
+								"\nData: " + fDate.format(timer.getTime()) + 
+								"\tHora: " + fTime.format(timer.getTime()) +
+								"\n\n\t\tObrigado !");
+					}else {
+						JOptionPane.showMessageDialog(null, "Falha ao registrar venda!");
+					}
 				}else {
-					JOptionPane.showMessageDialog(null, "Falha ao registrar venda!");
+					JOptionPane.showMessageDialog(null, "Mesa indisponível.");
 				}
-				
 				
 			}
 		});

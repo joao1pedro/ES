@@ -51,12 +51,6 @@ public class EditarPreco extends JFrame {
 				"id", "nome", "pre\u00E7o"
 			}
 		) {
-			Class[] columnTypes = new Class[] {
-				Object.class, Object.class, Float.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
 			boolean[] columnEditables = new boolean[] {
 				false, false, false
 			};
@@ -100,7 +94,7 @@ public class EditarPreco extends JFrame {
 	        	modelo.addRow(new Object[] {
 	        			rs.getInt("id"),
 	        			rs.getString("nome"),
-	        			rs.getInt("preco")
+	        			rs.getDouble("preco")
 	        	});
 	        }
 	    } catch (SQLException e) {
