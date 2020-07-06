@@ -35,6 +35,7 @@ import java.util.Calendar;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class ViewSistema extends JFrame {
@@ -95,8 +96,8 @@ public class ViewSistema extends JFrame {
 	private JTextField txtMesa;
 	
 	ControlGerenciaFunc control = new ControlGerenciaFunc();
-	ModelProdutos model = new ModelProdutos();
 	ControlProdutos controlP = new ControlProdutos();
+	ModelProdutos model = new ModelProdutos();
 	
 	private JTextArea jtxtRecibo = new JTextArea();
 	private int qtd = 0;
@@ -526,9 +527,6 @@ public class ViewSistema extends JFrame {
 		});
 		mnGerenciamento.add(mnProdutos);
 		
-		JMenu mnClientes = new JMenu("Clientes");
-		mnGerenciamento.add(mnClientes);
-		
 		JMenu mnAjuda = new JMenu("Ajuda");
 		menuBar.add(mnAjuda);
 		
@@ -541,6 +539,19 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		mnAjuda.add(mnSobre);
+		
+		JMenu mnAlterarSenha = new JMenu("Alterar senha");
+		mnAlterarSenha.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AlterarSenha frame = new AlterarSenha();
+				frame.setVisible(true);
+			}
+		});
+		mnAjuda.add(mnAlterarSenha);
+		
+		JMenuBar menuBar_1 = new JMenuBar();
+		mnAjuda.add(menuBar_1);
 		contentPane = new JPanel();
 		contentPane.setSize(new Dimension(1024, 768));
 		contentPane.setPreferredSize(new Dimension(1024, 768));
@@ -931,8 +942,9 @@ public class ViewSistema extends JFrame {
 		panel_1.setBounds(12, 0, 1328, 76);
 		contentPane.add(panel_1);
 		
-		JLabel lbTelaInfo = new JLabel("SISTEMA RESTAURANTE");
-		lbTelaInfo.setBounds(580, 28, 200, 24);
+		JLabel lbTelaInfo = new JLabel("SMART FOOD");
+		lbTelaInfo.setFont(new Font("Dialog", Font.BOLD, 12));
+		lbTelaInfo.setBounds(580, 28, 107, 24);
 		panel_1.add(lbTelaInfo);
 		
 		JPanel panel_2 = new JPanel();
@@ -2502,8 +2514,9 @@ public class ViewSistema extends JFrame {
 		panel_4.add(label);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(912, 84, 416, 364);
+		scrollPane.setBounds(912, 84, 428, 362);
 		contentPane.add(scrollPane);
+		jtxtRecibo.setEditable(false);
 		
 		
 		scrollPane.setViewportView(jtxtRecibo);

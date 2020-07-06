@@ -17,9 +17,9 @@ public class ControlRecuperaSenha {
 	ModelRecuperaSenha recuperar = new ModelRecuperaSenha();
 	
 	
-	public String returnPergunta(ModelRecuperaSenha modUser) {
+	public String returnPergunta(ModelRecuperaSenha mod) {
 		String pergunta;
-		String sql = "select * from usuarios where nickname = '" + modUser.getUsuario() + "';";
+		String sql = "select * from usuarios where nickname = '" + mod.getUsuario() + "';";
 		
 		try {
 			stmt = con.prepareStatement(sql);
@@ -40,22 +40,36 @@ public class ControlRecuperaSenha {
 	}
 
 
-	public boolean validResposta(ModelRecuperaSenha modSenha) {
+	public boolean validResposta(ModelRecuperaSenha mod) {
 		String senha;
-		String sql = "select * from usuarios where nickname = '" + modSenha.getUsuario() + "';";
+		String sql = "select * from usuarios where nickname = '" + mod.getUsuario() + "';";
 		
 		try {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				if(rs.getString("resposta").equals(modSenha.getResposta())) {
+				if(rs.getString("resposta").equals(mod.getResposta())) {
 					senha = rs.getString("senha");
 				    
 				    JOptionPane.showMessageDialog(null, "Sua senha é: " + senha);
 					return true;
 				}
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+		return false;
+	}
+	public boolean updatePass(ModelRecuperaSenha mod) {
+		String sql = "update usuarios set senha = '" + mod.getSenha() + "' where nickname = '" + mod.getUsuario() + "';";
+		try {
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

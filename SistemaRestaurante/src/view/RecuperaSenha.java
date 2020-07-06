@@ -25,9 +25,9 @@ public class RecuperaSenha extends JFrame {
 	String username;
 	ModelRecuperaSenha modRestore = new ModelRecuperaSenha();
 	ControlRecuperaSenha ctrl = new ControlRecuperaSenha();
+	TelaLogin frame = new TelaLogin();
 	
 	JLabel lblPergunta = new JLabel("");
-	TelaLogin frame = new TelaLogin();
 
 	/**
 	 * Create the frame.
