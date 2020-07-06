@@ -1143,7 +1143,7 @@ public class ViewSistema extends JFrame {
 		panel_2.add(lblSanduiche);
 		
 		
-		JCheckBox chckbxSanduichedeatum = new JCheckBox("Sanduiche de atum");
+		JCheckBox chckbxSanduichedeatum = new JCheckBox("Atum");
 		chckbxSanduichedeatum.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxSanduichedeatum.isSelected()) {
@@ -1159,7 +1159,7 @@ public class ViewSistema extends JFrame {
 		chckbxSanduichedeatum.setBounds(12, 354, 155, 23);
 		panel_2.add(chckbxSanduichedeatum);
 		
-		JCheckBox chckbxSanduichedequeijo = new JCheckBox("Sanduiche de queijo");
+		JCheckBox chckbxSanduichedequeijo = new JCheckBox("Queijo");
 		chckbxSanduichedequeijo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxSanduichedequeijo.isSelected()) {
@@ -1173,7 +1173,7 @@ public class ViewSistema extends JFrame {
 		chckbxSanduichedequeijo.setBounds(12, 381, 155, 23);
 		panel_2.add(chckbxSanduichedequeijo);
 		
-		JCheckBox chckbxSanduichedefrango = new JCheckBox("Sanduiche de frango");
+		JCheckBox chckbxSanduichedefrango = new JCheckBox("Frango");
 		chckbxSanduichedefrango.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxSanduichedefrango.isSelected()) {

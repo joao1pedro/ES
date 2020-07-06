@@ -142,7 +142,7 @@ public class GerenciaFunc extends JFrame {
 				limpar();
 			}
 		});
-		btnLimpar.setBounds(146, 289, 82, 25);
+		btnLimpar.setBounds(228, 252, 88, 25);
 		panel.add(btnLimpar);
 		
 		
@@ -218,7 +218,7 @@ public class GerenciaFunc extends JFrame {
 				btnCadastrar.setEnabled(false);
 			}
 		});
-		btnEditar.setBounds(146, 252, 82, 25);
+		btnEditar.setBounds(140, 252, 82, 25);
 		panel.add(btnEditar);
 		
 		
@@ -292,6 +292,17 @@ public class GerenciaFunc extends JFrame {
 		label_1.setIcon(new ImageIcon(GerenciaFunc.class.getResource("/Actions-contact-new-icon.png")));
 		label_1.setBounds(695, -4, 105, 82);
 		panel.add(label_1);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				ViewSistema frame = new ViewSistema();
+				frame.setVisible(true);
+			}
+		});
+		btnVoltar.setBounds(140, 289, 82, 25);
+		panel.add(btnVoltar);
 	}
 	public void updateTable() {
 		Connection con = new ConnectionFactory().getConnection();

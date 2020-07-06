@@ -17,8 +17,6 @@ import connection.ConnectionFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class EditarPreco extends JFrame {
