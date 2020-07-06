@@ -24,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import connection.ConnectionFactory;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class GerenciaFunc extends JFrame {
@@ -281,6 +282,16 @@ public class GerenciaFunc extends JFrame {
 		});
 		btnSalvar.setBounds(29, 289, 105, 25);
 		panel.add(btnSalvar);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(GerenciaFunc.class.getResource("/Actions-list-add-user-icon.png")));
+		label.setBounds(146, 7, 70, 62);
+		panel.add(label);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(GerenciaFunc.class.getResource("/Actions-contact-new-icon.png")));
+		label_1.setBounds(695, -4, 105, 82);
+		panel.add(label_1);
 	}
 	public void updateTable() {
 		Connection con = new ConnectionFactory().getConnection();

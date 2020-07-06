@@ -18,6 +18,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class TelaLogin extends JFrame {
@@ -105,5 +106,10 @@ public class TelaLogin extends JFrame {
 		JLabel lblRecuperarSenha = new JLabel("Recuperar senha ");
 		lblRecuperarSenha.setBounds(57, 205, 133, 15);
 		contentPane.add(lblRecuperarSenha);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(TelaLogin.class.getResource("/store-icon.png")));
+		label.setBounds(202, 12, 200, 142);
+		contentPane.add(label);
 	}
 }

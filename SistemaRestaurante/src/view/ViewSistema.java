@@ -11,12 +11,14 @@ import model.ModelProdutos;
 
 import java.awt.Color;
 import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -570,7 +572,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxAgua.setBounds(8, 35, 129, 23);
+		chckbxAgua.setBounds(8, 77, 129, 23);
 		panel.add(chckbxAgua);
 		
 		JCheckBox chckbxCaf = new JCheckBox("Café");
@@ -584,7 +586,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxCaf.setBounds(8, 62, 129, 23);
+		chckbxCaf.setBounds(8, 104, 129, 23);
 		panel.add(chckbxCaf);
 		
 		JCheckBox chckbxCerveja = new JCheckBox("Cerveja");
@@ -600,7 +602,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxCerveja.setBounds(8, 89, 129, 23);
+		chckbxCerveja.setBounds(8, 131, 129, 23);
 		panel.add(chckbxCerveja);
 		
 		JCheckBox chckbxCoca = new JCheckBox("Coca-Cola");
@@ -616,7 +618,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxCoca.setBounds(8, 116, 129, 23);
+		chckbxCoca.setBounds(8, 158, 129, 23);
 		panel.add(chckbxCoca);
 		
 		JCheckBox chckbxLaranja = new JCheckBox("Laranja");
@@ -632,7 +634,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxLaranja.setBounds(12, 219, 107, 23);
+		chckbxLaranja.setBounds(12, 234, 107, 23);
 		panel.add(chckbxLaranja);
 		
 		JCheckBox chckbxMaracuja = new JCheckBox("Maracujá");
@@ -648,15 +650,15 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxMaracuja.setBounds(12, 246, 107, 23);
+		chckbxMaracuja.setBounds(12, 261, 107, 23);
 		panel.add(chckbxMaracuja);
 		
-		chckbxUva.setBounds(12, 273, 107, 23);
+		chckbxUva.setBounds(12, 288, 107, 23);
 		panel.add(chckbxUva);
 		
 		txtUva = new JTextField();
 		txtUva.setEnabled(false);
-		txtUva.setBounds(143, 275, 80, 19);
+		txtUva.setBounds(143, 288, 80, 19);
 		txtUva.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -671,12 +673,12 @@ public class ViewSistema extends JFrame {
 		txtUva.setColumns(10);
 		
 		
-		chckbxMorango.setBounds(12, 300, 107, 23);
+		chckbxMorango.setBounds(12, 315, 107, 23);
 		panel.add(chckbxMorango);
 		
 		txtMorango = new JTextField();
 		txtMorango.setEnabled(false);
-		txtMorango.setBounds(143, 302, 80, 19);
+		txtMorango.setBounds(143, 315, 80, 19);
 		txtMorango.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -690,12 +692,12 @@ public class ViewSistema extends JFrame {
 		panel.add(txtMorango);
 		txtMorango.setColumns(10);
 		
-		chckbxLimao.setBounds(12, 327, 107, 23);
+		chckbxLimao.setBounds(12, 342, 107, 23);
 		panel.add(chckbxLimao);
 		
 		txtLimao = new JTextField();
 		txtLimao.setEnabled(false);
-		txtLimao.setBounds(143, 329, 80, 19);
+		txtLimao.setBounds(143, 342, 80, 19);
 		txtLimao.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -709,12 +711,12 @@ public class ViewSistema extends JFrame {
 		panel.add(txtLimao);
 		txtLimao.setColumns(10);
 		
-		chckbxAbacaxi.setBounds(12, 354, 107, 23);
+		chckbxAbacaxi.setBounds(12, 369, 107, 23);
 		panel.add(chckbxAbacaxi);
 		
 		txtAbacaxi = new JTextField();
 		txtAbacaxi.setEnabled(false);
-		txtAbacaxi.setBounds(143, 356, 80, 19);
+		txtAbacaxi.setBounds(143, 369, 80, 19);
 		txtAbacaxi.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -728,12 +730,12 @@ public class ViewSistema extends JFrame {
 		panel.add(txtAbacaxi);
 		txtAbacaxi.setColumns(10);
 		
-		chckbxCaju.setBounds(12, 381, 107, 23);
+		chckbxCaju.setBounds(12, 396, 107, 23);
 		panel.add(chckbxCaju);
 		
 		txtCaju = new JTextField();
 		txtCaju.setEnabled(false);
-		txtCaju.setBounds(143, 383, 80, 19);
+		txtCaju.setBounds(143, 396, 80, 19);
 		txtCaju.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -747,12 +749,12 @@ public class ViewSistema extends JFrame {
 		panel.add(txtCaju);
 		txtCaju.setColumns(10);
 		
-		chckbxManga.setBounds(12, 408, 107, 23);
+		chckbxManga.setBounds(12, 423, 107, 23);
 		panel.add(chckbxManga);
 		
 		txtManga = new JTextField();
 		txtManga.setEnabled(false);
-		txtManga.setBounds(143, 410, 80, 19);
+		txtManga.setBounds(143, 423, 80, 19);
 		txtManga.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -766,12 +768,12 @@ public class ViewSistema extends JFrame {
 		panel.add(txtManga);
 		txtManga.setColumns(10);
 		
-		chckbxGraviola.setBounds(12, 435, 107, 23);
+		chckbxGraviola.setBounds(12, 450, 107, 23);
 		panel.add(chckbxGraviola);
 		
 		txtGraviola = new JTextField();
 		txtGraviola.setEnabled(false);
-		txtGraviola.setBounds(143, 437, 80, 19);
+		txtGraviola.setBounds(143, 450, 80, 19);
 		txtGraviola.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -799,11 +801,11 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxAguaCc.setBounds(8, 143, 129, 23);
+		chckbxAguaCc.setBounds(8, 185, 129, 23);
 		panel.add(chckbxAguaCc);
 		
 		JLabel lblSucos = new JLabel("Sucos");
-		lblSucos.setBounds(12, 196, 70, 15);
+		lblSucos.setBounds(12, 215, 70, 15);
 		panel.add(lblSucos);
 		
 		txtAgua = new JTextField();
@@ -818,7 +820,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		txtAgua.setBounds(143, 39, 80, 19);
+		txtAgua.setBounds(143, 77, 80, 19);
 		panel.add(txtAgua);
 		txtAgua.setColumns(10);
 		
@@ -835,7 +837,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtCafe.setColumns(10);
-		txtCafe.setBounds(143, 64, 80, 19);
+		txtCafe.setBounds(143, 104, 80, 19);
 		panel.add(txtCafe);
 		
 		txtCerveja = new JTextField();
@@ -851,7 +853,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtCerveja.setColumns(10);
-		txtCerveja.setBounds(143, 91, 80, 19);
+		txtCerveja.setBounds(143, 131, 80, 19);
 		panel.add(txtCerveja);
 		
 		txtCoca = new JTextField();
@@ -867,7 +869,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtCoca.setColumns(10);
-		txtCoca.setBounds(143, 118, 80, 19);
+		txtCoca.setBounds(143, 158, 80, 19);
 		panel.add(txtCoca);
 		
 		txtAguaCc = new JTextField();
@@ -883,7 +885,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtAguaCc.setColumns(10);
-		txtAguaCc.setBounds(143, 143, 80, 19);
+		txtAguaCc.setBounds(143, 185, 80, 19);
 		panel.add(txtAguaCc);
 		
 		txtLaranja = new JTextField();
@@ -899,7 +901,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtLaranja.setColumns(10);
-		txtLaranja.setBounds(143, 221, 80, 19);
+		txtLaranja.setBounds(143, 234, 80, 19);
 		panel.add(txtLaranja);
 		
 		txtMaracuja = new JTextField();
@@ -915,8 +917,13 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtMaracuja.setColumns(10);
-		txtMaracuja.setBounds(143, 248, 80, 19);
+		txtMaracuja.setBounds(143, 261, 80, 19);
 		panel.add(txtMaracuja);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(ViewSistema.class.getResource("/bebida.png")));
+		lblNewLabel_1.setBounds(12, 11, 70, 66);
+		panel.add(lblNewLabel_1);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -930,7 +937,7 @@ public class ViewSistema extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(12, 84, 290, 546);
+		panel_2.setBounds(22, 84, 290, 546);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -952,7 +959,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxFritas.setBounds(8, 35, 129, 23);
+		chckbxFritas.setBounds(8, 57, 129, 23);
 		panel_2.add(chckbxFritas);
 		
 		
@@ -969,7 +976,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSalada.setBounds(8, 62, 129, 23);
+		chckbxSalada.setBounds(8, 84, 129, 23);
 		panel_2.add(chckbxSalada);
 		
 		
@@ -986,7 +993,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxHamburger.setBounds(8, 89, 129, 23);
+		chckbxHamburger.setBounds(8, 111, 129, 23);
 		panel_2.add(chckbxHamburger);
 		
 		
@@ -1003,7 +1010,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxAneisdecebola.setBounds(8, 116, 129, 23);
+		chckbxAneisdecebola.setBounds(8, 138, 129, 23);
 		panel_2.add(chckbxAneisdecebola);
 		
 		
@@ -1020,15 +1027,15 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSaladadefrango.setBounds(8, 143, 129, 23);
+		chckbxSaladadefrango.setBounds(8, 165, 129, 23);
 		panel_2.add(chckbxSaladadefrango);
 		
-		chckbxArroz.setBounds(8, 170, 129, 23);
+		chckbxArroz.setBounds(8, 192, 129, 23);
 		panel_2.add(chckbxArroz);
 		
 		txtArroz = new JTextField();
 		txtArroz.setEnabled(false);
-		txtArroz.setBounds(175, 172, 80, 19);
+		txtArroz.setBounds(175, 192, 80, 19);
 		txtArroz.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1042,12 +1049,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(txtArroz);
 		txtArroz.setColumns(10);
 		
-		chckbxMacarrao.setBounds(8, 197, 129, 23);
+		chckbxMacarrao.setBounds(8, 219, 129, 23);
 		panel_2.add(chckbxMacarrao);
 		
 		txtMacarrao = new JTextField();
 		txtMacarrao.setEnabled(false);
-		txtMacarrao.setBounds(175, 199, 80, 19);
+		txtMacarrao.setBounds(175, 219, 80, 19);
 		txtMacarrao.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1061,12 +1068,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(txtMacarrao);
 		txtMacarrao.setColumns(10);
 		
-		chckbxFeijao.setBounds(8, 224, 129, 23);
+		chckbxFeijao.setBounds(8, 246, 129, 23);
 		panel_2.add(chckbxFeijao);
 		
 		txtFeijao = new JTextField();
 		txtFeijao.setEnabled(false);
-		txtFeijao.setBounds(175, 226, 80, 19);
+		txtFeijao.setBounds(175, 246, 80, 19);
 		txtFeijao.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1080,12 +1087,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(txtFeijao);
 		txtFeijao.setColumns(10);
 		
-		chckbxBife.setBounds(8, 251, 129, 23);
+		chckbxBife.setBounds(8, 273, 129, 23);
 		panel_2.add(chckbxBife);
 		
 		txtBife = new JTextField();
 		txtBife.setEnabled(false);
-		txtBife.setBounds(175, 253, 80, 19);
+		txtBife.setBounds(175, 273, 80, 19);
 		txtBife.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1099,12 +1106,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(txtBife);
 		txtBife.setColumns(10);
 		
-		chckbxFrango.setBounds(8, 278, 129, 23);
+		chckbxFrango.setBounds(8, 300, 129, 23);
 		panel_2.add(chckbxFrango);
 		
 		txtFrango = new JTextField();
 		txtFrango.setEnabled(false);
-		txtFrango.setBounds(175, 280, 80, 19);
+		txtFrango.setBounds(175, 300, 80, 19);
 		txtFrango.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1183,7 +1190,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		txtFritas.setBounds(175, 37, 80, 19);
+		txtFritas.setBounds(175, 57, 80, 19);
 		panel_2.add(txtFritas);
 		txtFritas.setColumns(10);
 		
@@ -1200,7 +1207,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSalada.setColumns(10);
-		txtSalada.setBounds(175, 64, 80, 19);
+		txtSalada.setBounds(175, 84, 80, 19);
 		panel_2.add(txtSalada);
 		
 		txtHamburger = new JTextField();
@@ -1216,7 +1223,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtHamburger.setColumns(10);
-		txtHamburger.setBounds(175, 91, 80, 19);
+		txtHamburger.setBounds(175, 111, 80, 19);
 		panel_2.add(txtHamburger);
 		
 		txtAneisdecebola = new JTextField();
@@ -1232,7 +1239,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtAneisdecebola.setColumns(10);
-		txtAneisdecebola.setBounds(175, 118, 80, 19);
+		txtAneisdecebola.setBounds(175, 138, 80, 19);
 		panel_2.add(txtAneisdecebola);
 		
 		txtSaladadefrango = new JTextField();
@@ -1248,7 +1255,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSaladadefrango.setColumns(10);
-		txtSaladadefrango.setBounds(175, 145, 80, 19);
+		txtSaladadefrango.setBounds(175, 165, 80, 19);
 		panel_2.add(txtSaladadefrango);
 		
 		txtSanduichedeatum = new JTextField();
@@ -1298,6 +1305,11 @@ public class ViewSistema extends JFrame {
 		txtSanduichedefrango.setColumns(10);
 		txtSanduichedefrango.setBounds(175, 410, 80, 19);
 		panel_2.add(txtSanduichedefrango);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(ViewSistema.class.getResource("/Steak-icon.png")));
+		lblNewLabel.setBounds(12, 11, 72, 38);
+		panel_2.add(lblNewLabel);
 		
 		
 		JPanel panel_3 = new JPanel();
@@ -2153,7 +2165,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(lblSobremesas);
 		
 		JCheckBox chckbxBrownie = new JCheckBox("Brownie");
-		chckbxBrownie.setBounds(11, 60, 83, 23);
+		chckbxBrownie.setBounds(11, 106, 83, 23);
 		chckbxBrownie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxBrownie.isSelected()) {
@@ -2168,7 +2180,7 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(chckbxBrownie);
 		
-		chckbxTorrada.setBounds(11, 33, 81, 23);
+		chckbxTorrada.setBounds(11, 79, 81, 23);
 		chckbxTorrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxTorrada.isSelected()) {
@@ -2183,7 +2195,7 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(chckbxTorrada);
 		
-		chckbxPicole.setBounds(11, 114, 67, 23);
+		chckbxPicole.setBounds(11, 160, 67, 23);
 		chckbxPicole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPicole.isSelected()) {
@@ -2198,7 +2210,7 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(chckbxPicole);
 		
-		chckbxBolinho.setBounds(11, 87, 78, 23);
+		chckbxBolinho.setBounds(11, 133, 78, 23);
 		chckbxBolinho.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxBolinho.isSelected()) {
@@ -2213,7 +2225,7 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(chckbxBolinho);
 		
-		chckbxPanqueca.setBounds(11, 141, 95, 23);
+		chckbxPanqueca.setBounds(11, 187, 95, 23);
 		chckbxPanqueca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPanqueca.isSelected()) {
@@ -2229,7 +2241,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(chckbxPanqueca);
 		
 		txtBrownie = new JTextField();
-		txtBrownie.setBounds(183, 62, 80, 19);
+		txtBrownie.setBounds(183, 106, 80, 19);
 		txtBrownie.setEnabled(false);
 		txtBrownie.addKeyListener(new KeyAdapter() {
 			@Override
@@ -2245,7 +2257,7 @@ public class ViewSistema extends JFrame {
 		txtBrownie.setColumns(10);
 		
 		txtPicole = new JTextField();
-		txtPicole.setBounds(183, 116, 80, 19);
+		txtPicole.setBounds(183, 160, 80, 19);
 		txtPicole.setEnabled(false);
 		txtPicole.addKeyListener(new KeyAdapter() {
 			@Override
@@ -2261,7 +2273,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtPicole);
 		
 		txtBolinho = new JTextField();
-		txtBolinho.setBounds(183, 89, 80, 19);
+		txtBolinho.setBounds(183, 133, 80, 19);
 		txtBolinho.setEnabled(false);
 		txtBolinho.addKeyListener(new KeyAdapter() {
 			@Override
@@ -2277,7 +2289,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtBolinho);
 		
 		txtPanqueca = new JTextField();
-		txtPanqueca.setBounds(183, 143, 80, 19);
+		txtPanqueca.setBounds(183, 187, 80, 19);
 		txtPanqueca.setEnabled(false);
 		txtPanqueca.addKeyListener(new KeyAdapter() {
 			@Override
@@ -2293,7 +2305,7 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtPanqueca);
 		
 		txtTorrada = new JTextField();
-		txtTorrada.setBounds(183, 35, 80, 19);
+		txtTorrada.setBounds(183, 79, 80, 19);
 		panel_4.add(txtTorrada);
 		txtTorrada.setEnabled(false);
 		txtTorrada.addKeyListener(new KeyAdapter() {
@@ -2309,12 +2321,12 @@ public class ViewSistema extends JFrame {
 		txtTorrada.setColumns(10);
 		
 		
-		chckbxTortaDeMorango.setBounds(11, 168, 152, 23);
+		chckbxTortaDeMorango.setBounds(11, 214, 152, 23);
 		panel_4.add(chckbxTortaDeMorango);
 		
 		txtTortaMorango = new JTextField();
 		txtTortaMorango.setEnabled(false);
-		txtTortaMorango.setBounds(183, 174, 80, 19);
+		txtTortaMorango.setBounds(183, 214, 80, 19);
 		txtTortaMorango.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2329,12 +2341,12 @@ public class ViewSistema extends JFrame {
 		txtTortaMorango.setColumns(10);
 
 		
-		chckbxTortaChocolate.setBounds(11, 195, 164, 23);
+		chckbxTortaChocolate.setBounds(11, 241, 164, 23);
 		panel_4.add(chckbxTortaChocolate);
 		
 		txtTortaChocolate = new JTextField();
 		txtTortaChocolate.setEnabled(false);
-		txtTortaChocolate.setBounds(183, 197, 80, 19);
+		txtTortaChocolate.setBounds(183, 241, 80, 19);
 		txtTortaChocolate.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2350,12 +2362,12 @@ public class ViewSistema extends JFrame {
 		txtTortaChocolate.setColumns(10);
 		
 		
-		chckbxTortaLimao.setBounds(11, 222, 139, 23);
+		chckbxTortaLimao.setBounds(11, 268, 139, 23);
 		panel_4.add(chckbxTortaLimao);
 		
 		txtTortaLimao = new JTextField();
 		txtTortaLimao.setEnabled(false);
-		txtTortaLimao.setBounds(183, 224, 80, 19);
+		txtTortaLimao.setBounds(183, 268, 80, 19);
 		txtTortaLimao.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2370,12 +2382,12 @@ public class ViewSistema extends JFrame {
 		txtTortaLimao.setColumns(10);
 		
 		
-		chckbxTortaAbacaxi.setBounds(11, 249, 149, 23);
+		chckbxTortaAbacaxi.setBounds(11, 295, 149, 23);
 		panel_4.add(chckbxTortaAbacaxi);
 		
 		txtTortaAbacaxi = new JTextField();
 		txtTortaAbacaxi.setEnabled(false);
-		txtTortaAbacaxi.setBounds(183, 255, 80, 19);
+		txtTortaAbacaxi.setBounds(183, 295, 80, 19);
 		txtTortaAbacaxi.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2389,12 +2401,12 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtTortaAbacaxi);
 		txtTortaAbacaxi.setColumns(10);
 		
-		chckbxTortaBanana.setBounds(11, 276, 164, 23);
+		chckbxTortaBanana.setBounds(11, 322, 164, 23);
 		panel_4.add(chckbxTortaBanana);
 		
 		txtTortaBanana = new JTextField();
 		txtTortaBanana.setEnabled(false);
-		txtTortaBanana.setBounds(183, 278, 80, 19);
+		txtTortaBanana.setBounds(183, 322, 80, 19);
 		txtTortaBanana.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2408,12 +2420,12 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtTortaBanana);
 		txtTortaBanana.setColumns(10);
 		
-		chckbxTortaMaca.setBounds(11, 303, 139, 23);
+		chckbxTortaMaca.setBounds(11, 349, 139, 23);
 		panel_4.add(chckbxTortaMaca);
 		
 		txtTortaMaca = new JTextField();
 		txtTortaMaca.setEnabled(false);
-		txtTortaMaca.setBounds(183, 305, 80, 19);
+		txtTortaMaca.setBounds(183, 349, 80, 19);
 		txtTortaMaca.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2427,12 +2439,12 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtTortaMaca);
 		txtTortaMaca.setColumns(10);
 		
-		chckbxSorvete.setBounds(11, 330, 93, 23);
+		chckbxSorvete.setBounds(11, 376, 93, 23);
 		panel_4.add(chckbxSorvete);
 		
 		txtSorvete = new JTextField();
 		txtSorvete.setEnabled(false);
-		txtSorvete.setBounds(183, 332, 80, 19);
+		txtSorvete.setBounds(183, 376, 80, 19);
 		txtSorvete.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2446,12 +2458,12 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtSorvete);
 		txtSorvete.setColumns(10);
 		
-		chckbxPudim.setBounds(11, 357, 98, 23);
+		chckbxPudim.setBounds(11, 403, 98, 23);
 		panel_4.add(chckbxPudim);
 		
 		txtPudim = new JTextField();
 		txtPudim.setEnabled(false);
-		txtPudim.setBounds(183, 361, 80, 19);
+		txtPudim.setBounds(183, 403, 80, 19);
 		txtPudim.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2465,12 +2477,12 @@ public class ViewSistema extends JFrame {
 		panel_4.add(txtPudim);
 		txtPudim.setColumns(10);
 		
-		chckbxPave.setBounds(11, 384, 83, 23);
+		chckbxPave.setBounds(11, 430, 83, 23);
 		panel_4.add(chckbxPave);
 		
 		txtPave = new JTextField();
 		txtPave.setEnabled(false);
-		txtPave.setBounds(183, 386, 80, 19);
+		txtPave.setBounds(183, 430, 80, 19);
 		txtPave.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -2483,6 +2495,11 @@ public class ViewSistema extends JFrame {
 		});
 		panel_4.add(txtPave);
 		txtPave.setColumns(10);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(ViewSistema.class.getResource("/cake.png")));
+		label.setBounds(11, 12, 70, 71);
+		panel_4.add(label);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(912, 84, 416, 364);
@@ -2518,6 +2535,21 @@ public class ViewSistema extends JFrame {
 		JLabel lblDate = new JLabel(fDate.format(timer.getTime()));
 		lblDate.setBounds(222, 642, 80, 15);
 		contentPane.add(lblDate);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(ViewSistema.class.getResource("/man-icon.png")));
+		label_1.setBounds(22, 658, 70, 32);
+		contentPane.add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(ViewSistema.class.getResource("/calendar-icon.png")));
+		label_2.setBounds(204, 658, 70, 32);
+		contentPane.add(label_2);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(ViewSistema.class.getResource("/Apps-preferences-system-time-icon.png")));
+		label_3.setBounds(408, 658, 70, 32);
+		contentPane.add(label_3);
 		
 		Timer tm = new Timer(1000, new hora());
 		tm.start();

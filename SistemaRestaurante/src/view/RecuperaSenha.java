@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class RecuperaSenha extends JFrame {
@@ -81,6 +82,11 @@ public class RecuperaSenha extends JFrame {
 		
 		lblPergunta.setBounds(45, 107, 224, 18);
 		panel.add(lblPergunta);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(RecuperaSenha.class.getResource("/Apps-preferences-desktop-user-password-icon.png")));
+		label.setBounds(330, 0, 233, 273);
+		panel.add(label);
 	}
 
 	public void recuperaLogin(String username) {

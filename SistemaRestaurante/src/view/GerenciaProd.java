@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class GerenciaProd extends JFrame {
@@ -115,6 +116,11 @@ public class GerenciaProd extends JFrame {
 		});
 		btnEditarPreo.setBounds(379, 425, 120, 25);
 		panel.add(btnEditarPreo);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(GerenciaProd.class.getResource("/pie-chart-icon.png")));
+		label.setBounds(43, 80, 195, 276);
+		panel.add(label);
 	}
 	public void updateTable() {
 		Connection con = new ConnectionFactory().getConnection();

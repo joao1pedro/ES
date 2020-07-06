@@ -4,6 +4,7 @@ public class ModelRecuperaSenha {
 	String pergunta;
 	String resposta;
 	String usuario;
+	String senha;
 	
 	public String getPergunta() {
 		return pergunta;
@@ -22,5 +23,11 @@ public class ModelRecuperaSenha {
 	}
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }
