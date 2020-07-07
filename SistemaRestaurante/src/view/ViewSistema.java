@@ -544,7 +544,7 @@ public class ViewSistema extends JFrame {
 		mnAlterarSenha.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				AlterarSenha frame = new AlterarSenha();
+				Identificacao frame = new Identificacao();
 				frame.setVisible(true);
 			}
 		});

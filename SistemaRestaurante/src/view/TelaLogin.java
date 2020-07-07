@@ -77,7 +77,7 @@ public class TelaLogin extends JFrame {
 				modelLogin.setSenha(senha);
 				autenticacao = controlLogin.validLogin(modelLogin);
 				
-				if(autenticacao == false) {
+				if(autenticacao == true) {
 					ViewSistema logou = new ViewSistema();
 					dispose();
 					logou.setVisible(true);

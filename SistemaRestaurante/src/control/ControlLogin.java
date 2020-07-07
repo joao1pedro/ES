@@ -25,14 +25,9 @@ public class ControlLogin {
 				rs = stmt.executeQuery();
 				
 				while (rs.next()) {
-					if((rs.getString("nickname")==modelLogin.getLogin()) && 
-							(rs.getString("senha") == modelLogin.getSenha())) {
-						return true;
-					}
-					else {
-						return false;
-					}
+					return true;
 			    }
+				return false;
 			} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -40,6 +35,6 @@ public class ControlLogin {
 					ConnectionFactory.closeConnection(con, stmt, rs);
 				}
 		}
-		return true;
+		return false;
 	}
 }
