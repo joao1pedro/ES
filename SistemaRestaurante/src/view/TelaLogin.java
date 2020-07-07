@@ -78,11 +78,14 @@ public class TelaLogin extends JFrame {
 				autenticacao = controlLogin.validLogin(modelLogin);
 				
 				if(autenticacao == true) {
-					ViewSistema logou = new ViewSistema();
 					dispose();
+					ViewSistema logou = new ViewSistema();
 					logou.setVisible(true);
 				}else {
 					JOptionPane.showMessageDialog(null, "Erro: Usuário e/ou senha inválidos!");
+					dispose();
+					TelaLogin frame = new TelaLogin();
+					frame.setVisible(true);
 				}
 			}
 		});

@@ -63,19 +63,33 @@ public class Identificacao extends JFrame {
 				autenticacao = controlLogin.validLogin(modelLogin);
 				
 				if(autenticacao == true) {
-					AlterarSenha frame = new AlterarSenha();
 					dispose();
+					AlterarSenha frame = new AlterarSenha();
 					frame.setVisible(true);
 				}else {
 					JOptionPane.showMessageDialog(null, "Erro: Usuário e/ou senha inválidos!");
+					dispose();
+					Identificacao frame = new Identificacao();
+					frame.setVisible(true);
 				}
 			}
 		});
-		btnConfirmar.setBounds(28, 143, 103, 25);
+		btnConfirmar.setBounds(28, 218, 103, 25);
 		panel.add(btnConfirmar);
 		
 		JLabel lblNome = new JLabel(TelaLogin.login);
 		lblNome.setBounds(28, 39, 70, 15);
 		panel.add(lblNome);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				ViewSistema frame = new ViewSistema();
+				frame.setVisible(true);
+			}
+		});
+		btnCancelar.setBounds(143, 218, 96, 25);
+		panel.add(btnCancelar);
 	}
 }

@@ -48,6 +48,7 @@ public class GerenciaFunc extends JFrame {
 	private JTable tableDados;
 	
 	private boolean swt;
+	private JTextField txtPermissao;
 
 	/**
 	 * Create the frame.
@@ -133,7 +134,7 @@ public class GerenciaFunc extends JFrame {
 				btnEditar.setEnabled(false);
 			}
 		});
-		btnCadastrar.setBounds(29, 252, 105, 25);
+		btnCadastrar.setBounds(29, 338, 105, 25);
 		panel.add(btnCadastrar);
 		
 		
@@ -142,7 +143,7 @@ public class GerenciaFunc extends JFrame {
 				limpar();
 			}
 		});
-		btnLimpar.setBounds(228, 252, 88, 25);
+		btnLimpar.setBounds(228, 338, 88, 25);
 		panel.add(btnLimpar);
 		
 		
@@ -214,11 +215,12 @@ public class GerenciaFunc extends JFrame {
 				txtPergunta.setEnabled(true);
 				txtResposta.setEnabled(true);
 				txtUsername.setEnabled(true);
+				txtPermissao.setEnabled(true);
 				
 				btnCadastrar.setEnabled(false);
 			}
 		});
-		btnEditar.setBounds(140, 252, 82, 25);
+		btnEditar.setBounds(140, 338, 82, 25);
 		panel.add(btnEditar);
 		
 		
@@ -229,6 +231,7 @@ public class GerenciaFunc extends JFrame {
 				String password;
 				String pergunta;
 				String resposta;
+				int permissao;
 				boolean cadastra;
 				boolean validaUpdate;
 				boolean verifica;
@@ -237,11 +240,13 @@ public class GerenciaFunc extends JFrame {
 				password = new String (txtPassword.getPassword());
 				pergunta = txtPergunta.getText();
 				resposta = txtResposta.getText();
+				permissao = Integer.parseInt(txtPermissao.getText());
 				
 				model.setNome(nome);
 				model.setPassword(password);
 				model.setPergunta(pergunta);
 				model.setResposta(resposta);
+				model.setPermissao(permissao);
 				
 				DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();
 				
@@ -280,7 +285,7 @@ public class GerenciaFunc extends JFrame {
 				
 			}
 		});
-		btnSalvar.setBounds(29, 289, 105, 25);
+		btnSalvar.setBounds(29, 375, 105, 25);
 		panel.add(btnSalvar);
 		
 		JLabel label = new JLabel("");
@@ -301,8 +306,18 @@ public class GerenciaFunc extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(140, 289, 82, 25);
+		btnVoltar.setBounds(140, 375, 82, 25);
 		panel.add(btnVoltar);
+		
+		JLabel lblPermissao = new JLabel("Nível de permissão");
+		lblPermissao.setBounds(29, 245, 147, 15);
+		panel.add(lblPermissao);
+		
+		txtPermissao = new JTextField();
+		txtPermissao.setEnabled(false);
+		txtPermissao.setColumns(10);
+		txtPermissao.setBounds(29, 262, 287, 15);
+		panel.add(txtPermissao);
 	}
 	public void updateTable() {
 		Connection con = new ConnectionFactory().getConnection();
@@ -343,6 +358,7 @@ public class GerenciaFunc extends JFrame {
 		txtPergunta.setEnabled(false);
 		txtResposta.setEnabled(false);
 		txtUsername.setEnabled(false);
+		txtPermissao.setEnabled(false);
 		
 		btnCadastrar.setEnabled(true);
 		btnEditar.setEnabled(true);

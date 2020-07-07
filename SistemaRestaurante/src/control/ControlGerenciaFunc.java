@@ -16,6 +16,8 @@ public class ControlGerenciaFunc {
 		Connection con = new ConnectionFactory().getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
+		
 		if(model.getNome().isEmpty() || model.getUsername().isEmpty() ||
 				model.getPassword().isEmpty() || model.getPergunta().isEmpty() ||
 				model.getResposta().isEmpty()){
@@ -84,6 +86,8 @@ public class ControlGerenciaFunc {
 		ResultSet rs = null;
 		String sql = null;
 		
+		Integer value = Integer.valueOf(model.getPermissao());
+		
 		/*
 		 * POR AGORA SÓ FUNCIONANDO
 		 * CASO UM CAMPO SEJA EDITADO POR VEZ
@@ -105,6 +109,9 @@ public class ControlGerenciaFunc {
 				) {
 			sql = "update usuarios set nome_login = '" + model.getNome() + "', pergunta = '" 
 				+model.getPergunta()+ "' where nickname = '"+ model.getUsername() +"';";
+		}
+		else if(!model.getUsername().isEmpty() && value != null) {
+			sql = "update usuarios set nivelpermissao = '" + model.getPermissao() + "' where nickname = '"+ model.getUsername() +"';";
 		}
 		try {
 			stmt = con.prepareStatement(sql);
