@@ -49,6 +49,8 @@ public class GerenciaFunc extends JFrame {
 	
 	private boolean swt;
 	private JTextField txtPermissao;
+	private JTextField txtEndereco;
+	private JTextField txtNascimento;
 
 	/**
 	 * Create the frame.
@@ -82,12 +84,12 @@ public class GerenciaFunc extends JFrame {
 		lblSenha.setBounds(29, 132, 70, 15);
 		panel.add(lblSenha);
 		
-		JLabel lblPerguntaSecreta = new JLabel("Pergunta secreta");
+		JLabel lblPerguntaSecreta = new JLabel("Pergunta secreta:");
 		lblPerguntaSecreta.setBounds(29, 171, 129, 15);
 		panel.add(lblPerguntaSecreta);
 		
-		JLabel lblRespostaSecreta = new JLabel("Resposta secreta");
-		lblRespostaSecreta.setBounds(29, 203, 129, 15);
+		JLabel lblRespostaSecreta = new JLabel("Resposta secreta:");
+		lblRespostaSecreta.setBounds(29, 203, 147, 15);
 		panel.add(lblRespostaSecreta);
 		
 		txtNome = new JTextField();
@@ -130,11 +132,13 @@ public class GerenciaFunc extends JFrame {
 				txtPergunta.setEnabled(true);
 				txtResposta.setEnabled(true);
 				txtUsername.setEnabled(true);
+				txtEndereco.setEnabled(true);
+				txtNascimento.setEnabled(true);
 				
 				btnEditar.setEnabled(false);
 			}
 		});
-		btnCadastrar.setBounds(29, 338, 105, 25);
+		btnCadastrar.setBounds(29, 485, 105, 25);
 		panel.add(btnCadastrar);
 		
 		
@@ -143,7 +147,7 @@ public class GerenciaFunc extends JFrame {
 				limpar();
 			}
 		});
-		btnLimpar.setBounds(228, 338, 88, 25);
+		btnLimpar.setBounds(228, 485, 88, 25);
 		panel.add(btnLimpar);
 		
 		
@@ -216,11 +220,13 @@ public class GerenciaFunc extends JFrame {
 				txtResposta.setEnabled(true);
 				txtUsername.setEnabled(true);
 				txtPermissao.setEnabled(true);
+				txtEndereco.setEnabled(true);
+				txtNascimento.setEnabled(true);
 				
 				btnCadastrar.setEnabled(false);
 			}
 		});
-		btnEditar.setBounds(140, 338, 82, 25);
+		btnEditar.setBounds(140, 485, 82, 25);
 		panel.add(btnEditar);
 		
 		
@@ -231,7 +237,9 @@ public class GerenciaFunc extends JFrame {
 				String password;
 				String pergunta;
 				String resposta;
-				int permissao;
+				String endereco;
+				String nascimento;
+				//int permissao;
 				boolean cadastra;
 				boolean validaUpdate;
 				boolean verifica;
@@ -240,13 +248,17 @@ public class GerenciaFunc extends JFrame {
 				password = new String (txtPassword.getPassword());
 				pergunta = txtPergunta.getText();
 				resposta = txtResposta.getText();
-				permissao = Integer.parseInt(txtPermissao.getText());
+				//permissao = Integer.parseInt(txtPermissao.getText());
+				endereco = txtEndereco.getText();
+				nascimento = txtNascimento.getText();
 				
 				model.setNome(nome);
 				model.setPassword(password);
 				model.setPergunta(pergunta);
 				model.setResposta(resposta);
-				model.setPermissao(permissao);
+				//model.setPermissao(permissao);
+				model.setEndereco(endereco);
+				model.setNascimento(nascimento);
 				
 				DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();
 				
@@ -285,7 +297,7 @@ public class GerenciaFunc extends JFrame {
 				
 			}
 		});
-		btnSalvar.setBounds(29, 375, 105, 25);
+		btnSalvar.setBounds(29, 514, 105, 25);
 		panel.add(btnSalvar);
 		
 		JLabel label = new JLabel("");
@@ -306,18 +318,38 @@ public class GerenciaFunc extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(140, 375, 82, 25);
+		btnVoltar.setBounds(140, 514, 82, 25);
 		panel.add(btnVoltar);
 		
 		JLabel lblPermissao = new JLabel("Nível de permissão");
-		lblPermissao.setBounds(29, 245, 147, 15);
+		lblPermissao.setBounds(29, 360, 147, 15);
 		panel.add(lblPermissao);
 		
 		txtPermissao = new JTextField();
 		txtPermissao.setEnabled(false);
 		txtPermissao.setColumns(10);
-		txtPermissao.setBounds(29, 262, 287, 15);
+		txtPermissao.setBounds(29, 382, 287, 15);
 		panel.add(txtPermissao);
+		
+		JLabel lblEndereco = new JLabel("Endereço:");
+		lblEndereco.setBounds(29, 247, 129, 15);
+		panel.add(lblEndereco);
+		
+		txtEndereco = new JTextField();
+		txtEndereco.setEnabled(false);
+		txtEndereco.setColumns(10);
+		txtEndereco.setBounds(29, 263, 287, 15);
+		panel.add(txtEndereco);
+		
+		JLabel lblNascimento = new JLabel("Data de nascimento:");
+		lblNascimento.setBounds(29, 286, 160, 15);
+		panel.add(lblNascimento);
+		
+		txtNascimento = new JTextField();
+		txtNascimento.setEnabled(false);
+		txtNascimento.setColumns(10);
+		txtNascimento.setBounds(29, 301, 287, 15);
+		panel.add(txtNascimento);
 	}
 	public void updateTable() {
 		Connection con = new ConnectionFactory().getConnection();
@@ -349,9 +381,12 @@ public class GerenciaFunc extends JFrame {
 	public void limpar() {
 		txtNome.setText(null);
 		txtUsername.setText(null);
-		//new String (txtPassword.getPassword());
 		txtPergunta.setText(null);
 		txtResposta.setText(null);
+		txtPermissao.setText(null);
+		txtEndereco.setText(null);
+		txtNascimento.setText(null);
+		txtPassword.setText(null);
 		
 		txtNome.setEnabled(false);
 		txtPassword.setEnabled(false);
@@ -359,6 +394,8 @@ public class GerenciaFunc extends JFrame {
 		txtResposta.setEnabled(false);
 		txtUsername.setEnabled(false);
 		txtPermissao.setEnabled(false);
+		txtEndereco.setEnabled(false);
+		txtNascimento.setEnabled(false);
 		
 		btnCadastrar.setEnabled(true);
 		btnEditar.setEnabled(true);

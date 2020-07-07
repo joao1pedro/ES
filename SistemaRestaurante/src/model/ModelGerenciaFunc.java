@@ -8,6 +8,8 @@ public class ModelGerenciaFunc {
 	String password;
 	String pergunta;
 	String resposta;
+	String endereco;
+	String nascimento;
 
 	
 	public int getId() {
@@ -51,5 +53,17 @@ public class ModelGerenciaFunc {
 	}
 	public void setResposta(String resposta) {
 		this.resposta = resposta;
+	}
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	public String getNascimento() {
+		return nascimento;
+	}
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
 	}
 }

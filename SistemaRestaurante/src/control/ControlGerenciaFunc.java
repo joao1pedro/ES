@@ -24,9 +24,10 @@ public class ControlGerenciaFunc {
 			return false;
 			
 		}else {
-			String sql = "insert into usuarios (nome_login, nickname, senha, pergunta, resposta, nivelpermissao) values ('"+
+			String sql = "insert into usuarios (nome_login, nickname, senha, pergunta, resposta, nivelpermissao, endereco, nascimento) values ('"+
 					model.getNome() + "','" + model.getUsername() + "','" + model.getPassword() + 
-					"','" + model.getPergunta() +"','" + model.getResposta()+"','0');";
+					"','" + model.getPergunta() +"','" + model.getResposta()+"','0','"+ model.getEndereco()+ 
+					"',STR_TO_DATE(\""+model.getNascimento()+ "\",\"%d/%m/%Y\")"+");";
 			try {
 				stmt = con.prepareStatement(sql);
 				rs = stmt.executeQuery();
