@@ -35,6 +35,13 @@ public class GerenciaFunc extends JFrame {
 	private JPasswordField txtPassword;
 	private JTextField txtPergunta;
 	private JTextField txtResposta;
+	private JTextField txtPermissao;
+	private JTextField txtEndereco;
+	private JTextField txtNascimento;
+	private JTextField txtNumero;
+	private JTextField txtPais;
+	private JTextField txtBairro;
+	private JTextField txtCidade;
 	
 	private JButton btnCadastrar = new JButton("Cadastrar");
 	private JButton btnLimpar = new JButton("Limpar");
@@ -45,26 +52,33 @@ public class GerenciaFunc extends JFrame {
 	
 	ModelGerenciaFunc model = new ModelGerenciaFunc();
 	ControlGerenciaFunc control = new ControlGerenciaFunc();
-	private JTable tableDados;
 	
+	private JTable tableDados;
 	private boolean swt;
-	private JTextField txtPermissao;
-	private JTextField txtEndereco;
-	private JTextField txtNascimento;
-
-	/**
-	 * Create the frame.
-	 */
+	private final JLabel lblNome = new JLabel("Nome:");
+	private final JLabel lblUsurios = new JLabel("Usuários:");
+	private final JLabel lblSenha = new JLabel("Senha:");
+	private final JLabel lblPerguntaSecreta = new JLabel("Pergunta secreta:");
+	private final JLabel lblRespostaSecreta = new JLabel("Resposta secreta:");
+	private final JLabel lblNascimento = new JLabel("Nascimento:");
+	private final JLabel lblPas = new JLabel("País:");
+	private final JLabel lblBairro = new JLabel("Bairro:");
+	private final JLabel lblCidade = new JLabel("Cidade:");
+	private final JLabel lblEndereo = new JLabel("Endereço:");
+	private final JLabel lblNmero = new JLabel("Número:");
+	private final JLabel lblPermisso = new JLabel("Permissão:");
+	
 	public GerenciaFunc() {
+		setTitle("Funcionários");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+		setBounds(100, 100, 1366, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 788, 567);
+		panel.setBounds(0, 0, 1354, 711);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -72,49 +86,29 @@ public class GerenciaFunc extends JFrame {
 		lblGerenciaFunc.setBounds(372, 12, 185, 15);
 		panel.add(lblGerenciaFunc);
 		
-		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(29, 54, 70, 15);
-		panel.add(lblNome);
-		
-		JLabel lblUser = new JLabel("Nome de usuário");
-		lblUser.setBounds(29, 94, 129, 15);
-		panel.add(lblUser);
-		
-		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setBounds(29, 132, 70, 15);
-		panel.add(lblSenha);
-		
-		JLabel lblPerguntaSecreta = new JLabel("Pergunta secreta:");
-		lblPerguntaSecreta.setBounds(29, 171, 129, 15);
-		panel.add(lblPerguntaSecreta);
-		
-		JLabel lblRespostaSecreta = new JLabel("Resposta secreta:");
-		lblRespostaSecreta.setBounds(29, 203, 147, 15);
-		panel.add(lblRespostaSecreta);
-		
 		txtNome = new JTextField();
-		txtNome.setBounds(29, 74, 287, 15);
+		txtNome.setBounds(29, 81, 287, 15);
 		panel.add(txtNome);
 		txtNome.setColumns(10);
 		
 		txtUsername = new JTextField();
 		txtUsername.setColumns(10);
-		txtUsername.setBounds(29, 116, 287, 15);
+		txtUsername.setBounds(29, 122, 287, 15);
 		panel.add(txtUsername);
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setColumns(10);
-		txtPassword.setBounds(29, 154, 287, 15);
+		txtPassword.setBounds(29, 164, 287, 15);
 		panel.add(txtPassword);
 		
 		txtPergunta = new JTextField();
 		txtPergunta.setColumns(10);
-		txtPergunta.setBounds(29, 187, 287, 15);
+		txtPergunta.setBounds(29, 205, 287, 15);
 		panel.add(txtPergunta);
 		
 		txtResposta = new JTextField();
 		txtResposta.setColumns(10);
-		txtResposta.setBounds(29, 225, 287, 15);
+		txtResposta.setBounds(29, 251, 287, 15);
 		panel.add(txtResposta);
 		
 		txtNome.setEnabled(false);
@@ -122,7 +116,6 @@ public class GerenciaFunc extends JFrame {
 		txtPergunta.setEnabled(false);
 		txtResposta.setEnabled(false);
 		txtUsername.setEnabled(false);
-		
 		
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -134,11 +127,15 @@ public class GerenciaFunc extends JFrame {
 				txtUsername.setEnabled(true);
 				txtEndereco.setEnabled(true);
 				txtNascimento.setEnabled(true);
+				txtBairro.setEnabled(true);
+				txtNumero.setEnabled(true);
+				txtPais.setEnabled(true);
+				txtCidade.setEnabled(true);
 				
 				btnEditar.setEnabled(false);
 			}
 		});
-		btnCadastrar.setBounds(29, 485, 105, 25);
+		btnCadastrar.setBounds(29, 554, 105, 25);
 		panel.add(btnCadastrar);
 		
 		
@@ -147,7 +144,7 @@ public class GerenciaFunc extends JFrame {
 				limpar();
 			}
 		});
-		btnLimpar.setBounds(228, 485, 88, 25);
+		btnLimpar.setBounds(228, 554, 88, 25);
 		panel.add(btnLimpar);
 		
 		
@@ -177,24 +174,24 @@ public class GerenciaFunc extends JFrame {
 		        updateTable();
 			}
 		});
-		btnRemover.setBounds(532, 435, 117, 25);
+		btnRemover.setBounds(867, 485, 117, 25);
 		panel.add(btnRemover);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(372, 66, 390, 357);
+		scrollPane.setBounds(337, 66, 980, 400);
 		panel.add(scrollPane);
 		
 		tableDados = new JTable();
 		tableDados.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"id", "nome", "username", "permissao"
+				"id", "nome", "username", "nascimento", "pa\u00EDs", "cidade", "bairro", "endere\u00E7o", "n\u00FAmero", "permissao"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				false, false, false, false
+				false, false, false, false, false, false, false, false, false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -207,7 +204,7 @@ public class GerenciaFunc extends JFrame {
 				updateTable();
 			}
 		});
-		btnListarDados.setBounds(372, 435, 147, 25);
+		btnListarDados.setBounds(708, 485, 147, 25);
 		panel.add(btnListarDados);
 		
 		
@@ -222,11 +219,15 @@ public class GerenciaFunc extends JFrame {
 				txtPermissao.setEnabled(true);
 				txtEndereco.setEnabled(true);
 				txtNascimento.setEnabled(true);
+				txtBairro.setEnabled(true);
+				txtNumero.setEnabled(true);
+				txtPais.setEnabled(true);
+				txtCidade.setEnabled(true);
 				
 				btnCadastrar.setEnabled(false);
 			}
 		});
-		btnEditar.setBounds(140, 485, 82, 25);
+		btnEditar.setBounds(140, 554, 82, 25);
 		panel.add(btnEditar);
 		
 		
@@ -239,7 +240,11 @@ public class GerenciaFunc extends JFrame {
 				String resposta;
 				String endereco;
 				String nascimento;
-				//int permissao;
+				String bairro;
+				String pais;
+				String cidade;
+				int numero;
+
 				boolean cadastra;
 				boolean validaUpdate;
 				boolean verifica;
@@ -248,17 +253,21 @@ public class GerenciaFunc extends JFrame {
 				password = new String (txtPassword.getPassword());
 				pergunta = txtPergunta.getText();
 				resposta = txtResposta.getText();
-				//permissao = Integer.parseInt(txtPermissao.getText());
 				endereco = txtEndereco.getText();
 				nascimento = txtNascimento.getText();
+				bairro = txtBairro.getText();
+				pais = txtPais.getText();
+				cidade = txtCidade.getText();
 				
 				model.setNome(nome);
 				model.setPassword(password);
 				model.setPergunta(pergunta);
 				model.setResposta(resposta);
-				//model.setPermissao(permissao);
 				model.setEndereco(endereco);
 				model.setNascimento(nascimento);
+				model.setBairro(bairro);
+				model.setPais(pais);
+				model.setCidade(cidade);
 				
 				DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();
 				
@@ -269,6 +278,8 @@ public class GerenciaFunc extends JFrame {
 					username = txtUsername.getText();
 					model.setUsername(username);
 					cadastra = control.validaRegistro(model);
+					numero = Integer.parseInt(txtNumero.getText());
+					model.setNumero(numero);
 					
 					if(cadastra == true) {
 						JOptionPane.showMessageDialog(null, "Novo usuário cadastrado com sucesso!");
@@ -297,7 +308,7 @@ public class GerenciaFunc extends JFrame {
 				
 			}
 		});
-		btnSalvar.setBounds(29, 514, 105, 25);
+		btnSalvar.setBounds(29, 580, 105, 25);
 		panel.add(btnSalvar);
 		
 		JLabel label = new JLabel("");
@@ -318,38 +329,86 @@ public class GerenciaFunc extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(140, 514, 82, 25);
+		btnVoltar.setBounds(140, 580, 82, 25);
 		panel.add(btnVoltar);
-		
-		JLabel lblPermissao = new JLabel("Nível de permissão");
-		lblPermissao.setBounds(29, 360, 147, 15);
-		panel.add(lblPermissao);
 		
 		txtPermissao = new JTextField();
 		txtPermissao.setEnabled(false);
 		txtPermissao.setColumns(10);
-		txtPermissao.setBounds(29, 382, 287, 15);
+		txtPermissao.setBounds(29, 527, 287, 15);
 		panel.add(txtPermissao);
-		
-		JLabel lblEndereco = new JLabel("Endereço:");
-		lblEndereco.setBounds(29, 247, 129, 15);
-		panel.add(lblEndereco);
 		
 		txtEndereco = new JTextField();
 		txtEndereco.setEnabled(false);
 		txtEndereco.setColumns(10);
-		txtEndereco.setBounds(29, 263, 287, 15);
+		txtEndereco.setBounds(29, 451, 287, 15);
 		panel.add(txtEndereco);
-		
-		JLabel lblNascimento = new JLabel("Data de nascimento:");
-		lblNascimento.setBounds(29, 286, 160, 15);
-		panel.add(lblNascimento);
 		
 		txtNascimento = new JTextField();
 		txtNascimento.setEnabled(false);
 		txtNascimento.setColumns(10);
-		txtNascimento.setBounds(29, 301, 287, 15);
+		txtNascimento.setBounds(29, 290, 287, 15);
 		panel.add(txtNascimento);
+		
+		txtNumero = new JTextField();
+		txtNumero.setEnabled(false);
+		txtNumero.setColumns(10);
+		txtNumero.setBounds(29, 490, 287, 15);
+		panel.add(txtNumero);
+		
+		txtPais = new JTextField();
+		txtPais.setEnabled(false);
+		txtPais.setColumns(10);
+		txtPais.setBounds(29, 326, 287, 15);
+		panel.add(txtPais);
+		
+		txtBairro = new JTextField();
+		txtBairro.setEnabled(false);
+		txtBairro.setColumns(10);
+		txtBairro.setBounds(29, 410, 287, 15);
+		panel.add(txtBairro);
+		
+		txtCidade = new JTextField();
+		txtCidade.setEnabled(false);
+		txtCidade.setColumns(10);
+		txtCidade.setBounds(29, 370, 287, 15);
+		panel.add(txtCidade);
+		lblNome.setBounds(29, 67, 70, 15);
+		
+		panel.add(lblNome);
+		lblUsurios.setBounds(29, 94, 70, 27);
+		
+		panel.add(lblUsurios);
+		lblSenha.setBounds(29, 147, 70, 15);
+		
+		panel.add(lblSenha);
+		lblPerguntaSecreta.setBounds(29, 191, 140, 15);
+		
+		panel.add(lblPerguntaSecreta);
+		lblRespostaSecreta.setBounds(29, 229, 140, 15);
+		
+		panel.add(lblRespostaSecreta);
+		lblNascimento.setBounds(29, 268, 105, 15);
+		
+		panel.add(lblNascimento);
+		lblPas.setBounds(29, 306, 70, 15);
+		
+		panel.add(lblPas);
+		lblBairro.setBounds(29, 386, 70, 15);
+		
+		panel.add(lblBairro);
+		lblCidade.setBounds(29, 353, 70, 15);
+		
+		panel.add(lblCidade);
+		lblEndereo.setBounds(29, 425, 105, 15);
+		
+		panel.add(lblEndereo);
+		lblNmero.setBounds(29, 467, 70, 15);
+		
+		panel.add(lblNmero);
+		lblPermisso.setBounds(29, 509, 88, 15);
+		
+		panel.add(lblPermisso);
 	}
 	public void updateTable() {
 		Connection con = new ConnectionFactory().getConnection();
@@ -368,6 +427,12 @@ public class GerenciaFunc extends JFrame {
 	        			rs.getInt("id_login"),
 	        			rs.getString("nome_login"),
 	        			rs.getString("nickname"),
+	        			rs.getString("nascimento"),
+	        			rs.getString("pais"),
+	        			rs.getString("cidade"),
+	        			rs.getString("bairro"),
+	        			rs.getString("endereco"),
+	        			rs.getInt("numero"),
 	        			rs.getInt("nivelpermissao")
 	        	});
 	        }
@@ -387,6 +452,10 @@ public class GerenciaFunc extends JFrame {
 		txtEndereco.setText(null);
 		txtNascimento.setText(null);
 		txtPassword.setText(null);
+		txtBairro.setText(null);
+		txtPais.setText(null);
+		txtNumero.setText(null);
+		txtCidade.setText(null);
 		
 		txtNome.setEnabled(false);
 		txtPassword.setEnabled(false);
@@ -396,6 +465,10 @@ public class GerenciaFunc extends JFrame {
 		txtPermissao.setEnabled(false);
 		txtEndereco.setEnabled(false);
 		txtNascimento.setEnabled(false);
+		txtBairro.setEnabled(false);
+		txtPais.setEnabled(false);
+		txtNumero.setEnabled(false);
+		txtCidade.setEnabled(false);
 		
 		btnCadastrar.setEnabled(true);
 		btnEditar.setEnabled(true);

@@ -3,6 +3,7 @@ package model;
 public class ModelGerenciaFunc {
 	int id;
 	int permissao;
+	int numero;
 	String nome;
 	String username;
 	String password;
@@ -10,6 +11,9 @@ public class ModelGerenciaFunc {
 	String resposta;
 	String endereco;
 	String nascimento;
+	String bairro;
+	String pais;
+	String cidade;
 
 	
 	public int getId() {
@@ -65,5 +69,29 @@ public class ModelGerenciaFunc {
 	}
 	public void setNascimento(String nascimento) {
 		this.nascimento = nascimento;
+	}
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	public String getPais() {
+		return pais;
+	}
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 }
