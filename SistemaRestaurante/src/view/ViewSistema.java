@@ -5,11 +5,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import control.ControlGerenciaFunc;
 import control.ControlProdutos;
 import model.ModelProdutos;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
@@ -28,6 +33,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -949,7 +958,7 @@ public class ViewSistema extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(22, 84, 290, 546);
+		panel_2.setBounds(12, 84, 290, 546);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -1326,7 +1335,7 @@ public class ViewSistema extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(912, 460, 307, 224);
+		panel_3.setBounds(1039, 462, 301, 216);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -1340,7 +1349,7 @@ public class ViewSistema extends JFrame {
 		panel_3.add(metodoPagamento);
 		
 		JLabel lblSubT = new JLabel("Sub-Total");
-		lblSubT.setBounds(145, 15, 77, 24);
+		lblSubT.setBounds(144, 55, 77, 24);
 		panel_3.add(lblSubT);
 		
 		txtSubT = new JTextField();
@@ -1353,7 +1362,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		txtSubT.setBounds(224, 20, 56, 15);
+		txtSubT.setBounds(224, 60, 56, 15);
 		panel_3.add(txtSubT);
 		txtSubT.setColumns(10);
 		
@@ -2102,8 +2111,31 @@ public class ViewSistema extends JFrame {
 								"Vendedor: \t\t" + TelaLogin.login + "\n\n"+
 								"====================================" + "\n\n" +
 								"\nData: " + fDate.format(timer.getTime()) + 
+								"\n\n"+
 								"\tHora: " + fTime.format(timer.getTime()) +
 								"\n\n\t\tObrigado !");
+						
+						/*
+						 * criar pdf
+						 * */
+						com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+						
+						try {
+							PdfWriter.getInstance(document, new FileOutputStream("documentos/pedido"+id+".pdf"));
+							
+							document.open();
+							document.add(new Paragraph(jtxtRecibo.getText()));
+							
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (DocumentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}finally{
+							document.close();
+						}
+						
 					}else {
 						JOptionPane.showMessageDialog(null, "Falha ao registrar venda!");
 					}
@@ -2117,35 +2149,35 @@ public class ViewSistema extends JFrame {
 		panel_3.add(btnTotal);
 		
 		JLabel lblTaxa = new JLabel("Taxa");
-		lblTaxa.setBounds(167, 44, 44, 15);
+		lblTaxa.setBounds(167, 85, 44, 15);
 		panel_3.add(lblTaxa);
 		
 		txtTaxa = new JTextField();
 		txtTaxa.setColumns(10);
-		txtTaxa.setBounds(224, 43, 56, 15);
+		txtTaxa.setBounds(224, 85, 56, 15);
 		panel_3.add(txtTaxa);
 		
 		JLabel lblTotal = new JLabel("Total");
-		lblTotal.setBounds(167, 70, 44, 15);
+		lblTotal.setBounds(167, 107, 44, 15);
 		panel_3.add(lblTotal);
 		
 		txtValue = new JTextField();
 		txtValue.setColumns(10);
-		txtValue.setBounds(224, 69, 56, 15);
+		txtValue.setBounds(224, 107, 56, 15);
 		panel_3.add(txtValue);
 		
 		JLabel lblTroco = new JLabel("Troco");
-		lblTroco.setBounds(167, 99, 44, 15);
+		lblTroco.setBounds(167, 134, 44, 15);
 		panel_3.add(lblTroco);
 		
 		txtTroco = new JTextField();
 		txtTroco.setColumns(10);
-		txtTroco.setBounds(224, 95, 56, 15);
+		txtTroco.setBounds(224, 134, 56, 15);
 		panel_3.add(txtTroco);
 		
 		txtInDinnheiro = new JTextField("0");
 		txtInDinnheiro.setColumns(10);
-		txtInDinnheiro.setBounds(37, 99, 56, 15);
+		txtInDinnheiro.setBounds(37, 96, 56, 15);
 		panel_3.add(txtInDinnheiro);
 		
 		JLabel lblEspcie = new JLabel("Espécie:");
@@ -2153,17 +2185,33 @@ public class ViewSistema extends JFrame {
 		panel_3.add(lblEspcie);
 		
 		JLabel lblR = new JLabel("R$");
-		lblR.setBounds(12, 99, 22, 15);
+		lblR.setBounds(12, 96, 22, 15);
 		panel_3.add(lblR);
 		
 		JLabel lblMesa = new JLabel("Mesa:");
-		lblMesa.setBounds(12, 134, 56, 15);
+		lblMesa.setBounds(12, 123, 56, 15);
 		panel_3.add(lblMesa);
 		
 		txtMesa = new JTextField("0");
 		txtMesa.setColumns(10);
-		txtMesa.setBounds(12, 150, 56, 15);
+		txtMesa.setBounds(12, 146, 56, 15);
 		panel_3.add(txtMesa);
+		
+		JButton btnImprimir = new JButton("Imprimir");
+		btnImprimir.setBounds(189, 12, 91, 25);
+		panel_3.add(btnImprimir);
+		btnImprimir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int id = controlP.getMax(model);
+				try {
+					Desktop.getDesktop().open(new File("documentos/pedido"+id+".pdf"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Erro " + e);
+				}
+			}
+		});
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -2532,8 +2580,6 @@ public class ViewSistema extends JFrame {
 		JLabel lblHora = new JLabel("Hora:");
 		lblHora.setBounds(408, 640, 52, 15);
 		contentPane.add(lblHora);
-
-		
 		
 		lblHr.setBounds(465, 642, 70, 15);
 		contentPane.add(lblHr);

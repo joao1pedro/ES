@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="/home/joao/eclipse-workspace/ES/SistemaRestaurante/libs/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="lib" path="/home/joao/eclipse-workspace/ES/SistemaRestaurante/libs/jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="/home/joao/eclipse-workspace/ES/SistemaRestaurante/libs/mariadb-java-client-2.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/joao/eclipse-workspace/ES/SistemaRestaurante/libs/itextpdf-5.5.13.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
