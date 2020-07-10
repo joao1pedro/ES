@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import control.ControlRecuperaSenha;
-import model.ModelRecuperaSenha;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,12 +21,11 @@ public class RecuperaSenha extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtRespostaSec;
-	String username;
-	ModelRecuperaSenha modRestore = new ModelRecuperaSenha();
-	ControlRecuperaSenha ctrl = new ControlRecuperaSenha();
-	TelaLogin frame = new TelaLogin();
 	
 	JLabel lblPergunta = new JLabel("");
+	
+	ControlRecuperaSenha ctrl = new ControlRecuperaSenha();
+	private JTextField txtUser;
 
 	/**
 	 * Create the frame.
@@ -52,52 +50,75 @@ public class RecuperaSenha extends JFrame {
 		panel.add(lblRecuperarSenha);
 		
 		JLabel lblRespondaAPergunta = new JLabel("Responda a pergunta secreta");
-		lblRespondaAPergunta.setBounds(45, 74, 224, 18);
+		lblRespondaAPergunta.setBounds(45, 202, 224, 18);
 		panel.add(lblRespondaAPergunta);
 		
 		txtRespostaSec = new JTextField();
-		txtRespostaSec.setBounds(45, 134, 224, 18);
+		txtRespostaSec.setBounds(45, 252, 224, 18);
 		panel.add(txtRespostaSec);
 		txtRespostaSec.setColumns(10);
 		
 		JButton btnResponder = new JButton("Responder");
 		btnResponder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				modRestore.setResposta(txtRespostaSec.getText());
-				boolean validaResposta;
+				String senha;
 				
-				validaResposta = ctrl.validResposta(modRestore);
-				if(validaResposta == false) {
-					JOptionPane.showMessageDialog(null, "Resposta secreta inválida");
+				senha = ctrl.validResposta(txtUser.getText(), txtRespostaSec.getText());
+				if(senha != null) {
+					
+					JOptionPane.showMessageDialog(null, "Sua senha é : " + senha);
 					dispose();
-					frame.setVisible(true); //retorna para tela de login
-				}
-				dispose();
-				/* retorna para fazer login*/
-				frame.setVisible(true);
+					
+					TelaLogin frame = new TelaLogin();
+					frame.setVisible(true);
+					}else
+						JOptionPane.showMessageDialog(null, "Resposta secreta inválida!");
 			}
 		});
-		btnResponder.setBounds(45, 164, 119, 25);
+		btnResponder.setBounds(45, 282, 111, 25);
 		panel.add(btnResponder);
 		
-		lblPergunta.setBounds(45, 107, 224, 18);
+		lblPergunta.setBounds(45, 222, 224, 18);
 		panel.add(lblPergunta);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(RecuperaSenha.class.getResource("/Apps-preferences-desktop-user-password-icon.png")));
 		label.setBounds(330, 0, 233, 273);
 		panel.add(label);
+		
+		JLabel lblUsurio = new JLabel("Usuário:");
+		lblUsurio.setBounds(45, 94, 70, 15);
+		panel.add(lblUsurio);
+		
+		txtUser = new JTextField();
+		txtUser.setEditable(false);
+		txtUser.setColumns(10);
+		txtUser.setBounds(45, 113, 224, 18);
+		panel.add(txtUser);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				TelaLogin frame = new TelaLogin();
+				frame.setVisible(true);
+			}
+		});
+		btnCancelar.setBounds(166, 282, 96, 25);
+		panel.add(btnCancelar);
 	}
 
 	public void recuperaLogin(String username) {
-		modRestore.setUsuario(username);
-		String pergunta = ctrl.returnPergunta(modRestore);
+		
+		String pergunta = ctrl.returnPergunta(username);
 		if(pergunta!=null) {
 			lblPergunta.setText(pergunta);
+			txtUser.setText(username);
 		}
 		else {
 			dispose();
 			JOptionPane.showMessageDialog(null, "Usuário inválido!");
+			TelaLogin frame = new TelaLogin();
 			frame.setVisible(true); //retorna para a tela de login
 		}
 	}

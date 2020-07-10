@@ -1,40 +1,19 @@
 package control;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import connection.ConnectionFactory;
+import dao.LoginDAO;
 import model.ModelLogin;
 
 public class ControlLogin {
-	//conectando
-	
-	Connection con = new ConnectionFactory().getConnection();
-	PreparedStatement stmt = null;
-	ResultSet rs = null;
-	
-	public boolean validLogin(ModelLogin modelLogin) {
-		if(modelLogin.getLogin()!=null && modelLogin.getLogin()!="") {
-			String sql = "select * from usuarios where nickname = '" +
-					modelLogin.getLogin() + "' and senha = '" +
-					modelLogin.getSenha() + "';";	
-			try {
-				stmt = con.prepareStatement(sql);
-				rs = stmt.executeQuery();
-				
-				while (rs.next()) {
-					return true;
-			    }
-				return false;
-			} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}finally{
-					ConnectionFactory.closeConnection(con, stmt, rs);
-				}
-		}
-		return false;
+	public boolean logar(String login, String senha) {
+		boolean autentica;
+		
+		LoginDAO dao = new LoginDAO();
+		ModelLogin model = new ModelLogin(login, senha);
+		
+		autentica = dao.logar(model);
+		if(autentica == true)
+			return true;
+		else
+			return false;
 	}
 }

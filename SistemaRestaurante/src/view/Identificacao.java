@@ -4,8 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import control.ControlLogin;
-import model.ModelLogin;
+import control.ControlIdentfica;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,10 +18,6 @@ public class Identificacao extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField txtSenha;
-	
-	ModelLogin modelLogin = new ModelLogin();
-	ControlLogin controlLogin = new ControlLogin();
-
 	
 	public Identificacao() {
 		setTitle("Identificação");
@@ -53,14 +48,13 @@ public class Identificacao extends JFrame {
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ControlIdentfica ctrl = new ControlIdentfica();
 				String senha;
 				boolean autenticacao;
 				
 				senha = new String(txtSenha.getPassword());
 				
-				modelLogin.setLogin(TelaLogin.login);
-				modelLogin.setSenha(senha);
-				autenticacao = controlLogin.validLogin(modelLogin);
+				autenticacao = ctrl.confirma(TelaLogin.login, senha);
 				
 				if(autenticacao == true) {
 					dispose();

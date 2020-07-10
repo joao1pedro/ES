@@ -5,8 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
-import control.ControlRecuperaSenha;
-import model.ModelRecuperaSenha;
+import control.ControlAlterarSenha;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,9 +15,6 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class AlterarSenha extends JFrame {
-	ControlRecuperaSenha ctrl = new ControlRecuperaSenha();
-	ModelRecuperaSenha mod = new ModelRecuperaSenha();
-	RecuperaSenha pass = new RecuperaSenha();
 	
 	private JPanel contentPane;
 	private JPasswordField lblPass;
@@ -63,19 +59,17 @@ public class AlterarSenha extends JFrame {
 				String pass = new String(lblPass.getPassword()).trim();
 				String passConfirm = new String(lblPassConfirm.getPassword()).trim();
 				boolean valida;
-				mod.setUsuario(TelaLogin.login);
+				
+				ControlAlterarSenha ctrl = new ControlAlterarSenha();
 				
 				if(pass.equals(passConfirm)) {
-					mod.setSenha(passConfirm);
-					
-					valida = ctrl.updatePass(mod);
-					if(valida==true) {
+					valida = ctrl.updatePass(TelaLogin.login, passConfirm);
+					if(valida == true) {
 						JOptionPane.showMessageDialog(null, "Senha alterada com sucesso!");
 						dispose();
-					}
-				} else {
-					JOptionPane.showMessageDialog(null, "As senhas não são iguais!");
-				}
+					}			
+				}else 
+					JOptionPane.showMessageDialog(null, "As senhas não são correspondentes!");
 			}
 		});
 		btnSalvar.setBounds(12, 206, 78, 25);

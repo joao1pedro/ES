@@ -1,10 +1,16 @@
 package model;
 
+import dao.LoginDAO;
+
 public class ModelLogin {
 	String login;
 	String senha;
 	int nivelPermissao;
 	
+	public ModelLogin(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+	}
 	public int getNivelPermissao() {
 		return nivelPermissao;
 	}
@@ -22,5 +28,8 @@ public class ModelLogin {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public void logar(ModelLogin model) {
+		new LoginDAO().logar(model);
 	}
 }

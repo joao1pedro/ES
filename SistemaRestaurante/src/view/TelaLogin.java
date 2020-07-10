@@ -6,7 +6,6 @@ import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import control.ControlLogin;
-import model.ModelLogin;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,7 +27,6 @@ public class TelaLogin extends JFrame {
 	private JTextField txtSenha;
 	static protected String login;
 	
-	ModelLogin modelLogin = new ModelLogin();
 	ControlLogin controlLogin = new ControlLogin();
 
 	/**
@@ -66,26 +64,19 @@ public class TelaLogin extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				String senha;
-				boolean autenticacao;
-				
+				boolean sucesso;
 				login = txtLogin.getText();
-				senha = txtSenha.getText();
+				String senha = txtSenha.getText();
 				
-				modelLogin.setLogin(login);
-				modelLogin.setSenha(senha);
-				autenticacao = controlLogin.validLogin(modelLogin);
+				ControlLogin ctrl = new ControlLogin();
+				sucesso = ctrl.logar(login, senha);
 				
-				if(autenticacao == true) {
+				if(sucesso == true) {
 					dispose();
-					ViewSistema logou = new ViewSistema();
-					logou.setVisible(true);
-				}else {
-					JOptionPane.showMessageDialog(null, "Erro: Usuário e/ou senha inválidos!");
-					dispose();
-					TelaLogin frame = new TelaLogin();
+					ViewSistema frame = new ViewSistema();
 					frame.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!");
 				}
 			}
 		});

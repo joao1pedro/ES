@@ -1,11 +1,21 @@
 package model;
 
+import dao.RecuperaSenhaDAO;
+
 public class ModelRecuperaSenha {
-	String pergunta;
-	String resposta;
-	String usuario;
-	String senha;
+	private String pergunta;
+	private String resposta;
+	private String usuario;
+	private String senha;
 	
+	
+	public ModelRecuperaSenha(String usuario, String resposta) {
+		this.usuario = usuario;
+		this.resposta = resposta;
+	}
+	public ModelRecuperaSenha(String usuario) {
+		this.usuario = usuario;
+	}
 	public String getPergunta() {
 		return pergunta;
 	}
@@ -30,4 +40,11 @@ public class ModelRecuperaSenha {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public void returnPergunta(ModelRecuperaSenha model) {
+		new RecuperaSenhaDAO().returnPergunta(model);
+	}
+	public void validResposta(ModelRecuperaSenha model) {
+		new RecuperaSenhaDAO().validResposta(model);
+	}
+	
 }
