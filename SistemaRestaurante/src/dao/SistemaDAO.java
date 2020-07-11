@@ -21,7 +21,7 @@ public class SistemaDAO {
 			return false;
 			
 		}else {
-			String sql = "insert into vendas (operacao,vendedor, taxa, total, sub_total, qtd,mesa) values (?,?,?,?,?,?,?);";
+			String sql = "insert into vendas (operacao,vendedor, taxa, total, sub_total, qtd,mesa,data) values (?,?,?,?,?,?,?, NOW());";
 			try {
 				stmt = con.prepareStatement(sql);
 				stmt.setString(1, model.getOperacao());

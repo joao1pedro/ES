@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import connection.ConnectionFactory;
+import control.ControlProdutos;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -17,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -34,7 +36,7 @@ public class GerenciaProd extends JFrame {
 	 * Create the frame.
 	 */
 	public GerenciaProd() {
-		setTitle("Produtos");
+		setTitle("Vendas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -50,9 +52,23 @@ public class GerenciaProd extends JFrame {
 		JButton btnEstornar = new JButton("Estornar");
 		btnEstornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int id;
+				ControlProdutos ctrl = new ControlProdutos();
+				id = ctrl.getMax();
+				File file = new File("documentos/pedido"+id+".pdf"); 
+				
 				estornar();
 				pegaTotal();
 				pegaTaxa();
+				
+		        if(file.delete()) 
+		        { 
+		            System.out.println("File deleted successfully"); 
+		        } 
+		        else
+		        { 
+		            System.out.println("Failed to delete the file"); 
+		        }
 			}
 		});
 		btnEstornar.setBounds(272, 425, 95, 25);
