@@ -5,9 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
-
 import control.ControlGerenciaFunc;
-import model.ModelGerenciaFunc;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -49,9 +47,6 @@ public class GerenciaFunc extends JFrame {
 	private JButton btnEditar = new JButton("Editar");
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnListarDados = new JButton("Listar Dados");
-	
-	ModelGerenciaFunc model = new ModelGerenciaFunc();
-	ControlGerenciaFunc control = new ControlGerenciaFunc();
 	
 	private JTable tableDados;
 	private boolean swt;
@@ -244,6 +239,7 @@ public class GerenciaFunc extends JFrame {
 				String pais;
 				String cidade;
 				int numero;
+				int permissao = 0;
 
 				boolean cadastra;
 				boolean validaUpdate;
@@ -258,16 +254,13 @@ public class GerenciaFunc extends JFrame {
 				bairro = txtBairro.getText();
 				pais = txtPais.getText();
 				cidade = txtCidade.getText();
+				numero = 0;
 				
-				model.setNome(nome);
-				model.setPassword(password);
-				model.setPergunta(pergunta);
-				model.setResposta(resposta);
-				model.setEndereco(endereco);
-				model.setNascimento(nascimento);
-				model.setBairro(bairro);
-				model.setPais(pais);
-				model.setCidade(cidade);
+				if(!txtNumero.getText().isEmpty())
+					numero = Integer.parseInt(txtNumero.getText());
+				
+				ControlGerenciaFunc ctrl = new ControlGerenciaFunc();
+				
 				
 				DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();
 				
@@ -276,11 +269,7 @@ public class GerenciaFunc extends JFrame {
 				/*modo de cadastro*/
 				if(swt == true) {
 					username = txtUsername.getText();
-					model.setUsername(username);
-					cadastra = control.validaRegistro(model);
-					numero = Integer.parseInt(txtNumero.getText());
-					model.setNumero(numero);
-					
+					cadastra = ctrl.validaRegistro(nome, username,password,pergunta,resposta,permissao,endereco,nascimento,pais,bairro,numero,cidade);
 					if(cadastra == true) {
 						JOptionPane.showMessageDialog(null, "Novo usuário cadastrado com sucesso!");
 					}else {
@@ -290,16 +279,25 @@ public class GerenciaFunc extends JFrame {
 					/*
 					 * modo editar**/
 					username = modelo.getValueAt(row, 2).toString();
-					model.setUsername(username);
-					verifica = control.verificaUsuario(model);
+					verifica = ctrl.verificaUsuario(username);
 					
 					if(verifica == true) {
-						validaUpdate = control.editarFunc(model);
-						model.getNome();
-						if(validaUpdate == true) {
-							JOptionPane.showMessageDialog(null, "Usuário " + username + " atualizado com sucesso!");
-						} else {
-							JOptionPane.showMessageDialog(null, "Falha ao atualizar dados de usuário!");
+						if(numero!=0) {
+							validaUpdate = ctrl.editarFunc(nome, username, password, pergunta, resposta, permissao, endereco, nascimento,
+								pais, bairro, numero, cidade);
+							if(validaUpdate == true) {
+								JOptionPane.showMessageDialog(null, "Usuário " + username + " atualizado com sucesso!");
+							} else {
+								JOptionPane.showMessageDialog(null, "Falha ao atualizar dados de usuário!");
+							}
+						}else {
+							validaUpdate = ctrl.editarFunc(nome, username, password, pergunta, resposta, permissao, endereco, nascimento,
+									pais, bairro, cidade);
+								if(validaUpdate == true) {
+									JOptionPane.showMessageDialog(null, "Usuário " + username + " atualizado com sucesso!");
+								} else {
+									JOptionPane.showMessageDialog(null, "Falha ao atualizar dados de usuário!");
+								}
 						}
 					}
 				}

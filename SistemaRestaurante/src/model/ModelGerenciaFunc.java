@@ -15,7 +15,41 @@ public class ModelGerenciaFunc {
 	String pais;
 	String cidade;
 
-	
+	public ModelGerenciaFunc() {
+		
+	}
+	public ModelGerenciaFunc(String nome, String username, String password, String pergunta, String resposta, int permissao, String endereco,
+			String nascimento, String pais, String bairro, int numero, String cidade) {
+		this.nome = nome;
+		this.username = username;
+		this.password = password;
+		this.pergunta = pergunta;
+		this.resposta = resposta;
+		this.permissao = permissao;
+		this.endereco = endereco;
+		this.nascimento = nascimento;
+		this.pais = pais;
+		this.bairro = bairro;
+		this.numero = numero;
+		this.cidade = cidade;
+	}
+	public ModelGerenciaFunc(String nome, String username, String password, String pergunta, String resposta, int permissao, String endereco,
+			String nascimento, String pais, String bairro, String cidade) {
+		this.nome = nome;
+		this.username = username;
+		this.password = password;
+		this.pergunta = pergunta;
+		this.resposta = resposta;
+		this.permissao = permissao;
+		this.endereco = endereco;
+		this.nascimento = nascimento;
+		this.pais = pais;
+		this.bairro = bairro;
+		this.cidade = cidade;
+	}
+	public ModelGerenciaFunc(String username) {
+		this.username = username;
+	}
 	public int getId() {
 		return id;
 	}

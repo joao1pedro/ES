@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class ModelProdutos {
 	private String operacao;
 	private String vendedor;
@@ -58,8 +56,6 @@ public class ModelProdutos {
 	private double priceFrango;
 
 	private double itemcost[] = new double [100];
-	
-	ArrayList<String> produtos = new ArrayList<String>();
 	
 	
 	public ModelProdutos() {
@@ -220,15 +216,6 @@ public class ModelProdutos {
 	public void setPricePave(double pricePave) {
 		this.pricePave = pricePave;
 	}
-	public String getNomePave() {
-		return nomePave;
-	}
-	public void setNomePave(String nomePave) {
-		this.nomePave = nomePave;
-	}
-	String nomePave;
-	
-	
 	public double getPriceTortaChocolate() {
 		return priceTortaChocolate;
 	}
