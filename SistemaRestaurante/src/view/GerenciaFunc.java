@@ -141,6 +141,7 @@ public class GerenciaFunc extends JFrame {
 		});
 		btnLimpar.setBounds(228, 554, 88, 25);
 		panel.add(btnLimpar);
+		btnRemover.setIcon(new ImageIcon(GerenciaFunc.class.getResource("/Button-Close-icon.png")));
 		
 		
 		btnRemover.addActionListener(new ActionListener() {
@@ -169,7 +170,7 @@ public class GerenciaFunc extends JFrame {
 		        updateTable();
 			}
 		});
-		btnRemover.setBounds(867, 485, 117, 25);
+		btnRemover.setBounds(867, 478, 95, 64);
 		panel.add(btnRemover);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -193,13 +194,14 @@ public class GerenciaFunc extends JFrame {
 			}
 		});
 		scrollPane.setViewportView(tableDados);
+		btnListarDados.setIcon(new ImageIcon(GerenciaFunc.class.getResource("/Button-Reload-icon.png")));
 		
 		btnListarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				updateTable();
 			}
 		});
-		btnListarDados.setBounds(708, 485, 147, 25);
+		btnListarDados.setBounds(708, 478, 95, 64);
 		panel.add(btnListarDados);
 		
 		

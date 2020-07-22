@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class Sobre extends JFrame {
@@ -29,14 +30,19 @@ public class Sobre extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblSobre = new JLabel("Sobre:");
-		lblSobre.setBounds(233, 37, 70, 15);
+		lblSobre.setBounds(233, 12, 70, 15);
 		panel.add(lblSobre);
 		
 		JTextPane txtpnSoftwareDesenvolvidoPara = new JTextPane();
 		txtpnSoftwareDesenvolvidoPara.setFont(new Font("Dialog", Font.PLAIN, 18));
-		txtpnSoftwareDesenvolvidoPara.setText("Software desenvolvido para a disicplina de Engenharia de Software.\n\nDesenvolvedores: João Pedro, Samuel Italo\n\nUniversidade Federal do Ceará, Campus Quixadá");
+		txtpnSoftwareDesenvolvidoPara.setText("Software desenvolvido para a disicplina de Engenharia de Software.\n\nDesenvolvedores: João Pedro, Italo Samuel \n\nUniversidade Federal do Ceará, Campus Quixadá");
 		txtpnSoftwareDesenvolvidoPara.setEditable(false);
-		txtpnSoftwareDesenvolvidoPara.setBounds(53, 87, 456, 163);
+		txtpnSoftwareDesenvolvidoPara.setBounds(56, 51, 456, 163);
 		panel.add(txtpnSoftwareDesenvolvidoPara);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(Sobre.class.getResource("/universidade-federal-do-ceara.jpeg")));
+		label.setBounds(159, 214, 224, 256);
+		panel.add(label);
 	}
 }

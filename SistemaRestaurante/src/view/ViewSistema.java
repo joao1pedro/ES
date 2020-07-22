@@ -149,7 +149,7 @@ public class ViewSistema extends JFrame {
     
     private double itemcost[] = new double [100];
     private double valorTotal;
-	private double subTotal;
+	private double subTotal=0;
 	private double taxa;
 	private double diferenca;
 	private double rateTaxa;
@@ -198,6 +198,7 @@ public class ViewSistema extends JFrame {
 	private int qtdFeijao= 0;
 	private int qtdBife= 0;
 	private int qtdFrango= 0;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -1379,7 +1380,7 @@ public class ViewSistema extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(1039, 462, 301, 216);
+		panel_3.setBounds(912, 458, 428, 220);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -1697,323 +1698,11 @@ public class ViewSistema extends JFrame {
 		JButton btnTotal = new JButton("Total");
 		btnTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String cafe = txtCafe.getText();
-				String agua = txtAgua.getText();
-				String cerveja = txtCerveja.getText();
-				String coca = txtCoca.getText();
-				String aguacc = txtAguaCc.getText();
-				String sucoLaranja = txtLaranja.getText();
-				String sucoMaracuja = txtMaracuja.getText();
-				String fritas = txtFritas.getText();
-				String salada = txtSalada.getText();
-				String hamburger = txtHamburger.getText();
-				String aneisCebola = txtAneisdecebola.getText();
-				String saladaFrango = txtSaladadefrango.getText();
-				String sanduicheAtum = txtSanduichedeatum.getText();
-				String sanduicheQueijo = txtSanduichedequeijo.getText();
-				String sanduicheFrango = txtSanduichedefrango.getText();
-				String brownie = txtBrownie.getText();
-				String torrada = txtTorrada.getText();
-				String bolinho = txtBolinho.getText();
-				String panqueca = txtPanqueca.getText();
-				String picole = txtPicole.getText();
-				String tortaMorango = txtTortaMorango.getText();
-				String tortaChocolate = txtTortaChocolate.getText();
-				String tortaLimao = txtTortaLimao.getText();
-				String tortaAbacaxi = txtTortaAbacaxi.getText();
-				String tortaBanana = txtTortaBanana.getText();
-				String tortaMaca = txtTortaMaca.getText();
-				String sorvete = txtSorvete.getText();
-				String pudim = txtPudim.getText();
-				String pave = txtPave.getText();
-				String uva = txtUva.getText();
-				String morango = txtMorango.getText();
-				String limao = txtLimao.getText();
-				String abacaxi = txtAbacaxi.getText();
-				String caju = txtCaju.getText();
-				String manga = txtManga.getText();
-				String graviola = txtGraviola.getText();
-				String arroz = txtArroz.getText();
-				String macarrao = txtMacarrao.getText();
-				String feijao = txtFeijao.getText();
-				String bife = txtBife.getText();
-				String frango = txtFrango.getText();
-				
-				//ArrayList<String> produtos = new ArrayList<String>();
 				ControlProdutos ctrlP = new ControlProdutos();
 				
-				if(!agua.isEmpty()){
-					qtdAgua = Integer.parseInt(txtAgua.getText());
-					NomeAgua=" Água ";
-					//produtos.add(NomeAgua);
-					itemcost[0] = ctrlP.getPrice("água")*qtdAgua;
-				}
-				if(!cafe.isEmpty()){
-					qtdCafe = Integer.parseInt(txtCafe.getText());
-					NomeCafe=" Café ";
-					//produtos.add(NomeCafe);
-					itemcost[1] =ctrlP.getPrice("café")*qtdCafe;
-				}
-				if(!cerveja.isEmpty()) {
-					qtdCerveja = Integer.parseInt(txtCerveja.getText());
-					NomeCerveja=" Cerveja ";
-					//produtos.add(NomeCerveja);
-					itemcost[2] =ctrlP.getPrice("cerveja")*qtdCerveja ;
-				}
-				if(!coca.isEmpty()) {
-					qtdCoca = Integer.parseInt(txtCoca.getText());
-					NomeCoca=" Coca-Cola ";
-					//produtos.add(NomeCoca);
-					itemcost[3] =ctrlP.getPrice("coca-cola")*qtdCoca;
-				}
-				if(!aguacc.isEmpty()) {
-					qtdAguacc = Integer.parseInt(txtAguaCc.getText());
-					NomeAguacc=" Água de Coco ";
-					//produtos.add(NomeAguacc);
-					itemcost[4] =ctrlP.getPrice("água de côco")*qtdAguacc;
-				}
-				if(!sucoLaranja.isEmpty()) {
-					qtdSucoLaranja = Integer.parseInt(txtLaranja.getText());
-					NomeSucoLaranja=" Suco de Laranja ";
-					//produtos.add(NomeSucoLaranja);
-					itemcost[5] =ctrlP.getPrice("suco de laranja")*qtdSucoLaranja;
-				}
-				if(!sucoMaracuja.isEmpty()) {
-					qtdSucoMaracuja = Integer.parseInt(txtMaracuja.getText());
-					NomeSucoMaracuja=" Suco de Maracujá ";
-					//produtos.add(NomeSucoMaracuja);
-					itemcost[6] =ctrlP.getPrice("suco de maracujá")*qtdSucoMaracuja;
-				}
-				if(!fritas.isEmpty()) {
-					qtdFritas = Integer.parseInt(txtFritas.getText());
-					NomeFritas=" Fritas ";
-					//produtos.add(NomeFritas);
-					itemcost[7] =ctrlP.getPrice("batata frita")*qtdFritas;
-				}
-				if(!salada.isEmpty()) {
-					qtdSalada = Integer.parseInt(txtSalada.getText());
-					NomeSalada=" Salada ";
-					//produtos.add(NomeSalada);
-					itemcost[8] =ctrlP.getPrice("salada")*qtdSalada;
-				}
-				if(!hamburger.isEmpty()) {
-					qtdHamburger = Integer.parseInt(txtHamburger.getText());
-					NomeHamburger=" Hamburger ";
-					//produtos.add(NomeHamburger);
-					itemcost[9] =ctrlP.getPrice("hamburger")*qtdHamburger;
-				}
-				if(!aneisCebola.isEmpty()) {
-					qtdAneisCebola = Integer.parseInt(txtAneisdecebola.getText());
-					NomeAneisCebola=" Anéis de cebola ";
-					//produtos.add(NomeAneisCebola);
-					itemcost[10] =ctrlP.getPrice("anéis de cebola")*qtdAneisCebola;
-				}
-				if(!saladaFrango.isEmpty()) {
-					qtdSaladaFrango = Integer.parseInt(txtSaladadefrango.getText());
-					NomeSaladaFrango=" Salada de Frango ";
-					//produtos.add(NomeSaladaFrango);
-					itemcost[11] =ctrlP.getPrice("salada de frango")*qtdSaladaFrango;
-				}
-				if(!sanduicheAtum.isEmpty()) {
-					qtdSanduicheAtum = Integer.parseInt(txtSanduichedeatum.getText());
-					NomeSanduicheAtum=" Sanduiche de Atum ";
-					//produtos.add(NomeSanduicheAtum);
-					itemcost[12] =ctrlP.getPrice("sanduiche de atum")*qtdSanduicheAtum;
-				}
-				if(!sanduicheQueijo.isEmpty()) {
-					qtdSanduicheQueijo = Integer.parseInt(txtSanduichedequeijo.getText());
-					NomeSanduicheQueijo=" Sanduiche de Queijo ";
-					//produtos.add(sanduicheQueijo);
-					itemcost[13] =ctrlP.getPrice("sanduiche de queijo")*qtdSanduicheQueijo;
-				}
-				if(!sanduicheFrango.isEmpty()) {
-					qtdSanduicheFrango = Integer.parseInt(txtSanduichedefrango.getText());
-					NomeSanduicheFrango=" Sanduiche de Frango ";
-					//produtos.add(sanduicheFrango);
-					itemcost[14] =ctrlP.getPrice("sanduiche de frango")*qtdSanduicheFrango;
-				}
-				if(!brownie.isEmpty()) {
-					qtdBrownie = Integer.parseInt(txtBrownie.getText());
-					NomeBrownie=" Brownie ";
-					//produtos.add(NomeBrownie);
-					itemcost[15] =ctrlP.getPrice("brownie")*qtdBrownie;
-				}
-				if(!torrada.isEmpty()) {
-					qtdTorrada = Integer.parseInt(txtTorrada.getText());
-					NomeTorrada=" Torrada ";
-					//produtos.add(NomeTorrada);
-					itemcost[16] =ctrlP.getPrice("torrada")*qtdTorrada;
-				}
-				if(!picole.isEmpty()) {
-					qtdPicole = Integer.parseInt(txtPicole.getText());
-					NomePicole=" Picole ";
-					//produtos.add(NomePicole);
-					itemcost[17] =ctrlP.getPrice("picole")*qtdPicole;
-				}
-				if(!bolinho.isEmpty()) {
-					qtdBolinho = Integer.parseInt(txtBolinho.getText());
-					NomeBolinho=" Bolinho ";
-					//produtos.add(NomeBolinho);
-					itemcost[18] =ctrlP.getPrice("bolinho")*qtdBolinho;
-				}
-				if(!panqueca.isEmpty()) {
-					qtdPanqueca = Integer.parseInt(txtPanqueca.getText());
-					NomePanqueca=" Panqueca ";
-					//produtos.add(NomePanqueca);
-					itemcost[19] =ctrlP.getPrice("panqueca")*qtdPanqueca;
-				}
-				if(!tortaMorango.isEmpty()) {
-					qtdTortaMorango = Integer.parseInt(txtTortaMorango.getText());
-					NomeTortaMorango=" Torta de Morango ";
-					//produtos.add(NomeTortaMorango);
-					itemcost[20] =ctrlP.getPrice("torta de morango")*qtdTortaMorango;
-				}
-				if(!tortaChocolate.isEmpty()) {
-					qtdTortaChocolate = Integer.parseInt(txtTortaChocolate.getText());
-					NomeTortaChocolate=" Torta de Chocolate ";
-					//produtos.add(NomeTortaChocolate);
-					itemcost[21] =ctrlP.getPrice("torta de chocolate")*qtdTortaChocolate;
-				}
-				if(!tortaLimao.isEmpty()) {
-					qtdTortaLimao = Integer.parseInt(txtTortaLimao.getText());
-					NomeTortaLimao=" Torta de Limao ";
-					//produtos.add(NomeTortaLimao);
-					itemcost[22] =ctrlP.getPrice("torta de limão")*qtdTortaLimao;
-				}
-				if(!tortaAbacaxi.isEmpty()) {
-					qtdTortaAbacaxi = Integer.parseInt(txtTortaAbacaxi.getText());
-					NomeTortaAbacaxi=" Torta de Abacaxi ";
-					//produtos.add(NomeTortaAbacaxi);
-					itemcost[23] =ctrlP.getPrice("torta de abacaxi")*qtdTortaAbacaxi;
-				}
-				if(!tortaBanana.isEmpty()) {
-					qtdTortaBanana = Integer.parseInt(txtTortaBanana.getText());
-					NomeTortaBanana=" Torta de Banana ";
-					//produtos.add(NomeTortaBanana);
-					itemcost[24] =ctrlP.getPrice("torta de banana")*qtdTortaBanana;
-				}
-				if(!tortaMaca.isEmpty()) {
-					qtdTortaMaca = Integer.parseInt(txtTortaMaca.getText());
-					NomeTortaMaca=" Torta de Maca ";
-					//produtos.add(NomeTortaMaca);
-					itemcost[25] =ctrlP.getPrice("torta de maça")*qtdTortaMaca;
-				}
-				
-				if(!sorvete.isEmpty()) {
-					qtdSorvete = Integer.parseInt(txtSorvete.getText());
-					NomeSorvete=" Sorvete ";
-					//produtos.add(NomeSorvete);
-					itemcost[26] =ctrlP.getPrice("sorvete")*qtdSorvete;
-				}
-				
-				if(!pudim.isEmpty()) {
-					qtdPudim = Integer.parseInt(txtPudim.getText());
-					NomePudim=" Pudim ";
-					//produtos.add(NomePudim);
-					itemcost[27] =ctrlP.getPrice("pudim")*qtdPudim;
-				}
-				
-				if(!pave.isEmpty()) {
-					qtdPave= Integer.parseInt(txtPave.getText());
-					NomePave=" Pave "; 
-					//produtos.add(NomePave);
-					itemcost[28] =ctrlP.getPrice("pave")*qtdPave;
-				}
-				
-				if(!uva.isEmpty()) {
-					qtdUva= Integer.parseInt(txtUva.getText());
-					NomeUva=" Uva "; 
-					//produtos.add(NomeUva);
-					itemcost[29] =ctrlP.getPrice("suco de uva")*qtdUva;
-				}
-				
-				if(!morango.isEmpty()) {
-					qtdMorango= Integer.parseInt(txtMorango.getText());
-					NomeMorango=" Morango "; 
-					//produtos.add(NomeMorango);
-					itemcost[30] =ctrlP.getPrice("suco de morango")*qtdMorango;
-				}
-				
-				if(!limao.isEmpty()) {
-					qtdLimao= Integer.parseInt(txtLimao.getText());
-					NomeLimao=" Limão "; 
-					//produtos.add(NomeLimao);
-					itemcost[31] =ctrlP.getPrice("suco de limão")*qtdLimao;
-				}
-				
-				if(!abacaxi.isEmpty()) {
-					qtdAbacaxi= Integer.parseInt(txtAbacaxi.getText());
-					NomeAbacaxi=" Abacaxi "; 
-					//produtos.add(NomeAbacaxi);
-					itemcost[32] =ctrlP.getPrice("suco de abacaxi")*qtdAbacaxi;
-				}
-				
-				if(!caju.isEmpty()) {
-					qtdCaju= Integer.parseInt(txtCaju.getText());
-					NomeCaju=" Caju "; 
-					//produtos.add(NomeCaju);
-					itemcost[33] =ctrlP.getPrice("suco de caju")*qtdCaju;
-				}
-				
-				if(!manga.isEmpty()) {
-					qtdManga= Integer.parseInt(txtManga.getText());
-					NomeManga=" Manga "; 
-					//produtos.add(NomeManga);
-					itemcost[34] =ctrlP.getPrice("suco de manga")*qtdManga;
-				}
-				
-				if(!graviola.isEmpty()) {
-					qtdGraviola= Integer.parseInt(txtGraviola.getText());
-					NomeGraviola=" Graviola "; 
-					//produtos.add(NomeGraviola);
-					itemcost[35] =ctrlP.getPrice("suco de graviola")*qtdGraviola;
-				}
-				
-				if(!arroz.isEmpty()) {
-					qtdArroz= Integer.parseInt(txtArroz.getText());
-					NomeArroz=" Arroz "; 
-					//produtos.add(NomeArroz);
-					itemcost[36] =ctrlP.getPrice("arroz")*qtdArroz;
-				}
-				
-				if(!macarrao.isEmpty()) {
-					qtdMacarrao= Integer.parseInt(txtMacarrao.getText());
-					NomeMacarrao=" Macarrão "; 
-					//produtos.add(NomeMacarrao);
-					itemcost[37] =ctrlP.getPrice("macarrão")*qtdMacarrao;
-				}
-
-				if(!feijao.isEmpty()) {
-					qtdFeijao= Integer.parseInt(txtFeijao.getText());
-					NomeFeijao=" Feijão "; 
-					//produtos.add(NomeFeijao);
-					itemcost[38] =ctrlP.getPrice("feijão")*qtdFeijao;
-				}
-				
-				if(!bife.isEmpty()) {
-					qtdBife= Integer.parseInt(txtBife.getText());
-					NomeBife=" Bife "; 
-					//produtos.add(NomeBife);
-					itemcost[39] =ctrlP.getPrice("bife")*qtdBife;
-				}
-				
-				if(!frango.isEmpty()) {
-					qtdFrango= Integer.parseInt(txtFrango.getText());
-					NomeFrango=" Frango "; 
-					//produtos.add(NomeFrango);
-					itemcost[40] =ctrlP.getPrice("frango")*qtdFrango;
-				}
-				
-				rateTaxa = ctrlP.getPrice("taxa");
+				calculator(ctrlP);
 				
 				String mPagamento = (String)metodoPagamento.getSelectedItem();
-				
-				subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] +
-						itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] +
-						itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17] + itemcost[18] + itemcost[19] + 
-						itemcost[20] + itemcost[21] + itemcost[22] + itemcost[23] + itemcost[24] + itemcost[25] + itemcost[26] + 
-						itemcost[27] + itemcost[28] + itemcost[29] + itemcost[30] + itemcost[31] + itemcost[32] + itemcost[33] + 
-						itemcost[34] + itemcost[35] + itemcost[36] + itemcost[37] + itemcost[38] + itemcost[39] + itemcost[40];
 				
 				if(mPagamento == "Dinheiro") {
 					diferenca = Double.parseDouble(txtInDinnheiro.getText());
@@ -2134,6 +1823,282 @@ public class ViewSistema extends JFrame {
 					JOptionPane.showMessageDialog(null, "Mesa indisponível.");
 				}
 			}
+
+			private void calculator(ControlProdutos ctrlP) {
+				String cafe = txtCafe.getText();
+				String agua = txtAgua.getText();
+				String cerveja = txtCerveja.getText();
+				String coca = txtCoca.getText();
+				String aguacc = txtAguaCc.getText();
+				String sucoLaranja = txtLaranja.getText();
+				String sucoMaracuja = txtMaracuja.getText();
+				String fritas = txtFritas.getText();
+				String salada = txtSalada.getText();
+				String hamburger = txtHamburger.getText();
+				String aneisCebola = txtAneisdecebola.getText();
+				String saladaFrango = txtSaladadefrango.getText();
+				String sanduicheAtum = txtSanduichedeatum.getText();
+				String sanduicheQueijo = txtSanduichedequeijo.getText();
+				String sanduicheFrango = txtSanduichedefrango.getText();
+				String brownie = txtBrownie.getText();
+				String torrada = txtTorrada.getText();
+				String bolinho = txtBolinho.getText();
+				String panqueca = txtPanqueca.getText();
+				String picole = txtPicole.getText();
+				String tortaMorango = txtTortaMorango.getText();
+				String tortaChocolate = txtTortaChocolate.getText();
+				String tortaLimao = txtTortaLimao.getText();
+				String tortaAbacaxi = txtTortaAbacaxi.getText();
+				String tortaBanana = txtTortaBanana.getText();
+				String tortaMaca = txtTortaMaca.getText();
+				String sorvete = txtSorvete.getText();
+				String pudim = txtPudim.getText();
+				String pave = txtPave.getText();
+				String uva = txtUva.getText();
+				String morango = txtMorango.getText();
+				String limao = txtLimao.getText();
+				String abacaxi = txtAbacaxi.getText();
+				String caju = txtCaju.getText();
+				String manga = txtManga.getText();
+				String graviola = txtGraviola.getText();
+				String arroz = txtArroz.getText();
+				String macarrao = txtMacarrao.getText();
+				String feijao = txtFeijao.getText();
+				String bife = txtBife.getText();
+				String frango = txtFrango.getText();
+				
+				if(!agua.isEmpty()){
+					qtdAgua = Integer.parseInt(txtAgua.getText());
+					NomeAgua=" Água ";
+					itemcost[0] = ctrlP.getPrice("água")*qtdAgua;
+				}
+				if(!cafe.isEmpty()){
+					qtdCafe = Integer.parseInt(txtCafe.getText());
+					NomeCafe=" Café ";
+					itemcost[1] =ctrlP.getPrice("café")*qtdCafe;
+				}
+				if(!cerveja.isEmpty()) {
+					qtdCerveja = Integer.parseInt(txtCerveja.getText());
+					NomeCerveja=" Cerveja ";
+					itemcost[2] =ctrlP.getPrice("cerveja")*qtdCerveja ;
+				}
+				if(!coca.isEmpty()) {
+					qtdCoca = Integer.parseInt(txtCoca.getText());
+					NomeCoca=" Coca-Cola ";
+					itemcost[3] =ctrlP.getPrice("coca-cola")*qtdCoca;
+				}
+				if(!aguacc.isEmpty()) {
+					qtdAguacc = Integer.parseInt(txtAguaCc.getText());
+					NomeAguacc=" Água de Coco ";
+					itemcost[4] =ctrlP.getPrice("água de côco")*qtdAguacc;
+				}
+				if(!sucoLaranja.isEmpty()) {
+					qtdSucoLaranja = Integer.parseInt(txtLaranja.getText());
+					NomeSucoLaranja=" Suco de Laranja ";
+					itemcost[5] =ctrlP.getPrice("suco de laranja")*qtdSucoLaranja;
+				}
+				if(!sucoMaracuja.isEmpty()) {
+					qtdSucoMaracuja = Integer.parseInt(txtMaracuja.getText());
+					NomeSucoMaracuja=" Suco de Maracujá ";
+					itemcost[6] =ctrlP.getPrice("suco de maracujá")*qtdSucoMaracuja;
+				}
+				if(!fritas.isEmpty()) {
+					qtdFritas = Integer.parseInt(txtFritas.getText());
+					NomeFritas=" Fritas ";
+					itemcost[7] =ctrlP.getPrice("batata frita")*qtdFritas;
+				}
+				if(!salada.isEmpty()) {
+					qtdSalada = Integer.parseInt(txtSalada.getText());
+					NomeSalada=" Salada ";
+					itemcost[8] =ctrlP.getPrice("salada")*qtdSalada;
+				}
+				if(!hamburger.isEmpty()) {
+					qtdHamburger = Integer.parseInt(txtHamburger.getText());
+					NomeHamburger=" Hamburger ";
+					itemcost[9] =ctrlP.getPrice("hamburger")*qtdHamburger;
+				}
+				if(!aneisCebola.isEmpty()) {
+					qtdAneisCebola = Integer.parseInt(txtAneisdecebola.getText());
+					NomeAneisCebola=" Anéis de cebola ";
+					itemcost[10] =ctrlP.getPrice("anéis de cebola")*qtdAneisCebola;
+				}
+				if(!saladaFrango.isEmpty()) {
+					qtdSaladaFrango = Integer.parseInt(txtSaladadefrango.getText());
+					NomeSaladaFrango=" Salada de Frango ";
+					itemcost[11] =ctrlP.getPrice("salada de frango")*qtdSaladaFrango;
+				}
+				if(!sanduicheAtum.isEmpty()) {
+					qtdSanduicheAtum = Integer.parseInt(txtSanduichedeatum.getText());
+					NomeSanduicheAtum=" Sanduiche de Atum ";
+					itemcost[12] =ctrlP.getPrice("sanduiche de atum")*qtdSanduicheAtum;
+				}
+				if(!sanduicheQueijo.isEmpty()) {
+					qtdSanduicheQueijo = Integer.parseInt(txtSanduichedequeijo.getText());
+					NomeSanduicheQueijo=" Sanduiche de Queijo ";
+					itemcost[13] =ctrlP.getPrice("sanduiche de queijo")*qtdSanduicheQueijo;
+				}
+				if(!sanduicheFrango.isEmpty()) {
+					qtdSanduicheFrango = Integer.parseInt(txtSanduichedefrango.getText());
+					NomeSanduicheFrango=" Sanduiche de Frango ";
+					itemcost[14] =ctrlP.getPrice("sanduiche de frango")*qtdSanduicheFrango;
+				}
+				if(!brownie.isEmpty()) {
+					qtdBrownie = Integer.parseInt(txtBrownie.getText());
+					NomeBrownie=" Brownie ";
+					itemcost[15] =ctrlP.getPrice("brownie")*qtdBrownie;
+				}
+				if(!torrada.isEmpty()) {
+					qtdTorrada = Integer.parseInt(txtTorrada.getText());
+					NomeTorrada=" Torrada ";
+					itemcost[16] =ctrlP.getPrice("torrada")*qtdTorrada;
+				}
+				if(!picole.isEmpty()) {
+					qtdPicole = Integer.parseInt(txtPicole.getText());
+					NomePicole=" Picole ";
+					itemcost[17] =ctrlP.getPrice("picole")*qtdPicole;
+				}
+				if(!bolinho.isEmpty()) {
+					qtdBolinho = Integer.parseInt(txtBolinho.getText());
+					NomeBolinho=" Bolinho ";
+					itemcost[18] =ctrlP.getPrice("bolinho")*qtdBolinho;
+				}
+				if(!panqueca.isEmpty()) {
+					qtdPanqueca = Integer.parseInt(txtPanqueca.getText());
+					NomePanqueca=" Panqueca ";
+					itemcost[19] =ctrlP.getPrice("panqueca")*qtdPanqueca;
+				}
+				if(!tortaMorango.isEmpty()) {
+					qtdTortaMorango = Integer.parseInt(txtTortaMorango.getText());
+					NomeTortaMorango=" Torta de Morango ";
+					itemcost[20] =ctrlP.getPrice("torta de morango")*qtdTortaMorango;
+				}
+				if(!tortaChocolate.isEmpty()) {
+					qtdTortaChocolate = Integer.parseInt(txtTortaChocolate.getText());
+					NomeTortaChocolate=" Torta de Chocolate ";
+					itemcost[21] =ctrlP.getPrice("torta de chocolate")*qtdTortaChocolate;
+				}
+				if(!tortaLimao.isEmpty()) {
+					qtdTortaLimao = Integer.parseInt(txtTortaLimao.getText());
+					NomeTortaLimao=" Torta de Limao ";
+					itemcost[22] =ctrlP.getPrice("torta de limão")*qtdTortaLimao;
+				}
+				if(!tortaAbacaxi.isEmpty()) {
+					qtdTortaAbacaxi = Integer.parseInt(txtTortaAbacaxi.getText());
+					NomeTortaAbacaxi=" Torta de Abacaxi ";
+					itemcost[23] =ctrlP.getPrice("torta de abacaxi")*qtdTortaAbacaxi;
+				}
+				if(!tortaBanana.isEmpty()) {
+					qtdTortaBanana = Integer.parseInt(txtTortaBanana.getText());
+					NomeTortaBanana=" Torta de Banana ";
+					itemcost[24] =ctrlP.getPrice("torta de banana")*qtdTortaBanana;
+				}
+				if(!tortaMaca.isEmpty()) {
+					qtdTortaMaca = Integer.parseInt(txtTortaMaca.getText());
+					NomeTortaMaca=" Torta de Maca ";
+					itemcost[25] =ctrlP.getPrice("torta de maça")*qtdTortaMaca;
+				}
+				
+				if(!sorvete.isEmpty()) {
+					qtdSorvete = Integer.parseInt(txtSorvete.getText());
+					NomeSorvete=" Sorvete ";
+					itemcost[26] =ctrlP.getPrice("sorvete")*qtdSorvete;
+				}
+				
+				if(!pudim.isEmpty()) {
+					qtdPudim = Integer.parseInt(txtPudim.getText());
+					NomePudim=" Pudim ";
+					itemcost[27] =ctrlP.getPrice("pudim")*qtdPudim;
+				}
+				
+				if(!pave.isEmpty()) {
+					qtdPave= Integer.parseInt(txtPave.getText());
+					NomePave=" Pave "; 
+					itemcost[28] =ctrlP.getPrice("pave")*qtdPave;
+				}
+				
+				if(!uva.isEmpty()) {
+					qtdUva= Integer.parseInt(txtUva.getText());
+					NomeUva=" Uva "; 
+					itemcost[29] =ctrlP.getPrice("suco de uva")*qtdUva;
+				}
+				
+				if(!morango.isEmpty()) {
+					qtdMorango= Integer.parseInt(txtMorango.getText());
+					NomeMorango=" Morango "; 
+					itemcost[30] =ctrlP.getPrice("suco de morango")*qtdMorango;
+				}
+				
+				if(!limao.isEmpty()) {
+					qtdLimao= Integer.parseInt(txtLimao.getText());
+					NomeLimao=" Limão "; 
+					itemcost[31] =ctrlP.getPrice("suco de limão")*qtdLimao;
+				}
+				
+				if(!abacaxi.isEmpty()) {
+					qtdAbacaxi= Integer.parseInt(txtAbacaxi.getText());
+					NomeAbacaxi=" Abacaxi "; 
+					itemcost[32] =ctrlP.getPrice("suco de abacaxi")*qtdAbacaxi;
+				}
+				
+				if(!caju.isEmpty()) {
+					qtdCaju= Integer.parseInt(txtCaju.getText());
+					NomeCaju=" Caju "; 
+					itemcost[33] =ctrlP.getPrice("suco de caju")*qtdCaju;
+				}
+				
+				if(!manga.isEmpty()) {
+					qtdManga= Integer.parseInt(txtManga.getText());
+					NomeManga=" Manga "; 
+					itemcost[34] =ctrlP.getPrice("suco de manga")*qtdManga;
+				}
+				
+				if(!graviola.isEmpty()) {
+					qtdGraviola= Integer.parseInt(txtGraviola.getText());
+					NomeGraviola=" Graviola "; 
+					itemcost[35] =ctrlP.getPrice("suco de graviola")*qtdGraviola;
+				}
+				
+				if(!arroz.isEmpty()) {
+					qtdArroz= Integer.parseInt(txtArroz.getText());
+					NomeArroz=" Arroz "; 
+					itemcost[36] =ctrlP.getPrice("arroz")*qtdArroz;
+				}
+				
+				if(!macarrao.isEmpty()) {
+					qtdMacarrao= Integer.parseInt(txtMacarrao.getText());
+					NomeMacarrao=" Macarrão "; 
+					itemcost[37] =ctrlP.getPrice("macarrão")*qtdMacarrao;
+				}
+
+				if(!feijao.isEmpty()) {
+					qtdFeijao= Integer.parseInt(txtFeijao.getText());
+					NomeFeijao=" Feijão "; 
+					itemcost[38] =ctrlP.getPrice("feijão")*qtdFeijao;
+				}
+				
+				if(!bife.isEmpty()) {
+					qtdBife= Integer.parseInt(txtBife.getText());
+					NomeBife=" Bife "; 
+					itemcost[39] =ctrlP.getPrice("bife")*qtdBife;
+				}
+				
+				if(!frango.isEmpty()) {
+					qtdFrango= Integer.parseInt(txtFrango.getText());
+					NomeFrango=" Frango "; 
+					itemcost[40] =ctrlP.getPrice("frango")*qtdFrango;
+				}
+				
+				rateTaxa = ctrlP.getPrice("taxa");
+				
+				subTotal = itemcost[0] + itemcost[1] + itemcost[2] + itemcost[3] + itemcost[4] + itemcost[5] +
+						itemcost[6] + itemcost[7] + itemcost[8] + itemcost[9] + itemcost[10] + itemcost[11] + itemcost[12] +
+						itemcost[13] + itemcost[14] + itemcost[15] + itemcost[16] + itemcost[17] + itemcost[18] + itemcost[19] + 
+						itemcost[20] + itemcost[21] + itemcost[22] + itemcost[23] + itemcost[24] + itemcost[25] + itemcost[26] + 
+						itemcost[27] + itemcost[28] + itemcost[29] + itemcost[30] + itemcost[31] + itemcost[32] + itemcost[33] + 
+						itemcost[34] + itemcost[35] + itemcost[36] + itemcost[37] + itemcost[38] + itemcost[39] + itemcost[40];
+
+				
+			}
 		});
 		btnTotal.setBounds(12, 187, 70, 25);
 		panel_3.add(btnTotal);
@@ -2167,7 +2132,7 @@ public class ViewSistema extends JFrame {
 		
 		txtInDinnheiro = new JTextField("0");
 		txtInDinnheiro.setColumns(10);
-		txtInDinnheiro.setBounds(37, 96, 56, 15);
+		txtInDinnheiro.setBounds(71, 96, 56, 15);
 		panel_3.add(txtInDinnheiro);
 		
 		JLabel lblEspcie = new JLabel("Espécie:");
@@ -2175,20 +2140,20 @@ public class ViewSistema extends JFrame {
 		panel_3.add(lblEspcie);
 		
 		JLabel lblR = new JLabel("R$");
-		lblR.setBounds(12, 96, 22, 15);
+		lblR.setBounds(46, 96, 22, 15);
 		panel_3.add(lblR);
 		
 		JLabel lblMesa = new JLabel("Mesa:");
-		lblMesa.setBounds(12, 123, 56, 15);
+		lblMesa.setBounds(24, 134, 44, 15);
 		panel_3.add(lblMesa);
 		
 		txtMesa = new JTextField("0");
 		txtMesa.setColumns(10);
-		txtMesa.setBounds(12, 146, 56, 15);
+		txtMesa.setBounds(71, 134, 56, 15);
 		panel_3.add(txtMesa);
 		
-		JButton btnImprimir = new JButton("Imprimir");
-		btnImprimir.setBounds(189, 12, 91, 25);
+		JButton btnImprimir = new JButton(new ImageIcon(GerenciaFunc.class.getResource("/Print-32.png")));
+		btnImprimir.setBounds(318, 39, 56, 50);
 		panel_3.add(btnImprimir);
 		btnImprimir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -2603,6 +2568,7 @@ public class ViewSistema extends JFrame {
 		
 		Timer tm = new Timer(1000, new hora());
 		tm.start();
+			
 		
 	}	
 	class hora implements ActionListener{
