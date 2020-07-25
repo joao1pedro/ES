@@ -25,7 +25,6 @@ public class GerenciaFuncDAO {
 			String sql = "insert into usuarios (nome_login, nickname, senha, pergunta, resposta, nivelpermissao, endereco, nascimento, pais, bairro, numero, cidade) values ('"+model.getNome()+
 					"','"+model.getUsername()+"','"+model.getPassword()+"','"+model.getPergunta()+"','"+model.getResposta()+"','0','"+model.getEndereco()+
 					"',STR_TO_DATE('"+model.getNascimento()+"',\"%d/%m/%Y\"),'"+model.getPais()+"','"+model.getBairro()+"','"+model.getNumero()+"','"+model.getCidade()+"');";
-			JOptionPane.showMessageDialog(null, sql);
 			try {
 				stmt = con.prepareStatement(sql);
 				rs = stmt.executeQuery();
@@ -126,7 +125,7 @@ public class GerenciaFuncDAO {
 			sql = "update usuarios set endereco = '" + model.getEndereco() +
 					"' where nickname = '"+ model.getUsername()+ "';";
 		}
-		else if(!model.getUsername().isEmpty() && number!=null) {
+		else if(!model.getUsername().isEmpty() && number!=null ) {
 			sql = "update usuarios set numero = '" + model.getNumero() +
 					"' where nickname = '"+ model.getUsername()+ "';";
 		}
@@ -134,7 +133,6 @@ public class GerenciaFuncDAO {
 			sql = "update usuarios set nivelpermissao = '" + model.getPermissao() +
 					"' where nickname = '"+ model.getUsername()+ "';";
 		}
-		
 		try {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();

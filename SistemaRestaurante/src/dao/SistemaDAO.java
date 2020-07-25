@@ -254,6 +254,9 @@ public class SistemaDAO {
 		case "taxa": //permitir que a % de taxa tenha valor alterado
 			sql = "select * from produtos where nome = 'taxa';";
 			break;
+		default:
+			sql = "select * from produtos where nome = 'invalido';";
+			break;
 		}
 		
 		try {

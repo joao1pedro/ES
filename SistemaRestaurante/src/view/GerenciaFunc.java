@@ -130,7 +130,7 @@ public class GerenciaFunc extends JFrame {
 				btnEditar.setEnabled(false);
 			}
 		});
-		btnCadastrar.setBounds(29, 554, 105, 25);
+		btnCadastrar.setBounds(29, 623, 105, 25);
 		panel.add(btnCadastrar);
 		
 		
@@ -139,7 +139,7 @@ public class GerenciaFunc extends JFrame {
 				limpar();
 			}
 		});
-		btnLimpar.setBounds(228, 554, 88, 25);
+		btnLimpar.setBounds(228, 623, 88, 25);
 		panel.add(btnLimpar);
 		btnRemover.setIcon(new ImageIcon(GerenciaFunc.class.getResource("/Button-Close-icon.png")));
 		
@@ -224,7 +224,7 @@ public class GerenciaFunc extends JFrame {
 				btnCadastrar.setEnabled(false);
 			}
 		});
-		btnEditar.setBounds(140, 554, 82, 25);
+		btnEditar.setBounds(140, 623, 82, 25);
 		panel.add(btnEditar);
 		
 		
@@ -308,7 +308,7 @@ public class GerenciaFunc extends JFrame {
 				
 			}
 		});
-		btnSalvar.setBounds(29, 580, 105, 25);
+		btnSalvar.setBounds(29, 649, 105, 25);
 		panel.add(btnSalvar);
 		
 		JLabel label = new JLabel("");
@@ -329,7 +329,7 @@ public class GerenciaFunc extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(140, 580, 82, 25);
+		btnVoltar.setBounds(140, 649, 82, 25);
 		panel.add(btnVoltar);
 		
 		txtPermissao = new JTextField();
@@ -341,7 +341,7 @@ public class GerenciaFunc extends JFrame {
 		txtEndereco = new JTextField();
 		txtEndereco.setEnabled(false);
 		txtEndereco.setColumns(10);
-		txtEndereco.setBounds(29, 451, 287, 15);
+		txtEndereco.setBounds(29, 450, 287, 15);
 		panel.add(txtEndereco);
 		
 		txtNascimento = new JTextField();
@@ -353,7 +353,7 @@ public class GerenciaFunc extends JFrame {
 		txtNumero = new JTextField();
 		txtNumero.setEnabled(false);
 		txtNumero.setColumns(10);
-		txtNumero.setBounds(29, 490, 287, 15);
+		txtNumero.setBounds(29, 483, 287, 15);
 		panel.add(txtNumero);
 		
 		txtPais = new JTextField();
@@ -365,7 +365,7 @@ public class GerenciaFunc extends JFrame {
 		txtBairro = new JTextField();
 		txtBairro.setEnabled(false);
 		txtBairro.setColumns(10);
-		txtBairro.setBounds(29, 410, 287, 15);
+		txtBairro.setBounds(29, 406, 287, 15);
 		panel.add(txtBairro);
 		
 		txtCidade = new JTextField();
@@ -373,6 +373,7 @@ public class GerenciaFunc extends JFrame {
 		txtCidade.setColumns(10);
 		txtCidade.setBounds(29, 370, 287, 15);
 		panel.add(txtCidade);
+		
 		lblNome.setBounds(29, 67, 70, 15);
 		
 		panel.add(lblNome);
@@ -400,15 +401,17 @@ public class GerenciaFunc extends JFrame {
 		lblCidade.setBounds(29, 353, 70, 15);
 		
 		panel.add(lblCidade);
-		lblEndereo.setBounds(29, 425, 105, 15);
+		lblEndereo.setBounds(29, 423, 105, 15);
 		
 		panel.add(lblEndereo);
-		lblNmero.setBounds(29, 467, 70, 15);
+		lblNmero.setBounds(29, 465, 70, 15);
 		
 		panel.add(lblNmero);
-		lblPermisso.setBounds(29, 509, 88, 15);
+		lblPermisso.setBounds(29, 503, 88, 15);
 		
 		panel.add(lblPermisso);
+		
+		
 	}
 	public void updateTable() {
 		Connection con = new ConnectionFactory().getConnection();
@@ -429,6 +432,7 @@ public class GerenciaFunc extends JFrame {
 	        			rs.getString("nickname"),
 	        			rs.getString("nascimento"),
 	        			rs.getString("pais"),
+	        			rs.getString("estado"),
 	        			rs.getString("cidade"),
 	        			rs.getString("bairro"),
 	        			rs.getString("endereco"),

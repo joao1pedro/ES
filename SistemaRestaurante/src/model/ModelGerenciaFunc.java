@@ -4,6 +4,7 @@ public class ModelGerenciaFunc {
 	int id;
 	int permissao;
 	int numero;
+	
 	String nome;
 	String username;
 	String password;
