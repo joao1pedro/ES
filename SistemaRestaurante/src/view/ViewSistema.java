@@ -199,6 +199,10 @@ public class ViewSistema extends JFrame {
 	private int qtdBife= 0;
 	private int qtdFrango= 0;
 	
+	private String mPagamento;
+	
+	private double auxTroco = 0;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -219,14 +223,14 @@ public class ViewSistema extends JFrame {
 		JCheckBox chckbxPave = new JCheckBox("Pave");
 		JCheckBox chckbxUva = new JCheckBox("Uva");
 		JCheckBox chckbxMorango = new JCheckBox("Morango");
-		JCheckBox chckbxLimao = new JCheckBox("Limao");
+		JCheckBox chckbxLimao = new JCheckBox("Limão");
 		JCheckBox chckbxAbacaxi = new JCheckBox("Abacaxi");
 		JCheckBox chckbxCaju = new JCheckBox("Caju");
 		JCheckBox chckbxManga = new JCheckBox("Manga");
 		JCheckBox chckbxGraviola = new JCheckBox("Graviola");
 		JCheckBox chckbxArroz = new JCheckBox("Arroz");
-		JCheckBox chckbxMacarrao = new JCheckBox("Macarrao");
-		JCheckBox chckbxFeijao = new JCheckBox("Feijao");
+		JCheckBox chckbxMacarrao = new JCheckBox("Macarrão");
+		JCheckBox chckbxFeijao = new JCheckBox("Feijão");
 		JCheckBox chckbxBife = new JCheckBox("Bife");
 		JCheckBox chckbxFrango = new JCheckBox("Frango");
 		
@@ -559,6 +563,28 @@ public class ViewSistema extends JFrame {
 		});
 		mnGerenciamento.add(mnFuncionrios);
 		
+		JMenu mnVendas = new JMenu("Vendas");
+		mnVendas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ControlGerenciaFunc ctrlP = new ControlGerenciaFunc();
+				boolean permissao;
+				permissao = ctrlP.verificaPermissao(TelaLogin.login);
+				
+				if(permissao == true) {
+					dispose();
+					GerenciaVendas frame = new GerenciaVendas();
+					frame.setVisible(true);
+					frame.pegaTaxa();
+					frame.pegaTotal();
+					frame.updateTable();
+				} else {
+					JOptionPane.showMessageDialog(null, "Usuário não possui nivel de permissão adequado.");
+				}
+			}
+		});
+		mnGerenciamento.add(mnVendas);
+		
 		JMenu mnProdutos = new JMenu("Produtos");
 		mnProdutos.addMouseListener(new MouseAdapter() {
 			@Override
@@ -569,11 +595,9 @@ public class ViewSistema extends JFrame {
 				
 				if(permissao == true) {
 					dispose();
-					GerenciaProd frame = new GerenciaProd();
+					GerenciaProdutos frame = new GerenciaProdutos();
 					frame.setVisible(true);
-					frame.pegaTaxa();
-					frame.pegaTotal();
-					frame.updateTable();
+					frame.updateProdutos();
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuário não possui nivel de permissão adequado.");
 				}
@@ -1042,7 +1066,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSalada.setBounds(8, 84, 129, 23);
+		chckbxSalada.setBounds(8, 478, 129, 23);
 		panel_2.add(chckbxSalada);
 		
 		
@@ -1059,11 +1083,11 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxHamburger.setBounds(8, 111, 129, 23);
+		chckbxHamburger.setBounds(8, 281, 129, 23);
 		panel_2.add(chckbxHamburger);
 		
 		
-		JCheckBox chckbxAneisdecebola = new JCheckBox("Anéis de cebola");
+		JCheckBox chckbxAneisdecebola = new JCheckBox("An. Cebola");
 		chckbxAneisdecebola.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxAneisdecebola.isSelected()) {
@@ -1076,11 +1100,11 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxAneisdecebola.setBounds(8, 138, 129, 23);
+		chckbxAneisdecebola.setBounds(8, 84, 119, 23);
 		panel_2.add(chckbxAneisdecebola);
 		
 		
-		JCheckBox chckbxSaladadefrango = new JCheckBox("Salada de frango");
+		JCheckBox chckbxSaladadefrango = new JCheckBox("S. Frango");
 		chckbxSaladadefrango.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxSaladadefrango.isSelected()) {
@@ -1093,15 +1117,15 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSaladadefrango.setBounds(8, 165, 129, 23);
+		chckbxSaladadefrango.setBounds(8, 505, 114, 23);
 		panel_2.add(chckbxSaladadefrango);
 		
-		chckbxArroz.setBounds(8, 192, 129, 23);
+		chckbxArroz.setBounds(8, 111, 129, 23);
 		panel_2.add(chckbxArroz);
 		
 		txtArroz = new JTextField();
 		txtArroz.setEnabled(false);
-		txtArroz.setBounds(175, 192, 80, 19);
+		txtArroz.setBounds(175, 113, 80, 19);
 		txtArroz.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1115,12 +1139,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(txtArroz);
 		txtArroz.setColumns(10);
 		
-		chckbxMacarrao.setBounds(8, 219, 129, 23);
+		chckbxMacarrao.setBounds(8, 138, 129, 23);
 		panel_2.add(chckbxMacarrao);
 		
 		txtMacarrao = new JTextField();
 		txtMacarrao.setEnabled(false);
-		txtMacarrao.setBounds(175, 219, 80, 19);
+		txtMacarrao.setBounds(175, 144, 80, 19);
 		txtMacarrao.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1134,12 +1158,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(txtMacarrao);
 		txtMacarrao.setColumns(10);
 		
-		chckbxFeijao.setBounds(8, 246, 129, 23);
+		chckbxFeijao.setBounds(8, 165, 80, 23);
 		panel_2.add(chckbxFeijao);
 		
 		txtFeijao = new JTextField();
 		txtFeijao.setEnabled(false);
-		txtFeijao.setBounds(175, 246, 80, 19);
+		txtFeijao.setBounds(175, 169, 80, 19);
 		txtFeijao.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1153,12 +1177,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(txtFeijao);
 		txtFeijao.setColumns(10);
 		
-		chckbxBife.setBounds(8, 273, 129, 23);
+		chckbxBife.setBounds(8, 227, 129, 23);
 		panel_2.add(chckbxBife);
 		
 		txtBife = new JTextField();
 		txtBife.setEnabled(false);
-		txtBife.setBounds(175, 273, 80, 19);
+		txtBife.setBounds(175, 229, 80, 19);
 		txtBife.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1172,12 +1196,12 @@ public class ViewSistema extends JFrame {
 		panel_2.add(txtBife);
 		txtBife.setColumns(10);
 		
-		chckbxFrango.setBounds(8, 300, 129, 23);
+		chckbxFrango.setBounds(8, 254, 129, 23);
 		panel_2.add(chckbxFrango);
 		
 		txtFrango = new JTextField();
 		txtFrango.setEnabled(false);
-		txtFrango.setBounds(175, 300, 80, 19);
+		txtFrango.setBounds(175, 256, 80, 19);
 		txtFrango.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -1193,7 +1217,7 @@ public class ViewSistema extends JFrame {
 		
 		
 		JLabel lblSanduiche = new JLabel("Sanduiches");
-		lblSanduiche.setBounds(12, 331, 92, 15);
+		lblSanduiche.setBounds(12, 359, 92, 15);
 		panel_2.add(lblSanduiche);
 		
 		
@@ -1210,7 +1234,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedeatum.setBounds(12, 354, 155, 23);
+		chckbxSanduichedeatum.setBounds(12, 373, 105, 23);
 		panel_2.add(chckbxSanduichedeatum);
 		
 		JCheckBox chckbxSanduichedequeijo = new JCheckBox("Queijo");
@@ -1224,7 +1248,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedequeijo.setBounds(12, 381, 155, 23);
+		chckbxSanduichedequeijo.setBounds(12, 400, 114, 23);
 		panel_2.add(chckbxSanduichedequeijo);
 		
 		JCheckBox chckbxSanduichedefrango = new JCheckBox("Frango");
@@ -1240,7 +1264,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedefrango.setBounds(12, 408, 155, 23);
+		chckbxSanduichedefrango.setBounds(12, 427, 155, 23);
 		panel_2.add(chckbxSanduichedefrango);
 		
 		
@@ -1273,7 +1297,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSalada.setColumns(10);
-		txtSalada.setBounds(175, 84, 80, 19);
+		txtSalada.setBounds(175, 480, 80, 19);
 		panel_2.add(txtSalada);
 		
 		txtHamburger = new JTextField();
@@ -1289,7 +1313,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtHamburger.setColumns(10);
-		txtHamburger.setBounds(175, 111, 80, 19);
+		txtHamburger.setBounds(175, 283, 80, 19);
 		panel_2.add(txtHamburger);
 		
 		txtAneisdecebola = new JTextField();
@@ -1305,7 +1329,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtAneisdecebola.setColumns(10);
-		txtAneisdecebola.setBounds(175, 138, 80, 19);
+		txtAneisdecebola.setBounds(175, 86, 80, 19);
 		panel_2.add(txtAneisdecebola);
 		
 		txtSaladadefrango = new JTextField();
@@ -1321,7 +1345,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSaladadefrango.setColumns(10);
-		txtSaladadefrango.setBounds(175, 165, 80, 19);
+		txtSaladadefrango.setBounds(175, 507, 80, 19);
 		panel_2.add(txtSaladadefrango);
 		
 		txtSanduichedeatum = new JTextField();
@@ -1337,7 +1361,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedeatum.setColumns(10);
-		txtSanduichedeatum.setBounds(175, 356, 80, 19);
+		txtSanduichedeatum.setBounds(175, 375, 80, 19);
 		panel_2.add(txtSanduichedeatum);
 		
 		txtSanduichedequeijo = new JTextField();
@@ -1353,7 +1377,7 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedequeijo.setColumns(10);
-		txtSanduichedequeijo.setBounds(175, 383, 80, 19);
+		txtSanduichedequeijo.setBounds(175, 402, 80, 19);
 		panel_2.add(txtSanduichedequeijo);
 		
 		txtSanduichedefrango = new JTextField();
@@ -1369,13 +1393,21 @@ public class ViewSistema extends JFrame {
 			}
 		});
 		txtSanduichedefrango.setColumns(10);
-		txtSanduichedefrango.setBounds(175, 410, 80, 19);
+		txtSanduichedefrango.setBounds(175, 429, 80, 19);
 		panel_2.add(txtSanduichedefrango);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ViewSistema.class.getResource("/Steak-icon.png")));
 		lblNewLabel.setBounds(12, 11, 72, 38);
 		panel_2.add(lblNewLabel);
+		
+		JLabel lblSaladas = new JLabel("Saladas");
+		lblSaladas.setBounds(14, 462, 70, 15);
+		panel_2.add(lblSaladas);
+		
+		JLabel lblMistura = new JLabel("Mistura");
+		lblMistura.setBounds(8, 204, 70, 15);
+		panel_2.add(lblMistura);
 		
 		
 		JPanel panel_3 = new JPanel();
@@ -1690,6 +1722,7 @@ public class ViewSistema extends JFrame {
 				qtdBife=0;
 				qtdFrango=0;
 				
+				auxTroco = 0;
 			}
 		});
 		btnLimpar.setBounds(96, 187, 82, 25);
@@ -1702,42 +1735,46 @@ public class ViewSistema extends JFrame {
 				
 				calculator(ctrlP);
 				
-				String mPagamento = (String)metodoPagamento.getSelectedItem();
+				taxa = ((subTotal * rateTaxa)/100);
+				valorTotal = (subTotal + taxa);
 				
-				if(mPagamento == "Dinheiro") {
-					diferenca = Double.parseDouble(txtInDinnheiro.getText());
+				String quantidade = String.format("R$%.2f",subTotal);
+				String vTaxa = String.format("R$%.2f", taxa);
+				String vTotal = String.format("R$%.2f", valorTotal);
+				
+				mPagamento = (String)metodoPagamento.getSelectedItem();
+
+				if(mPagamento == "Débito" || mPagamento == "Crédito") {
+					txtSubT.setText(quantidade);
+					txtTaxa.setText(vTaxa);
+					txtValue.setText(vTotal);
 					
-					if(diferenca >= subTotal) {
-						String quantidade = String.format("R$%.2f",subTotal);
-						txtSubT.setText(quantidade);
-						
-						taxa = ((subTotal * rateTaxa)/100);
-						
-						String vTaxa = String.format("R$%.2f", taxa);
-						txtTaxa.setText(vTaxa);
-						
-						valorTotal = (subTotal + taxa);
-						String vTotal = String.format("R$%.2f", valorTotal);
-						txtValue.setText(vTotal);
-						
-						String vTroco = String.format("R$%.2f", (diferenca - valorTotal));
+					inserirVenda();
+				}
+				else if(mPagamento == "Dinheiro") {
+					
+					txtSubT.setText(quantidade);
+					txtTaxa.setText(vTaxa);
+					txtValue.setText(vTotal);
+					
+					diferenca = Double.parseDouble(txtInDinnheiro.getText());
+					auxTroco = (diferenca - valorTotal);
+					
+					if(auxTroco >= 0) {
+						String vTroco = String.format("R$%.2f", auxTroco);
 						txtTroco.setText(vTroco);
+						inserirVenda();
 					}else {
 						JOptionPane.showMessageDialog(null, "Lance o dinheiro suficiente", "Sistema Restaurante", JOptionPane.OK_OPTION);
 					}
-				}else if(mPagamento == "Débito" || mPagamento == "Crédito") {
-					String quantidade = String.format("R$%.2f",subTotal);
-					txtSubT.setText(quantidade);
 					
-					taxa = ((subTotal * rateTaxa)/100);
-					
-					String vTaxa = String.format("R$%.2f", taxa);
-					txtTaxa.setText(vTaxa);
-					
-					valorTotal = (subTotal + taxa);
-					String vTotal = String.format("R$%.2f", valorTotal);
-					txtValue.setText(vTotal);
 				}
+				
+			}
+			
+			private void inserirVenda() {
+				ControlProdutos ctrlP = new ControlProdutos();
+				
 				qtd = qtdAgua+qtdCafe+qtdCerveja+qtdCoca+
 						qtdAguacc+qtdSucoLaranja+qtdSucoMaracuja+
 						qtdFritas+qtdSalada+qtdHamburger+qtdAneisCebola+
@@ -1747,7 +1784,11 @@ public class ViewSistema extends JFrame {
 						qtdTortaLimao+qtdTortaAbacaxi+qtdTortaBanana+qtdTortaMaca+
 						qtdSorvete+qtdPudim+qtdPave+qtdUva+qtdMorango+
 						qtdAbacaxi+qtdLimao+qtdCaju+qtdManga+qtdGraviola;
-				mesa = Integer.parseInt(txtMesa.getText());
+				
+				if(!txtMesa.getText().isBlank()) 
+					mesa = Integer.parseInt(txtMesa.getText());
+				else
+					mesa = 0;
 				
 				if(mesa >0 && mesa <=15) {
 					boolean registra = ctrlP.registraVenda("Venda", TelaLogin.login, taxa, valorTotal, subTotal, qtd, mesa);

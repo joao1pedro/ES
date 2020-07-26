@@ -19,12 +19,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class EditarPreco extends JFrame {
+public class GerenciaProdutos extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 
-	public EditarPreco() {
+	public GerenciaProdutos() {
 		setTitle("Editar preços");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -69,10 +69,12 @@ public class EditarPreco extends JFrame {
 		btnEditar.setBounds(50, 157, 94, 25);
 		panel.add(btnEditar);
 		
-		JButton btnSair = new JButton("Sair");
+		JButton btnSair = new JButton("Voltar");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
+				ViewSistema frame = new ViewSistema();
+				frame.setVisible(true);
 			}
 		});
 		btnSair.setBounds(50, 194, 94, 25);

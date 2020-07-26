@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
-public class GerenciaProd extends JFrame {
+public class GerenciaVendas extends JFrame {
 
 	private JPanel contentPane;
 	
@@ -35,7 +35,7 @@ public class GerenciaProd extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GerenciaProd() {
+	public GerenciaVendas() {
 		setTitle("Vendas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -90,7 +90,7 @@ public class GerenciaProd extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(511, 425, 77, 25);
+		btnVoltar.setBounds(379, 425, 77, 25);
 		panel.add(btnVoltar);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -122,19 +122,8 @@ public class GerenciaProd extends JFrame {
 		lblTaxa.setBounds(138, 39, 84, 15);
 		panel.add(lblTaxa);
 		
-		JButton btnEditarPreo = new JButton("Editar preço");
-		btnEditarPreo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				EditarPreco frame = new EditarPreco();
-				frame.setVisible(true);
-				frame.updateProdutos();
-			}
-		});
-		btnEditarPreo.setBounds(379, 425, 120, 25);
-		panel.add(btnEditarPreo);
-		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(GerenciaProd.class.getResource("/pie-chart-icon.png")));
+		label.setIcon(new ImageIcon(GerenciaVendas.class.getResource("/pie-chart-icon.png")));
 		label.setBounds(43, 80, 195, 276);
 		panel.add(label);
 	}
