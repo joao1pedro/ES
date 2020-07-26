@@ -432,7 +432,6 @@ public class GerenciaFunc extends JFrame {
 	        			rs.getString("nickname"),
 	        			rs.getString("nascimento"),
 	        			rs.getString("pais"),
-	        			rs.getString("estado"),
 	        			rs.getString("cidade"),
 	        			rs.getString("bairro"),
 	        			rs.getString("endereco"),
