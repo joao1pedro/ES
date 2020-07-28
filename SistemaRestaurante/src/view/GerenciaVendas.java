@@ -31,6 +31,8 @@ public class GerenciaVendas extends JFrame {
 	
 	JLabel lblTotal = new JLabel("");
 	JLabel lblTaxa = new JLabel("");
+	
+	ControlProdutos ctrl = new ControlProdutos();
 
 	/**
 	 * Create the frame.
@@ -53,7 +55,7 @@ public class GerenciaVendas extends JFrame {
 		btnEstornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int id;
-				ControlProdutos ctrl = new ControlProdutos();
+				
 				id = ctrl.getMax();
 				File file = new File("documentos/pedido"+id+".pdf"); 
 				

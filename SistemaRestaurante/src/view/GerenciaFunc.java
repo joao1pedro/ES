@@ -63,6 +63,8 @@ public class GerenciaFunc extends JFrame {
 	private final JLabel lblNmero = new JLabel("Número:");
 	private final JLabel lblPermisso = new JLabel("Permissão:");
 	
+	ControlGerenciaFunc ctrl = new ControlGerenciaFunc();
+	
 	public GerenciaFunc() {
 		setTitle("Funcionários");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -261,7 +263,7 @@ public class GerenciaFunc extends JFrame {
 				if(!txtNumero.getText().isEmpty())
 					numero = Integer.parseInt(txtNumero.getText());
 				
-				ControlGerenciaFunc ctrl = new ControlGerenciaFunc();
+				
 				
 				
 				DefaultTableModel modelo = (DefaultTableModel) tableDados.getModel();

@@ -18,6 +18,7 @@ public class Identificacao extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField txtSenha;
+	ControlIdentfica ctrl = new ControlIdentfica();
 	
 	public Identificacao() {
 		setTitle("Identificação");
@@ -48,7 +49,7 @@ public class Identificacao extends JFrame {
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControlIdentfica ctrl = new ControlIdentfica();
+				
 				String senha;
 				boolean autenticacao;
 				

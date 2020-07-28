@@ -19,6 +19,8 @@ public class AlterarSenha extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField lblPass;
 	private JPasswordField lblPassConfirm;
+	
+	ControlAlterarSenha ctrl = new ControlAlterarSenha();
 
 	public AlterarSenha() {
 		setResizable(false);
@@ -60,7 +62,7 @@ public class AlterarSenha extends JFrame {
 				String passConfirm = new String(lblPassConfirm.getPassword()).trim();
 				boolean valida;
 				
-				ControlAlterarSenha ctrl = new ControlAlterarSenha();
+				
 				
 				if(pass.equals(passConfirm)) {
 					valida = ctrl.updatePass(TelaLogin.login, passConfirm);

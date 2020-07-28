@@ -203,6 +203,9 @@ public class ViewSistema extends JFrame {
 	
 	private double auxTroco = 0;
 	
+	ControlProdutos ctrlP = new ControlProdutos();
+	ControlGerenciaFunc ctrlF = new ControlGerenciaFunc();
+	
 	/**
 	 * Create the frame.
 	 */
@@ -547,9 +550,9 @@ public class ViewSistema extends JFrame {
 		mnFuncionrios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ControlGerenciaFunc ctrlP = new ControlGerenciaFunc();
+				
 				boolean permissao;
-				permissao = ctrlP.verificaPermissao(TelaLogin.login);
+				permissao = ctrlF.verificaPermissao(TelaLogin.login);
 
 				if(permissao == true) {
 					dispose();
@@ -1234,7 +1237,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedeatum.setBounds(12, 373, 105, 23);
+		chckbxSanduichedeatum.setBounds(8, 373, 105, 23);
 		panel_2.add(chckbxSanduichedeatum);
 		
 		JCheckBox chckbxSanduichedequeijo = new JCheckBox("Queijo");
@@ -1248,7 +1251,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedequeijo.setBounds(12, 400, 114, 23);
+		chckbxSanduichedequeijo.setBounds(8, 400, 114, 23);
 		panel_2.add(chckbxSanduichedequeijo);
 		
 		JCheckBox chckbxSanduichedefrango = new JCheckBox("Frango");
@@ -1264,7 +1267,7 @@ public class ViewSistema extends JFrame {
 				}
 			}
 		});
-		chckbxSanduichedefrango.setBounds(12, 427, 155, 23);
+		chckbxSanduichedefrango.setBounds(8, 427, 155, 23);
 		panel_2.add(chckbxSanduichedefrango);
 		
 		
@@ -1731,7 +1734,7 @@ public class ViewSistema extends JFrame {
 		JButton btnTotal = new JButton("Total");
 		btnTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControlProdutos ctrlP = new ControlProdutos();
+				
 				
 				calculator(ctrlP);
 				

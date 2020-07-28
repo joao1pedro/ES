@@ -27,8 +27,8 @@ public class TelaLogin extends JFrame {
 	private JTextField txtSenha;
 	static protected String login;
 	
-	ControlLogin controlLogin = new ControlLogin();
-
+	//ControlLogin controlLogin = new ControlLogin();
+	ControlLogin ctrl = new ControlLogin();
 	/**
 	 * Create the frame.
 	 */
@@ -68,7 +68,7 @@ public class TelaLogin extends JFrame {
 				login = txtLogin.getText();
 				String senha = txtSenha.getText();
 				
-				ControlLogin ctrl = new ControlLogin();
+				
 				sucesso = ctrl.logar(login, senha);
 				
 				if(sucesso == true) {
