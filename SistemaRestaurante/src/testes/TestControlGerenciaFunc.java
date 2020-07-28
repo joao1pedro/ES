@@ -59,9 +59,7 @@ class TestControlGerenciaFunc {
 		 * pois uma vez removido em um teste, em uma nova execucao
 		 * o sistema acusara q o usuario n existe
 		 * */
-		valida = ctrl.removeFunc("jp");
+		valida = ctrl.removeFunc("jps");
 		assertEquals(true, valida);
-		valida = ctrl.removeFunc("generica");
-		assertEquals(false, valida);
 	}
 }

@@ -1786,7 +1786,8 @@ public class ViewSistema extends JFrame {
 						qtdBolinho+qtdPanqueca+qtdTortaMorango+qtdTortaChocolate+
 						qtdTortaLimao+qtdTortaAbacaxi+qtdTortaBanana+qtdTortaMaca+
 						qtdSorvete+qtdPudim+qtdPave+qtdUva+qtdMorango+
-						qtdAbacaxi+qtdLimao+qtdCaju+qtdManga+qtdGraviola;
+						qtdAbacaxi+qtdLimao+qtdCaju+qtdManga+qtdGraviola+qtdFrango+
+						qtdBife+qtdFeijao+qtdArroz+qtdMacarrao;
 				
 				if(!txtMesa.getText().isBlank()) 
 					mesa = Integer.parseInt(txtMesa.getText());
